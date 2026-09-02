@@ -46,7 +46,7 @@ export function DayHead({
 
   return (
     <div className="px-4 pb-4 pt-3">
-      <div className="day-rail flex items-center gap-2.5 rounded-[12px] border border-[var(--line)] bg-[var(--elev)] px-2.5 py-2">
+      <div className="day-rail flex items-center gap-2.5 rounded-[12px] px-2.5 py-2">
         <div className="flex items-center gap-1.5">
           <SideDay query={query} dir="prev" />
           <span aria-current="date" aria-label={current.spoken} className="day-rail__today">

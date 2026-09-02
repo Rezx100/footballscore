@@ -23,7 +23,7 @@ export function Lockup({ query }: { query: MatchesQuery }) {
             ? matchesHref({ ...query, q: "", search: false, tab: "matches" })
             : matchesHref({ ...query, search: true, tab: "matches" })
         }
-        className="shrink-0 rounded-full border border-[var(--line)] bg-[var(--elev)] px-3 py-1.5 font-board text-[10px] tracking-[0.08em] text-[var(--muted)] transition-colors duration-160 hover:border-[color-mix(in_srgb,var(--ink)_18%,var(--line))] hover:text-[var(--ink)]"
+        className="find-pill shrink-0 rounded-full px-3 py-1.5 font-board text-[10px] tracking-[0.08em] transition-colors duration-160"
       >
         {query.search ? "Close" : "Find"}
       </Link>

@@ -41,7 +41,7 @@ export function MatchesScreen({
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
-      <header>
+      <header className="masthead">
         {query.search ? (
           <>
             <Lockup query={query} />
@@ -57,7 +57,7 @@ export function MatchesScreen({
                 name="q"
                 defaultValue={query.q.trim()}
                 placeholder="Club or league"
-                className="h-10 w-full rounded-[10px] border border-[var(--line)] bg-[var(--elev)] px-3 font-cond text-[15px] text-[var(--ink)] outline-none placeholder:text-[var(--muted)] focus:border-[color-mix(in_srgb,var(--copper)_45%,var(--line))]"
+                className="h-10 w-full rounded-[10px] border border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--elev)_55%,transparent)] px-3 font-cond text-[15px] text-[var(--ink)] outline-none backdrop-blur-md placeholder:text-[var(--muted)] focus:border-[color-mix(in_srgb,var(--copper)_45%,transparent)]"
               />
             </form>
           </>
