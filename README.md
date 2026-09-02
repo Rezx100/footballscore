@@ -5,7 +5,7 @@ Live football scores for **app** and **website** — one product, association fo
 **Brand (foundation):** [docs/brand.md](docs/brand.md)  
 **Approve wordmark + color:** [docs/brand-proposals.md](docs/brand-proposals.md) · [board](docs/brand-board.html)  
 **How we get to a full brand book:** [docs/brand-plan.md](docs/brand-plan.md)  
-**Product system (scaffolding):** [docs/design.md](docs/design.md)  
+**Product system (proposed Pitch):** [docs/design.md](docs/design.md)  
 **Build prompt:** [docs/redesign-and-espn-prompt.md](docs/redesign-and-espn-prompt.md)
 
 Wordmark construction and color palette are **not locked**. Do not treat CSS tokens as identity until a pair is approved.

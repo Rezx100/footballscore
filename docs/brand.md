@@ -108,4 +108,4 @@ Do not mix a palette and a wordmark that the proposal marks as incompatible. Aft
 
 Working name for the interface system: **Pitch**. Marketing brand remains **footballscore**. Same split Strava makes between brand and Spandex: brand color is not the UI grey ramp; data colors are not the brand accent.
 
-Pitch is specified in [design.md](./design.md) as scaffolding until the palette is approved.
+Pitch is specified in [design.md](./design.md) as a **proposed** system. Color roles are listed there; hex still needs [palette approval](./brand-proposals.md).
