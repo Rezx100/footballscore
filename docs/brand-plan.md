@@ -2,7 +2,7 @@
 
 How footballscore gets a brand book as complete as a category-leading sports guidelines deck — without copying anyone’s marks, palette, or UI.
 
-**Gate:** [wordmark + color approval](./brand-proposals.md). No hex or logo construction is final until that gate passes.
+**Gate:** [palette approval](./brand-proposals.md) (v2: Medal / Archive / Ribbon). v1 wordmark + color board is rejected; see [brand-gap.md](./brand-gap.md). No hex or logo construction is final until the v2 gate passes.
 
 ---
 

@@ -4,11 +4,10 @@ status: proposed
 name: footballscore
 description: >
   Association-football scores product. Match-day programme brought up to the minute.
-  Canvas is warm paper, type is Geist, the score is the only center axis, elevation is
-  hairlines not shadows. Hex below is Palette A (Programme & floodlight) as a working
-  target — not locked until docs/brand-proposals.md is signed. Format follows getdesign.md
-  / Google Stitch DESIGN.md. Craft references (not clones): WIRED hairline rows, Vercel Geist,
-  Mastercard cream paper. See docs/getdesign-refs/.
+  Canvas is warm paper, type is Geist scaffolding, the score is the only center axis,
+  elevation is hairlines not shadows. Hex below is leftover v1 scaffolding — not identity.
+  Approve a v2 palette in docs/brand-proposals.md before treating any hex as the brand.
+  Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
   field: "#10241C"

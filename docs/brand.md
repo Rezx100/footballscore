@@ -1,7 +1,7 @@
 # footballscore brand
 
-Version 0.1 — foundation only.  
-**Wordmark construction and color palette are not locked.** Approve a pair in [brand-proposals.md](./brand-proposals.md) (visual board: [brand-board.html](./brand-board.html)) before anyone treats them as the brand.
+Version 0.2 — foundation locked; v1 visual board **rejected**.  
+**Wordmark construction and color palette are not locked.** Approve a v2 palette in [brand-proposals.md](./brand-proposals.md) before anyone treats hex as the brand. Marks and custom lettering follow that pick. Why v1 failed: [brand-gap.md](./brand-gap.md).
 
 Quality bar for the finished book: the completeness and rigor of [Strava Brand Guidelines 2.0 (2021)](https://deck.gallery/strava-brand-guidelines-2021/) — not that brand’s orange, type, marks, or voice. See [brand-plan.md](./brand-plan.md).
 
@@ -14,10 +14,10 @@ Quality bar for the finished book: the completeness and rigor of [Strava Brand G
 | Name, mission, vision, principles, audience | **Locked** |
 | Voice stance and football lexicon (v1) | **Locked** |
 | Honest-data rules | **Locked** |
-| Wordmark construction | **Needs your approval** |
-| Color palette (brand + product + data) | **Needs your approval** |
-| Custom mark / app icon | Not started (after wordmark + color) |
-| Type pairing beyond Geist scaffolding | After color |
+| Color palette (brand + product + data) | **Needs your approval** (v2: Medal / Archive / Ribbon) |
+| Custom mark | After palette pick |
+| Wordmark construction | After palette + mark — not Geist split |
+| Type pairing beyond Geist scaffolding | After mark |
 | Photography, icons, motion, applications | After marks + color |
 
 Until color is approved, CSS in `src/app/globals.css` is **scaffolding**, not identity. Do not add a second “official” palette in code.
@@ -95,12 +95,11 @@ Drop on the floor even when a payload includes them: odds, pickcenter, video pla
 
 **Not in this file until you approve a proposal.**
 
-Open [brand-proposals.md](./brand-proposals.md) and pick:
+Open [brand-proposals.md](./brand-proposals.md) and pick one **palette**: Medal, Archive, or Ribbon — or send us back.
 
-- one **palette** (A, B, or C — or send us back)
-- one **wordmark** (1, 2, or 3 — or send us back)
+v1 (Programme & floodlight / Desk & cobalt / Night ticket, plus Unit / weight-split / color-split) is rejected. Do not revive lime, cobalt, or ember as identity. The wordmark is not a Geist split; it is custom lettering after the palette and mark.
 
-Do not mix a palette and a wordmark that the proposal marks as incompatible. After approval, this section will gain: hex/RGB/CMYK, WCAG matrix, clearspace, minimum size, misuse, and product vs marketing split — the same jobs Strava’s book assigns to Orange, Maison Neue, and the Echelon mark, with **our** choices.
+After approval, this section will gain: hex/RGB/CMYK, WCAG matrix, clearspace, minimum size, misuse, and product vs marketing split.
 
 ---
 
@@ -108,4 +107,4 @@ Do not mix a palette and a wordmark that the proposal marks as incompatible. Aft
 
 Working name for the interface system: **Pitch**. Marketing brand remains **footballscore**. Same split Strava makes between brand and Spandex: brand color is not the UI grey ramp; data colors are not the brand accent.
 
-Pitch is specified in [design.md](./design.md) as a **proposed** system. Color roles are listed there; hex still needs [palette approval](./brand-proposals.md).
+Pitch is specified in [design.md](./design.md) as a **proposed** system. Color roles are listed there; hex in DESIGN.md is leftover v1 scaffolding and is **not** the brand.
