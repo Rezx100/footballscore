@@ -255,13 +255,13 @@ Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike av
 ## Components
 
 ### `masthead-bar`
-Field under a copper-night atmospheric wash (radial copper glows + vertical fade into `{colors.field}`). Same gradient *rhythm* as premium sports headers — Medal copper, never Apple forest green. Constructed mark + `{typography.masthead}` in Bone on a 2px copper hinge. Find = frosted copper pill.
+Atmospheric wash driven by the **lead league palette** (first open group on Scores), falling back to copper-night. Same gradient *rhythm* as Apple Sports league headers — brand-true mid/deep hex from `league-palette.ts`, never generic system green. Constructed mark + `{typography.masthead}` in Bone. Find = frosted tinted pill.
 
 ### `date-board`
-Compact day rail as frosted glass over the copper masthead: neighbor weekday flaps + active `02`/`SEP` flap + live count chip right-aligned. Same radius language as score tiles. Not Yesterday / Today / Tomorrow text tabs.
+Compact day rail as frosted glass over the masthead wash: neighbor weekday flaps + active `02`/`SEP` flap + live count chip right-aligned. Same radius language as score tiles. Not Yesterday / Today / Tomorrow text tabs.
 
 ### `league-group`
-League mark + name as a quiet section header (Apple Sports rhythm). Match tiles below in a dense 1→2 column grid. Not a single FotMob white group box.
+Each section carries its own Apple-Sports-style aura (`--league` / `--league-deep` / `--league-accent`) plus a 6px accent chip. Score tiles stay `--elev` (cards are not recolored). Unknown slugs fall back by country prefix or a curated hash set.
 
 ### `match-row` / score card (signature — Stack tile)
 ```

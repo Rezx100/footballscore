@@ -64,27 +64,29 @@ a {
   border: 0;
 }
 
-/* Masthead atmosphere — Apple Sports rhythm, Medal copper (not forest green) */
+/* Masthead atmosphere — Apple Sports rhythm; league tint when a lead group exists */
 .masthead {
+  --masthead-mid: var(--copper);
+  --masthead-deep: var(--copper-deep);
   position: relative;
   isolation: isolate;
   background:
     radial-gradient(
       130% 100% at 12% -25%,
-      color-mix(in srgb, var(--copper) 55%, transparent) 0%,
+      color-mix(in srgb, var(--masthead-mid) 55%, transparent) 0%,
       transparent 58%
     ),
     radial-gradient(
       100% 85% at 92% -15%,
-      color-mix(in srgb, #a85a28 48%, transparent) 0%,
+      color-mix(in srgb, var(--masthead-deep) 48%, transparent) 0%,
       transparent 50%
     ),
     linear-gradient(
       180deg,
-      #4a2a14 0%,
-      #3a2112 18%,
-      color-mix(in srgb, var(--copper-deep) 70%, #16110d) 42%,
-      color-mix(in srgb, var(--copper) 14%, var(--bg)) 72%,
+      color-mix(in srgb, var(--masthead-deep) 88%, #120e0b) 0%,
+      color-mix(in srgb, var(--masthead-deep) 70%, #16110d) 18%,
+      color-mix(in srgb, var(--masthead-mid) 28%, #16110d) 42%,
+      color-mix(in srgb, var(--masthead-mid) 10%, var(--bg)) 72%,
       var(--bg) 100%
     );
 }
@@ -99,7 +101,7 @@ a {
     90deg,
     transparent 0%,
     color-mix(in srgb, var(--ink) 14%, transparent) 35%,
-    color-mix(in srgb, var(--copper) 35%, transparent) 50%,
+    color-mix(in srgb, var(--masthead-mid) 40%, transparent) 50%,
     color-mix(in srgb, var(--ink) 14%, transparent) 65%,
     transparent 100%
   );
@@ -108,7 +110,7 @@ a {
 }
 
 .find-pill {
-  background: color-mix(in srgb, var(--copper) 28%, transparent);
+  background: color-mix(in srgb, var(--masthead-mid) 28%, transparent);
   border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
   color: var(--ink);
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 12%, transparent);
@@ -117,7 +119,7 @@ a {
 }
 
 .find-pill:hover {
-  background: color-mix(in srgb, var(--copper) 40%, transparent);
+  background: color-mix(in srgb, var(--masthead-mid) 40%, transparent);
   border-color: color-mix(in srgb, var(--ink) 24%, transparent);
   color: var(--ink);
 }
@@ -200,6 +202,43 @@ a {
 .day-rail__today {
   display: inline-flex;
   filter: drop-shadow(0 0 14px color-mix(in srgb, var(--copper) 34%, transparent));
+}
+
+/* Per-league atmosphere — Apple Sports header-color idea, section-scoped */
+.league-section {
+  --league: #6b3d1c;
+  --league-deep: #2a1810;
+  --league-accent: #c17a3a;
+}
+
+.league-section__aura {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  height: 88px;
+  background:
+    radial-gradient(
+      90% 120% at 12% 0%,
+      color-mix(in srgb, var(--league) 34%, transparent) 0%,
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--league-deep) 55%, transparent) 0%,
+      transparent 100%
+    );
+  opacity: 0.95;
+}
+
+.league-section__chip {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--league-accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--league-accent) 55%, transparent);
+  flex-shrink: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {

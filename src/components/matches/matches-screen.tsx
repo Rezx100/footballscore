@@ -1,10 +1,12 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Lockup } from "@/components/brand/lockup";
 import { DayHead } from "@/components/matches/day-head";
 import { LeagueGroupCard } from "@/components/matches/league-group";
 import { TabBar } from "@/components/matches/tab-bar";
 import { dayLabel } from "@/lib/dates";
 import { DEFAULT_MARK } from "@/lib/brand";
+import { leaguePaletteVars, paletteForLeague } from "@/lib/league-palette";
 import { groupIsFinished, liveMatchCount } from "@/lib/matches";
 import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
 import type { LeagueGroup } from "@/lib/types";
@@ -38,10 +40,19 @@ export function MatchesScreen({
   const listed = query.hide ? open : [...open, ...finished];
   const hasFinished = finished.length > 0;
   const liveCount = liveMatchCount(searched);
+  const leadLeague = open[0] ?? listed[0] ?? null;
+  const leadPalette = leadLeague ? paletteForLeague(leadLeague) : null;
+  const mastheadVars = leadPalette
+    ? ({
+        ...leaguePaletteVars(leadPalette),
+        "--masthead-mid": leadPalette.mid,
+        "--masthead-deep": leadPalette.deep,
+      } as CSSProperties)
+    : undefined;
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
-      <header className="masthead">
+      <header className="masthead" style={mastheadVars}>
         {query.search ? (
           <>
             <Lockup query={query} />
