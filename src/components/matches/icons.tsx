@@ -64,9 +64,10 @@ export function TvIcon({ className }: { className?: string }) {
 
 export function PitchIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M3 6.5h18v11H3zM12 6.5v11M3 12h18" fill="none" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="12" cy="12" r="2.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="3" y="5.5" width="18" height="13" rx="1.2" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M3 12h18M12 5.5v13" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" />
     </svg>
   );
 }

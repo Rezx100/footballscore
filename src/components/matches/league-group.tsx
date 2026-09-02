@@ -1,15 +1,14 @@
 import { LeagueFlag } from "@/components/matches/league-flag";
 import { MatchRow } from "@/components/matches/match-row";
+import type { MatchesQuery } from "@/lib/matches-query";
 import type { LeagueGroup } from "@/lib/types";
 
 export function LeagueGroupCard({
   group,
-  selectedMatchId,
-  onSelectMatch,
+  query,
 }: {
   group: LeagueGroup;
-  selectedMatchId: string | null;
-  onSelectMatch: (id: string) => void;
+  query: MatchesQuery;
 }) {
   return (
     <section className="overflow-hidden rounded-[var(--radius-card)] bg-[var(--surface)] shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
@@ -22,8 +21,8 @@ export function LeagueGroupCard({
           <MatchRow
             key={match.id}
             match={match}
-            selected={selectedMatchId === match.id}
-            onSelect={() => onSelectMatch(match.id)}
+            selected={query.match === match.id}
+            query={query}
           />
         ))}
       </div>

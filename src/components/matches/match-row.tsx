@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { Crest } from "@/components/matches/crest";
 import { TvIcon } from "@/components/matches/icons";
+import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
 import type { Match } from "@/lib/types";
 
 function CenterCell({ match }: { match: Match }) {
@@ -52,11 +54,11 @@ function CenterCell({ match }: { match: Match }) {
 export function MatchRow({
   match,
   selected,
-  onSelect,
+  query,
 }: {
   match: Match;
   selected: boolean;
-  onSelect: () => void;
+  query: MatchesQuery;
 }) {
   const result =
     match.status === "ns"
@@ -70,10 +72,9 @@ export function MatchRow({
             : "postponed";
 
   return (
-    <button
-      type="button"
-      onClick={onSelect}
-      aria-pressed={selected}
+    <Link
+      href={matchesHref({ ...query, match: match.id, tab: "matches" })}
+      aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
       className={`flex w-full items-center gap-1.5 px-3 py-2.5 text-left transition-colors ${
         selected ? "bg-[#F3FBF6]" : "bg-white hover:bg-[#FAFAFA] active:bg-[#F4F4F5]"
@@ -91,6 +92,6 @@ export function MatchRow({
       <span className="w-4 shrink-0 text-[var(--muted)]">
         {match.hasTv ? <TvIcon className="h-3.5 w-3.5" /> : null}
       </span>
-    </button>
+    </Link>
   );
 }
