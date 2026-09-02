@@ -3,10 +3,10 @@ version: alpha
 status: proposed
 name: footballscore
 description: >
-  Association-football scores product. Match-day programme brought up to the minute.
-  Canvas is warm paper, type is Geist scaffolding, the score is the only center axis,
-  elevation is hairlines not shadows. Hex below is the approved Medal palette.
-  Mark and wordmark are not locked. CSS remains scaffolding until those lock.
+  Association-football scores product. A Carbon timing board, not a cream programme.
+  The score is the jumbotron. Copper is only the live minute. Geist is scaffolding.
+  Hex is the approved Medal palette. Mark and wordmark are not locked.
+  CSS remains scaffolding until those lock.
   Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
@@ -14,15 +14,15 @@ colors:
   on-field: "#F3EDE4"
   copper: "#C17A3A"
   paper: "#F3EDE4"
-  surface: "#FFF8F0"
-  ink: "#1A1612"
-  quiet: "#5C5650"
-  rule: "#E0D8CC"
-  live-ink: "#7A4A1C"
+  surface: "#1C1916"
+  ink: "#F3EDE4"
+  quiet: "#8A8278"
+  rule: "#2C2824"
+  live-ink: "#C17A3A"
   cardinal: "#9B1B1B"
   caution: "#C4A574"
-  wash: "#E8D3B8"
-  chip: "#EBE4DA"
+  wash: "#1C1916"
+  chip: "#2C2824"
   on-primary: "#F3EDE4"
   patina: "#3D5C52"
 typography:
@@ -54,24 +54,24 @@ typography:
     lineHeight: 24px
   masthead:
     fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
-    fontSize: 22px
-    fontWeight: 700
-    lineHeight: 28px
-    letterSpacing: -0.66px
+    fontSize: 18px
+    fontWeight: 650
+    lineHeight: 24px
+    letterSpacing: -0.8px
   score:
     fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
-    fontSize: 20px
+    fontSize: 22px
     fontWeight: 700
     lineHeight: 24px
     fontVariantNumeric: tabular-nums
-    letterSpacing: -0.6px
+    letterSpacing: -0.8px
   score-lg:
     fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
-    fontSize: 34px
+    fontSize: 72px
     fontWeight: 700
-    lineHeight: 40px
+    lineHeight: 68px
     fontVariantNumeric: tabular-nums
-    letterSpacing: -1.02px
+    letterSpacing: -2.4px
 rounded:
   none: 0px
   sm: 8px
@@ -87,45 +87,45 @@ spacing:
   3xl: 48px
 components:
   masthead-bar:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.field}"
     textColor: "{colors.ink}"
     typography: "{typography.masthead}"
-    padding: "{spacing.md} {spacing.lg}"
+    padding: "{spacing.lg} {spacing.lg}"
   date-strip:
     textColor: "{colors.quiet}"
     typography: "{typography.ui}"
-    activeBorder: "{colors.ink}"
+    activeBorder: "none"
   live-rail:
     backgroundColor: "{colors.field}"
     textColor: "{colors.copper}"
     typography: "{typography.caption}"
     padding: "{spacing.sm} {spacing.lg}"
   league-group:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.field}"
     borderColor: "{colors.rule}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.none}"
   match-row:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.field}"
     textColor: "{colors.ink}"
     typography: "{typography.ui}"
-    padding: "{spacing.md} {spacing.md}"
-    minHeight: 56px
+    padding: "{spacing.md} {spacing.lg}"
+    minHeight: 64px
   match-row-selected:
     backgroundColor: "{colors.wash}"
   score-axis:
     typography: "{typography.score}"
     textColor: "{colors.ink}"
-    width: 72px
+    width: 88px
   live-minute:
     typography: "{typography.caption}"
-    textColor: "{colors.live-ink}"
+    textColor: "{colors.copper}"
   status-chip:
-    backgroundColor: "{colors.chip}"
+    backgroundColor: "transparent"
     textColor: "{colors.quiet}"
-    rounded: "{rounded.pill}"
+    rounded: "{rounded.none}"
     typography: "{typography.caption}"
   tab-bar:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.field}"
     borderColor: "{colors.rule}"
     padding: "{spacing.xs} {spacing.xs}"
   search-field:
@@ -145,45 +145,40 @@ components:
 
 ## Overview
 
-footballscore is a football-only scores product (association football). The surface should read as a **printed match-day programme** that updates every 30 seconds: warm paper, dark ink, crests as heraldry, the **score as the sacred number**. It is not a sports-TV skin, not a SaaS marketing site, and not a device mockup.
+footballscore is a football-only scores product (association football). The product surface is a **Carbon timing board**: Bone type on `{colors.field}`, the **score as jumbotron**, Copper only on the live minute. Bone paper is reverse, splash, and marketing — not the Scores canvas. It is not a cream card stack, not a sports-TV chyron, not FotMob white groups, not Apple Sports green.
 
-This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format. It was synthesized from four catalog analyses (`npx getdesign add …`) and then rewritten for this product:
-
-- **WIRED** — hairline list rows, no drop shadows, one quiet accent, magazine density.
-- **Vercel** — Geist as the only product sans; tight tracking on display; no decorative mesh in the app.
-- **Mastercard** — warm cream paper instead of iOS grey; ink slightly green-black so it sits on paper.
-- **Nike** — chroma lives in photography/crests, not in chrome. We refuse their campaign Futura and full-bleed heroes.
+This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
 
 **Identity gate:** Medal palette is approved. Mark and wordmark still need a pick in `docs/brand-proposals.md`. YAML hex is Medal. CSS remains scaffolding until the lockup exists.
 
 **Key characteristics**
-- Paper canvas `{colors.paper}`, not `#F2F2F7`.
-- Score in `{typography.score}` 20px tabular at the **only center axis** of a match row (today’s 15px is too small).
-- Elevation = 1px `{colors.rule}`. No card shadows.
-- Live is a verb: Caption minute in `{colors.live-ink}` on paper; Copper only on Field (live rail, reverse).
-- Four destinations: Scores · Explore · Following · More.
-- Home left, away right. Shields never circle-cropped.
+- Page is `{colors.field}` (`#141210`). Bone is type and reverse.
+- Featured live: `{typography.score-lg}` (56–96px tabular). List score `{typography.score}` 22px.
+- No cards, no shadows, no date-strip underlines, no LIVE ticker.
+- Copper is the live clock only. Not a pill. Not a tab accent.
+- Three destinations: Scores · Following · More.
+- Home left, away right. Native crests, never circle-cropped, never invented rainbow shields.
 
 ## Colors
 
 Hex is Medal, approved. Roles stay even if a later mark export tightens Copper.
 
 ### Brand & accent
-- **Field** (`{colors.field}` — `#141210`): marketing / studio / live rail ground. Reverse wordmark.
-- **Copper** (`{colors.copper}` — `#C17A3A`): brand signal **on Field**, sparingly in product. Never body text on Paper unless `{colors.live-ink}` is used instead.
-- **Live ink** (`{colors.live-ink}` — `#7A4A1C`): live minute on Paper. WCAG stand-in for Copper.
+- **Field** (`{colors.field}` — `#141210`): the product page. Marketing studio is the same ground.
+- **Copper** (`{colors.copper}` — `#C17A3A`): live minute, mark, reverse on Field. Not a fill for cards or tabs.
+- **Live ink** (`{colors.live-ink}` — `#C17A3A`): live minute on Field (Copper meets contrast on Carbon).
 - **Patina** (`{colors.patina}` — `#3D5C52`): support structure, never a pitch fill.
 
 ### Surface
-- **Paper** (`{colors.paper}` — `#F3EDE4`): page.
-- **Surface** (`{colors.surface}` — `#FFF8F0`): header, groups, tab bar.
-- **Rule** (`{colors.rule}` — `#E0D8CC`): 1px dividers.
-- **Wash** (`{colors.wash}` — `#E8D3B8`): selected row.
-- **Chip** (`{colors.chip}` — `#EBE4DA`): FT / PP / AB pills.
+- **Paper** (`{colors.paper}` — `#F3EDE4`): reverse, splash, marketing. Not the Scores page.
+- **Surface** (`{colors.surface}` — `#1C1916`): raised row / featured well on Field.
+- **Rule** (`{colors.rule}` — `#2C2824`): 1px fascia lines.
+- **Wash** (`{colors.wash}` — `#1C1916`): selected row.
+- **Chip** (`{colors.chip}` — `#2C2824`): FT / PP / AB — letters, not candy pills.
 
 ### Text
-- **Ink** (`{colors.ink}` — `#1A1612`): body, scores, masthead.
-- **Quiet** (`{colors.quiet}` — `#5C5650`): meta, inactive tabs, kick-off.
+- **Ink** (`{colors.ink}` — `#F3EDE4`): body, scores, masthead on Field.
+- **Quiet** (`{colors.quiet}` — `#8A8278`): meta, inactive, kick-off.
 
 ### Semantic
 - **Cardinal** (`{colors.cardinal}` — `#9B1B1B`): red card, error, unfollow. Never live.
@@ -207,9 +202,9 @@ No second display serif until color is locked. Do not load WiredDisplay, MarkFor
 | `{typography.body}` | 15 | 400 | 22 | Commentary, empty copy |
 | `{typography.ui}` | 15 | 600 | 20 | Team names, text buttons |
 | `{typography.title}` | 17 | 650 | 24 | Empty titles, section headers |
-| `{typography.masthead}` | 22 | 700 | 28 | `footballscore` header (Unit wordmark until 2/3 approved) |
-| `{typography.score}` | 20 | 700 tabular | 24 | List row score — sacred |
-| `{typography.score-lg}` | 34 | 700 tabular | 40 | Match sticky scoreboard |
+| `{typography.masthead}` | 18 | 650 | 24 | `footballscore` header (Geist until wordmark) |
+| `{typography.score}` | 22 | 700 tabular | 24 | List row score |
+| `{typography.score-lg}` | 72 | 700 tabular | 68 | Featured live jumbotron |
 
 ### Principles
 - The score is always heavier and larger than the team name beside it.
@@ -224,9 +219,9 @@ Tokens: `{spacing.xs}` 4 · `{spacing.sm}` 8 · `{spacing.md}` 12 · `{spacing.l
 Page pad 16. Group gap 12. Row min-height **56**. Tab bar 56 + safe area.
 
 ### Grid
-- Phone `<768`: full-bleed Paper. No device bezel.
-- `768–1099`: same layouts, max 720 centered.
-- `≥1100`: top nav or 72px icon rail — **pick top nav**. Center max 720. Right column only with real data (live list, mini table).
+- Phone `<768`: full-bleed Field. No device bezel.
+- `768–1099`: same, max 720 centered.
+- `≥1100`: featured live left, fascia list right. Top nav, not a 72px icon rail.
 
 ### Whitespace
 Density of a fixture list, not Mastercard emptiness and not a magazine cover grid. Breathing room is **between league groups**, not inside a match row.
@@ -258,33 +253,29 @@ Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike av
 ## Components
 
 ### `masthead-bar`
-Surface bar. Wordmark `{typography.masthead}` in Ink (Wordmark 1 / Unit until another is approved). Tools: search, calendar. No extra mark.
+Field. Mark + `{typography.masthead}` in Bone. Search only. No extra chrome.
 
 ### `date-strip`
-`{typography.ui}`. Active day: 3px Ink underline, not a filled chip.
+One line: `Today · 2 live`. Not a horizontal day carousel. Calendar is a tool, not a tab.
 
-### `live-rail`
-Sticky under masthead when any match is live/HT. Field ground, Copper/on-field type, horizontal scroll of minute + score + two shorts. Tap opens the match.
+### `featured-live`
+The jumbotron. Competition caption, Copper minute, `{score-lg}`, home left / away right under the number. No ticker duplicating this.
 
 ### `league-group`
-Ruled Surface, radius 8. Header: 16px league mark + Meta name. Followed = outline star, not a painted header.
+Caption + flush rows. No ruled card. No radius.
 
 ### `match-row` (signature — Axis)
 ```
-[ Home name → ] [🛡️]  78'   [🛡️] [ ← Away name ]
-                      2–1
+[ Home name → ]   78′    [ ← Away name ]
+                  2–1
 ```
-- Home `text-align: right`, away left, `{typography.ui}`, truncate.
-- Crest 24px, 8px from the axis.
-- `{score-axis}` width 72px: Caption status above `{typography.score}`.
-- Kick-off: Caption empty or `KO`, axis shows time in UI tabular.
-- FT/PP/AB: `{status-chip}` above the score.
-- Live/HT: `{live-minute}` text, not a chip.
-- Selected: `{match-row-selected}` wash.
-- **No TV icon column.** Broadcaster is quiet text on match detail.
+- Home right, away left, `{typography.ui}`, truncate.
+- `{score-axis}` width 88px: Copper minute above `{typography.score}` for live; quiet time for KO.
+- FT is Caption, not a pill.
+- **No TV icon column.**
 
 ### `tab-bar`
-Four items: Scores · Explore · Following · More. Caption labels, 24px stroke icons (1.75). Active Ink, inactive Quiet.
+Three items: Scores · Following · More. Caption. Active Bone, inactive Quiet.
 
 ### `search-field`
 Height 40, radius 8, Paper fill, Rule ring, focus ring Live-ink.
@@ -306,7 +297,9 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 ## Page recipes
 
-**Scores** — masthead → live-rail (if needed) → date-strip → live groups → followed → first-class with games → rest. Hide finished = text control.
+**Scores** — masthead → Today/live count → featured live (if any) → flush groups. No ticker.
+
+**Match** — jumbotron sticky → last key event → timeline → Lineup / Numbers / Table / Series.
 
 **Match** — sticky-scoreboard → last key event → timeline → Lineup / Numbers / Table / Series segment.
 
@@ -325,10 +318,11 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 ### Don't
 - Don't use iOS grouped grey `#F2F2F7` or system green `#00A651` as identity.
+- Don't paint Scores as cream paper cards or a date-underline strip.
 - Don't circle-crop crests or add a soccer-ball mark.
 - Don't wrap the product in a fake phone bezel.
 - Don't ship seven equal match tabs; Timeline is the default.
-- Don't copy WIRED link-blue, Vercel mesh, Mastercard orbits, or Nike 96px uppercase as this product.
+- Don't copy WIRED link-blue, Vercel mesh, Mastercard orbits, Nike 96px uppercase, FotMob white groups, or Apple Sports green.
 - Don't treat YAML hex as locked until `docs/brand-proposals.md` is signed — then rewrite this file to match.
 
 ## Responsive behavior

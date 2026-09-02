@@ -6,6 +6,8 @@ The first board (Reeded FS, Kickoff coin, Score rail) is retired. These three ar
 
 Drafts: [brand-boards/logo-drafts](./brand-boards/logo-drafts/). In product: [brand-boards/applications](./brand-boards/applications/).
 
+The cream programme chrome is retired. Product preview is **Field**: Carbon timing board, jumbotron live, flush list. [applications/field.html](./brand-boards/applications/field.html)
+
 Then a custom `footballscore` wordmark. CSS stays scaffolding until that lockup exists.
 
 v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-gap.md](./brand-gap.md).

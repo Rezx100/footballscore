@@ -105,7 +105,7 @@ Championship hardware. Carbon field, bone paper, one struck-copper signal. Not p
 | Patina | `#3D5C52` | Support structure, never a pitch fill |
 | Cardinal | `#9B1B1B` | Red card, error — never the logo color |
 
-Copper is not page tint. Live and follow may use Copper; red cards use Cardinal.
+Copper is not page tint. Live uses Copper on Field. Red cards use Cardinal.
 
 ### Mark — not locked
 
