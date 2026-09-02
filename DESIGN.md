@@ -258,7 +258,7 @@ Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike av
 Field. Constructed mark + `{typography.masthead}` in Bone on a 2px copper hinge. Find. Tap the lockup to cycle marks until one is approved.
 
 ### `date-board`
-Split-flap for the selected day (`02` copper / `SEP` bone). Neighbor weekdays as idle flaps. Live count in copper mono. Not Yesterday / Today / Tomorrow.
+Compact day rail in an `--elev` well (`12px` radius): neighbor weekday flaps + active `02`/`SEP` flap (rounded, copper/bone) + live count chip aligned right. Same surface language as score tiles. Not Yesterday / Today / Tomorrow text tabs.
 
 ### `league-group`
 League mark + name as a quiet section header (Apple Sports rhythm). Match tiles below in a dense 1→2 column grid. Not a single FotMob white group box.

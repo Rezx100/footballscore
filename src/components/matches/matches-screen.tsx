@@ -42,27 +42,30 @@ export function MatchesScreen({
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
       <header>
-        <div className="px-5 pt-5 pb-1">
-          <Lockup query={query} />
-        </div>
         {query.search ? (
-          <form action="/matches" method="get" className="px-5 pt-6 pb-4">
-            {query.day !== "today" ? <input type="hidden" name="day" value={query.day} /> : null}
-            {query.mark !== DEFAULT_MARK ? <input type="hidden" name="mark" value={query.mark} /> : null}
-            <input type="hidden" name="search" value="1" />
-            <label className="sr-only" htmlFor="match-search">
-              Find teams or leagues
-            </label>
-            <input
-              id="match-search"
-              name="q"
-              defaultValue={query.q.trim()}
-              placeholder="Club or league"
-              className="h-9 w-full border-b border-[var(--copper)] bg-transparent font-cond text-[16px] text-[var(--ink)] outline-none placeholder:text-[var(--muted)]"
-            />
-          </form>
+          <>
+            <Lockup query={query} />
+            <form action="/matches" method="get" className="px-4 pt-4 pb-4">
+              {query.day !== "today" ? <input type="hidden" name="day" value={query.day} /> : null}
+              {query.mark !== DEFAULT_MARK ? <input type="hidden" name="mark" value={query.mark} /> : null}
+              <input type="hidden" name="search" value="1" />
+              <label className="sr-only" htmlFor="match-search">
+                Find teams or leagues
+              </label>
+              <input
+                id="match-search"
+                name="q"
+                defaultValue={query.q.trim()}
+                placeholder="Club or league"
+                className="h-10 w-full rounded-[10px] border border-[var(--line)] bg-[var(--elev)] px-3 font-cond text-[15px] text-[var(--ink)] outline-none placeholder:text-[var(--muted)] focus:border-[color-mix(in_srgb,var(--copper)_45%,var(--line))]"
+              />
+            </form>
+          </>
         ) : (
-          <DayHead query={query} liveCount={liveCount} />
+          <>
+            <Lockup query={query} />
+            <DayHead query={query} liveCount={liveCount} />
+          </>
         )}
       </header>
 
