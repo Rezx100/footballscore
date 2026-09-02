@@ -1,5 +1,5 @@
+import { AppShell } from "@/components/app-shell";
 import { MatchesScreen } from "@/components/matches/matches-screen";
-import { PhoneShell } from "@/components/phone-shell";
 import { getMatchesForDay } from "@/lib/espn/matches";
 import { parseMatchesQuery } from "@/lib/matches-query";
 
@@ -15,8 +15,8 @@ export default async function MatchesPage({
   const { groups, error } = await getMatchesForDay(query.day);
 
   return (
-    <PhoneShell>
+    <AppShell>
       <MatchesScreen query={query} groups={groups} error={error} />
-    </PhoneShell>
+    </AppShell>
   );
 }

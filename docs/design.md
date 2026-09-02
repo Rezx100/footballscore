@@ -4,7 +4,7 @@ Pitch is how footballscore screens are built. The marketing brand is **footballs
 
 **Agent-facing spec (getdesign.md / Stitch format):** [`/DESIGN.md`](../DESIGN.md) — synthesized from [getdesign.md](https://getdesign.md/) analyses (WIRED, Vercel, Mastercard, Nike) then rewritten for this product. Catalog copies live in [`docs/getdesign-refs/`](./getdesign-refs/).
 
-**Status:** proposed system. Hex in `DESIGN.md` is the approved **Medal** palette. Mark + wordmark still need [your approval](./brand-proposals.md). CSS is scaffolding until that lockup.
+**Status:** proposed system. Hex in `DESIGN.md` is the approved **Medal** palette and is live in CSS. Mark + wordmark still need [your approval](./brand-proposals.md).
 
 Reply `Approve Pitch` to lock the system below (except color/wordmark), or name the bits to change.
 
@@ -123,8 +123,8 @@ One horizontal band. The **score is the only center axis** (fixed 72px). Caption
                       2–1
 ```
 
-**B — Stack**  
-Crest + name stacked in two columns, score still center. More distinctive, ~30% fewer rows per screen. Use on desktop right-rail cards only, not the main list.
+**B — Stack (now the list)**  
+Crest + name stacked, score right, status right. Home over away.
 
 **C — Baseline**  
 Everything on one baseline, status as a trailing pill. Fast to scan kick-offs, weak for live. Reject as the default.
@@ -191,13 +191,12 @@ Device bezels, betting chrome, video, xG graphics, circular crests, a fifth News
 
 | Today | Pitch role after palette approval |
 | --- | --- |
-| `--bg` `#F2F2F7` | Paper (warm, not iOS grey) |
-| `--surface` `#FFF` | Surface |
-| `--ink` `#111` | Ink |
-| `--muted` `#6B7280` | Quiet (slightly warmer) |
-| `--line` `#E5E7EB` | Rule (paper-colored) |
-| `--accent` / `--live` `#00A651` | Replaced by approved signal + live |
-| `--danger` `#FF3B30` | Cardinal |
-| `--radius-card` 12 | 8 |
+| `--bg` `#141210` | Field (Carbon) |
+| `--surface` `#1C1916` | Surface / wash |
+| `--ink` `#F3EDE4` | Bone type on Field |
+| `--muted` `#8A8278` | Quiet |
+| `--line` `#2C2824` | Rule |
+| `--accent` / `--live` `#C17A3A` | Copper |
+| `--danger` `#9B1B1B` | Cardinal |
 
-Do not retoken the app until [brand-proposals.md](./brand-proposals.md) is signed **and** this Pitch proposal is accepted.
+Do not retoken again until a mark is approved **and** this Pitch proposal is accepted. The live CSS is already Medal Field so the mark can be judged on real scores.

@@ -19,7 +19,7 @@ Quality bar for the finished book: the completeness and rigor of [Strava Brand G
 | Type pairing beyond Geist scaffolding | After mark |
 | Photography, icons, motion, applications | After marks + wordmark |
 
-CSS in `src/app/globals.css` stays scaffolding until the mark and wordmark are chosen, so the product is not restyled twice. Hex below is the approved Medal book; it is not live in the app yet.
+CSS in `src/app/globals.css` is the Medal field so a mark can be judged on live scores. The wordmark is still Geist scaffolding. Hex below is the approved Medal book.
 
 ---
 
@@ -109,7 +109,7 @@ Copper is not page tint. Live uses Copper on Field. Red cards use Cardinal.
 
 ### Mark — not locked
 
-Three drafts in [brand-boards/logo-drafts](./brand-boards/logo-drafts/). Pick one, or send them back. Then custom `footballscore` lettering.
+Three constructed SVGs in the live app (`/matches?mark=`). Recraft drafts are archive only. Pick one, or send them back. Then custom `footballscore` lettering.
 
 v1 lime / cobalt / ember and Geist splits stay rejected.
 

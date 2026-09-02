@@ -3,10 +3,9 @@ version: alpha
 status: proposed
 name: footballscore
 description: >
-  Association-football scores product. A Carbon timing board, not a cream programme.
-  The score is the jumbotron. Copper is only the live minute. Geist is scaffolding.
-  Hex is the approved Medal palette. Mark and wordmark are not locked.
-  CSS remains scaffolding until those lock.
+  Association-football scores product. Carbon field, bone type, copper live minute.
+  Dense fixture list with real ESPN crests. Not a cream programme and not a 72px poster.
+  Geist is scaffolding. Hex is the approved Medal palette. Mark and wordmark are not locked.
   Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
@@ -60,18 +59,18 @@ typography:
     letterSpacing: -0.8px
   score:
     fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
-    fontSize: 22px
+    fontSize: 20px
     fontWeight: 700
-    lineHeight: 24px
+    lineHeight: 20px
     fontVariantNumeric: tabular-nums
-    letterSpacing: -0.8px
+    letterSpacing: -0.4px
   score-lg:
     fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
-    fontSize: 72px
+    fontSize: 32px
     fontWeight: 700
-    lineHeight: 68px
+    lineHeight: 36px
     fontVariantNumeric: tabular-nums
-    letterSpacing: -2.4px
+    letterSpacing: -0.8px
 rounded:
   none: 0px
   sm: 8px
@@ -145,19 +144,19 @@ components:
 
 ## Overview
 
-footballscore is a football-only scores product (association football). The product surface is a **Carbon timing board**: Bone type on `{colors.field}`, the **score as jumbotron**, Copper only on the live minute. Bone paper is reverse, splash, and marketing — not the Scores canvas. It is not a cream card stack, not a sports-TV chyron, not FotMob white groups, not Apple Sports green.
+footballscore is a football-only scores product (association football). The product surface is a **Carbon field**: Bone type on `{colors.field}`, scores as 20px tabular numerals in a stacked list, Copper only on the live minute. Bone paper is reverse, splash, and marketing — not the Scores canvas. It is not a cream card stack, not a 72px poster, not FotMob white groups, not Apple Sports green.
 
 This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
 
-**Identity gate:** Medal palette is approved. Mark and wordmark still need a pick in `docs/brand-proposals.md`. YAML hex is Medal. CSS remains scaffolding until the lockup exists.
+**Identity gate:** Medal palette is approved. Mark still needs a pick in `docs/brand-proposals.md` — compare constructed SVGs on `/matches`. Wordmark is still Geist scaffolding. YAML hex is Medal and is live in `src/app/globals.css` so a mark can be judged in product.
 
 **Key characteristics**
 - Page is `{colors.field}` (`#141210`). Bone is type and reverse.
-- Featured live: `{typography.score-lg}` (56–96px tabular). List score `{typography.score}` 22px.
-- No cards, no shadows, no date-strip underlines, no LIVE ticker.
-- Copper is the live clock only. Not a pill. Not a tab accent.
-- Three destinations: Scores · Following · More.
-- Home left, away right. Native crests, never circle-cropped, never invented rainbow shields.
+- List score `{typography.score}` 20px tabular, stacked on the home and away lines. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
+- No cards, no shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
+- Copper is the live clock and the mark. Not a pill. Not a tab accent.
+- Five destinations stay until those screens exist: Matches · News · Leagues · Following · More.
+- Home over away. Native crests, never circle-cropped, never invented rainbow shields.
 
 ## Colors
 
@@ -203,8 +202,8 @@ No second display serif until color is locked. Do not load WiredDisplay, MarkFor
 | `{typography.ui}` | 15 | 600 | 20 | Team names, text buttons |
 | `{typography.title}` | 17 | 650 | 24 | Empty titles, section headers |
 | `{typography.masthead}` | 18 | 650 | 24 | `footballscore` header (Geist until wordmark) |
-| `{typography.score}` | 22 | 700 tabular | 24 | List row score |
-| `{typography.score-lg}` | 72 | 700 tabular | 68 | Featured live jumbotron |
+| `{typography.score}` | 20 | 700 tabular | 20 | List row score, one digit per side |
+| `{typography.score-lg}` | 32 | 700 tabular | 36 | Match page only |
 
 ### Principles
 - The score is always heavier and larger than the team name beside it.
@@ -221,7 +220,7 @@ Page pad 16. Group gap 12. Row min-height **56**. Tab bar 56 + safe area.
 ### Grid
 - Phone `<768`: full-bleed Field. No device bezel.
 - `768–1099`: same, max 720 centered.
-- `≥1100`: featured live left, fascia list right. Top nav, not a 72px icon rail.
+- `≥1100`: same list, max 720 centered. Top nav later. Not a 72px icon rail.
 
 ### Whitespace
 Density of a fixture list, not Mastercard emptiness and not a magazine cover grid. Breathing room is **between league groups**, not inside a match row.
@@ -248,37 +247,34 @@ Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike av
 
 ## Motion
 
-160ms `cubic-bezier(0.2, 0.8, 0.2, 1)` on opacity/transform. Live Caption may pulse 1.2s 1→0.55 unless `prefers-reduced-motion`. Crests never bounce. Reserve the 72px score axis so digits do not shift layout.
+160ms `cubic-bezier(0.2, 0.8, 0.2, 1)` on opacity/transform. Live Caption may pulse 1.2s 1→0.55 unless `prefers-reduced-motion`. Crests never bounce. Reserve the score column so digits do not shift layout.
 
 ## Components
 
 ### `masthead-bar`
-Field. Mark + `{typography.masthead}` in Bone. Search only. No extra chrome.
+Field. Constructed mark + `{typography.masthead}` in Bone. Search. Mark picker until a mark is approved.
 
 ### `date-strip`
-One line: `Today · 2 live`. Not a horizontal day carousel. Calendar is a tool, not a tab.
-
-### `featured-live`
-The jumbotron. Competition caption, Copper minute, `{score-lg}`, home left / away right under the number. No ticker duplicating this.
+Yesterday / Today / Tomorrow / next weekday. Active is Bone weight, not an underline. Copper live count sits on Today when any match is in play.
 
 ### `league-group`
 Caption + flush rows. No ruled card. No radius.
 
-### `match-row` (signature — Axis)
+### `match-row` (signature — Stack)
 ```
-[ Home name → ]   78′    [ ← Away name ]
-                  2–1
+[crest] Home name          2     67′
+[crest] Away name          1
 ```
-- Home right, away left, `{typography.ui}`, truncate.
-- `{score-axis}` width 88px: Copper minute above `{typography.score}` for live; quiet time for KO.
-- FT is Caption, not a pill.
-- **No TV icon column.**
+- Home over away, `{typography.ui}`, truncate. Loser on FT at quiet opacity.
+- Score column `{typography.score}` tabular, reserved width.
+- Status column: Copper minute / HT when in play; quiet FT / kick-off otherwise. Not a pill.
+- **No TV icon column. No 72px featured score on this page.**
 
 ### `tab-bar`
-Three items: Scores · Following · More. Caption. Active Bone, inactive Quiet.
+Five items until those screens exist. Caption. Active Bone, inactive Quiet.
 
 ### `search-field`
-Height 40, radius 8, Paper fill, Rule ring, focus ring Live-ink.
+Height 40, Surface fill, Rule ring, focus ring Live-ink.
 
 ### `sticky-scoreboard` (match page)
 Score-lg, crests 48, thin club rails. Follow + share.
@@ -297,9 +293,7 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 ## Page recipes
 
-**Scores** — masthead → Today/live count → featured live (if any) → flush groups. No ticker.
-
-**Match** — jumbotron sticky → last key event → timeline → Lineup / Numbers / Table / Series.
+**Scores** — masthead (constructed mark + `footballscore`) → mark picker (until a mark is approved) → date strip → flush groups. No ticker. No jumbotron.
 
 **Match** — sticky-scoreboard → last key event → timeline → Lineup / Numbers / Table / Series segment.
 
@@ -310,7 +304,7 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 ## Do's and Don'ts
 
 ### Do
-- Put the score on a reserved center axis at `{typography.score}`.
+- Put the score on a reserved column at `{typography.score}`.
 - Use Paper + hairlines. Club color as a rail or 12% wash.
 - Keep Geist + tabular nums.
 - Announce live minutes in text (`aria-label` + visible Caption).
@@ -320,8 +314,8 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 - Don't use iOS grouped grey `#F2F2F7` or system green `#00A651` as identity.
 - Don't paint Scores as cream paper cards or a date-underline strip.
 - Don't circle-crop crests or add a soccer-ball mark.
-- Don't wrap the product in a fake phone bezel.
-- Don't ship seven equal match tabs; Timeline is the default.
+- Don't wrap the product in a fake phone bezel or HTML poster boards with fake clubs.
+- Don't ship a 72px jumbotron on Scores.
 - Don't copy WIRED link-blue, Vercel mesh, Mastercard orbits, Nike 96px uppercase, FotMob white groups, or Apple Sports green.
 - Don't treat YAML hex as locked until `docs/brand-proposals.md` is signed — then rewrite this file to match.
 
@@ -329,7 +323,7 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 | Name | Width | Changes |
 | --- | --- | --- |
-| Phone | <768 | Axis row, 4-tab bar, 16px page pad. |
+| Phone | <768 | Stacked row, 5-tab bar, 16px page pad. |
 | Tablet | 768–1099 | Same; canvas max 720. |
 | Desktop | ≥1100 | Top nav; optional right rail with data. |
 
@@ -337,13 +331,13 @@ Touch: rows ≥56px, tabs ≥44px.
 
 ## Agent prompt guide
 
-Before any UI work: read this file, then `docs/brand.md`. Medal hex is approved; mark and wordmark are not. You may restyle **structure** (Axis row, radius 8, kill bezel, 4 tabs) but do not invent a second palette.
+Before any UI work: read this file, then `docs/brand.md`. Medal hex is approved; mark and wordmark are not. Do not invent a second palette. Do not generate Recraft/HTML concept boards as the product.
 
-Example: “Rebuild `MatchRow` as Axis per DESIGN.md. Score 20px tabular, 72px axis, drop TvIcon. Use CSS variables mapped to the YAML color roles.”
+Example: “Keep `MatchRow` stacked. Score 20px tabular. Copper only on the live minute.”
 
 ## Known gaps
 
-- Medal palette approved; mark and wordmark not human-approved.
+- Medal palette approved and live in CSS; mark and wordmark not human-approved. Compare `?mark=flap|slot|posts` on `/matches`.
 - Dark mode: mapped ramp of the approved palette, not an invert. Unspecified until light ships.
 - Display serif: explicitly out until color lock.
 - Icon grid: 24×24 stroke 1.75 in `src/components/matches/icons.tsx`; optical sheet not drawn.

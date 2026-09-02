@@ -18,7 +18,7 @@ const tabs: { id: TabId; label: string; icon: typeof PitchIcon }[] = [
 
 export function TabBar({ query }: { query: MatchesQuery }) {
   return (
-    <nav className="grid grid-cols-5 border-t border-[var(--line)] bg-[var(--surface)] px-1 pt-1 pb-[max(8px,env(safe-area-inset-bottom))]">
+    <nav className="grid grid-cols-5 border-t border-[var(--line)] bg-[var(--bg)] px-1 pt-1 pb-[max(8px,env(safe-area-inset-bottom))]">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = tab.id === query.tab;

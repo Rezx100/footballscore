@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
-/* Scaffolding only. Official palette is not approved — see docs/brand-proposals.md */
 :root {
-  --bg: #f2f2f7;
-  --surface: #ffffff;
-  --ink: #111111;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --accent: #00a651;
-  --live: #00a651;
-  --danger: #ff3b30;
-  --radius-card: 12px;
-  --radius-pill: 999px;
-  --background: #f2f2f7;
-  --foreground: #111111;
+  --bg: #141210;
+  --surface: #1c1916;
+  --ink: #f3ede4;
+  --muted: #8a8278;
+  --line: #2c2824;
+  --accent: #c17a3a;
+  --live: #c17a3a;
+  --danger: #9b1b1b;
+  --copper: #c17a3a;
+  --patina: #3d5c52;
+  --wash: #1c1916;
+  --background: #141210;
+  --foreground: #f3ede4;
 }
 
 @theme inline {
@@ -28,7 +28,7 @@ body {
 }
 
 body {
-  background: #1a1a1a;
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
@@ -48,4 +48,16 @@ a {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .live-clock {
+    animation: live-tick 1.2s ease-in-out infinite;
+  }
+}
+
+@keyframes live-tick {
+  50% {
+    opacity: 0.55;
+  }
 }

@@ -1,11 +1,13 @@
 # Medal mark drafts (not locked)
 
-Round-1 symbols (Reeded FS, Kickoff coin, Score rail) are retired. These three are the pick set. PNG is a review raster. SVG is the source — do not redraw.
+Recraft rasters in this folder are archive only. The pick set is **constructed SVG** (integer geometry, Medal hex) in the live app and here:
 
-| # | Name | PNG | SVG |
-| --- | --- | --- | --- |
-| 1 | Split-flap | [medal-5-flap.png](./medal-5-flap.png) | [medal-5-flap.svg](./medal-5-flap.svg) |
-| 2 | Pierced medal | [medal-7-slot.png](./medal-7-slot.png) | [medal-7-slot.svg](./medal-7-slot.svg) |
-| 3 | Match posts | [medal-8-columns.png](./medal-8-columns.png) | [medal-8-columns.svg](./medal-8-columns.svg) |
+| # | Name | SVG |
+| --- | --- | --- |
+| 1 | Split-flap | [constructed-flap.svg](./constructed-flap.svg) |
+| 2 | Pierced medal | [constructed-slot.svg](./constructed-slot.svg) |
+| 3 | Match posts | [constructed-posts.svg](./constructed-posts.svg) |
+
+Compare them on real scores: `/matches`, `/matches?mark=slot`, `/matches?mark=posts`.
 
 Approve in [../../brand-proposals.md](../../brand-proposals.md).

@@ -1,3 +1,4 @@
+import { DEFAULT_MARK, parseMark, type MarkId } from "@/lib/brand";
 import type { DayKey } from "@/lib/types";
 
 export type TabId = "matches" | "news" | "leagues" | "following" | "more";
@@ -9,6 +10,7 @@ export type MatchesQuery = {
   tab: TabId;
   match: string | null;
   search: boolean;
+  mark: MarkId;
 };
 
 const DAYS: DayKey[] = ["yesterday", "today", "tomorrow", "next"];
@@ -34,6 +36,7 @@ export function parseMatchesQuery(
     tab: TABS.includes(raw("tab") as TabId) ? (raw("tab") as TabId) : "matches",
     match: raw("match") ?? null,
     search: raw("search") === "1" || Boolean((raw("q") ?? "").trim()),
+    mark: parseMark(raw("mark")),
   };
 }
 
@@ -45,6 +48,7 @@ export function matchesHref(query: Partial<MatchesQuery> & MatchesQuery): string
   if (query.tab !== "matches") params.set("tab", query.tab);
   if (query.match) params.set("match", query.match);
   if (query.search && !query.q.trim()) params.set("search", "1");
+  if (query.mark !== DEFAULT_MARK) params.set("mark", query.mark);
   const qs = params.toString();
   return qs ? `/matches?${qs}` : "/matches";
 }

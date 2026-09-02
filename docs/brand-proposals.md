@@ -2,13 +2,19 @@
 
 **Medal is the palette.** Pick a mark, or send the three back.
 
-The first board (Reeded FS, Kickoff coin, Score rail) is retired. These three are the pick set.
+The Recraft boards (and the cream / Field HTML posters) are retired. These three are **constructed SVG** on live ESPN scores.
 
-Drafts: [brand-boards/logo-drafts](./brand-boards/logo-drafts/). In product: [brand-boards/applications](./brand-boards/applications/).
+Compare in the running app:
 
-The cream programme chrome is retired. Product preview is **Field**: Carbon timing board, jumbotron live, flush list. [applications/field.html](./brand-boards/applications/field.html)
+| # | Name | URL |
+| --- | --- | --- |
+| 1 | Split-flap | `/matches` |
+| 2 | Pierced medal | `/matches?mark=slot` |
+| 3 | Match posts | `/matches?mark=posts` |
 
-Then a custom `footballscore` wordmark. CSS stays scaffolding until that lockup exists.
+Drawings: [brand-boards/logo-drafts](./brand-boards/logo-drafts/).
+
+Then a custom `footballscore` wordmark. Geist in the header is still scaffolding.
 
 v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-gap.md](./brand-gap.md).
 
@@ -18,9 +24,9 @@ v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-ga
 
 | Token | Hex | Role |
 | --- | --- | --- |
-| Carbon | `#141210` | Field, reverse, studio |
-| Bone | `#F3EDE4` | Page |
-| Ink | `#1A1612` | Type |
+| Carbon | `#141210` | Field |
+| Bone | `#F3EDE4` | Type / reverse |
+| Ink | `#1A1612` | Type on Bone |
 | Copper | `#C17A3A` | Brand signal — sparingly |
 | Patina | `#3D5C52` | Support, never a pitch fill |
 | Cardinal | `#9B1B1B` | Red card / error — never the logo |
@@ -31,9 +37,9 @@ v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-ga
 
 | # | Name | Idea |
 | --- | --- | --- |
-| 1 | Split-flap | One mechanical scoreboard tile — copper over carbon, hairline hinge |
-| 2 | Pierced medal | Closed copper disc punched by a carbon score slot, notched on both sides |
-| 3 | Match posts | Two tall rectangles — home copper, away carbon — with a square score bite |
+| 1 | Split-flap | Copper tile over bone tile — Field shows through a 2px hinge |
+| 2 | Pierced medal | Exact copper disc, evenodd score slot so Field shows through |
+| 3 | Match posts | Copper home / bone away, square bites of Field |
 
 Reply `Approve mark 1` / `2` / `3`, or `Reject. Try: …`
 

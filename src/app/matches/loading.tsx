@@ -1,32 +1,27 @@
-import { PhoneShell } from "@/components/phone-shell";
+import { AppShell } from "@/components/app-shell";
 
 export default function MatchesLoading() {
   return (
-    <PhoneShell>
+    <AppShell>
       <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)]">
-        <div className="bg-[var(--surface)] px-4 pt-3 pb-3">
-          <div className="h-7 w-40 rounded bg-[#EDEDF2]" />
+        <div className="border-b border-[var(--line)] px-4 pt-4 pb-3">
+          <div className="h-7 w-44 bg-[var(--surface)]" />
           <div className="mt-4 flex gap-5">
-            <div className="h-5 w-16 rounded bg-[#EDEDF2]" />
-            <div className="h-5 w-14 rounded bg-[#EDEDF2]" />
-            <div className="h-5 w-20 rounded bg-[#EDEDF2]" />
+            <div className="h-4 w-16 bg-[var(--surface)]" />
+            <div className="h-4 w-14 bg-[var(--surface)]" />
+            <div className="h-4 w-20 bg-[var(--surface)]" />
           </div>
         </div>
-        <div className="flex flex-col gap-3 px-3 py-3">
+        <div className="flex flex-col">
           {[0, 1, 2].map((key) => (
-            <div
-              key={key}
-              className="overflow-hidden rounded-[var(--radius-card)] bg-[var(--surface)]"
-            >
-              <div className="h-10 border-b border-[var(--line)] px-3">
-                <div className="mt-3 h-3 w-32 rounded bg-[#EDEDF2]" />
-              </div>
-              <div className="h-12 border-b border-[var(--line)]" />
-              <div className="h-12" />
+            <div key={key} className="px-4 pt-5">
+              <div className="h-3 w-28 bg-[var(--surface)]" />
+              <div className="mt-3 h-16 border-t border-[var(--line)]" />
+              <div className="h-16 border-t border-[var(--line)]" />
             </div>
           ))}
         </div>
       </div>
-    </PhoneShell>
+    </AppShell>
   );
 }
