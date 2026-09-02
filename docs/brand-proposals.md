@@ -2,6 +2,8 @@
 
 **Medal is the palette.** Pick a mark, or send the three back.
 
+The first board (Reeded FS, Kickoff coin, Score rail) is retired. These three are the pick set.
+
 Drafts: [brand-boards/logo-drafts](./brand-boards/logo-drafts/)
 
 Then a custom `footballscore` wordmark. CSS stays scaffolding until that lockup exists.
@@ -27,9 +29,9 @@ v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-ga
 
 | # | Name | Idea |
 | --- | --- | --- |
-| 1 | Reeded FS | Interlocking F/S with a milled medal rim |
-| 2 | Kickoff coin | Disc with one wedge cut — no ball |
-| 3 | Score rail | Horizontal metal bar with a square score window |
+| 1 | Split-flap | One mechanical scoreboard tile — copper over carbon, hairline hinge |
+| 2 | Pierced medal | Closed copper disc punched by a carbon score slot, notched on both sides |
+| 3 | Match posts | Two tall rectangles — home copper, away carbon — with a square score bite |
 
 Reply `Approve mark 1` / `2` / `3`, or `Reject. Try: …`
 

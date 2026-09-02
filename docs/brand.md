@@ -14,7 +14,7 @@ Quality bar for the finished book: the completeness and rigor of [Strava Brand G
 | Voice stance and football lexicon (v1) | **Locked** |
 | Honest-data rules | **Locked** |
 | Color palette (brand + product + data) | **Approved — Medal** |
-| Custom mark | **Needs your approval** (three drafts) |
+| Custom mark | **Needs your approval** (split-flap / pierced medal / match posts) |
 | Wordmark construction | After mark — custom lettering, not Geist split |
 | Type pairing beyond Geist scaffolding | After mark |
 | Photography, icons, motion, applications | After marks + wordmark |

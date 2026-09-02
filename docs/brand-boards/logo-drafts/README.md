@@ -1,11 +1,11 @@
 # Medal mark drafts (not locked)
 
-Three symbol candidates in the approved Medal palette. PNG is a review raster. SVG is the source — do not redraw.
+Round-1 symbols (Reeded FS, Kickoff coin, Score rail) are retired. These three are the pick set. PNG is a review raster. SVG is the source — do not redraw.
 
 | # | Name | PNG | SVG |
 | --- | --- | --- | --- |
-| 1 | Reeded FS | [medal-1-fs.png](./medal-1-fs.png) | [medal-1-fs.svg](./medal-1-fs.svg) |
-| 2 | Kickoff coin | [medal-2-coin.png](./medal-2-coin.png) | [medal-2-coin.svg](./medal-2-coin.svg) |
-| 3 | Score rail | [medal-3-rail.png](./medal-3-rail.png) | [medal-3-rail.svg](./medal-3-rail.svg) |
+| 1 | Split-flap | [medal-5-flap.png](./medal-5-flap.png) | [medal-5-flap.svg](./medal-5-flap.svg) |
+| 2 | Pierced medal | [medal-7-slot.png](./medal-7-slot.png) | [medal-7-slot.svg](./medal-7-slot.svg) |
+| 3 | Match posts | [medal-8-columns.png](./medal-8-columns.png) | [medal-8-columns.svg](./medal-8-columns.svg) |
 
 Approve in [../../brand-proposals.md](../../brand-proposals.md).
