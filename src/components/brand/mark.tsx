@@ -18,7 +18,7 @@ function SlotMark() {
       <path
         fill={COPPER}
         fillRule="evenodd"
-        d="M16 16m-13 0a13 13 0 1 1 26 0a13 13 0 1 1-26 0M8 14h16v4H8z"
+        d="M16 16m-13 0a13 13 0 1 1 26 0a13 13 0 1 1-26 0zM8 14h16v4H8z"
       />
     </svg>
   );

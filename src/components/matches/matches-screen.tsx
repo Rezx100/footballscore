@@ -158,7 +158,7 @@ export function MatchesScreen({
             {open.map((group) => (
               <LeagueGroupCard key={group.id} group={group} query={query} />
             ))}
-            {hasFinished && !query.hide ? (
+            {open.length > 0 && hasFinished && !query.hide ? (
               <div className="flex justify-center py-4">
                 <Link
                   href={matchesHref({ ...query, hide: true })}

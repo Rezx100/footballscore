@@ -18,7 +18,7 @@ export function DateStrip({
           <Link
             key={day.key}
             href={matchesHref({ ...query, day: day.key, hide: false, match: null, tab: "matches" })}
-            className={`shrink-0 text-[14px] ${
+            className={`shrink-0 text-[14px] no-underline ${
               active ? "font-semibold text-[var(--ink)]" : "font-medium text-[var(--muted)]"
             }`}
           >

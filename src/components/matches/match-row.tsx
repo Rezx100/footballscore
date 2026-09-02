@@ -58,8 +58,10 @@ export function MatchRow({
       href={matchesHref({ ...query, match: match.id, tab: "matches" })}
       aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
-      className={`grid min-h-16 grid-cols-[20px_minmax(0,1fr)_1.75rem_4.5rem] items-center gap-x-2.5 gap-y-1 px-4 py-2.5 ${
-        selected ? "bg-[var(--wash)]" : "bg-transparent hover:bg-[var(--wash)]"
+      className={`grid min-h-16 grid-cols-[20px_minmax(0,1fr)_1.75rem_4.5rem] items-center gap-x-2.5 gap-y-1 border-l-2 px-4 py-2.5 ${
+        selected
+          ? "border-[var(--ink)] bg-[color-mix(in_srgb,var(--ink)_8%,transparent)]"
+          : "border-transparent hover:bg-[color-mix(in_srgb,var(--ink)_5%,transparent)]"
       }`}
     >
       <span className={homeFade ? "opacity-40" : undefined}>
