@@ -93,12 +93,8 @@ export function boardDate(day: DayKey, now = new Date()): BoardDate {
     weekday: "long",
     timeZone: "UTC",
   }).format(utc);
-  const month = new Intl.DateTimeFormat("en-GB", {
-    month: "short",
-    timeZone: "UTC",
-  })
-    .format(utc)
-    .toUpperCase();
+  const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] as const;
+  const month = MONTHS[ymd.m - 1];
   const dayNum = pad2(ymd.d);
   return {
     weekday,

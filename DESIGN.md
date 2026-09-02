@@ -147,7 +147,7 @@ footballscore is a football-only scores product (association football). The prod
 
 This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
 
-**Identity gate:** Medal palette is approved. Mark still needs a pick — tap the lockup on `/matches` to cycle split-flap, pierced medal, and match posts. The name is IBM Plex Sans Medium on a 2px copper hinge, not Syne and not Geist. Not locked until you say so.
+**Identity gate:** Medal palette is approved. Mark still needs a pick — tap the lockup on `/matches` to cycle split-flap, pierced medal, and match posts. The name is IBM Plex Sans Medium on a copper hinge, not Syne and not Geist. Not locked until you say so.
 
 **Key characteristics**
 - Page is `{colors.field}` (`#141210`). Bone is type and reverse.
