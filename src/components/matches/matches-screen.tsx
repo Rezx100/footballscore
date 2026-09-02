@@ -3,11 +3,20 @@ import { DateStrip } from "@/components/matches/date-strip";
 import { CalendarIcon, ClockIcon, CloseIcon, SearchIcon } from "@/components/matches/icons";
 import { LeagueGroupCard } from "@/components/matches/league-group";
 import { TabBar } from "@/components/matches/tab-bar";
-import { DAY_LABELS, groupIsFinished, matchesByDay } from "@/lib/matches";
+import { dayLabel, getDateStrip } from "@/lib/dates";
+import { groupIsFinished } from "@/lib/matches";
 import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
+import type { LeagueGroup } from "@/lib/types";
 
-export function MatchesScreen({ query }: { query: MatchesQuery }) {
-  const groups = matchesByDay[query.day];
+export function MatchesScreen({
+  query,
+  groups,
+  error,
+}: {
+  query: MatchesQuery;
+  groups: LeagueGroup[];
+  error?: string | null;
+}) {
   const search = query.q.trim().toLowerCase();
   const searched = !search
     ? groups
@@ -27,6 +36,7 @@ export function MatchesScreen({ query }: { query: MatchesQuery }) {
   const finished = searched.filter(groupIsFinished);
   const listed = query.hide ? open : [...open, ...finished];
   const hasFinished = finished.length > 0;
+  const selectedDay = getDateStrip().find((item) => item.key === query.day);
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
@@ -67,7 +77,7 @@ export function MatchesScreen({ query }: { query: MatchesQuery }) {
               <CalendarIcon className="h-5 w-5" />
               {query.day !== "today" ? (
                 <span className="absolute top-1 right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-[var(--ink)] px-0.5 text-[8px] font-bold text-white">
-                  {query.day === "thu" ? "4" : "1"}
+                  {selectedDay?.dayOfMonth ?? "1"}
                 </span>
               ) : null}
             </Link>
@@ -109,16 +119,31 @@ export function MatchesScreen({ query }: { query: MatchesQuery }) {
               Back to Matches
             </Link>
           </div>
+        ) : error ? (
+          <div className="flex flex-col items-center px-8 pt-16 text-center">
+            <p className="text-[17px] font-semibold">Scores unavailable</p>
+            <p className="mt-2 text-[14px] text-[var(--muted)]">{error}</p>
+            <Link href="/matches" className="mt-4 text-[15px] font-semibold text-[var(--accent)]">
+              Retry Today
+            </Link>
+          </div>
         ) : listed.length === 0 && !(query.hide && hasFinished) ? (
           <div className="flex flex-col items-center px-8 pt-16 text-center">
             <p className="text-[17px] font-semibold">No matches this day.</p>
             <p className="mt-2 text-[14px] text-[var(--muted)]">
               {query.q.trim()
                 ? `Nothing matched “${query.q.trim()}”.`
-                : `${DAY_LABELS[query.day]} is empty in this demo data.`}
+                : `${dayLabel(query.day)} has no soccer fixtures in ESPN’s feed.`}
             </p>
-            <Link href="/matches" className="mt-4 text-[15px] font-semibold text-[var(--accent)]">
-              Jump to Today
+            <Link
+              href={
+                query.day === "today" && !query.q.trim()
+                  ? matchesHref({ ...query, day: "yesterday" })
+                  : "/matches"
+              }
+              className="mt-4 text-[15px] font-semibold text-[var(--accent)]"
+            >
+              {query.day === "today" && !query.q.trim() ? "See Yesterday" : "Jump to Today"}
             </Link>
           </div>
         ) : (

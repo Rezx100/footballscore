@@ -1,6 +1,10 @@
 import { MatchesScreen } from "@/components/matches/matches-screen";
 import { PhoneShell } from "@/components/phone-shell";
+import { getMatchesForDay } from "@/lib/espn/matches";
 import { parseMatchesQuery } from "@/lib/matches-query";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 30;
 
 export default async function MatchesPage({
   searchParams,
@@ -8,10 +12,11 @@ export default async function MatchesPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const query = parseMatchesQuery(await searchParams);
+  const { groups, error } = await getMatchesForDay(query.day);
 
   return (
     <PhoneShell>
-      <MatchesScreen query={query} />
+      <MatchesScreen query={query} groups={groups} error={error} />
     </PhoneShell>
   );
 }

@@ -9,7 +9,7 @@ function CenterCell({ match }: { match: Match }) {
     return (
       <div className="flex w-[72px] shrink-0 flex-col items-center leading-none">
         <span className="text-[11px] font-semibold text-[var(--live)]">
-          {match.status === "ht" ? "HT" : match.minute}
+          {match.status === "ht" ? "HT" : (match.minute ?? "LIVE")}
         </span>
         <span className="mt-1 text-[15px] font-bold tabular-nums text-[var(--ink)]">
           {match.homeScore} - {match.awayScore}
@@ -31,11 +31,11 @@ function CenterCell({ match }: { match: Match }) {
     );
   }
 
-  if (match.status === "pp") {
+  if (match.status === "pp" || match.status === "ab") {
     return (
       <div className="flex w-[72px] shrink-0 flex-col items-center">
         <span className="rounded-full bg-[#EFEFEF] px-1.5 py-[2px] text-[10px] font-semibold text-[var(--muted)]">
-          PP
+          {match.status === "ab" ? "AB" : "PP"}
         </span>
         <span className="mt-1 text-[13px] text-[var(--muted)]">—</span>
       </div>
@@ -69,7 +69,9 @@ export function MatchRow({
           ? `full time ${match.homeScore} to ${match.awayScore}`
           : match.status === "ht"
             ? `half time ${match.homeScore} to ${match.awayScore}`
-            : "postponed";
+            : match.status === "ab"
+              ? "abandoned"
+              : "postponed";
 
   return (
     <Link

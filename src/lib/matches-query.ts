@@ -11,8 +11,13 @@ export type MatchesQuery = {
   search: boolean;
 };
 
-const DAYS: DayKey[] = ["yesterday", "today", "tomorrow", "thu"];
+const DAYS: DayKey[] = ["yesterday", "today", "tomorrow", "next"];
 const TABS: TabId[] = ["matches", "news", "leagues", "following", "more"];
+
+function parseDay(value: string | undefined): DayKey {
+  if (value === "thu") return "next";
+  return DAYS.includes(value as DayKey) ? (value as DayKey) : "today";
+}
 
 export function parseMatchesQuery(
   searchParams: Record<string, string | string[] | undefined>,
@@ -22,14 +27,11 @@ export function parseMatchesQuery(
     return Array.isArray(value) ? value[0] : value;
   };
 
-  const dayRaw = raw("day");
-  const tabRaw = raw("tab");
-
   return {
-    day: DAYS.includes(dayRaw as DayKey) ? (dayRaw as DayKey) : "today",
+    day: parseDay(raw("day")),
     hide: raw("hide") === "1",
     q: raw("q") ?? "",
-    tab: TABS.includes(tabRaw as TabId) ? (tabRaw as TabId) : "matches",
+    tab: TABS.includes(raw("tab") as TabId) ? (raw("tab") as TabId) : "matches",
     match: raw("match") ?? null,
     search: raw("search") === "1" || Boolean((raw("q") ?? "").trim()),
   };

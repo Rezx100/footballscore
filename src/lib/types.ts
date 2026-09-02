@@ -1,12 +1,13 @@
-export type MatchStatus = "ns" | "live" | "ht" | "ft" | "pp";
+export type MatchStatus = "ns" | "live" | "ht" | "ft" | "pp" | "ab";
 
-export type DayKey = "yesterday" | "today" | "tomorrow" | "thu";
+export type DayKey = "yesterday" | "today" | "tomorrow" | "next";
 
 export type Team = {
   id: string;
   name: string;
   short: string;
   color: string;
+  logo?: string;
 };
 
 export type Match = {
@@ -18,6 +19,7 @@ export type Match = {
   homeScore?: number;
   awayScore?: number;
   kickoff: string;
+  kickoffIso: string;
   hasTv?: boolean;
 };
 
@@ -25,6 +27,8 @@ export type LeagueGroup = {
   id: string;
   name: string;
   country: string;
-  flag: "us" | "eng" | "esp" | "ita";
+  flag: string;
+  logo?: string;
+  priority: number;
   matches: Match[];
 };
