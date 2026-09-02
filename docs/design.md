@@ -4,7 +4,7 @@ Pitch is how footballscore screens are built. The marketing brand is **footballs
 
 **Agent-facing spec (getdesign.md / Stitch format):** [`/DESIGN.md`](../DESIGN.md) — synthesized from [getdesign.md](https://getdesign.md/) analyses (WIRED, Vercel, Mastercard, Nike) then rewritten for this product. Catalog copies live in [`docs/getdesign-refs/`](./getdesign-refs/).
 
-**Status:** proposed. Hex in `DESIGN.md` is Palette A as a working target only. Wordmark + palette letter still need [your approval](./brand-proposals.md).
+**Status:** proposed system. Hex in `DESIGN.md` is the approved **Medal** palette. Mark + wordmark still need [your approval](./brand-proposals.md). CSS is scaffolding until that lockup.
 
 Reply `Approve Pitch` to lock the system below (except color/wordmark), or name the bits to change.
 
@@ -38,7 +38,7 @@ One canvas, one ink, one quiet, one rule, one signal, one live, one danger. Club
 | Rule | `--line` | Hairlines, row dividers — **no drop shadows** |
 | Field | `--field` | Studio / marketing / reverse (today’s `#1A1A1A` backdrop) |
 | Signal | `--accent` | Follow, text links, focus ring. Rare. |
-| Live | `--live` | Minute, live rail, LIVE label. Palette A uses a separate on-paper live ink. |
+| Live | `--live` | Minute, live rail, LIVE label. Copper on Field; live-ink on Paper. |
 | Cardinal | `--danger` | Red card, error, unfollow. Never live. |
 | Caution | `--caution` | Yellow card only |
 | Wash | `--wash` | Selected row, 8–12% signal or live |

@@ -5,25 +5,26 @@ name: footballscore
 description: >
   Association-football scores product. Match-day programme brought up to the minute.
   Canvas is warm paper, type is Geist scaffolding, the score is the only center axis,
-  elevation is hairlines not shadows. Hex below is leftover v1 scaffolding — not identity.
-  Approve a v2 palette in docs/brand-proposals.md before treating any hex as the brand.
+  elevation is hairlines not shadows. Hex below is the approved Medal palette.
+  Mark and wordmark are not locked. CSS remains scaffolding until those lock.
   Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
-  field: "#10241C"
-  on-field: "#F3F0E8"
-  flare: "#D6F230"
-  paper: "#F3F0E8"
-  surface: "#FFFDF8"
-  ink: "#141714"
-  quiet: "#5E635C"
-  rule: "#DDD8CC"
-  live-ink: "#3E4A00"
-  cardinal: "#B01A1A"
-  caution: "#C9A227"
-  wash: "#EEF2C4"
-  chip: "#ECE8DC"
-  on-primary: "#FFFDF8"
+  field: "#141210"
+  on-field: "#F3EDE4"
+  copper: "#C17A3A"
+  paper: "#F3EDE4"
+  surface: "#FFF8F0"
+  ink: "#1A1612"
+  quiet: "#5C5650"
+  rule: "#E0D8CC"
+  live-ink: "#7A4A1C"
+  cardinal: "#9B1B1B"
+  caution: "#C4A574"
+  wash: "#E8D3B8"
+  chip: "#EBE4DA"
+  on-primary: "#F3EDE4"
+  patina: "#3D5C52"
 typography:
   caption:
     fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
@@ -96,7 +97,7 @@ components:
     activeBorder: "{colors.ink}"
   live-rail:
     backgroundColor: "{colors.field}"
-    textColor: "{colors.flare}"
+    textColor: "{colors.copper}"
     typography: "{typography.caption}"
     padding: "{spacing.sm} {spacing.lg}"
   league-group:
@@ -153,44 +154,42 @@ This file is the agent-facing design system in the [getdesign.md](https://getdes
 - **Mastercard** — warm cream paper instead of iOS grey; ink slightly green-black so it sits on paper.
 - **Nike** — chroma lives in photography/crests, not in chrome. We refuse their campaign Futura and full-bleed heroes.
 
-**Identity gate:** Wordmark construction and palette letter still need a human `Approve Palette _ + Wordmark _` in `docs/brand-proposals.md`. YAML hex is **Palette A (Programme & floodlight)** as the recommended working target. If Palette B or C wins, remap `{colors.field}` / `{colors.flare}` / `{colors.live-ink}` only; Paper / Ink / Rule / type / Axis row stay.
+**Identity gate:** Medal palette is approved. Mark and wordmark still need a pick in `docs/brand-proposals.md`. YAML hex is Medal. CSS remains scaffolding until the lockup exists.
 
 **Key characteristics**
 - Paper canvas `{colors.paper}`, not `#F2F2F7`.
 - Score in `{typography.score}` 20px tabular at the **only center axis** of a match row (today’s 15px is too small).
 - Elevation = 1px `{colors.rule}`. No card shadows.
-- Live is a verb: Caption minute in `{colors.live-ink}` on paper; Flare only on Field (live rail, reverse).
+- Live is a verb: Caption minute in `{colors.live-ink}` on paper; Copper only on Field (live rail, reverse).
 - Four destinations: Scores · Explore · Following · More.
 - Home left, away right. Shields never circle-cropped.
 
 ## Colors
 
-Hex is Palette A, proposed. Roles are locked even if hex changes.
+Hex is Medal, approved. Roles stay even if a later mark export tightens Copper.
 
 ### Brand & accent
-- **Field** (`{colors.field}` — `#10241C`): marketing / studio / live rail ground. Reverse wordmark.
-- **Flare** (`{colors.flare}` — `#D6F230`): live spark **on Field only**. Never body text on Paper (contrast fails).
-- **Live ink** (`{colors.live-ink}` — `#3E4A00`): live minute on Paper. WCAG stand-in for Flare.
+- **Field** (`{colors.field}` — `#141210`): marketing / studio / live rail ground. Reverse wordmark.
+- **Copper** (`{colors.copper}` — `#C17A3A`): brand signal **on Field**, sparingly in product. Never body text on Paper unless `{colors.live-ink}` is used instead.
+- **Live ink** (`{colors.live-ink}` — `#7A4A1C`): live minute on Paper. WCAG stand-in for Copper.
+- **Patina** (`{colors.patina}` — `#3D5C52`): support structure, never a pitch fill.
 
 ### Surface
-- **Paper** (`{colors.paper}` — `#F3F0E8`): page.
-- **Surface** (`{colors.surface}` — `#FFFDF8`): header, groups, tab bar.
-- **Rule** (`{colors.rule}` — `#DDD8CC`): 1px dividers.
-- **Wash** (`{colors.wash}` — `#EEF2C4`): selected row.
-- **Chip** (`{colors.chip}` — `#ECE8DC`): FT / PP / AB pills.
+- **Paper** (`{colors.paper}` — `#F3EDE4`): page.
+- **Surface** (`{colors.surface}` — `#FFF8F0`): header, groups, tab bar.
+- **Rule** (`{colors.rule}` — `#E0D8CC`): 1px dividers.
+- **Wash** (`{colors.wash}` — `#E8D3B8`): selected row.
+- **Chip** (`{colors.chip}` — `#EBE4DA`): FT / PP / AB pills.
 
 ### Text
-- **Ink** (`{colors.ink}` — `#141714`): body, scores, masthead.
-- **Quiet** (`{colors.quiet}` — `#5E635C`): meta, inactive tabs, kick-off.
+- **Ink** (`{colors.ink}` — `#1A1612`): body, scores, masthead.
+- **Quiet** (`{colors.quiet}` — `#5C5650`): meta, inactive tabs, kick-off.
 
 ### Semantic
-- **Cardinal** (`{colors.cardinal}` — `#B01A1A`): red card, error, unfollow. Never live.
-- **Caution** (`{colors.caution}` — `#C9A227`): yellow card only.
+- **Cardinal** (`{colors.cardinal}` — `#9B1B1B`): red card, error, unfollow. Never live.
+- **Caution** (`{colors.caution}` — `#C4A574`): yellow card only.
 - Club hex from ESPN: 12% wash or **3px rail**. Never full-bleed page skin.
 - W / D / L: letters plus quiet fills — never color alone.
-
-Palette B maps Field→Navy `#0B1C3A`, Flare/live→Cobalt `#2154E8`, Paper→Cream `#F7F4EE`.  
-Palette C maps Field→Night `#0E0E10`, live on paper→Ember `#E23B2C` (never follow), no logo chroma.
 
 ## Typography
 
@@ -265,7 +264,7 @@ Surface bar. Wordmark `{typography.masthead}` in Ink (Wordmark 1 / Unit until an
 `{typography.ui}`. Active day: 3px Ink underline, not a filled chip.
 
 ### `live-rail`
-Sticky under masthead when any match is live/HT. Field ground, Flare/on-field type, horizontal scroll of minute + score + two shorts. Tap opens the match.
+Sticky under masthead when any match is live/HT. Field ground, Copper/on-field type, horizontal scroll of minute + score + two shorts. Tap opens the match.
 
 ### `league-group`
 Ruled Surface, radius 8. Header: 16px league mark + Meta name. Followed = outline star, not a painted header.
@@ -344,13 +343,13 @@ Touch: rows ≥56px, tabs ≥44px.
 
 ## Agent prompt guide
 
-Before any UI work: read this file, then `docs/brand.md`. If hex and wordmark are still unapproved, you may restyle **structure** (Axis row, radius 8, kill bezel, 4 tabs) but do not invent a fourth palette.
+Before any UI work: read this file, then `docs/brand.md`. Medal hex is approved; mark and wordmark are not. You may restyle **structure** (Axis row, radius 8, kill bezel, 4 tabs) but do not invent a second palette.
 
 Example: “Rebuild `MatchRow` as Axis per DESIGN.md. Score 20px tabular, 72px axis, drop TvIcon. Use CSS variables mapped to the YAML color roles.”
 
 ## Known gaps
 
-- Wordmark 1/2/3 and Palette A/B/C not human-approved.
+- Medal palette approved; mark and wordmark not human-approved.
 - Dark mode: mapped ramp of the approved palette, not an invert. Unspecified until light ships.
 - Display serif: explicitly out until color lock.
 - Icon grid: 24×24 stroke 1.75 in `src/components/matches/icons.tsx`; optical sheet not drawn.

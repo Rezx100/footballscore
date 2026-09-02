@@ -1,7 +1,6 @@
 # footballscore brand
 
-Version 0.2 — foundation locked; v1 visual board **rejected**.  
-**Wordmark construction and color palette are not locked.** Approve a v2 palette in [brand-proposals.md](./brand-proposals.md) before anyone treats hex as the brand. Marks and custom lettering follow that pick. Why v1 failed: [brand-gap.md](./brand-gap.md).
+Version 0.3 — foundation locked; **Medal palette approved**. Mark and wordmark still open.
 
 Quality bar for the finished book: the completeness and rigor of [Strava Brand Guidelines 2.0 (2021)](https://deck.gallery/strava-brand-guidelines-2021/) — not that brand’s orange, type, marks, or voice. See [brand-plan.md](./brand-plan.md).
 
@@ -14,13 +13,13 @@ Quality bar for the finished book: the completeness and rigor of [Strava Brand G
 | Name, mission, vision, principles, audience | **Locked** |
 | Voice stance and football lexicon (v1) | **Locked** |
 | Honest-data rules | **Locked** |
-| Color palette (brand + product + data) | **Needs your approval** (v2: Medal / Archive / Ribbon) |
-| Custom mark | After palette pick |
-| Wordmark construction | After palette + mark — not Geist split |
+| Color palette (brand + product + data) | **Approved — Medal** |
+| Custom mark | **Needs your approval** (three drafts) |
+| Wordmark construction | After mark — custom lettering, not Geist split |
 | Type pairing beyond Geist scaffolding | After mark |
-| Photography, icons, motion, applications | After marks + color |
+| Photography, icons, motion, applications | After marks + wordmark |
 
-Until color is approved, CSS in `src/app/globals.css` is **scaffolding**, not identity. Do not add a second “official” palette in code.
+CSS in `src/app/globals.css` stays scaffolding until the mark and wordmark are chosen, so the product is not restyled twice. Hex below is the approved Medal book; it is not live in the app yet.
 
 ---
 
@@ -93,13 +92,26 @@ Drop on the floor even when a payload includes them: odds, pickcenter, video pla
 
 ## Visual identity
 
-**Not in this file until you approve a proposal.**
+### Palette — Medal (approved)
 
-Open [brand-proposals.md](./brand-proposals.md) and pick one **palette**: Medal, Archive, or Ribbon — or send us back.
+Championship hardware. Carbon field, bone paper, one struck-copper signal. Not pitch green, not app blue.
 
-v1 (Programme & floodlight / Desk & cobalt / Night ticket, plus Unit / weight-split / color-split) is rejected. Do not revive lime, cobalt, or ember as identity. The wordmark is not a Geist split; it is custom lettering after the palette and mark.
+| Token | Hex | Role |
+| --- | --- | --- |
+| Carbon | `#141210` | Field, reverse, studio |
+| Bone | `#F3EDE4` | Page |
+| Ink | `#1A1612` | Type |
+| Copper | `#C17A3A` | Brand signal — fills, live-on-field, sparingly |
+| Patina | `#3D5C52` | Support structure, never a pitch fill |
+| Cardinal | `#9B1B1B` | Red card, error — never the logo color |
 
-After approval, this section will gain: hex/RGB/CMYK, WCAG matrix, clearspace, minimum size, misuse, and product vs marketing split.
+Copper is not page tint. Live and follow may use Copper; red cards use Cardinal.
+
+### Mark — not locked
+
+Three drafts in [brand-boards/logo-drafts](./brand-boards/logo-drafts/). Pick one, or send them back. Then custom `footballscore` lettering.
+
+v1 lime / cobalt / ember and Geist splits stay rejected.
 
 ---
 
@@ -107,4 +119,4 @@ After approval, this section will gain: hex/RGB/CMYK, WCAG matrix, clearspace, m
 
 Working name for the interface system: **Pitch**. Marketing brand remains **footballscore**. Same split Strava makes between brand and Spandex: brand color is not the UI grey ramp; data colors are not the brand accent.
 
-Pitch is specified in [design.md](./design.md) as a **proposed** system. Color roles are listed there; hex in DESIGN.md is leftover v1 scaffolding and is **not** the brand.
+Pitch is specified in [design.md](./design.md) as a **proposed** system. Hex in DESIGN.md should match Medal; the live CSS is still scaffolding until the mark and wordmark lock.
