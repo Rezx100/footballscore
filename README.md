@@ -6,7 +6,8 @@ Live football scores for **app** and **website**.
 - Website chrome follows **X Sports** + **Perplexity Sports**.
 - Football data and modules stay aligned across both surfaces.
 
-**Spec:** [docs/ui-spec.md](docs/ui-spec.md)
+**Spec:** [docs/ui-spec.md](docs/ui-spec.md) (FotMob-era screen map).  
+**Next build prompt (redesign + full ESPN):** [docs/redesign-and-espn-prompt.md](docs/redesign-and-espn-prompt.md)
 
 ## Implemented so far
 
