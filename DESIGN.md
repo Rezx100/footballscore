@@ -60,9 +60,9 @@ typography:
     letterSpacing: -0.16px
   score:
     fontFamily: IBM Plex Mono, ui-monospace, monospace
-    fontSize: 18px
+    fontSize: 20px
     fontWeight: 500
-    lineHeight: 18px
+    lineHeight: 20px
     fontVariantNumeric: tabular-nums
   score-lg:
     fontFamily: IBM Plex Mono, ui-monospace, monospace
@@ -99,11 +99,11 @@ components:
     typography: "{typography.caption}"
     padding: "{spacing.sm} {spacing.lg}"
   league-group:
-    backgroundColor: "{colors.field}"
+    backgroundColor: "{colors.surface}"
     borderColor: "{colors.rule}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.sm}"
   match-row:
-    backgroundColor: "{colors.field}"
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
     typography: "{typography.ui}"
     padding: "{spacing.md} {spacing.lg}"
@@ -152,8 +152,8 @@ This file is the agent-facing design system in the [getdesign.md](https://getdes
 **Key characteristics**
 - Page is `{colors.field}` (`#141210`). Bone is type and reverse.
 - The day is a split-flap (`02` copper / `SEP` bone) with neighbor weekdays as idle flaps. Not a Yesterday/Today/Tomorrow strip and not a hero weekday.
-- List score `{typography.score}` 18px IBM Plex Mono, stacked on the home and away lines. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
-- No cards, no shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
+- List score `{typography.score}` 20px IBM Plex Mono, stacked on the home and away lines. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
+- Soft Surface league wells (`{rounded.sm}`), no drop shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
 - Copper is the live flap, the date flap, the mark, and the name hinge. Not a pill. Not a tab accent.
 - Five destinations stay until those screens exist: matches · news · leagues · following · more.
 - Home over away. Native crests, never circle-cropped, never invented rainbow shields.
@@ -258,17 +258,17 @@ Field. Constructed mark + `{typography.masthead}` in Bone on a 2px copper hinge.
 Split-flap for the selected day (`02` copper / `SEP` bone). Neighbor weekdays as idle flaps. Live count in copper mono. Not Yesterday / Today / Tomorrow.
 
 ### `league-group`
-Competition mark + caption + flush rows. No ruled card. No radius.
+Competition mark + caption. Soft Surface well, `{rounded.sm}`, hairline Rule. Rows flush inside the well — not FotMob white groups, not floating cream cards.
 
 ### `match-row` (signature — Stack)
 ```
 [67′]  [crest] Home name          2
        [crest] Away name          1
 ```
-- Home over away, `{typography.ui}`, truncate. Loser on FT at quiet opacity.
-- Score column `{typography.score}` IBM Plex Mono, reserved width.
-- In play: Copper split-flap with the minute / HT. Otherwise quiet mono kick-off or FT. Not a pill.
-- **No TV icon column. No 72px featured score on this page.**
+- Home over away, `{typography.ui}`, truncate. Loser on FT at quiet opacity; winner score stays Ink.
+- Score column 20px IBM Plex Mono tabular, reserved width — heavier than the name beside it.
+- In play: copper Caption minute / HT with a 6px live dot and a 2px copper left rail. Quiet mono for kick-off / FT / PP / AB. Not a pill, not a split-flap on the row (flaps stay on the date board).
+- Soft hover wash; selected = stronger wash. **No TV icon column. No 72px featured score on this page.**
 
 ### `tab-bar`
 Five items until those screens exist. IBM Plex Mono lowercase. Active Bone, inactive Quiet. No underline.
@@ -293,7 +293,7 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 ## Page recipes
 
-**Scores** — masthead (constructed mark + `footballscore` on a copper hinge) → date board (split-flap day) → flush groups. No ticker. No jumbotron.
+**Scores** — masthead (constructed mark + `footballscore` on a copper hinge) → date board (split-flap day) → Surface league wells with Stack rows. No ticker. No jumbotron.
 
 **Match** — sticky-scoreboard → last key event → timeline → Lineup / Numbers / Table / Series segment.
 

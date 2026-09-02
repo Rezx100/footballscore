@@ -106,12 +106,12 @@ export function MatchesScreen({
             </Link>
           </div>
         ) : (
-          <div className="flex flex-col pb-8">
+          <div className="flex flex-col gap-3 pt-2 pb-10">
             {open.map((group) => (
               <LeagueGroupCard key={group.id} group={group} query={query} />
             ))}
             {open.length > 0 && hasFinished && !query.hide ? (
-              <div className="px-5 py-5">
+              <div className="px-5 py-4">
                 <Link href={matchesHref({ ...query, hide: true })} className="font-board text-[11px] text-[var(--muted)]">
                   Hide finished
                 </Link>
@@ -123,7 +123,7 @@ export function MatchesScreen({
                   <LeagueGroupCard key={group.id} group={group} query={query} />
                 ))}
             {query.hide && hasFinished ? (
-              <div className="px-5 py-5">
+              <div className="px-5 py-4">
                 <Link href={matchesHref({ ...query, hide: false })} className="font-board text-[11px] text-[var(--live)]">
                   Show finished matches
                 </Link>

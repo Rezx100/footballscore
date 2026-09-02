@@ -11,12 +11,14 @@ export function LeagueGroupCard({
   query: MatchesQuery;
 }) {
   return (
-    <section>
-      <header className="flex items-center gap-2 px-5 pt-6 pb-2">
+    <section className="mx-4 overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)]">
+      <header className="flex items-center gap-2.5 px-4 pt-3.5 pb-2.5">
         <LeagueFlag group={group} />
-        <h2 className="font-cond text-[12px] text-[var(--muted)]">{group.name}</h2>
+        <h2 className="font-cond text-[12px] tracking-[0.02em] text-[var(--muted)]">
+          {group.name}
+        </h2>
       </header>
-      <div className="divide-y divide-[var(--line)] border-t border-[var(--line)]">
+      <div className="divide-y divide-[color-mix(in_srgb,var(--line)_70%,transparent)] border-t border-[color-mix(in_srgb,var(--line)_70%,transparent)]">
         {group.matches.map((match) => (
           <MatchRow
             key={match.id}

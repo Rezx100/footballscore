@@ -15,12 +15,17 @@ export default function MatchesLoading() {
             <div className="h-9 w-10 bg-[var(--surface)]" />
           </div>
         </div>
-        <div className="mt-8 flex flex-col">
+        <div className="mt-6 flex flex-col gap-3 px-4">
           {[0, 1, 2].map((key) => (
-            <div key={key} className="px-5 pt-6">
-              <div className="h-3 w-28 bg-[var(--surface)]" />
-              <div className="mt-3 h-14 border-t border-[var(--line)]" />
-              <div className="h-14 border-t border-[var(--line)]" />
+            <div
+              key={key}
+              className="overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)]"
+            >
+              <div className="px-4 pt-3.5 pb-2.5">
+                <div className="h-3 w-28 bg-[var(--line)]" />
+              </div>
+              <div className="h-16 border-t border-[var(--line)]" />
+              <div className="h-16 border-t border-[var(--line)]" />
             </div>
           ))}
         </div>
