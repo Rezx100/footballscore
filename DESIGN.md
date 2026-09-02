@@ -5,27 +5,28 @@ name: footballscore
 description: >
   Association-football scores product. Carbon field, bone type, copper live minute.
   Dense fixture list with real ESPN crests. Not a cream programme and not a 72px poster.
-  IBM Plex Sans names the product (medium, copper hinge). Condensed sets clubs. Mono is the board.
+  IBM Plex Sans Condensed names the product (semibold split weight, no underline). Condensed sets clubs. Mono is the board.
   Hex is the approved Medal palette. Mark and type are not locked.
   Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
-  field: "#141210"
-  on-field: "#F3EDE4"
+  field: "#0B0B0D"
+  on-field: "#F5F5F7"
   copper: "#C17A3A"
-  paper: "#F3EDE4"
-  surface: "#1C1916"
-  elev: "#221F1B"
-  ink: "#F3EDE4"
-  quiet: "#8A8278"
-  rule: "#2C2824"
-  live-ink: "#C17A3A"
-  cardinal: "#9B1B1B"
+  paper: "#F5F5F7"
+  surface: "#141416"
+  elev: "#1C1C1F"
+  ink: "#F5F5F7"
+  quiet: "#8E8E93"
+  rule: "#2C2C2E"
+  live-ink: "#E08A42"
+  cardinal: "#FF453A"
   caution: "#C4A574"
-  wash: "#1C1916"
-  chip: "#2C2824"
-  on-primary: "#F3EDE4"
+  wash: "#141416"
+  chip: "#2C2C2E"
+  on-primary: "#F5F5F7"
   patina: "#3D5C52"
+  plate: "#ECECEF"
 typography:
   caption:
     fontFamily: IBM Plex Mono, ui-monospace, monospace
@@ -146,14 +147,14 @@ components:
 
 ## Overview
 
-footballscore is a football-only scores product (association football). The product surface is a **Carbon field**: Bone type on `{colors.field}`, scores as 20px tabular numerals in a stacked list, Copper only on the live minute. Bone paper is reverse, splash, and marketing — not the Scores canvas. It is not a cream card stack, not a 72px poster, not FotMob white groups, not Apple Sports green.
+footballscore is a football-only scores product (association football). The product surface is a **cool near-black field** (`#0B0B0D`) so league color and crests read cleanly. Copper is live accent only — not a brown wash over the UI. IBM Plex Condensed names clubs; Mono is the board.
 
 This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
 
-**Identity gate:** Medal palette is approved. Mark still needs a pick — tap the lockup on `/matches` to cycle split-flap, pierced medal, and match posts. The name is IBM Plex Sans Medium on a copper hinge, not Syne and not Geist. Not locked until you say so.
+**Identity gate:** Cool near-black field + league atmospheric palettes are live. Mark still needs a pick — tap the lockup on `/matches` to cycle marks. Wordmark is Condensed split weight (`football` + muted `score`), no copper underscore.
 
 **Key characteristics**
-- Page is `{colors.field}` (`#141210`). Bone is type and reverse.
+- Page is `{colors.field}` (`#0B0B0D`). League color washes sit on black so logos stay sharp.
 - The day is a split-flap (`02` copper / `SEP` bone) with neighbor weekdays as idle flaps. Not a Yesterday/Today/Tomorrow strip and not a hero weekday.
 - List score `{typography.score}` 22px IBM Plex Mono on discrete elevated tiles. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
 - Score tiles use `--elev` wells with club-tint wash + dual rail micro-details. No drop shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
@@ -204,7 +205,7 @@ No second display serif. Do not load Syne, Schibsted Grotesk, Geist, WiredDispla
 | `{typography.body}` | 15 | 400 | 22 | Commentary, empty copy |
 | `{typography.ui}` | 15 | 500 | 20 | Team names (condensed) |
 | `{typography.title}` | 20 | 500 | 24 | Empty titles |
-| `{typography.masthead}` | 16 | 500 | 16 | `footballscore` in Plex Sans, copper hinge |
+| `{typography.masthead}` | 17 | 600 | 17 | Condensed split wordmark — no underscore |
 | `{typography.score}` | 18 | 500 tabular | 18 | List row score, one digit per side |
 | `{typography.score-lg}` | 32 | 500 tabular | 36 | Match page only |
 
@@ -298,7 +299,7 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 ## Page recipes
 
-**Scores** — masthead (constructed mark + `footballscore` on a copper hinge) → date board (split-flap day) → Surface league wells with Stack rows. No ticker. No jumbotron.
+**Scores** — masthead (mark + split wordmark) → day rail → league sections with brand auras + elev score tiles. No ticker. No jumbotron.
 
 **Match** — sticky-scoreboard → last key event → timeline → Lineup / Numbers / Table / Series segment.
 

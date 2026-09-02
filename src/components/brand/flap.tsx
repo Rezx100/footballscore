@@ -4,14 +4,14 @@ type FlapTone = "today" | "live" | "idle";
 
 const TOP: Record<FlapTone, string> = {
   today: "var(--copper)",
-  live: "var(--copper)",
-  idle: "var(--elev)",
+  live: "var(--live)",
+  idle: "color-mix(in_srgb, var(--ink) 8%, var(--elev))",
 };
 
 const BOT: Record<FlapTone, string> = {
   today: "var(--ink)",
-  live: "color-mix(in_srgb, var(--copper) 72%, #000)",
-  idle: "color-mix(in_srgb, var(--line) 80%, var(--elev))",
+  live: "color-mix(in_srgb, var(--live) 55%, #000)",
+  idle: "color-mix(in_srgb, var(--ink) 5%, var(--surface))",
 };
 
 export function BoardFlap({

@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #141210;
-  --surface: #1c1916;
-  --elev: #221f1b;
-  --ink: #f3ede4;
-  --muted: #8a8278;
-  --line: #2c2824;
+  /* Cool near-black field — logos and league color read; copper is accent only */
+  --bg: #0b0b0d;
+  --surface: #141416;
+  --elev: #1c1c1f;
+  --ink: #f5f5f7;
+  --muted: #8e8e93;
+  --line: #2c2c2e;
   --accent: #c17a3a;
-  --live: #c17a3a;
-  --danger: #9b1b1b;
+  --live: #e08a42;
+  --danger: #ff453a;
   --copper: #c17a3a;
   --copper-deep: #6b3d1c;
   --copper-night: #2a1810;
   --patina: #3d5c52;
-  --wash: #1c1916;
-  --background: #141210;
-  --foreground: #f3ede4;
+  --wash: #141416;
+  --plate: #ececef;
+  --background: #0b0b0d;
+  --foreground: #f5f5f7;
   --ease-board: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -64,84 +66,58 @@ a {
   border: 0;
 }
 
-/* Masthead atmosphere — Apple Sports rhythm; league tint when a lead group exists */
+/* Masthead — vivid league tint on true black (not muddy brown) */
 .masthead {
-  --masthead-mid: var(--copper);
-  --masthead-deep: var(--copper-deep);
+  --masthead-mid: #3a3a3c;
+  --masthead-deep: #1c1c1e;
   position: relative;
   isolation: isolate;
   background:
     radial-gradient(
-      130% 100% at 12% -25%,
-      color-mix(in srgb, var(--masthead-mid) 55%, transparent) 0%,
-      transparent 58%
-    ),
-    radial-gradient(
-      100% 85% at 92% -15%,
-      color-mix(in srgb, var(--masthead-deep) 48%, transparent) 0%,
-      transparent 50%
+      120% 95% at 50% -30%,
+      color-mix(in srgb, var(--masthead-mid) 62%, transparent) 0%,
+      transparent 55%
     ),
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--masthead-deep) 88%, #120e0b) 0%,
-      color-mix(in srgb, var(--masthead-deep) 70%, #16110d) 18%,
-      color-mix(in srgb, var(--masthead-mid) 28%, #16110d) 42%,
-      color-mix(in srgb, var(--masthead-mid) 10%, var(--bg)) 72%,
-      var(--bg) 100%
+      color-mix(in srgb, var(--masthead-deep) 92%, #000) 0%,
+      color-mix(in srgb, var(--masthead-mid) 22%, #000) 38%,
+      var(--bg) 78%
     );
 }
 
-.masthead::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: 0 0 auto;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--ink) 14%, transparent) 35%,
-    color-mix(in srgb, var(--masthead-mid) 40%, transparent) 50%,
-    color-mix(in srgb, var(--ink) 14%, transparent) 65%,
-    transparent 100%
-  );
-  opacity: 0.7;
-  z-index: 1;
-}
-
 .find-pill {
-  background: color-mix(in srgb, var(--masthead-mid) 28%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   color: var(--ink);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 12%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 8%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
 
 .find-pill:hover {
-  background: color-mix(in srgb, var(--masthead-mid) 40%, transparent);
-  border-color: color-mix(in srgb, var(--ink) 24%, transparent);
-  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 16%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 22%, transparent);
 }
 
-/* Score cards — density of SiriusXM tiles, stack of MLS mini, our Medal micro-details */
+/* Score cards */
 .score-card {
   background: var(--elev);
-  border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent);
 }
 
 .score-card:hover {
-  border-color: color-mix(in srgb, var(--ink) 14%, var(--line));
-  background: color-mix(in srgb, var(--elev) 88%, var(--ink));
+  border-color: color-mix(in srgb, var(--ink) 16%, var(--line));
+  background: color-mix(in srgb, var(--elev) 86%, var(--ink));
 }
 
 .score-card--selected {
-  border-color: color-mix(in srgb, var(--copper) 55%, var(--line));
-  background: color-mix(in srgb, var(--elev) 90%, var(--copper));
+  border-color: color-mix(in srgb, var(--live) 50%, var(--line));
+  background: color-mix(in srgb, var(--elev) 92%, var(--live));
   box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--copper) 18%, transparent);
+    inset 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--live) 16%, transparent);
 }
 
 .score-card__wash {
@@ -150,11 +126,11 @@ a {
   inset: 0;
   background: linear-gradient(
     125deg,
-    color-mix(in srgb, var(--home-tint) 11%, transparent) 0%,
-    transparent 42%,
-    color-mix(in srgb, var(--away-tint) 9%, transparent) 100%
+    color-mix(in srgb, var(--home-tint) 8%, transparent) 0%,
+    transparent 45%,
+    color-mix(in srgb, var(--away-tint) 6%, transparent) 100%
   );
-  opacity: 0.9;
+  opacity: 0.75;
 }
 
 .score-card__rail {
@@ -172,16 +148,16 @@ a {
     var(--away-tint) 52%,
     var(--away-tint) 100%
   );
-  opacity: 0.55;
+  opacity: 0.7;
 }
 
 .score-card--live .score-card__rail {
-  background: var(--copper);
-  opacity: 0.95;
+  background: var(--live);
+  opacity: 1;
 }
 
 .score-card--live {
-  border-color: color-mix(in srgb, var(--copper) 28%, var(--line));
+  border-color: color-mix(in srgb, var(--live) 32%, var(--line));
 }
 
 .score-digit {
@@ -190,24 +166,24 @@ a {
 }
 
 .day-rail {
-  background: color-mix(in srgb, var(--elev) 55%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  background: color-mix(in srgb, var(--elev) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--ink) 8%, transparent),
-    0 8px 28px color-mix(in srgb, #000 28%, transparent);
+    0 10px 30px color-mix(in srgb, #000 40%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
 
 .day-rail__today {
   display: inline-flex;
-  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--copper) 34%, transparent));
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--masthead-mid) 40%, transparent));
 }
 
-/* Per-league atmosphere — Apple Sports header-color idea, section-scoped */
+/* League section aura on cool black — logos stay readable */
 .league-section {
-  --league: #6b3d1c;
-  --league-deep: #2a1810;
+  --league: #5b5b5f;
+  --league-deep: #1c1c1e;
   --league-accent: #c17a3a;
 }
 
@@ -217,19 +193,18 @@ a {
   left: 0;
   right: 0;
   top: -6px;
-  height: 88px;
+  height: 92px;
   background:
     radial-gradient(
-      90% 120% at 12% 0%,
-      color-mix(in srgb, var(--league) 34%, transparent) 0%,
-      transparent 62%
+      85% 110% at 8% 0%,
+      color-mix(in srgb, var(--league) 40%, transparent) 0%,
+      transparent 60%
     ),
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--league-deep) 55%, transparent) 0%,
+      color-mix(in srgb, var(--league-deep) 45%, transparent) 0%,
       transparent 100%
     );
-  opacity: 0.95;
 }
 
 .league-section__chip {
@@ -237,8 +212,20 @@ a {
   height: 6px;
   border-radius: 9999px;
   background: var(--league-accent);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--league-accent) 55%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--league-accent) 60%, transparent);
   flex-shrink: 0;
+}
+
+.league-mark-plate {
+  display: inline-flex;
+  height: 22px;
+  width: 22px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--plate);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -281,12 +268,12 @@ a {
   0%,
   100% {
     box-shadow:
-      inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent),
       inset 0 0 0 0 transparent;
   }
   50% {
     box-shadow:
-      inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent),
-      inset 0 0 28px 0 color-mix(in srgb, var(--copper) 7%, transparent);
+      inset 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent),
+      inset 0 0 28px 0 color-mix(in srgb, var(--live) 8%, transparent);
   }
 }

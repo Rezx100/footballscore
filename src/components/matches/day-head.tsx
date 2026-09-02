@@ -13,7 +13,7 @@ function SideDay({
   const neighbor = neighborDay(query.day, dir);
   if (!neighbor) {
     return (
-      <span className="opacity-25">
+      <span className="opacity-30">
         <BoardFlap tone="idle" width={44} height={48}>
           <span className="font-board text-[10px] tracking-[0.08em] text-[var(--muted)]">···</span>
         </BoardFlap>
@@ -24,10 +24,10 @@ function SideDay({
     <Link
       href={matchesHref({ ...query, day: neighbor.key, hide: false, match: null, tab: "matches" })}
       aria-label={neighbor.spoken}
-      className="day-chip text-[var(--ink)] transition-opacity duration-160 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:opacity-90"
+      className="day-chip text-[var(--ink)] transition-opacity duration-160 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:opacity-100"
     >
       <BoardFlap tone="idle" width={44} height={48}>
-        <span className="font-board text-[10px] tracking-[0.1em] text-[var(--muted)]">
+        <span className="font-board text-[10px] tracking-[0.1em] text-[color-mix(in_srgb,var(--ink)_70%,transparent)]">
           {neighbor.weekday}
         </span>
       </BoardFlap>
@@ -57,9 +57,9 @@ export function DayHead({
 
         <div className="ml-auto flex min-w-0 flex-col items-end gap-0.5 pr-1">
           {liveCount > 0 ? (
-            <p className="flex items-center gap-1.5 font-board text-[12px] tracking-[0.04em] text-[var(--copper)]">
+            <p className="flex items-center gap-1.5 font-board text-[12px] tracking-[0.04em] text-[var(--live)]">
               <span
-                className="live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--copper)]"
+                className="live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--live)]"
                 aria-hidden="true"
               />
               {liveCount} live
