@@ -76,7 +76,7 @@ export function MatchRow({
       href={matchesHref({ ...query, match: match.id, tab: "matches" })}
       aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
-      className={`flex w-full items-center gap-1.5 px-3 py-2.5 text-left transition-colors ${
+      className={`flex w-full items-center gap-1.5 px-3 py-2.5 text-left no-underline transition-colors ${
         selected ? "bg-[#F3FBF6]" : "bg-white hover:bg-[#FAFAFA] active:bg-[#F4F4F5]"
       }`}
     >
