@@ -19,7 +19,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-board), ui-monospace, monospace;
 }
 
 html,
@@ -36,6 +37,15 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.font-cond {
+  font-family: var(--font-condensed), var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-board {
+  font-family: var(--font-board), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 .sr-only {

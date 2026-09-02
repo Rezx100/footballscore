@@ -18,7 +18,7 @@ Reply `Approve Pitch` to lock the system below (except color/wordmark), or name 
 | Phone `<768` / site `≥768` / split `≥1100` | **Keep.** |
 | Scores home `/matches` | **Keep.** Drop the device bezel as default chrome. |
 | Home left, away right | **Keep.** Football convention. |
-| Geist Sans, scores `tabular-nums` | **Keep Geist as the only product face** until a display face is chosen after color. |
+| Geist Sans, scores `tabular-nums` | **Retired.** Live type is IBM Plex Sans / Condensed / Mono. See `DESIGN.md`. |
 | 150–200ms opacity/transform; no bouncing crests | **Keep**, tighten to 160ms ease-out. Live minute may tick. |
 
 What the live UI does today that Pitch should **not** keep: iOS grouped-grey canvas, 15px scores, TV-icon column, drop-shadow cards, five peer tabs, fake phone frame on desktop.

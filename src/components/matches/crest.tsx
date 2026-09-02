@@ -14,7 +14,7 @@ function initialsOn(color: string): string {
 export function Crest({ team, size = 20 }: { team: Team; size?: number }) {
   const initials = (
     <span
-      className="inline-flex shrink-0 items-center justify-center font-semibold tracking-tight"
+        className="font-board inline-flex shrink-0 items-center justify-center text-[8px]"
       style={{
         width: size,
         height: size,

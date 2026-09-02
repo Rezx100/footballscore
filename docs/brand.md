@@ -15,11 +15,11 @@ Quality bar for the finished book: the completeness and rigor of [Strava Brand G
 | Honest-data rules | **Locked** |
 | Color palette (brand + product + data) | **Approved — Medal** |
 | Custom mark | **Needs your approval** (split-flap / pierced medal / match posts — see application previews) |
-| Wordmark construction | **Proposed in product** — Syne ExtraBold, one word, lowercase. Not locked. |
-| Type pairing | **Proposed** — Schibsted Grotesk for the fixture list |
+| Wordmark construction | **Proposed in product** — IBM Plex Sans Medium, lowercase, 2px copper hinge. Not locked. |
+| Type pairing | **Proposed** — Plex Condensed for clubs, Plex Mono for the board |
 | Photography, icons, motion, applications | After marks + wordmark |
 
-CSS in `src/app/globals.css` is the Medal field. The name is Syne ExtraBold in the lockup; the list is Schibsted Grotesk. Neither type choice is locked. Hex below is the approved Medal book.
+CSS in `src/app/globals.css` is the Medal field. The name is IBM Plex Sans Medium on a copper hinge; clubs are condensed; clocks and scores are mono. Type is not locked. Hex below is the approved Medal book.
 
 ---
 

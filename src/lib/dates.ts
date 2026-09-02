@@ -3,8 +3,6 @@ import type { DayKey } from "@/lib/types";
 /** ESPN soccer scoreboards are US-region; group and format kickoffs in this zone. */
 export const ESPN_TZ = "America/New_York";
 
-export const DAY_ORDER: DayKey[] = ["yesterday", "today", "tomorrow", "next"];
-
 type Ymd = { y: number; m: number; d: number };
 
 function etYmd(date: Date): Ymd {
@@ -74,25 +72,41 @@ export function formatKickoff(iso: string, timeZone = ESPN_TZ): string {
   }).format(new Date(iso));
 }
 
-export function editorialDate(day: DayKey, now = new Date()): {
+export type BoardDate = {
   weekday: string;
-  date: string;
-  relative: "Yesterday" | "Today" | "Tomorrow" | null;
-} {
+  weekdayLong: string;
+  month: string;
+  dayNum: string;
+  spoken: string;
+};
+
+export function boardDate(day: DayKey, now = new Date()): BoardDate {
   const ymd = ymdForDay(day, now);
   const utc = new Date(Date.UTC(ymd.y, ymd.m - 1, ymd.d));
   const weekday = new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    timeZone: "UTC",
+  })
+    .format(utc)
+    .toUpperCase();
+  const weekdayLong = new Intl.DateTimeFormat("en-GB", {
     weekday: "long",
     timeZone: "UTC",
   }).format(utc);
-  const date = new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "long",
+  const month = new Intl.DateTimeFormat("en-GB", {
+    month: "short",
     timeZone: "UTC",
-  }).format(utc);
-  const relative =
-    day === "yesterday" ? "Yesterday" : day === "today" ? "Today" : day === "tomorrow" ? "Tomorrow" : null;
-  return { weekday, date, relative };
+  })
+    .format(utc)
+    .toUpperCase();
+  const dayNum = pad2(ymd.d);
+  return {
+    weekday,
+    weekdayLong,
+    month,
+    dayNum,
+    spoken: `${weekdayLong} ${ymd.d} ${new Intl.DateTimeFormat("en-GB", { month: "long", timeZone: "UTC" }).format(utc)}`,
+  };
 }
 
 export const DAY_PREV: Record<DayKey, DayKey | null> = {
@@ -109,36 +123,16 @@ export const DAY_NEXT: Record<DayKey, DayKey | null> = {
   next: null,
 };
 
-export type DateStripItem = {
-  key: DayKey;
-  label: string;
-  espnDate: string;
-  dayOfMonth: string;
-};
-
-export function getDateStrip(now = new Date()): DateStripItem[] {
-  const labels: Record<DayKey, string> = {
-    yesterday: "Yesterday",
-    today: "Today",
-    tomorrow: "Tomorrow",
-    next: "",
-  };
-  return DAY_ORDER.map((key) => {
-    const ymd = ymdForDay(key, now);
-    const utc = new Date(Date.UTC(ymd.y, ymd.m - 1, ymd.d));
-    const weekday = new Intl.DateTimeFormat("en-US", {
-      weekday: "short",
-      timeZone: "UTC",
-    }).format(utc);
-    return {
-      key,
-      label: key === "next" ? `${weekday} ${pad2(ymd.d)}` : labels[key],
-      espnDate: ymdToEspnDate(ymd),
-      dayOfMonth: String(ymd.d),
-    };
-  });
+export function neighborDay(
+  day: DayKey,
+  dir: "prev" | "next",
+): ({ key: DayKey } & BoardDate) | null {
+  const key = dir === "prev" ? DAY_PREV[day] : DAY_NEXT[day];
+  if (!key) return null;
+  return { key, ...boardDate(key) };
 }
 
 export function dayLabel(day: DayKey, now = new Date()): string {
-  return getDateStrip(now).find((item) => item.key === day)?.label ?? "Today";
+  const { weekday, dayNum, month } = boardDate(day, now);
+  return `${weekday} ${dayNum} ${month}`;
 }

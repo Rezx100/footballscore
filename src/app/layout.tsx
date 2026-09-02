@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Schibsted_Grotesk, Syne } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
 import "./globals.css";
 
-const grotesque = Schibsted_Grotesk({
-  variable: "--font-grotesk",
+const plex = IBM_Plex_Sans({
+  variable: "--font-plex",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const wordmark = Syne({
-  variable: "--font-wordmark",
+const condensed = IBM_Plex_Sans_Condensed({
+  variable: "--font-condensed",
   subsets: ["latin"],
-  weight: ["800"],
+  weight: ["400", "500", "600"],
+});
+
+const board = IBM_Plex_Mono({
+  variable: "--font-board",
+  subsets: ["latin"],
+  weight: ["500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${grotesque.variable} ${wordmark.variable} h-full antialiased`}
+      className={`${plex.variable} ${condensed.variable} ${board.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--bg)] font-sans text-[var(--ink)]">{children}</body>
     </html>

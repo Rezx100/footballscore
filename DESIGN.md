@@ -5,8 +5,8 @@ name: footballscore
 description: >
   Association-football scores product. Carbon field, bone type, copper live minute.
   Dense fixture list with real ESPN crests. Not a cream programme and not a 72px poster.
-  Syne ExtraBold names the product. Schibsted Grotesk sets the fixture list.
-  Hex is the approved Medal palette. Mark is not locked.
+  IBM Plex Sans names the product (medium, copper hinge). Condensed sets clubs. Mono is the board.
+  Hex is the approved Medal palette. Mark and type are not locked.
   Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
@@ -27,51 +27,49 @@ colors:
   patina: "#3D5C52"
 typography:
   caption:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
+    fontFamily: IBM Plex Mono, ui-monospace, monospace
     fontSize: 11px
-    fontWeight: 600
+    fontWeight: 500
     lineHeight: 14px
     letterSpacing: 0
   meta:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
+    fontFamily: IBM Plex Sans Condensed, ui-sans-serif, system-ui, sans-serif
     fontSize: 12px
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 16px
   body:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
+    fontFamily: IBM Plex Sans, ui-sans-serif, system-ui, sans-serif
     fontSize: 15px
     fontWeight: 400
     lineHeight: 22px
   ui:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
+    fontFamily: IBM Plex Sans Condensed, ui-sans-serif, system-ui, sans-serif
     fontSize: 15px
-    fontWeight: 600
+    fontWeight: 500
     lineHeight: 20px
   title:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
-    fontSize: 17px
-    fontWeight: 650
+    fontFamily: IBM Plex Sans Condensed, ui-sans-serif, system-ui, sans-serif
+    fontSize: 20px
+    fontWeight: 500
     lineHeight: 24px
   masthead:
-    fontFamily: Syne ExtraBold, ui-sans-serif, system-ui, sans-serif
-    fontSize: 18px
-    fontWeight: 800
-    lineHeight: 18px
-    letterSpacing: -0.97px
+    fontFamily: IBM Plex Sans, ui-sans-serif, system-ui, sans-serif
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 16px
+    letterSpacing: -0.16px
   score:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
-    fontSize: 20px
-    fontWeight: 700
-    lineHeight: 20px
+    fontFamily: IBM Plex Mono, ui-monospace, monospace
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 18px
     fontVariantNumeric: tabular-nums
-    letterSpacing: -0.4px
   score-lg:
-    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
+    fontFamily: IBM Plex Mono, ui-monospace, monospace
     fontSize: 32px
-    fontWeight: 700
+    fontWeight: 500
     lineHeight: 36px
     fontVariantNumeric: tabular-nums
-    letterSpacing: -0.8px
 rounded:
   none: 0px
   sm: 8px
@@ -91,9 +89,9 @@ components:
     textColor: "{colors.ink}"
     typography: "{typography.masthead}"
     padding: "{spacing.lg} {spacing.lg}"
-  date-strip:
-    textColor: "{colors.quiet}"
-    typography: "{typography.ui}"
+  date-board:
+    textColor: "{colors.ink}"
+    typography: "{typography.caption}"
     activeBorder: "none"
   live-rail:
     backgroundColor: "{colors.field}"
@@ -149,14 +147,15 @@ footballscore is a football-only scores product (association football). The prod
 
 This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
 
-**Identity gate:** Medal palette is approved. Mark still needs a pick — tap the lockup on `/matches` to cycle split-flap, pierced medal, and match posts. The name is Syne ExtraBold, not Geist. Not locked until you say so.
+**Identity gate:** Medal palette is approved. Mark still needs a pick — tap the lockup on `/matches` to cycle split-flap, pierced medal, and match posts. The name is IBM Plex Sans Medium on a 2px copper hinge, not Syne and not Geist. Not locked until you say so.
 
 **Key characteristics**
 - Page is `{colors.field}` (`#141210`). Bone is type and reverse.
-- List score `{typography.score}` 20px tabular, stacked on the home and away lines. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
+- The day is a split-flap (`02` copper / `SEP` bone) with neighbor weekdays as idle flaps. Not a Yesterday/Today/Tomorrow strip and not a hero weekday.
+- List score `{typography.score}` 18px IBM Plex Mono, stacked on the home and away lines. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
 - No cards, no shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
-- Copper is the live clock and the mark. Not a pill. Not a tab accent.
-- Five destinations stay until those screens exist: Matches · News · Leagues · Following · More.
+- Copper is the live flap, the date flap, the mark, and the name hinge. Not a pill. Not a tab accent.
+- Five destinations stay until those screens exist: matches · news · leagues · following · more.
 - Home over away. Native crests, never circle-cropped, never invented rainbow shields.
 
 ## Colors
@@ -189,22 +188,22 @@ Hex is Medal, approved. Roles stay even if a later mark export tightens Copper.
 ## Typography
 
 ### Font family
-**Schibsted Grotesk** for UI. **Syne ExtraBold** only for `footballscore`. Tabular numerals on every score and clock. CJK/Arabic: Noto Sans at the same sizes.
+**IBM Plex Sans** for the name and body. **IBM Plex Sans Condensed** for club names. **IBM Plex Mono** for the date flap, live minute, kick-off, scores, and tabs. Tabular numerals on every score and clock. CJK/Arabic: Noto Sans at the same sizes.
 
-No second display serif until color is locked. Do not load WiredDisplay, MarkForMC, or Nike Futura.
+No second display serif. Do not load Syne, Schibsted Grotesk, Geist, WiredDisplay, MarkForMC, or Nike Futura.
 
 ### Hierarchy
 
 | Token | Size | Weight | Line | Use |
 | --- | --- | --- | --- | --- |
-| `{typography.caption}` | 11 | 600 | 14 | LIVE / HT / FT over the score; rail labels |
-| `{typography.meta}` | 12 | 500 | 16 | League name, byline, relative time |
+| `{typography.caption}` | 11 | 500 | 14 | LIVE / HT / FT; board labels |
+| `{typography.meta}` | 12 | 400 | 16 | League name, byline |
 | `{typography.body}` | 15 | 400 | 22 | Commentary, empty copy |
-| `{typography.ui}` | 15 | 600 | 20 | Team names, text buttons |
-| `{typography.title}` | 17 | 650 | 24 | Empty titles, section headers |
-| `{typography.masthead}` | 18 | 800 | 18 | `footballscore` in Syne ExtraBold |
-| `{typography.score}` | 20 | 700 tabular | 20 | List row score, one digit per side |
-| `{typography.score-lg}` | 32 | 700 tabular | 36 | Match page only |
+| `{typography.ui}` | 15 | 500 | 20 | Team names (condensed) |
+| `{typography.title}` | 20 | 500 | 24 | Empty titles |
+| `{typography.masthead}` | 16 | 500 | 16 | `footballscore` in Plex Sans, copper hinge |
+| `{typography.score}` | 18 | 500 tabular | 18 | List row score, one digit per side |
+| `{typography.score-lg}` | 32 | 500 tabular | 36 | Match page only |
 
 ### Principles
 - The score is always heavier and larger than the team name beside it.
@@ -253,26 +252,26 @@ Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike av
 ## Components
 
 ### `masthead-bar`
-Field. Constructed mark + `{typography.masthead}` in Bone. Search. Mark picker until a mark is approved.
+Field. Constructed mark + `{typography.masthead}` in Bone on a 2px copper hinge. Find. Tap the lockup to cycle marks until one is approved.
 
-### `date-strip`
-Yesterday / Today / Tomorrow / next weekday. Active is Bone weight, not an underline. Copper live count sits on Today when any match is in play.
+### `date-board`
+Split-flap for the selected day (`02` copper / `SEP` bone). Neighbor weekdays as idle flaps. Live count in copper mono. Not Yesterday / Today / Tomorrow.
 
 ### `league-group`
-Caption + flush rows. No ruled card. No radius.
+Competition mark + caption + flush rows. No ruled card. No radius.
 
 ### `match-row` (signature — Stack)
 ```
-[crest] Home name          2     67′
-[crest] Away name          1
+[67′]  [crest] Home name          2
+       [crest] Away name          1
 ```
 - Home over away, `{typography.ui}`, truncate. Loser on FT at quiet opacity.
-- Score column `{typography.score}` tabular, reserved width.
-- Status column: Copper minute / HT when in play; quiet FT / kick-off otherwise. Not a pill.
+- Score column `{typography.score}` IBM Plex Mono, reserved width.
+- In play: Copper split-flap with the minute / HT. Otherwise quiet mono kick-off or FT. Not a pill.
 - **No TV icon column. No 72px featured score on this page.**
 
 ### `tab-bar`
-Five items until those screens exist. Caption. Active Bone, inactive Quiet.
+Five items until those screens exist. IBM Plex Mono lowercase. Active Bone, inactive Quiet. No underline.
 
 ### `search-field`
 Height 40, Surface fill, Rule ring, focus ring Live-ink.
@@ -294,7 +293,7 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 
 ## Page recipes
 
-**Scores** — masthead (constructed mark + `footballscore`) → mark picker (until a mark is approved) → date strip → flush groups. No ticker. No jumbotron.
+**Scores** — masthead (constructed mark + `footballscore` on a copper hinge) → date board (split-flap day) → flush groups. No ticker. No jumbotron.
 
 **Match** — sticky-scoreboard → last key event → timeline → Lineup / Numbers / Table / Series segment.
 
@@ -307,13 +306,13 @@ Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No
 ### Do
 - Put the score on a reserved column at `{typography.score}`.
 - Use Paper + hairlines. Club color as a rail or 12% wash.
-- Keep Geist + tabular nums.
+- Keep IBM Plex Mono + tabular nums on the board.
 - Announce live minutes in text (`aria-label` + visible Caption).
 - Drop ESPN odds, video, Watch, xG you do not have.
 
 ### Don't
 - Don't use iOS grouped grey `#F2F2F7` or system green `#00A651` as identity.
-- Don't paint Scores as cream paper cards or a date-underline strip.
+- Don't paint Scores as cream paper cards or a date-underline strip or a hero weekday.
 - Don't circle-crop crests or add a soccer-ball mark.
 - Don't wrap the product in a fake phone bezel or HTML poster boards with fake clubs.
 - Don't ship a 72px jumbotron on Scores.

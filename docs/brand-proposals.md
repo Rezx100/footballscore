@@ -14,9 +14,9 @@ Compare in the running app:
 
 Drawings: [brand-boards/logo-drafts](./brand-boards/logo-drafts/).
 
-The header now sets `footballscore` in Syne ExtraBold. Reject it if it still reads as a stock face. Drawn lettering can follow a mark pick.
+The header now sets `footballscore` in IBM Plex Sans Medium with a 2px copper hinge — the same hinge as the split-flap mark. The day is a split-flap (`02` / `SEP`), not a hero weekday and not Yesterday/Today/Tomorrow. Reject the type if it still reads as a stock face. Drawn lettering can follow a mark pick.
 
-v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-gap.md](./brand-gap.md).
+v1 lime / cobalt / ember, Geist splits, and Syne ExtraBold stay rejected. Gap analysis: [brand-gap.md](./brand-gap.md).
 
 ---
 
@@ -47,4 +47,4 @@ Reply `Approve mark 1` / `2` / `3`, or `Reject. Try: …`
 
 ## Wordmark (not yet)
 
-v1 Unit / weight-split / color-split remain retired. Lettering comes after the mark.
+v1 Unit / weight-split / color-split / Syne ExtraBold remain retired. Lettering comes after the mark.

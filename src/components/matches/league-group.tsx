@@ -12,9 +12,9 @@ export function LeagueGroupCard({
 }) {
   return (
     <section>
-      <header className="flex items-center gap-2 px-5 pt-7 pb-2">
+      <header className="flex items-center gap-2 px-5 pt-6 pb-2">
         <LeagueFlag group={group} />
-        <h2 className="text-[12px] text-[var(--muted)]">{group.name}</h2>
+        <h2 className="font-cond text-[12px] text-[var(--muted)]">{group.name}</h2>
       </header>
       <div className="divide-y divide-[var(--line)] border-t border-[var(--line)]">
         {group.matches.map((match) => (
