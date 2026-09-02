@@ -3,6 +3,7 @@
 :root {
   --bg: #141210;
   --surface: #1c1916;
+  --elev: #221f1b;
   --ink: #f3ede4;
   --muted: #8a8278;
   --line: #2c2824;
@@ -14,6 +15,7 @@
   --wash: #1c1916;
   --background: #141210;
   --foreground: #f3ede4;
+  --ease-board: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @theme inline {
@@ -60,6 +62,71 @@ a {
   border: 0;
 }
 
+/* Score cards — density of SiriusXM tiles, stack of MLS mini, our Medal micro-details */
+.score-card {
+  background: var(--elev);
+  border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+.score-card:hover {
+  border-color: color-mix(in srgb, var(--ink) 14%, var(--line));
+  background: color-mix(in srgb, var(--elev) 88%, var(--ink));
+}
+
+.score-card--selected {
+  border-color: color-mix(in srgb, var(--copper) 55%, var(--line));
+  background: color-mix(in srgb, var(--elev) 90%, var(--copper));
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--copper) 18%, transparent);
+}
+
+.score-card__wash {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    color-mix(in srgb, var(--home-tint) 11%, transparent) 0%,
+    transparent 42%,
+    color-mix(in srgb, var(--away-tint) 9%, transparent) 100%
+  );
+  opacity: 0.9;
+}
+
+.score-card__rail {
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to bottom,
+    var(--home-tint) 0%,
+    var(--home-tint) 48%,
+    var(--away-tint) 52%,
+    var(--away-tint) 100%
+  );
+  opacity: 0.55;
+}
+
+.score-card--live .score-card__rail {
+  background: var(--copper);
+  opacity: 0.95;
+}
+
+.score-card--live {
+  border-color: color-mix(in srgb, var(--copper) 28%, var(--line));
+}
+
+.score-digit {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .live-clock {
     animation: live-tick 1.2s ease-in-out infinite;
@@ -69,8 +136,12 @@ a {
     animation: live-dot-pulse 1.2s ease-in-out infinite;
   }
 
-  .match-row--live {
-    animation: live-row-glow 2.4s ease-in-out infinite;
+  .score-card--live {
+    animation: live-card-pulse 2.8s var(--ease-board) infinite;
+  }
+
+  .score-card:active {
+    transform: scale(0.985);
   }
 }
 
@@ -92,12 +163,16 @@ a {
   }
 }
 
-@keyframes live-row-glow {
+@keyframes live-card-pulse {
   0%,
   100% {
-    box-shadow: inset 0 0 0 0 transparent;
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent),
+      inset 0 0 0 0 transparent;
   }
   50% {
-    box-shadow: inset 0 0 24px 0 color-mix(in srgb, var(--copper) 6%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent),
+      inset 0 0 28px 0 color-mix(in srgb, var(--copper) 7%, transparent);
   }
 }

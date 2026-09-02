@@ -1,7 +1,8 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Crest } from "@/components/matches/crest";
 import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
-import type { Match } from "@/lib/types";
+import type { Match, Team } from "@/lib/types";
 
 function statusCopy(match: Match): string {
   if (match.status === "live") return match.minute ?? "LIVE";
@@ -12,68 +13,50 @@ function statusCopy(match: Match): string {
   return match.kickoff;
 }
 
-function StatusCell({ match }: { match: Match }) {
-  const live = match.status === "live" || match.status === "ht";
-  const copy = statusCopy(match);
-
-  if (live) {
-    return (
-      <span className="col-start-1 row-span-2 row-start-1 flex items-center gap-1.5 self-center">
-        <span
-          className="live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--copper)]"
-          aria-hidden="true"
-        />
-        <span className="live-clock font-board text-[11px] tracking-[0.04em] text-[var(--copper)]">
-          {copy}
-        </span>
-      </span>
-    );
-  }
-
-  return (
-    <span className="col-start-1 row-span-2 row-start-1 self-center font-board text-[11px] tracking-[0.02em] text-[var(--muted)]">
-      {copy}
-    </span>
-  );
+function metaRight(match: Match): string | null {
+  if (match.status === "live") return "LIVE";
+  if (match.status === "ht") return "HALF";
+  return null;
 }
 
-function TeamLine({
+function TeamRow({
   team,
   score,
   showScore,
   fade,
   win,
 }: {
-  team: Match["home"];
+  team: Team;
   score: number | null | undefined;
   showScore: boolean;
   fade: boolean;
   win: boolean;
 }) {
   return (
-    <>
-      <span className={`flex items-center justify-center ${fade ? "opacity-35" : ""}`}>
-        <Crest team={team} size={22} />
+    <div className="grid grid-cols-[24px_minmax(0,1fr)_auto] items-center gap-x-2.5">
+      <span className={`flex items-center justify-center ${fade ? "opacity-40" : ""}`}>
+        <Crest team={team} size={24} />
       </span>
+      <div className="min-w-0">
+        <p
+          className={`font-cond truncate text-[15px] leading-tight tracking-[-0.01em] ${
+            fade ? "text-[var(--muted)]" : "text-[var(--ink)]"
+          }`}
+        >
+          {team.name}
+        </p>
+        <p className="font-board mt-0.5 text-[10px] tracking-[0.08em] text-[var(--muted)]">
+          {team.short}
+        </p>
+      </div>
       <span
-        className={`font-cond min-w-0 truncate text-[15px] tracking-[-0.01em] ${
+        className={`score-digit min-w-[1.25rem] text-right font-board text-[22px] leading-none ${
           fade ? "text-[var(--muted)]" : "text-[var(--ink)]"
-        }`}
-      >
-        {team.name}
-      </span>
-      <span
-        className={`text-right font-board text-[20px] leading-none tabular-nums ${
-          fade
-            ? "text-[var(--muted)]"
-            : win
-              ? "text-[var(--ink)]"
-              : "text-[var(--ink)]"
         } ${win ? "font-medium" : ""}`}
       >
         {showScore ? (score ?? "–") : ""}
       </span>
-    </>
+    </div>
   );
 }
 
@@ -107,39 +90,68 @@ export function MatchRow({
   const awayWin = decided && match.awayScore! > match.homeScore!;
   const showScore = match.status === "live" || match.status === "ht" || match.status === "ft";
   const live = match.status === "live" || match.status === "ht";
+  const copy = statusCopy(match);
+  const right = metaRight(match);
 
   return (
     <Link
       href={matchesHref({ ...query, match: match.id, tab: "matches" })}
       aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
-      className={`match-row relative grid min-h-[4rem] grid-cols-[2.75rem_22px_minmax(0,1fr)_1.75rem] items-center gap-x-3 gap-y-1.5 px-4 py-3 transition-[background-color,box-shadow] duration-160 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
-        selected
-          ? "bg-[color-mix(in_srgb,var(--ink)_6%,transparent)]"
-          : "hover:bg-[color-mix(in_srgb,var(--ink)_3.5%,transparent)]"
-      } ${live ? "match-row--live" : ""}`}
+      className={`score-card group relative block overflow-hidden rounded-[12px] transition-[transform,background-color,border-color] duration-160 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+        selected ? "score-card--selected" : ""
+      } ${live ? "score-card--live" : ""}`}
+      style={
+        {
+          "--home-tint": match.home.color || "#8a8278",
+          "--away-tint": match.away.color || "#8a8278",
+        } as CSSProperties
+      }
     >
-      {live ? (
-        <span
-          className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-[var(--copper)]"
-          aria-hidden="true"
-        />
-      ) : null}
-      <StatusCell match={match} />
-      <TeamLine
-        team={match.home}
-        score={match.homeScore}
-        showScore={showScore}
-        fade={homeFade}
-        win={homeWin}
-      />
-      <TeamLine
-        team={match.away}
-        score={match.awayScore}
-        showScore={showScore}
-        fade={awayFade}
-        win={awayWin}
-      />
+      <span className="score-card__wash" aria-hidden="true" />
+      <span className="score-card__rail" aria-hidden="true" />
+
+      <div className="relative z-[1] px-3.5 py-3">
+        <div className="mb-2.5 flex items-center justify-between gap-3">
+          <span className="flex min-w-0 items-center gap-1.5">
+            {live ? (
+              <span
+                className="live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--copper)]"
+                aria-hidden="true"
+              />
+            ) : null}
+            <span
+              className={`font-board text-[11px] tracking-[0.06em] ${
+                live ? "live-clock text-[var(--copper)]" : "text-[var(--muted)]"
+              }`}
+            >
+              {copy}
+            </span>
+          </span>
+          {right ? (
+            <span className="font-board shrink-0 text-[10px] tracking-[0.12em] text-[var(--copper)]">
+              {right}
+            </span>
+          ) : null}
+        </div>
+
+        <div className="flex flex-col gap-2.5">
+          <TeamRow
+            team={match.home}
+            score={match.homeScore}
+            showScore={showScore}
+            fade={homeFade}
+            win={homeWin}
+          />
+          <TeamRow
+            team={match.away}
+            score={match.awayScore}
+            showScore={showScore}
+            fade={awayFade}
+            win={awayWin}
+          />
+        </div>
+      </div>
     </Link>
   );
 }

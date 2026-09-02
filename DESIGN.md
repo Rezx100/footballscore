@@ -15,6 +15,7 @@ colors:
   copper: "#C17A3A"
   paper: "#F3EDE4"
   surface: "#1C1916"
+  elev: "#221F1B"
   ink: "#F3EDE4"
   quiet: "#8A8278"
   rule: "#2C2824"
@@ -60,9 +61,9 @@ typography:
     letterSpacing: -0.16px
   score:
     fontFamily: IBM Plex Mono, ui-monospace, monospace
-    fontSize: 20px
+    fontSize: 22px
     fontWeight: 500
-    lineHeight: 20px
+    lineHeight: 22px
     fontVariantNumeric: tabular-nums
   score-lg:
     fontFamily: IBM Plex Mono, ui-monospace, monospace
@@ -99,17 +100,19 @@ components:
     typography: "{typography.caption}"
     padding: "{spacing.sm} {spacing.lg}"
   league-group:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.field}"
     borderColor: "{colors.rule}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.none}"
   match-row:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.elev}"
     textColor: "{colors.ink}"
     typography: "{typography.ui}"
-    padding: "{spacing.md} {spacing.lg}"
-    minHeight: 64px
+    padding: "{spacing.md} {spacing.md}"
+    minHeight: 104px
+    rounded: 12px
   match-row-selected:
     backgroundColor: "{colors.wash}"
+    borderColor: "{colors.copper}"
   score-axis:
     typography: "{typography.score}"
     textColor: "{colors.ink}"
@@ -152,8 +155,8 @@ This file is the agent-facing design system in the [getdesign.md](https://getdes
 **Key characteristics**
 - Page is `{colors.field}` (`#141210`). Bone is type and reverse.
 - The day is a split-flap (`02` copper / `SEP` bone) with neighbor weekdays as idle flaps. Not a Yesterday/Today/Tomorrow strip and not a hero weekday.
-- List score `{typography.score}` 20px IBM Plex Mono, stacked on the home and away lines. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
-- Soft Surface league wells (`{rounded.sm}`), no drop shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
+- List score `{typography.score}` 22px IBM Plex Mono on discrete elevated tiles. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
+- Score tiles use `--elev` wells with club-tint wash + dual rail micro-details. No drop shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
 - Copper is the live flap, the date flap, the mark, and the name hinge. Not a pill. Not a tab accent.
 - Five destinations stay until those screens exist: matches · news · leagues · following · more.
 - Home over away. Native crests, never circle-cropped, never invented rainbow shields.
@@ -258,17 +261,19 @@ Field. Constructed mark + `{typography.masthead}` in Bone on a 2px copper hinge.
 Split-flap for the selected day (`02` copper / `SEP` bone). Neighbor weekdays as idle flaps. Live count in copper mono. Not Yesterday / Today / Tomorrow.
 
 ### `league-group`
-Competition mark + caption. Soft Surface well, `{rounded.sm}`, hairline Rule. Rows flush inside the well — not FotMob white groups, not floating cream cards.
+League mark + name as a quiet section header (Apple Sports rhythm). Match tiles below in a dense 1→2 column grid. Not a single FotMob white group box.
 
-### `match-row` (signature — Stack)
+### `match-row` / score card (signature — Stack tile)
 ```
-[67′]  [crest] Home name          2
-       [crest] Away name          1
+[● 67′]                    LIVE
+[crest] Home name    ARS   2
+[crest] Away name    CHE   1
 ```
-- Home over away, `{typography.ui}`, truncate. Loser on FT at quiet opacity; winner score stays Ink.
-- Score column 20px IBM Plex Mono tabular, reserved width — heavier than the name beside it.
-- In play: copper Caption minute / HT with a 6px live dot and a 2px copper left rail. Quiet mono for kick-off / FT / PP / AB. Not a pill, not a split-flap on the row (flaps stay on the date board).
-- Soft hover wash; selected = stronger wash. **No TV icon column. No 72px featured score on this page.**
+- Discrete elevated tile (`--elev`) with 12px radius, hairline Rule, inset highlight — SiriusXM density, MLS mini stack.
+- Meta row: mono status left, quiet label right. Live = copper Caption + pulse dot + copper rail.
+- Home over away; crest 24px; Condensed name + mono short; 22px tabular score.
+- Micro-distinction: dual club-tint rail + soft diagonal club wash (12% max). Selected = copper ring. Loser fades on FT.
+- **No TV column. No 72px jumbotron. No Apple green. No glass CTA on Scores.**
 
 ### `tab-bar`
 Five items until those screens exist. IBM Plex Mono lowercase. Active Bone, inactive Quiet. No underline.
