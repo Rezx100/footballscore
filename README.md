@@ -1,20 +1,21 @@
 # footballscore
 
-Live football scores for **app** and **website**.
+Live football scores for **app** and **website** — one product, association football only.
 
-- App UI follows **FotMob iOS**.
-- Website chrome follows **X Sports** + **Perplexity Sports**.
-- Football data and modules stay aligned across both surfaces.
+**Brand (foundation):** [docs/brand.md](docs/brand.md)  
+**Approve wordmark + color:** [docs/brand-proposals.md](docs/brand-proposals.md) · [board](docs/brand-board.html)  
+**How we get to a full brand book:** [docs/brand-plan.md](docs/brand-plan.md)  
+**Product system (scaffolding):** [docs/design.md](docs/design.md)  
+**Build prompt:** [docs/redesign-and-espn-prompt.md](docs/redesign-and-espn-prompt.md)
 
-**Spec:** [docs/ui-spec.md](docs/ui-spec.md) (FotMob-era screen map).  
-**Next build prompt (redesign + full ESPN):** [docs/redesign-and-espn-prompt.md](docs/redesign-and-espn-prompt.md)
+Wordmark construction and color palette are **not locked**. Do not treat CSS tokens as identity until a pair is approved.
 
 ## Implemented so far
 
-**A1 Matches** (FotMob home) at `/matches`, fed by ESPN’s unofficial soccer API (`sport=soccer`).
+**Scores** at `/matches`, fed by ESPN’s unofficial soccer API (`sport=soccer`).
 
 - **Matches list:** that day’s games from the soccer header, merged with 28 first-class leagues (Big 5, UEFA clubs, FIFA, MLS, and other widely followed competitions). Extra cups and lower divisions still appear when they have fixtures.
-- **Times and grouping:** America/New_York, matching ESPN’s US feed.
+- **Times and grouping:** America/New_York, matching ESPN’s US feed (viewer timezone is planned).
 - Scores refresh about every 30 seconds.
 
 ```bash

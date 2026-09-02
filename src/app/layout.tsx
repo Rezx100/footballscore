@@ -9,7 +9,7 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: "footballscore — Matches",
-  description: "Live football scores. Matches home, after FotMob.",
+  description: "Live football scores. Association football only.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

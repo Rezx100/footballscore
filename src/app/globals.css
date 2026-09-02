@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Scaffolding only. Official palette is not approved — see docs/brand-proposals.md */
 :root {
   --bg: #f2f2f7;
   --surface: #ffffff;

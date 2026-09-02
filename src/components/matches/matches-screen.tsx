@@ -42,9 +42,7 @@ export function MatchesScreen({
     <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
       <header className="bg-[var(--surface)]">
         <div className="flex items-center justify-between px-4 pt-3 pb-1">
-          <p className="text-[22px] font-bold tracking-tight">
-            football<span className="text-[var(--accent)]">score</span>
-          </p>
+          <p className="text-[22px] font-bold tracking-tight">footballscore</p>
           <div className="flex items-center gap-1">
             <Link
               href={matchesHref({ ...query, day: "yesterday", tab: "matches" })}
@@ -110,7 +108,7 @@ export function MatchesScreen({
               {query.tab[0].toUpperCase() + query.tab.slice(1)}
             </p>
             <p className="mt-2 text-[14px] text-[var(--muted)]">
-              This tab is next. Matches is the section implemented from the spec.
+              This tab is next. Scores is live.
             </p>
             <Link
               href={matchesHref({ ...query, tab: "matches" })}
@@ -133,7 +131,7 @@ export function MatchesScreen({
             <p className="mt-2 text-[14px] text-[var(--muted)]">
               {query.q.trim()
                 ? `Nothing matched “${query.q.trim()}”.`
-                : `${dayLabel(query.day)} has no soccer fixtures in ESPN’s feed.`}
+                : `${dayLabel(query.day)} has no football fixtures in the feed.`}
             </p>
             <Link
               href={

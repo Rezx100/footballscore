@@ -52,7 +52,7 @@ export async function getMatchesForDay(day: DayKey): Promise<MatchesLoad> {
   if (loaded === 0) {
     return {
       groups: [],
-      error: "Couldn’t load soccer scores from ESPN. Try again in a moment.",
+      error: "Couldn’t load football scores. Try again in a moment.",
     };
   }
 
