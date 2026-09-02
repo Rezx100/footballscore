@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>footballscore — mark in product (draft)</title>
+<style>
+@font-face {
+  font-family: Geist;
+  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+:root {
+  --carbon: #141210;
+  --bone: #f3ede4;
+  --surface: #fff8f0;
+  --ink: #1a1612;
+  --quiet: #5c5650;
+  --rule: #e0d8cc;
+  --copper: #c17a3a;
+  --live-ink: #7a4a1c;
+  --chip: #ebe4da;
+  --wash: #e8d3b8;
+  --paper: #f3ede4;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--carbon); color: var(--bone); font-family: Geist, ui-sans-serif, system-ui, sans-serif; }
+.studio { padding: 40px 36px 72px; max-width: 1640px; margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); }
+h1 { margin: 8px 0 6px; font-size: 32px; line-height: 1.1; font-weight: 650; letter-spacing: -0.03em; color: var(--bone); }
+.lede { margin: 0 0 36px; max-width: 720px; font-size: 15px; line-height: 1.45; color: color-mix(in srgb, var(--bone) 72%, transparent); }
+.lede strong { color: var(--bone); font-weight: 600; }
+
+.block { margin-top: 48px; }
+.block h2 { margin: 0 0 4px; font-size: 22px; font-weight: 650; letter-spacing: -0.03em; }
+.block .idea { margin: 0 0 18px; font-size: 14px; color: color-mix(in srgb, var(--bone) 62%, transparent); }
+
+.frames { display: grid; grid-template-columns: 390px 1fr; gap: 28px; align-items: start; }
+.caption { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--bone) 45%, transparent); margin: 0 0 10px; }
+
+.phone-frame { width: 390px; background: var(--paper); color: var(--ink); border-radius: 8px; overflow: hidden; }
+.desktop-frame { background: var(--paper); color: var(--ink); border-radius: 8px; overflow: hidden; min-height: 640px; }
+
+.app { display: flex; flex-direction: column; min-height: 720px; background: var(--paper); color: var(--ink); }
+.phone-frame .app { min-height: 760px; height: 760px; }
+
+.masthead { background: var(--surface); }
+.masthead-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 8px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.wordmark { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 28px; }
+.tools { display: flex; gap: 2px; color: var(--ink); }
+.tools span { width: 32px; height: 32px; display: grid; place-items: center; }
+
+.dates { display: flex; gap: 20px; padding: 4px 16px 0; overflow: hidden; background: var(--surface); }
+.dates span { padding-bottom: 8px; font-size: 15px; font-weight: 500; color: var(--quiet); border-bottom: 3px solid transparent; }
+.dates .on { font-weight: 700; color: var(--ink); border-bottom-color: var(--ink); }
+
+.rail { display: flex; gap: 16px; padding: 8px 16px; background: var(--carbon); color: var(--copper); overflow: hidden; white-space: nowrap; }
+.rail b { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+.rail span { font-size: 12px; font-weight: 500; color: var(--bone); }
+
+.list { flex: 1; padding: 12px 16px 16px; }
+.group { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.group + .group { margin-top: 12px; }
+.ghead { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: 12px; font-weight: 500; color: var(--quiet); }
+.ghead i { width: 16px; height: 16px; border-radius: 2px; background: #3d5c52; display: block; }
+
+.row { display: flex; align-items: center; gap: 6px; padding: 12px; min-height: 56px; border-top: 1px solid var(--rule); }
+.row.sel { background: var(--wash); }
+.tn { flex: 1; min-width: 0; font-size: 15px; font-weight: 600; line-height: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tn.home { text-align: right; }
+.axis { width: 72px; flex: none; text-align: center; }
+.axis .st { display: block; font-size: 11px; font-weight: 600; line-height: 14px; color: var(--live-ink); }
+.axis .st.ft { display: inline-block; background: var(--chip); color: var(--quiet); border-radius: 999px; padding: 2px 6px; }
+.axis .sc { display: block; margin-top: 2px; font-size: 20px; font-weight: 700; line-height: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+.axis .ko { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--quiet); }
+.hide { margin: 12px 4px 0; font-size: 15px; font-weight: 600; color: var(--live-ink); }
+
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); background: var(--surface); padding: 6px 4px 12px; }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; font-weight: 500; color: var(--quiet); }
+.tab.on { color: var(--ink); font-weight: 600; }
+
+.desk-nav { display: flex; align-items: center; gap: 28px; padding: 14px 24px; background: var(--surface); border-bottom: 1px solid var(--rule); }
+.desk-nav .brand { gap: 10px; }
+.desk-nav .wordmark { font-size: 22px; }
+.desk-links { display: flex; gap: 22px; margin-left: 12px; font-size: 15px; font-weight: 500; color: var(--quiet); }
+.desk-links .on { color: var(--ink); font-weight: 600; }
+.desk-nav .tools { margin-left: auto; }
+.desk-body { display: grid; grid-template-columns: minmax(0, 720px) 260px; gap: 16px; justify-content: center; padding: 16px 24px 28px; }
+.side { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 12px; height: fit-content; }
+.side h3 { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--quiet); }
+.side p { margin: 0; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 13px; font-weight: 600; }
+.side p:first-of-type { border-top: 0; padding-top: 0; }
+.side em { font-style: normal; color: var(--live-ink); font-size: 11px; font-weight: 600; margin-right: 6px; }
+
+.scale { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+.swatch { background: var(--surface); color: var(--ink); border-radius: 8px; padding: 14px 14px 12px; }
+.swatch.rev { background: var(--carbon); color: var(--bone); }
+.swatch .lab { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.swatch.rev .lab { color: color-mix(in srgb, var(--bone) 50%, transparent); }
+.swatch .rowish { display: flex; align-items: center; gap: 10px; }
+.swatch .name { font-size: 13px; font-weight: 600; }
+.ico { border-radius: 22%; display: block; background: var(--bone); }
+
+.lockup { display: block; flex: none; overflow: hidden; position: relative; }
+.lockup img { position: absolute; max-width: none; display: block; }
+.ico img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* PNG is 1024² = Recraft 2048 viewBox / 2. Crop to mark bbox + pad. */
+.m-flap { --x: 360; --y: 198; --w: 304; --h: 630; }
+.m-slot { --x: 286; --y: 281; --w: 452; --h: 462; }
+.m-cols { --x: 327; --y: 240; --w: 370; --h: 544; }
+.lockup img {
+  width: calc(1024 / var(--w) * 100%);
+  height: auto;
+  aspect-ratio: 1;
+  left: calc(var(--x) / var(--w) * -100%);
+  top: calc(var(--y) / var(--h) * -100%);
+}
+.lockup.h24 { height: 24px; width: calc(24px * var(--w) / var(--h)); }
+.lockup.h28 { height: 28px; width: calc(28px * var(--w) / var(--h)); }
+.lockup.h16 { height: 16px; width: calc(16px * var(--w) / var(--h)); }
+
+.crest { width: 24px; height: 24px; flex: none; }
+.ico16 { width: 16px; height: 16px; }
+.ico24 { width: 24px; height: 24px; }
+.ico32 { width: 32px; height: 32px; }
+.ico60 { width: 60px; height: 60px; }
+.ico72 { width: 72px; height: 72px; }
+
+.note { margin: 40px 0 0; font-size: 12px; color: color-mix(in srgb, var(--bone) 45%, transparent); }
+
+@media (max-width: 1100px) {
+  .frames { grid-template-columns: 1fr; }
+  .studio { padding: 24px 16px 48px; }
+}
+</style>
+</head>
+<body>
+<div class="studio">
+  <div class="eyebrow">Application preview · drafts</div>
+  <h1>How each mark sits in footballscore</h1>
+  <p class="lede">Same Scores chrome, three marks. <strong>Medal</strong> surfaces. The name is still Geist — temporary, not the wordmark. Nothing here is live in the app, and no mark is locked.</p>
+  <div id="root"></div>
+  <p class="note">16px is the favicon. The rounded square is the home-screen icon. Reverse is splash / Field. Reply 1 / 2 / 3 to lock a mark, or say what to change.</p>
+</div>
+
+<script>
+const MARKS = [
+  {
+    id: "flap",
+    cls: "m-flap",
+    n: "1. Split-flap",
+    idea: "Header lockup is a tall tile beside the name. Favicon keeps the hinge.",
+    src: "../logo-drafts/medal-5-flap.png",
+  },
+  {
+    id: "slot",
+    cls: "m-slot",
+    n: "2. Pierced medal",
+    idea: "Almost circular in the header. The side notches stay readable at 16px.",
+    src: "../logo-drafts/medal-7-slot.png",
+  },
+  {
+    id: "cols",
+    cls: "m-cols",
+    n: "3. Match posts",
+    idea: "Two columns become home / away in the masthead. The center bite is the score.",
+    src: "../logo-drafts/medal-8-columns.png",
+  },
+];
+
+function lockup(mark, size) {
+  return `<span class="lockup ${mark.cls} h${size}" aria-hidden="true"><img src="${mark.src}" alt=""></span>`;
+}
+function ico(mark, px) {
+  return `<span class="ico ico${px}" aria-hidden="true"><img src="${mark.src}" alt=""></span>`;
+}
+function crest(fill, rail) {
+  return `<svg class="crest" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l7.2 3.2v6.2c0 4.4-3.2 8.4-7.2 10.4-4-2-7.2-6-7.2-10.4V5.4z" fill="${fill}"/><path d="M5 5.4v6.2c0 4.1 3 7.8 7 9.7" fill="none" stroke="${rail}" stroke-width="3"/></svg>`;
+}
+function iconSearch() {
+  return `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13.5 13.5 18 18"/></svg>`;
+}
+function iconCal() {
+  return `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="14" height="13" rx="2"/><path d="M3 9h14M8 3v4M16 3v4"/></svg>`;
+}
+function tabIcon(kind, on) {
+  const c = on ? "#1A1612" : "#5C5650";
+  if (kind === "scores") return `<svg width="24" height="24" fill="none" stroke="${c}" stroke-width="1.75"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16"/></svg>`;
+  if (kind === "explore") return `<svg width="24" height="24" fill="none" stroke="${c}" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>`;
+  if (kind === "follow") return `<svg width="24" height="24" fill="none" stroke="${c}" stroke-width="1.75"><path d="M12 4.5 14.6 9.8 20.5 10.6 16.2 14.7 17.2 20.5 12 17.8 6.8 20.5 7.8 14.7 3.5 10.6 9.4 9.8z"/></svg>`;
+  return `<svg width="24" height="24" fill="none" stroke="${c}" stroke-width="1.75"><path d="M5 7h14M5 12h14M5 17h10"/></svg>`;
+}
+
+function rows() {
+  return `
+    <div class="group">
+      <div class="ghead">${crest("#9C824A","#C17A3A")}<span>Premier League</span></div>
+      <div class="row sel">
+        <div class="tn home">Arsenal</div>
+        ${crest("#9B1B1B","#141210")}
+        <div class="axis"><span class="st">78'</span><span class="sc">2–1</span></div>
+        ${crest("#034694","#141210")}
+        <div class="tn">Chelsea</div>
+      </div>
+      <div class="row">
+        <div class="tn home">Liverpool</div>
+        ${crest("#C8102E","#141210")}
+        <div class="axis"><span class="ko">20:00</span></div>
+        ${crest("#6CABDD","#1A1612")}
+        <div class="tn">Man City</div>
+      </div>
+    </div>
+    <div class="group">
+      <div class="ghead">${crest("#A50044","#C17A3A")}<span>LaLiga</span></div>
+      <div class="row">
+        <div class="tn home">Barcelona</div>
+        ${crest("#A50044","#004D98")}
+        <div class="axis"><span class="st">HT</span><span class="sc">1–1</span></div>
+        ${crest("#FEBE10","#141210")}
+        <div class="tn">Real Madrid</div>
+      </div>
+    </div>
+    <p class="hide">Hide finished</p>`;
+}
+
+function phone(mark) {
+  return `
+  <div class="phone-frame" data-shot="${mark.id}-phone">
+    <div class="app">
+      <header class="masthead">
+        <div class="masthead-row">
+          <div class="brand">${lockup(mark, 24)}<span class="wordmark">footballscore</span></div>
+          <div class="tools"><span>${iconSearch()}</span><span>${iconCal()}</span></div>
+        </div>
+        <div class="dates"><span>Yesterday</span><span class="on">Today</span><span>Tomorrow</span><span>Fri</span><span>Sat</span></div>
+      </header>
+      <div class="rail"><b>LIVE</b><span>ARS 2–1 CHE · 78'</span><span>BAR 1–1 RMA · HT</span></div>
+      <div class="list">${rows()}</div>
+      <nav class="tabs">
+        <div class="tab on">${tabIcon("scores", true)}Scores</div>
+        <div class="tab">${tabIcon("explore")}Explore</div>
+        <div class="tab">${tabIcon("follow")}Following</div>
+        <div class="tab">${tabIcon("more")}More</div>
+      </nav>
+    </div>
+  </div>`;
+}
+
+function desktop(mark) {
+  return `
+  <div class="desktop-frame" data-shot="${mark.id}-desktop">
+    <div class="desk-nav">
+      <div class="brand">${lockup(mark, 28)}<span class="wordmark">footballscore</span></div>
+      <div class="desk-links"><span class="on">Scores</span><span>Explore</span><span>Following</span><span>More</span></div>
+      <div class="tools"><span>${iconSearch()}</span><span>${iconCal()}</span></div>
+    </div>
+    <div class="rail"><b>LIVE</b><span>ARS 2–1 CHE · 78'</span><span>BAR 1–1 RMA · HT</span></div>
+    <div class="desk-body">
+      <div>${rows()}</div>
+      <aside class="side">
+        <h3>Live</h3>
+        <p><em>78'</em> Arsenal 2–1 Chelsea</p>
+        <p><em>HT</em> Barcelona 1–1 Real Madrid</p>
+      </aside>
+    </div>
+  </div>`;
+}
+
+function scale(mark) {
+  return `
+  <div class="scale">
+    <div class="swatch">
+      <div class="lab">Favicon 16</div>
+      <div class="rowish">${lockup(mark, 16)}<span class="name">tab icon</span></div>
+    </div>
+    <div class="swatch">
+      <div class="lab">Header 24</div>
+      <div class="rowish">${lockup(mark, 24)}<span class="name">footballscore</span></div>
+    </div>
+    <div class="swatch">
+      <div class="lab">Home screen</div>
+      <div class="rowish">${ico(mark, 60)}<span class="name">footballscore</span></div>
+    </div>
+    <div class="swatch rev">
+      <div class="lab">Splash / Field</div>
+      <div class="rowish">${ico(mark, 72)}<span class="name">footballscore</span></div>
+    </div>
+  </div>`;
+}
+
+document.getElementById("root").innerHTML = MARKS.map((mark) => `
+  <section class="block" id="${mark.id}">
+    <h2>${mark.n}</h2>
+    <p class="idea">${mark.idea}</p>
+    <div class="frames">
+      <div>
+        <p class="caption">Phone · Scores</p>
+        ${phone(mark)}
+      </div>
+      <div>
+        <p class="caption">Desktop · Scores</p>
+        ${desktop(mark)}
+      </div>
+    </div>
+    ${scale(mark)}
+  </section>
+`).join("");
+</script>
+</body>
+</html>

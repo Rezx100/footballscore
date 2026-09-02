@@ -4,7 +4,7 @@
 
 The first board (Reeded FS, Kickoff coin, Score rail) is retired. These three are the pick set.
 
-Drafts: [brand-boards/logo-drafts](./brand-boards/logo-drafts/)
+Drafts: [brand-boards/logo-drafts](./brand-boards/logo-drafts/). In product: [brand-boards/applications](./brand-boards/applications/).
 
 Then a custom `footballscore` wordmark. CSS stays scaffolding until that lockup exists.
 
