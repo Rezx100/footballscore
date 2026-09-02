@@ -7,7 +7,7 @@ Copy everything below the line into a coding agent. Follow it in order: **identi
 You are implementing **footballscore**, a football-only (association football) scores product: one Next.js App Router app that is both the **phone app** (`<768px`) and the **website** (`≥768px`). Repo: `github.com/Rezx100/footballscore`.
 
 **Brand law**
-- Read `docs/brand.md` first. Follow `docs/brand-plan.md`.
+- Read `DESIGN.md` (repo root, getdesign.md format) and `docs/brand.md` first. Follow `docs/brand-plan.md`.
 - **Wordmark construction and color palette require human approval** in `docs/brand-proposals.md`. If they are not marked locked in `docs/brand.md`, do **not** invent and ship a new official palette or logo. Keep CSS scaffolding; do not “finalize” identity in code.
 - Do not name other scores products in docs, UI, or metadata. This product has its own visual language, IA, and interaction model, filled with **real ESPN soccer data**.
 

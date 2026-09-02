@@ -3,6 +3,7 @@
 Live football scores for **app** and **website** — one product, association football only.
 
 **Brand (foundation):** [docs/brand.md](docs/brand.md)  
+**Design system (getdesign.md format):** [DESIGN.md](DESIGN.md)  
 **Approve wordmark + color:** [docs/brand-proposals.md](docs/brand-proposals.md) · [board](docs/brand-board.html)  
 **How we get to a full brand book:** [docs/brand-plan.md](docs/brand-plan.md)  
 **Product system (proposed Pitch):** [docs/design.md](docs/design.md)  

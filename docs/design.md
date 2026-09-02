@@ -2,8 +2,9 @@
 
 Pitch is how footballscore screens are built. The marketing brand is **footballscore**; Pitch is the interface OS.
 
-**Status:** proposed from the scaffolding in this file plus the locked rules in [brand.md](./brand.md).  
-**Not in this proposal:** hex values and wordmark construction — still [your approval](./brand-proposals.md). Color is specified here as **roles**. After you pick a palette, roles map 1:1 to that ramp.
+**Agent-facing spec (getdesign.md / Stitch format):** [`/DESIGN.md`](../DESIGN.md) — synthesized from [getdesign.md](https://getdesign.md/) analyses (WIRED, Vercel, Mastercard, Nike) then rewritten for this product. Catalog copies live in [`docs/getdesign-refs/`](./getdesign-refs/).
+
+**Status:** proposed. Hex in `DESIGN.md` is Palette A as a working target only. Wordmark + palette letter still need [your approval](./brand-proposals.md).
 
 Reply `Approve Pitch` to lock the system below (except color/wordmark), or name the bits to change.
 
