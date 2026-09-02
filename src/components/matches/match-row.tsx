@@ -12,12 +12,12 @@ function statusCopy(match: Match): string {
   return match.kickoff;
 }
 
-function StatusCell({ match }: { match: Match }) {
+function TimeCell({ match }: { match: Match }) {
   const live = match.status === "live" || match.status === "ht";
   return (
     <span
-      className={`col-start-4 row-start-1 row-span-2 self-center text-right text-[11px] font-semibold tabular-nums ${
-        live ? "live-clock text-[var(--live)]" : "text-[var(--muted)]"
+      className={`col-start-1 row-start-1 row-span-2 self-center text-[12px] tabular-nums ${
+        live ? "live-clock font-medium text-[var(--live)]" : "text-[var(--muted)]"
       }`}
     >
       {statusCopy(match)}
@@ -58,42 +58,40 @@ export function MatchRow({
       href={matchesHref({ ...query, match: match.id, tab: "matches" })}
       aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
-      className={`grid min-h-16 grid-cols-[20px_minmax(0,1fr)_1.75rem_4.5rem] items-center gap-x-2.5 gap-y-1 border-l-2 px-4 py-2.5 ${
-        selected
-          ? "border-[var(--ink)] bg-[color-mix(in_srgb,var(--ink)_8%,transparent)]"
-          : "border-transparent hover:bg-[color-mix(in_srgb,var(--ink)_5%,transparent)]"
+      className={`grid min-h-[3.75rem] grid-cols-[3.1rem_18px_minmax(0,1fr)_1.5rem] items-center gap-x-2.5 gap-y-1 px-5 py-2.5 ${
+        selected ? "bg-[color-mix(in_srgb,var(--ink)_7%,transparent)]" : ""
       }`}
     >
+      <TimeCell match={match} />
       <span className={homeFade ? "opacity-40" : undefined}>
-        <Crest team={match.home} />
+        <Crest team={match.home} size={18} />
       </span>
       <span
-        className={`min-w-0 truncate text-[15px] font-medium ${
+        className={`min-w-0 truncate text-[14px] ${
           homeFade ? "text-[var(--muted)]" : "text-[var(--ink)]"
         }`}
       >
         {match.home.name}
       </span>
       <span
-        className={`text-right text-[20px] font-bold tabular-nums leading-none ${
+        className={`text-right text-[18px] font-medium tabular-nums leading-none tracking-[-0.03em] ${
           homeFade ? "text-[var(--muted)]" : "text-[var(--ink)]"
         }`}
       >
         {showScore ? (match.homeScore ?? "–") : ""}
       </span>
-      <StatusCell match={match} />
       <span className={awayFade ? "opacity-40" : undefined}>
-        <Crest team={match.away} />
+        <Crest team={match.away} size={18} />
       </span>
       <span
-        className={`min-w-0 truncate text-[15px] font-medium ${
+        className={`min-w-0 truncate text-[14px] ${
           awayFade ? "text-[var(--muted)]" : "text-[var(--ink)]"
         }`}
       >
         {match.away.name}
       </span>
       <span
-        className={`text-right text-[20px] font-bold tabular-nums leading-none ${
+        className={`text-right text-[18px] font-medium tabular-nums leading-none tracking-[-0.03em] ${
           awayFade ? "text-[var(--muted)]" : "text-[var(--ink)]"
         }`}
       >

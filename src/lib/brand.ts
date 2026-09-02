@@ -13,3 +13,7 @@ export const MARKS: readonly { id: MarkId; n: 1 | 2 | 3; name: string }[] = [
 export function parseMark(value: string | undefined): MarkId {
   return MARK_IDS.includes(value as MarkId) ? (value as MarkId) : DEFAULT_MARK;
 }
+
+export function nextMark(id: MarkId): MarkId {
+  return MARK_IDS[(MARK_IDS.indexOf(id) + 1) % MARK_IDS.length];
+}

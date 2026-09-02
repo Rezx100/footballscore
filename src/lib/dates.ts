@@ -66,12 +66,48 @@ export function calendarDayOf(iso: string, timeZone = ESPN_TZ): string {
 }
 
 export function formatKickoff(iso: string, timeZone = ESPN_TZ): string {
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat("en-GB", {
     timeZone,
-    hour: "numeric",
+    hour: "2-digit",
     minute: "2-digit",
+    hourCycle: "h23",
   }).format(new Date(iso));
 }
+
+export function editorialDate(day: DayKey, now = new Date()): {
+  weekday: string;
+  date: string;
+  relative: "Yesterday" | "Today" | "Tomorrow" | null;
+} {
+  const ymd = ymdForDay(day, now);
+  const utc = new Date(Date.UTC(ymd.y, ymd.m - 1, ymd.d));
+  const weekday = new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    timeZone: "UTC",
+  }).format(utc);
+  const date = new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(utc);
+  const relative =
+    day === "yesterday" ? "Yesterday" : day === "today" ? "Today" : day === "tomorrow" ? "Tomorrow" : null;
+  return { weekday, date, relative };
+}
+
+export const DAY_PREV: Record<DayKey, DayKey | null> = {
+  yesterday: null,
+  today: "yesterday",
+  tomorrow: "today",
+  next: "tomorrow",
+};
+
+export const DAY_NEXT: Record<DayKey, DayKey | null> = {
+  yesterday: "today",
+  today: "tomorrow",
+  tomorrow: "next",
+  next: null,
+};
 
 export type DateStripItem = {
   key: DayKey;

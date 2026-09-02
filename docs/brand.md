@@ -15,11 +15,11 @@ Quality bar for the finished book: the completeness and rigor of [Strava Brand G
 | Honest-data rules | **Locked** |
 | Color palette (brand + product + data) | **Approved — Medal** |
 | Custom mark | **Needs your approval** (split-flap / pierced medal / match posts — see application previews) |
-| Wordmark construction | After mark — custom lettering, not Geist split |
-| Type pairing beyond Geist scaffolding | After mark |
+| Wordmark construction | **Proposed in product** — Syne ExtraBold, one word, lowercase. Not locked. |
+| Type pairing | **Proposed** — Schibsted Grotesk for the fixture list |
 | Photography, icons, motion, applications | After marks + wordmark |
 
-CSS in `src/app/globals.css` is the Medal field so a mark can be judged on live scores. The wordmark is still Geist scaffolding. Hex below is the approved Medal book.
+CSS in `src/app/globals.css` is the Medal field. The name is Syne ExtraBold in the lockup; the list is Schibsted Grotesk. Neither type choice is locked. Hex below is the approved Medal book.
 
 ---
 

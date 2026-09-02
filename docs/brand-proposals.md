@@ -14,7 +14,7 @@ Compare in the running app:
 
 Drawings: [brand-boards/logo-drafts](./brand-boards/logo-drafts/).
 
-Then a custom `footballscore` wordmark. Geist in the header is still scaffolding.
+The header now sets `footballscore` in Syne ExtraBold. Reject it if it still reads as a stock face. Drawn lettering can follow a mark pick.
 
 v1 lime / cobalt / ember and Geist splits stay rejected. Gap analysis: [brand-gap.md](./brand-gap.md).
 

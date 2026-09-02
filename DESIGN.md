@@ -5,7 +5,8 @@ name: footballscore
 description: >
   Association-football scores product. Carbon field, bone type, copper live minute.
   Dense fixture list with real ESPN crests. Not a cream programme and not a 72px poster.
-  Geist is scaffolding. Hex is the approved Medal palette. Mark and wordmark are not locked.
+  Syne ExtraBold names the product. Schibsted Grotesk sets the fixture list.
+  Hex is the approved Medal palette. Mark is not locked.
   Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
 source: https://getdesign.md/
 colors:
@@ -26,46 +27,46 @@ colors:
   patina: "#3D5C52"
 typography:
   caption:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 11px
     fontWeight: 600
     lineHeight: 14px
     letterSpacing: 0
   meta:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 12px
     fontWeight: 500
     lineHeight: 16px
   body:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 15px
     fontWeight: 400
     lineHeight: 22px
   ui:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 15px
     fontWeight: 600
     lineHeight: 20px
   title:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 17px
     fontWeight: 650
     lineHeight: 24px
   masthead:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Syne ExtraBold, ui-sans-serif, system-ui, sans-serif
     fontSize: 18px
-    fontWeight: 650
-    lineHeight: 24px
-    letterSpacing: -0.8px
+    fontWeight: 800
+    lineHeight: 18px
+    letterSpacing: -0.97px
   score:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 20px
     fontWeight: 700
     lineHeight: 20px
     fontVariantNumeric: tabular-nums
     letterSpacing: -0.4px
   score-lg:
-    fontFamily: Geist, ui-sans-serif, system-ui, sans-serif
+    fontFamily: Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif
     fontSize: 32px
     fontWeight: 700
     lineHeight: 36px
@@ -148,7 +149,7 @@ footballscore is a football-only scores product (association football). The prod
 
 This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
 
-**Identity gate:** Medal palette is approved. Mark still needs a pick in `docs/brand-proposals.md` — compare constructed SVGs on `/matches`. Wordmark is still Geist scaffolding. YAML hex is Medal and is live in `src/app/globals.css` so a mark can be judged in product.
+**Identity gate:** Medal palette is approved. Mark still needs a pick — tap the lockup on `/matches` to cycle split-flap, pierced medal, and match posts. The name is Syne ExtraBold, not Geist. Not locked until you say so.
 
 **Key characteristics**
 - Page is `{colors.field}` (`#141210`). Bone is type and reverse.
@@ -188,7 +189,7 @@ Hex is Medal, approved. Roles stay even if a later mark export tightens Copper.
 ## Typography
 
 ### Font family
-**Geist Sans** only in product (already loaded in `src/app/layout.tsx`). Tabular numerals on every score and clock. CJK/Arabic: Noto Sans at the same sizes.
+**Schibsted Grotesk** for UI. **Syne ExtraBold** only for `footballscore`. Tabular numerals on every score and clock. CJK/Arabic: Noto Sans at the same sizes.
 
 No second display serif until color is locked. Do not load WiredDisplay, MarkForMC, or Nike Futura.
 
@@ -201,7 +202,7 @@ No second display serif until color is locked. Do not load WiredDisplay, MarkFor
 | `{typography.body}` | 15 | 400 | 22 | Commentary, empty copy |
 | `{typography.ui}` | 15 | 600 | 20 | Team names, text buttons |
 | `{typography.title}` | 17 | 650 | 24 | Empty titles, section headers |
-| `{typography.masthead}` | 18 | 650 | 24 | `footballscore` header (Geist until wordmark) |
+| `{typography.masthead}` | 18 | 800 | 18 | `footballscore` in Syne ExtraBold |
 | `{typography.score}` | 20 | 700 tabular | 20 | List row score, one digit per side |
 | `{typography.score-lg}` | 32 | 700 tabular | 36 | Match page only |
 
