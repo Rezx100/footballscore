@@ -1,0 +1,349 @@
+---
+version: alpha
+status: proposed
+name: footballscore
+description: >
+  Association-football scores product. Carbon field, bone type, copper live minute.
+  Dense fixture list with real ESPN crests. Not a cream programme and not a 72px poster.
+  IBM Plex Sans Condensed names the product (semibold split weight, no underline). Condensed sets clubs. Mono is the board.
+  Hex is the approved Medal palette. Mark and type are not locked.
+  Format follows getdesign.md / Google Stitch DESIGN.md. See docs/getdesign-refs/.
+source: https://getdesign.md/
+colors:
+  field: "#0B0B0D"
+  on-field: "#F5F5F7"
+  copper: "#C17A3A"
+  paper: "#F5F5F7"
+  surface: "#141416"
+  elev: "#1C1C1F"
+  ink: "#F5F5F7"
+  quiet: "#8E8E93"
+  rule: "#2C2C2E"
+  live-ink: "#E08A42"
+  cardinal: "#FF453A"
+  caution: "#C4A574"
+  wash: "#141416"
+  chip: "#2C2C2E"
+  on-primary: "#F5F5F7"
+  patina: "#3D5C52"
+  plate: "#ECECEF"
+typography:
+  caption:
+    fontFamily: IBM Plex Mono, ui-monospace, monospace
+    fontSize: 11px
+    fontWeight: 500
+    lineHeight: 14px
+    letterSpacing: 0
+  meta:
+    fontFamily: IBM Plex Sans Condensed, ui-sans-serif, system-ui, sans-serif
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 16px
+  body:
+    fontFamily: IBM Plex Sans, ui-sans-serif, system-ui, sans-serif
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 22px
+  ui:
+    fontFamily: IBM Plex Sans Condensed, ui-sans-serif, system-ui, sans-serif
+    fontSize: 15px
+    fontWeight: 500
+    lineHeight: 20px
+  title:
+    fontFamily: IBM Plex Sans Condensed, ui-sans-serif, system-ui, sans-serif
+    fontSize: 20px
+    fontWeight: 500
+    lineHeight: 24px
+  masthead:
+    fontFamily: IBM Plex Sans, ui-sans-serif, system-ui, sans-serif
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 16px
+    letterSpacing: -0.16px
+  score:
+    fontFamily: IBM Plex Mono, ui-monospace, monospace
+    fontSize: 22px
+    fontWeight: 500
+    lineHeight: 22px
+    fontVariantNumeric: tabular-nums
+  score-lg:
+    fontFamily: IBM Plex Mono, ui-monospace, monospace
+    fontSize: 32px
+    fontWeight: 500
+    lineHeight: 36px
+    fontVariantNumeric: tabular-nums
+rounded:
+  none: 0px
+  sm: 8px
+  pill: 9999px
+spacing:
+  xxs: 2px
+  xs: 4px
+  sm: 8px
+  md: 12px
+  lg: 16px
+  xl: 24px
+  2xl: 32px
+  3xl: 48px
+components:
+  masthead-bar:
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.ink}"
+    typography: "{typography.masthead}"
+    padding: "{spacing.lg} {spacing.lg}"
+  date-board:
+    textColor: "{colors.ink}"
+    typography: "{typography.caption}"
+    activeBorder: "none"
+  live-rail:
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.copper}"
+    typography: "{typography.caption}"
+    padding: "{spacing.sm} {spacing.lg}"
+  league-group:
+    backgroundColor: "{colors.field}"
+    borderColor: "{colors.rule}"
+    rounded: "{rounded.none}"
+  match-row:
+    backgroundColor: "{colors.elev}"
+    textColor: "{colors.ink}"
+    typography: "{typography.ui}"
+    padding: "{spacing.md} {spacing.md}"
+    minHeight: 104px
+    rounded: 12px
+  match-row-selected:
+    backgroundColor: "{colors.wash}"
+    borderColor: "{colors.copper}"
+  score-axis:
+    typography: "{typography.score}"
+    textColor: "{colors.ink}"
+    width: 88px
+  live-minute:
+    typography: "{typography.caption}"
+    textColor: "{colors.copper}"
+  status-chip:
+    backgroundColor: "transparent"
+    textColor: "{colors.quiet}"
+    rounded: "{rounded.none}"
+    typography: "{typography.caption}"
+  tab-bar:
+    backgroundColor: "{colors.field}"
+    borderColor: "{colors.rule}"
+    padding: "{spacing.xs} {spacing.xs}"
+  search-field:
+    backgroundColor: "{colors.paper}"
+    borderColor: "{colors.rule}"
+    rounded: "{rounded.sm}"
+    typography: "{typography.body}"
+    height: 40px
+  button-text:
+    textColor: "{colors.live-ink}"
+    typography: "{typography.ui}"
+  empty-state:
+    textColor: "{colors.ink}"
+    typography: "{typography.title}"
+    padding: "{spacing.3xl} {spacing.xl}"
+---
+
+## Overview
+
+footballscore is a football-only scores product (association football). The product surface is a **cool near-black field** (`#0B0B0D`) so league color and crests read cleanly. Copper is live accent only — not a brown wash over the UI. IBM Plex Condensed names clubs; Mono is the board.
+
+This file is the agent-facing design system in the [getdesign.md](https://getdesign.md/) / Google Stitch `DESIGN.md` format.
+
+**Identity gate:** Cool near-black field + league atmospheric palettes are live. Mark still needs a pick — tap the lockup on `/matches` to cycle marks. Wordmark is Condensed split weight (`football` + muted `score`), no copper underscore.
+
+**Key characteristics**
+- Page is `{colors.field}` (`#0B0B0D`). League color washes sit on black so logos stay sharp.
+- The day is a split-flap (`02` copper / `SEP` bone) with neighbor weekdays as idle flaps. Not a Yesterday/Today/Tomorrow strip and not a hero weekday.
+- List score `{typography.score}` 22px IBM Plex Mono on discrete elevated tiles. `{typography.score-lg}` is match-page only (32px), never a Scores jumbotron.
+- Score tiles use `--elev` wells with club-tint wash + dual rail micro-details. No drop shadows, no date-strip underlines, no LIVE ticker, no fake phone bezel, no Recraft marks, no invented fixtures.
+- Copper is the live flap, the date flap, the mark, and the name hinge. Not a pill. Not a tab accent.
+- Five destinations stay until those screens exist: matches · news · leagues · following · more.
+- Home over away. Native crests, never circle-cropped, never invented rainbow shields.
+
+## Colors
+
+Hex is Medal, approved. Roles stay even if a later mark export tightens Copper.
+
+### Brand & accent
+- **Field** (`{colors.field}` — `#141210`): the product page. Marketing studio is the same ground.
+- **Copper** (`{colors.copper}` — `#C17A3A`): live minute, mark, reverse on Field. Not a fill for cards or tabs.
+- **Live ink** (`{colors.live-ink}` — `#C17A3A`): live minute on Field (Copper meets contrast on Carbon).
+- **Patina** (`{colors.patina}` — `#3D5C52`): support structure, never a pitch fill.
+
+### Surface
+- **Paper** (`{colors.paper}` — `#F3EDE4`): reverse, splash, marketing. Not the Scores page.
+- **Surface** (`{colors.surface}` — `#1C1916`): raised row / featured well on Field.
+- **Rule** (`{colors.rule}` — `#2C2824`): 1px fascia lines.
+- **Wash** (`{colors.wash}` — `#1C1916`): selected row.
+- **Chip** (`{colors.chip}` — `#2C2824`): FT / PP / AB — letters, not candy pills.
+
+### Text
+- **Ink** (`{colors.ink}` — `#F3EDE4`): body, scores, masthead on Field.
+- **Quiet** (`{colors.quiet}` — `#8A8278`): meta, inactive, kick-off.
+
+### Semantic
+- **Cardinal** (`{colors.cardinal}` — `#9B1B1B`): red card, error, unfollow. Never live.
+- **Caution** (`{colors.caution}` — `#C4A574`): yellow card only.
+- Club hex from ESPN: 12% wash or **3px rail**. Never full-bleed page skin.
+- W / D / L: letters plus quiet fills — never color alone.
+
+## Typography
+
+### Font family
+**IBM Plex Sans** for the name and body. **IBM Plex Sans Condensed** for club names. **IBM Plex Mono** for the date flap, live minute, kick-off, scores, and tabs. Tabular numerals on every score and clock. CJK/Arabic: Noto Sans at the same sizes.
+
+No second display serif. Do not load Syne, Schibsted Grotesk, Geist, WiredDisplay, MarkForMC, or Nike Futura.
+
+### Hierarchy
+
+| Token | Size | Weight | Line | Use |
+| --- | --- | --- | --- | --- |
+| `{typography.caption}` | 11 | 500 | 14 | LIVE / HT / FT; board labels |
+| `{typography.meta}` | 12 | 400 | 16 | League name, byline |
+| `{typography.body}` | 15 | 400 | 22 | Commentary, empty copy |
+| `{typography.ui}` | 15 | 500 | 20 | Team names (condensed) |
+| `{typography.title}` | 20 | 500 | 24 | Empty titles |
+| `{typography.masthead}` | 17 | 600 | 17 | Condensed split wordmark — no underscore |
+| `{typography.score}` | 18 | 500 tabular | 18 | List row score, one digit per side |
+| `{typography.score-lg}` | 32 | 500 tabular | 36 | Match page only |
+
+### Principles
+- The score is always heavier and larger than the team name beside it.
+- Prose scores use an en dash (`2–1`); UI scores use tabular `2–1` or `2 - 1` with reserved width so digits do not jump.
+- Caption status sits **above** the score, never a trailing TV column.
+
+## Layout
+
+### Spacing
+Base **8px** (4px exception for icon optics and the 3px club rail).  
+Tokens: `{spacing.xs}` 4 · `{spacing.sm}` 8 · `{spacing.md}` 12 · `{spacing.lg}` 16 · `{spacing.xl}` 24 · `{spacing.2xl}` 32 · `{spacing.3xl}` 48.  
+Page pad 16. Group gap 12. Row min-height **56**. Tab bar 56 + safe area.
+
+### Grid
+- Phone `<768`: full-bleed Field. No device bezel.
+- `768–1099`: same, max 720 centered.
+- `≥1100`: same list, max 720 centered. Top nav later. Not a 72px icon rail.
+
+### Whitespace
+Density of a fixture list, not Mastercard emptiness and not a magazine cover grid. Breathing room is **between league groups**, not inside a match row.
+
+## Elevation & depth
+
+| Level | Treatment | Use |
+| --- | --- | --- |
+| 0 Flat | No shadow, no border | Page Paper |
+| 1 Hairline | 1px `{colors.rule}` | Row dividers, tab top edge, input ring |
+| 2 Ruled group | 1px rule + `{rounded.sm}` | League group |
+
+No drop shadows. (WIRED rule. Mastercard halos are forbidden here.)
+
+## Shapes
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `{rounded.none}` | 0 | Match rows (flush in the group), club rail |
+| `{rounded.sm}` | 8 | Groups, search field, empty cards |
+| `{rounded.pill}` | 9999 | Status chips, live dot |
+
+Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike avatars / Mastercard orbits do not apply).
+
+## Motion
+
+160ms `cubic-bezier(0.2, 0.8, 0.2, 1)` on opacity/transform. Live Caption may pulse 1.2s 1→0.55 unless `prefers-reduced-motion`. Crests never bounce. Reserve the score column so digits do not shift layout.
+
+## Components
+
+### `masthead-bar`
+Neutral cool charcoal wash on Scores home (product chrome). League brand mid/deep from `league-palette.ts` applies only inside a `.league-silo` page — never repeated across the multi-league home list. Constructed mark + Condensed split wordmark (no underscore). Find = frosted pill.
+
+### `date-board`
+Compact day rail as frosted glass over the masthead wash: neighbor weekday flaps + active `02`/`SEP` flap + live count chip right-aligned. Same radius language as score tiles. Not Yesterday / Today / Tomorrow text tabs.
+
+### `league-group`
+Neutral section header on Scores home: light logo plate + name + count. **No league brand aura/chip on home.** League color atmospheres are for dedicated league silo pages only.
+
+### `match-row` / score card (signature — Stack tile)
+```
+[● 67′]                    LIVE
+[crest] Home name    ARS   2
+[crest] Away name    CHE   1
+```
+- Discrete elevated tile (`--elev`) with 12px radius, hairline Rule, inset highlight — SiriusXM density, MLS mini stack.
+- Meta row: mono status left, quiet label right. Live = copper Caption + pulse dot + copper rail.
+- Home over away; crest 24px; Condensed name + mono short; 22px tabular score.
+- Micro-distinction: dual club-tint rail + soft diagonal club wash (12% max). Selected = copper ring. Loser fades on FT.
+- **No TV column. No 72px jumbotron. No Apple green. No glass CTA on Scores.**
+
+### `tab-bar`
+Five items until those screens exist. IBM Plex Mono lowercase. Active Bone, inactive Quiet. No underline.
+
+### `search-field`
+Height 40, Surface fill, Rule ring, focus ring Live-ink.
+
+### `sticky-scoreboard` (match page)
+Score-lg, crests 48, thin club rails. Follow + share.
+
+### `timeline`
+Default match panel. Newest first. Key events stronger than commentary.
+
+### `dual-stat`
+Club-tint bars at accessible contrast. Values in Meta tabular.
+
+### `table`
+Caption headers, UI club names, pts in score weight. Followed row = wash.
+
+### `empty-state`
+Title + Body + one `{button-text}`. Honest copy (“No play-by-play yet.”). No illustration v1.
+
+## Page recipes
+
+**Scores** — masthead (mark + split wordmark) → day rail → league sections with brand auras + elev score tiles. No ticker. No jumbotron.
+
+**Match** — sticky-scoreboard → last key event → timeline → Lineup / Numbers / Table / Series segment.
+
+**League** — mark + name (no full-bleed) → Now / Table / Fixtures / News.
+
+**Team** — 3px club rail → next match → form → mini table → squad.
+
+## Do's and Don'ts
+
+### Do
+- Put the score on a reserved column at `{typography.score}`.
+- Use Paper + hairlines. Club color as a rail or 12% wash.
+- Keep IBM Plex Mono + tabular nums on the board.
+- Announce live minutes in text (`aria-label` + visible Caption).
+- Drop ESPN odds, video, Watch, xG you do not have.
+
+### Don't
+- Don't use iOS grouped grey `#F2F2F7` or system green `#00A651` as identity.
+- Don't paint Scores as cream paper cards or a date-underline strip or a hero weekday.
+- Don't circle-crop crests or add a soccer-ball mark.
+- Don't wrap the product in a fake phone bezel or HTML poster boards with fake clubs.
+- Don't ship a 72px jumbotron on Scores.
+- Don't copy WIRED link-blue, Vercel mesh, Mastercard orbits, Nike 96px uppercase, FotMob white groups, or Apple Sports green.
+- Don't treat YAML hex as locked until `docs/brand-proposals.md` is signed — then rewrite this file to match.
+
+## Responsive behavior
+
+| Name | Width | Changes |
+| --- | --- | --- |
+| Phone | <768 | Stacked row, 5-tab bar, 16px page pad. |
+| Tablet | 768–1099 | Same; canvas max 720. |
+| Desktop | ≥1100 | Top nav; optional right rail with data. |
+
+Touch: rows ≥56px, tabs ≥44px.
+
+## Agent prompt guide
+
+Before any UI work: read this file, then `docs/brand.md`. Medal hex is approved; mark and wordmark are not. Do not invent a second palette. Do not generate Recraft/HTML concept boards as the product.
+
+Example: “Keep `MatchRow` stacked. Score 20px tabular. Copper only on the live minute.”
+
+## Known gaps
+
+- Medal palette approved and live in CSS; mark and wordmark not human-approved. Compare `?mark=flap|slot|posts` on `/matches`.
+- Dark mode: mapped ramp of the approved palette, not an invert. Unspecified until light ships.
+- Display serif: explicitly out until color lock.
+- Icon grid: 24×24 stroke 1.75 in `src/components/matches/icons.tsx`; optical sheet not drawn.

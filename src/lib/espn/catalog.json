@@ -1,0 +1,1856 @@
+[
+  {
+    "slug": "afc.asian.cup",
+    "name": "AFC Asian Cup",
+    "displayName": "AFC Asian Cup",
+    "abbreviation": "AFC Asian Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.asian.cup?lang=en&region=us"
+  },
+  {
+    "slug": "afc.champions",
+    "name": "AFC Champions League Elite",
+    "displayName": "AFC Champions League",
+    "abbreviation": "AFC Champions League Elite",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.champions?lang=en&region=us"
+  },
+  {
+    "slug": "afc.champions_qual",
+    "name": "AFC Champions League Elite Qualifying",
+    "displayName": "AFC Champions League Elite Qualifying",
+    "abbreviation": "AFC Champions League Elite Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.champions_qual?lang=en&region=us"
+  },
+  {
+    "slug": "afc.cup",
+    "name": "AFC Champions League Two",
+    "displayName": "AFC Champions League Two",
+    "abbreviation": "AFC Champions League Two",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.cup?lang=en&region=us"
+  },
+  {
+    "slug": "afc.cup_qual",
+    "name": "AFC Champions League Two Qualifying",
+    "displayName": "AFC Champions League Two Qualifying",
+    "abbreviation": "AFC Champions League Two Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.cup_qual?lang=en&region=us"
+  },
+  {
+    "slug": "afc.cupq",
+    "name": "Asian Cup Qualifiers",
+    "displayName": "AFC Asian Cup Qualifiers",
+    "abbreviation": "AFC Cup Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.cupq?lang=en&region=us"
+  },
+  {
+    "slug": "afc.saff.championship",
+    "name": "SAFF Championship",
+    "displayName": "SAFF Championship",
+    "abbreviation": "SAFF Championship",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.saff.championship?lang=en&region=us"
+  },
+  {
+    "slug": "afc.w.asian.cup",
+    "name": "AFC Women's Asian Cup",
+    "displayName": "AFC Women's Asian Cup",
+    "abbreviation": "AFC Women's Asian Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/afc.w.asian.cup?lang=en&region=us"
+  },
+  {
+    "slug": "aff.championship",
+    "name": "ASEAN Champ",
+    "displayName": "AFF Cup",
+    "abbreviation": "ASEAN Champ",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/aff.championship?lang=en&region=us"
+  },
+  {
+    "slug": "arg.1",
+    "name": "Argentine LPF",
+    "displayName": "Argentine Primera División",
+    "abbreviation": "Argentine LPF",
+    "country": "Argentina",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.1?lang=en&region=us"
+  },
+  {
+    "slug": "arg.2",
+    "name": "Argentine Nacional B",
+    "displayName": "Nacional B de Argentina",
+    "abbreviation": "Argentine Nacional B",
+    "country": "Argentina",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.2?lang=en&region=us"
+  },
+  {
+    "slug": "arg.3",
+    "name": "Argentine Primera B",
+    "displayName": "Primera División B de Argentina",
+    "abbreviation": "Argentine Primera B",
+    "country": "Argentina",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.3?lang=en&region=us"
+  },
+  {
+    "slug": "arg.copa",
+    "name": "Copa Argentina",
+    "displayName": "Copa Argentina",
+    "abbreviation": "Copa Argentina",
+    "country": "Argentina",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.copa?lang=en&region=us"
+  },
+  {
+    "slug": "arg.copa_de_la_superliga",
+    "name": "ARGCOPASUPERLIGA",
+    "displayName": "Copa Superliga de Argentina",
+    "abbreviation": "ASUPERPLIGA",
+    "country": "Argentina",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.copa_de_la_superliga?lang=en&region=us"
+  },
+  {
+    "slug": "arg.supercopa",
+    "name": "Argentine Supercopa",
+    "displayName": "Supercopa Argentina",
+    "abbreviation": "Argentine Supercopa",
+    "country": "Argentina",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.supercopa?lang=en&region=us"
+  },
+  {
+    "slug": "arg.supercopa.internacional",
+    "name": "Supercopa Internacional",
+    "displayName": "Supercopa Internacional",
+    "abbreviation": "Supercopa Internacional",
+    "country": "Argentina",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.supercopa.internacional?lang=en&region=us"
+  },
+  {
+    "slug": "arg.trofeo_de_la_campeones",
+    "name": "Argentine Trofeo de Campeones",
+    "displayName": "Argentine Trofeo de Campeones",
+    "abbreviation": "Argentine Trofeo de Campeones",
+    "country": "Argentina",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/arg.trofeo_de_la_campeones?lang=en&region=us"
+  },
+  {
+    "slug": "aus.1",
+    "name": "A-League Men",
+    "displayName": "Australian A-League",
+    "abbreviation": "A-League Men",
+    "country": "Australia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/aus.1?lang=en&region=us"
+  },
+  {
+    "slug": "aus.w.1",
+    "name": "A-League Women",
+    "displayName": "Women's Australian League",
+    "abbreviation": "A-League Women",
+    "country": "Australia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/aus.w.1?lang=en&region=us"
+  },
+  {
+    "slug": "aut.1",
+    "name": "Austrian Bundesliga",
+    "displayName": "Austrian Bundesliga",
+    "abbreviation": "Austrian Bundesliga",
+    "country": "Austria",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/aut.1?lang=en&region=us"
+  },
+  {
+    "slug": "bel.1",
+    "name": "Belgian Pro League",
+    "displayName": "Belgian Pro League",
+    "abbreviation": "Belgian Pro League",
+    "country": "Belgium",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bel.1?lang=en&region=us"
+  },
+  {
+    "slug": "bel.promotion.relegation",
+    "name": "Belgian Pro League Pro/Rel",
+    "displayName": "Belgian Pro League Pro/Rel",
+    "abbreviation": "Belgian Pro League Pro/Rel",
+    "country": "Belgium",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bel.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "bol.1",
+    "name": "Bolivian Liga Profesional",
+    "displayName": "Bolivian Liga Profesional",
+    "abbreviation": "Bolivian Liga Profesional",
+    "country": "Bolivia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bol.1?lang=en&region=us"
+  },
+  {
+    "slug": "bol.copa",
+    "name": "Copa Bolivia",
+    "displayName": "Copa Bolivia",
+    "abbreviation": "Copa Bolivia",
+    "country": "Bolivia",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bol.copa?lang=en&region=us"
+  },
+  {
+    "slug": "bol.ply.rel",
+    "name": "Bolivian Liga Pro/Rel",
+    "displayName": "Bolivian Liga Profesional Promotion/Relegation Playoffs",
+    "abbreviation": "Bolivian Liga Pro/Rel",
+    "country": "Bolivia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bol.ply.rel?lang=en&region=us"
+  },
+  {
+    "slug": "bra.1",
+    "name": "Brazil Serie A",
+    "displayName": "Brazilian Futebol",
+    "abbreviation": "Brazil Serie A",
+    "country": "Brazil",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.1?lang=en&region=us"
+  },
+  {
+    "slug": "bra.2",
+    "name": "Brazil Serie B",
+    "displayName": "Brasileirao B",
+    "abbreviation": "Brazil Serie B",
+    "country": "Brazil",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.2?lang=en&region=us"
+  },
+  {
+    "slug": "bra.camp.carioca",
+    "name": "Brazil Carioca",
+    "displayName": "Campeonato Carioca",
+    "abbreviation": "Brazil Carioca",
+    "country": "Brazil",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.camp.carioca?lang=en&region=us"
+  },
+  {
+    "slug": "bra.camp.gaucho",
+    "name": "Brazil Gaucho",
+    "displayName": "Campeonato Gaucho",
+    "abbreviation": "Brazil Gaucho",
+    "country": "Brazil",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.camp.gaucho?lang=en&region=us"
+  },
+  {
+    "slug": "bra.camp.mineiro",
+    "name": "Brazil Mineiro",
+    "displayName": "Campeonato Mineiro",
+    "abbreviation": "Brazil Mineiro",
+    "country": "Brazil",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.camp.mineiro?lang=en&region=us"
+  },
+  {
+    "slug": "bra.camp.paulista",
+    "name": "Brazil Paulista",
+    "displayName": "Campeonato Paulista",
+    "abbreviation": "Brazil Paulista",
+    "country": "Brazil",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.camp.paulista?lang=en&region=us"
+  },
+  {
+    "slug": "bra.copa_do_brazil",
+    "name": "Copa Do Brazil",
+    "displayName": "Copa Do Brazil",
+    "abbreviation": "Copa do Brazil",
+    "country": "Brazil",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.copa_do_brazil?lang=en&region=us"
+  },
+  {
+    "slug": "bra.supercopa_do_brazil",
+    "name": "Supercopa Rei",
+    "displayName": "SDB",
+    "abbreviation": "Supercopa Rei",
+    "country": "Brazil",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/bra.supercopa_do_brazil?lang=en&region=us"
+  },
+  {
+    "slug": "caf.champions",
+    "name": "CAF Champions League",
+    "displayName": "CAF Champions League",
+    "abbreviation": "CAF Champions League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.champions?lang=en&region=us"
+  },
+  {
+    "slug": "caf.championship",
+    "name": "CHAN",
+    "displayName": "African Nations Championship",
+    "abbreviation": "CHAN",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.championship?lang=en&region=us"
+  },
+  {
+    "slug": "caf.confed",
+    "name": "CAF Confederation Cup",
+    "displayName": "CAF Confederation Cup",
+    "abbreviation": "CAF Confederation Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.confed?lang=en&region=us"
+  },
+  {
+    "slug": "caf.cosafa",
+    "name": "COSAFA Cup",
+    "displayName": "COSAFA Cup",
+    "abbreviation": "COSAFA Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.cosafa?lang=en&region=us"
+  },
+  {
+    "slug": "caf.nations",
+    "name": "Africa Cup of Nations",
+    "displayName": "Africa Cup of Nations",
+    "abbreviation": "Africa Cup of Nations",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.nations?lang=en&region=us"
+  },
+  {
+    "slug": "caf.nations_qual",
+    "name": "AFCON Qualifying",
+    "displayName": "African Nations Cup Qualifying",
+    "abbreviation": "AFCON Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.nations_qual?lang=en&region=us"
+  },
+  {
+    "slug": "caf.w.nations",
+    "name": "Women's Africa Cup of Nations",
+    "displayName": "Women's Africa Cup of Nations",
+    "abbreviation": "Women's Africa Cup of Nations",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/caf.w.nations?lang=en&region=us"
+  },
+  {
+    "slug": "campeones.cup",
+    "name": "Campeones Cup",
+    "displayName": "Campeones Cup",
+    "abbreviation": "Campeones Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/campeones.cup?lang=en&region=us"
+  },
+  {
+    "slug": "can.w.nsl",
+    "name": "Northern Super League",
+    "displayName": "Northern Super League",
+    "abbreviation": "Northern Super League",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/can.w.nsl?lang=en&region=us"
+  },
+  {
+    "slug": "chi.1",
+    "name": "Chilean Primera",
+    "displayName": "Chilean Primera División",
+    "abbreviation": "Chilean Primera",
+    "country": "Chile",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/chi.1?lang=en&region=us"
+  },
+  {
+    "slug": "chi.1.promotion.relegation",
+    "name": "Chilean Pro/Rel",
+    "displayName": "Chilean Pro/Rel",
+    "abbreviation": "Chilean Pro/Rel",
+    "country": "Chile",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/chi.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "chi.copa_chi",
+    "name": "Copa Chile",
+    "displayName": "Copa Chile",
+    "abbreviation": "Copa Chile",
+    "country": "Chile",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/chi.copa_chi?lang=en&region=us"
+  },
+  {
+    "slug": "chi.super_cup",
+    "name": "Chilean Supercopa",
+    "displayName": "Chilean Supercopa",
+    "abbreviation": "Chilean Supercopa",
+    "country": "Chile",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/chi.super_cup?lang=en&region=us"
+  },
+  {
+    "slug": "chn.1",
+    "name": "Chinese Super League",
+    "displayName": "Chinese Super League",
+    "abbreviation": "Chinese Super League",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/chn.1?lang=en&region=us"
+  },
+  {
+    "slug": "chn.1.promotion.relegation",
+    "name": "Chinese Pro/Rel",
+    "displayName": "Chinese Super League Promotion/Relegation Playoffs",
+    "abbreviation": "Chinese Pro/Rel",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/chn.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "club.friendly",
+    "name": "Club Friendly",
+    "displayName": "Club Friendly",
+    "abbreviation": "Club Friendly",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/club.friendly?lang=en&region=us"
+  },
+  {
+    "slug": "col.1",
+    "name": "Colombian Primera A",
+    "displayName": "Colombian Fútbol Profesional",
+    "abbreviation": "Colombian Primera A",
+    "country": "Colombia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/col.1?lang=en&region=us"
+  },
+  {
+    "slug": "col.copa",
+    "name": "Copa Colombia",
+    "displayName": "Copa Águila",
+    "abbreviation": "Copa Colombia",
+    "country": "Colombia",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/col.copa?lang=en&region=us"
+  },
+  {
+    "slug": "col.superliga",
+    "name": "Colombian Superliga",
+    "displayName": "Colombian Superliga",
+    "abbreviation": "Colombian Superliga",
+    "country": "Colombia",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/col.superliga?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.central.american.cup",
+    "name": "Concacaf Central American Cup",
+    "displayName": "Central American Cup",
+    "abbreviation": "Concacaf Central American Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.central.american.cup?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.champions",
+    "name": "Concacaf Champions Cup",
+    "displayName": "Concacaf Champions Cup",
+    "abbreviation": "Concacaf Champions Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.champions?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.champions_cup",
+    "name": "Champions Cup",
+    "displayName": "Champions Cup",
+    "abbreviation": "Conc CC",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.champions_cup?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.confederations_playoff",
+    "name": "Confed Cup Playoff",
+    "displayName": "Confederations Cup Playoff",
+    "abbreviation": "Conf Pl",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.confederations_playoff?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.gold",
+    "name": "Gold Cup",
+    "displayName": "CONCACAF Gold Cup",
+    "abbreviation": "Gold Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.gold?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.gold_qual",
+    "name": "Concacaf Gold Cup Qualifying",
+    "displayName": "Gold Cup Qualifying",
+    "abbreviation": "Gold Cup Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.gold_qual?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.leagues.cup",
+    "name": "Leagues Cup",
+    "displayName": "Leagues Cup",
+    "abbreviation": "Leagues Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.leagues.cup?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.nations.league",
+    "name": "Concacaf Nations League",
+    "displayName": "Concacaf Nations League",
+    "abbreviation": "Concacaf Nations League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.nations.league?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.u23",
+    "name": "CONCACAF U23 Tournament",
+    "displayName": "CONCACAF U23 Tournament",
+    "abbreviation": "Conc U23",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.u23?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.w.champions_cup",
+    "name": "W Champions Cup",
+    "displayName": "W Champions Cup",
+    "abbreviation": "W Champions Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.w.champions_cup?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.w.gold",
+    "name": " W Gold Cup",
+    "displayName": "W Gold Cup",
+    "abbreviation": "W Gold Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.w.gold?lang=en&region=us"
+  },
+  {
+    "slug": "concacaf.womens.championship",
+    "name": "Concacaf W Championship",
+    "displayName": "concacaf.womens.championship",
+    "abbreviation": "Concacaf W Championship",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/concacaf.womens.championship?lang=en&region=us"
+  },
+  {
+    "slug": "conmebol.america",
+    "name": "Copa América",
+    "displayName": "Copa América",
+    "abbreviation": "Copa América",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/conmebol.america?lang=en&region=us"
+  },
+  {
+    "slug": "conmebol.america.femenina",
+    "name": "Copa América Femenina",
+    "displayName": "Copa América Femenina",
+    "abbreviation": "Copa América Femenina",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/conmebol.america.femenina?lang=en&region=us"
+  },
+  {
+    "slug": "conmebol.libertadores",
+    "name": "CONMEBOL Libertadores",
+    "displayName": "CONMEBOL Libertadores",
+    "abbreviation": "CONMEBOL Libertadores",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/conmebol.libertadores?lang=en&region=us"
+  },
+  {
+    "slug": "conmebol.recopa",
+    "name": "CONMEBOL Recopa",
+    "displayName": "Recopa Sudamericana",
+    "abbreviation": "CONMEBOL Recopa",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/conmebol.recopa?lang=en&region=us"
+  },
+  {
+    "slug": "conmebol.sudamericana",
+    "name": "CONMEBOL Sudamericana",
+    "displayName": "CONMEBOL Sudamericana",
+    "abbreviation": "CONMEBOL Sudamericana",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/conmebol.sudamericana?lang=en&region=us"
+  },
+  {
+    "slug": "crc.1",
+    "name": "Liga FPD",
+    "displayName": "Primera División de Costa Rica",
+    "abbreviation": "Liga FPD",
+    "country": "Costa Rica",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/crc.1?lang=en&region=us"
+  },
+  {
+    "slug": "den.1",
+    "name": "Danish Superliga",
+    "displayName": "Danish SAS-Ligaen",
+    "abbreviation": "Danish Superliga",
+    "country": "Denmark",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/den.1?lang=en&region=us"
+  },
+  {
+    "slug": "ecu.1",
+    "name": "LigaPro Ecuador",
+    "displayName": "Ecuadoran Primera A",
+    "abbreviation": "LigaPro Ecuador",
+    "country": "Ecuador",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ecu.1?lang=en&region=us"
+  },
+  {
+    "slug": "eng.1",
+    "name": "Premier League",
+    "displayName": "Premier League",
+    "abbreviation": "Premier League",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.1?lang=en&region=us"
+  },
+  {
+    "slug": "eng.2",
+    "name": "EFL Championship",
+    "displayName": "English League Championship",
+    "abbreviation": "EFL Championship",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.2?lang=en&region=us"
+  },
+  {
+    "slug": "eng.3",
+    "name": "EFL League One",
+    "displayName": "English League One",
+    "abbreviation": "EFL League One",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.3?lang=en&region=us"
+  },
+  {
+    "slug": "eng.4",
+    "name": "EFL League Two",
+    "displayName": "English League Two",
+    "abbreviation": "EFL League Two",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.4?lang=en&region=us"
+  },
+  {
+    "slug": "eng.5",
+    "name": "National League",
+    "displayName": "English Conference",
+    "abbreviation": "National League",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.5?lang=en&region=us"
+  },
+  {
+    "slug": "eng.charity",
+    "name": "Community Shield",
+    "displayName": "English FA Community Shield",
+    "abbreviation": "Community Shield",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.charity?lang=en&region=us"
+  },
+  {
+    "slug": "eng.fa",
+    "name": "English FA Cup",
+    "displayName": "English FA Cup",
+    "abbreviation": "English FA Cup",
+    "country": "England",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.fa?lang=en&region=us"
+  },
+  {
+    "slug": "eng.fa_qual",
+    "name": "English FA Cup Qualifying",
+    "displayName": "English FA Cup Qualifying",
+    "abbreviation": "English FA Cup Qualifying",
+    "country": "England",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.fa_qual?lang=en&region=us"
+  },
+  {
+    "slug": "eng.league_cup",
+    "name": "Carabao Cup",
+    "displayName": "English Carabao Cup",
+    "abbreviation": "Carabao Cup",
+    "country": "England",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.league_cup?lang=en&region=us"
+  },
+  {
+    "slug": "eng.trophy",
+    "name": "EFL Trophy",
+    "displayName": "Johnstone's Paint Trophy",
+    "abbreviation": "EFL Trophy",
+    "country": "England",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.trophy?lang=en&region=us"
+  },
+  {
+    "slug": "eng.w.1",
+    "name": "Women's Super League",
+    "displayName": "FA Women's Super League",
+    "abbreviation": "Women's Super League",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.w.1?lang=en&region=us"
+  },
+  {
+    "slug": "eng.w.fa",
+    "name": "Women's FA Cup",
+    "displayName": "Women's FA Cup",
+    "abbreviation": "Women's FA Cup",
+    "country": "England",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.w.fa?lang=en&region=us"
+  },
+  {
+    "slug": "eng.w.league_cup",
+    "name": "Women's League Cup",
+    "displayName": "Women's League Cup",
+    "abbreviation": "Women's League Cup",
+    "country": "England",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.w.league_cup?lang=en&region=us"
+  },
+  {
+    "slug": "eng.w.promotion.relegation",
+    "name": "Women's Super League Pro/Rel",
+    "displayName": "Women's Super League Pro/Rel",
+    "abbreviation": "Women's Super League Pro/Rel",
+    "country": "England",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.w.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "esp.1",
+    "name": "LALIGA",
+    "displayName": "LALIGA",
+    "abbreviation": "LALIGA",
+    "country": "Spain",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.1?lang=en&region=us"
+  },
+  {
+    "slug": "esp.2",
+    "name": "LALIGA 2",
+    "displayName": "Spanish LALIGA 2",
+    "abbreviation": "LALIGA 2",
+    "country": "Spain",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.2?lang=en&region=us"
+  },
+  {
+    "slug": "esp.copa_de_la_reina",
+    "name": "Copa de la Reina",
+    "displayName": "Spanish Copa de la Reina",
+    "abbreviation": "Copa de la Reina",
+    "country": "Spain",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.copa_de_la_reina?lang=en&region=us"
+  },
+  {
+    "slug": "esp.copa_del_rey",
+    "name": "Copa del Rey",
+    "displayName": "Spanish Copa del Rey",
+    "abbreviation": "Copa del Rey",
+    "country": "Spain",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.copa_del_rey?lang=en&region=us"
+  },
+  {
+    "slug": "esp.joan_gamper",
+    "name": "Trofeo Joan Gamper",
+    "displayName": "Trofeo Joan Gamper",
+    "abbreviation": "Trofeo Joan Gamper",
+    "country": "Spain",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.joan_gamper?lang=en&region=us"
+  },
+  {
+    "slug": "esp.super_cup",
+    "name": "Spanish Supercopa",
+    "displayName": "Spanish Super Cup",
+    "abbreviation": "Spanish Supercopa",
+    "country": "Spain",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.super_cup?lang=en&region=us"
+  },
+  {
+    "slug": "esp.w.1",
+    "name": "Liga F",
+    "displayName": "Liga F",
+    "abbreviation": "Liga F",
+    "country": "Spain",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/esp.w.1?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.concacaf.olympicsq",
+    "name": "Men's Olympic Qualifying Playoff",
+    "displayName": "Men's Olympic Qualifying Playoff",
+    "abbreviation": "Men's Olympic Qualifying Playoff",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.concacaf.olympicsq?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.conmebol.olympicsq",
+    "name": "CONMEBOL Pre-Olympic Tournament",
+    "displayName": "CONMEBOL Pre-Olympic Tournament",
+    "abbreviation": "CONMEBOL Pre-Olympic Tournament",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.conmebol.olympicsq?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.cwc",
+    "name": "Club World Cup",
+    "displayName": "FIFA Club World Cup",
+    "abbreviation": "Club World Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.cwc?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.friendly",
+    "name": "Men's International Friendly",
+    "displayName": "International Friendly",
+    "abbreviation": "Men's International Friendly",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.friendly?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.friendly_u21",
+    "name": "Men's U-21 Friendly",
+    "displayName": "Men's U-21 Friendly",
+    "abbreviation": "Men's U-21 Friendly",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.friendly_u21?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.friendly.w",
+    "name": "Women's International Friendly",
+    "displayName": "Women's International Friendly",
+    "abbreviation": "Women's International Friendly",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.friendly.w?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.intercontinental_cup",
+    "name": "Intercontinental Cup",
+    "displayName": "Intercontinental Cup",
+    "abbreviation": "Intercontinental Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.intercontinental_cup?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.intercontinental.cup",
+    "name": "Intercontinental Cup (India)",
+    "displayName": "Intercontinental Cup",
+    "abbreviation": "Intercontinental Cup (India)",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.intercontinental.cup?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.olympics",
+    "name": "OLY Soccer (M)",
+    "displayName": "Men's Olympic Soccer Tournament",
+    "abbreviation": "Men's Olympic Soccer Tournament",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.olympics?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.shebelieves",
+    "name": "SheBelieves Cup",
+    "displayName": "SheBelieves Cup",
+    "abbreviation": "SheBelieves Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.shebelieves?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.w.champions_cup",
+    "name": "Women's Champions Cup",
+    "displayName": "Women's Champions Cup",
+    "abbreviation": "Women's Champions Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.w.champions_cup?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.w.concacaf.olympicsq",
+    "name": "Concacaf Women's Olympic Qualifying",
+    "displayName": "Concacaf Women's Olympic Qualifying",
+    "abbreviation": "Concacaf Women's Olympic Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.w.concacaf.olympicsq?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.w.olympics",
+    "name": "OLY Soccer (W)",
+    "displayName": "Women's Olympic Soccer Tournament",
+    "abbreviation": "Women's Olympic Soccer Tournament",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.w.olympics?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.wcq.ply",
+    "name": "WCQ - Playoff Tournament",
+    "displayName": "WCQ - Playoff Tournament",
+    "abbreviation": "WCQ - Playoff Tournament",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.wcq.ply?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.world",
+    "name": "FIFA World Cup",
+    "displayName": "World Cup",
+    "abbreviation": "FIFA World Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.world.u17",
+    "name": "FIFA U-17 World Cup",
+    "displayName": "U-17 World Cup",
+    "abbreviation": "FIFA U-17 World Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world.u17?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.world.u20",
+    "name": "FIFA U-20 World Cup",
+    "displayName": "U-20 World Cup",
+    "abbreviation": "FIFA U-20 World Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world.u20?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.worldq.afc",
+    "name": "WCQ - AFC",
+    "displayName": "World Cup Qualifying - AFC ",
+    "abbreviation": "WCQ - AFC",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.worldq.afc?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.worldq.caf",
+    "name": "WCQ - CAF",
+    "displayName": "World Cup Qualifying - CAF ",
+    "abbreviation": "WCQ - CAF",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.worldq.caf?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.worldq.concacaf",
+    "name": "WCQ - Concacaf",
+    "displayName": "World Cup Qualifying - CONCACAF ",
+    "abbreviation": "WCQ - Concacaf",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.worldq.concacaf?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.worldq.conmebol",
+    "name": "WCQ - CONMEBOL",
+    "displayName": "World Cup Qualifying - CONMEBOL",
+    "abbreviation": "WCQ - CONMEBOL",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.worldq.conmebol?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.worldq.ofc",
+    "name": "WCQ - OFC",
+    "displayName": "World Cup Qualifying - OFC ",
+    "abbreviation": "WCQ - OFC",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.worldq.ofc?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.worldq.uefa",
+    "name": "WCQ - UEFA",
+    "displayName": "World Cup Qualifying - UEFA",
+    "abbreviation": "WCQ - UEFA",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.worldq.uefa?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.wwc",
+    "name": "FIFA Women's World Cup",
+    "displayName": "Women's World Cup",
+    "abbreviation": "FIFA Women's World Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.wwc?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.wwcq.ply",
+    "name": "WWCQ - Playoff Tournament",
+    "displayName": "WWCQ - Playoff Tournament",
+    "abbreviation": "WWCQ - Playoff Tournament",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.wwcq.ply?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.wworld.u17",
+    "name": "U-17 WWC",
+    "displayName": "FIFA Under-17 Women's World Cup",
+    "abbreviation": "FIFA U-17 Women's World Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.wworld.u17?lang=en&region=us"
+  },
+  {
+    "slug": "fifa.wworldq.uefa",
+    "name": "WWCQ - UEFA",
+    "displayName": "FIFA Women's World Cup Qualifying - UEFA",
+    "abbreviation": "WWCQ - UEFA",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.wworldq.uefa?lang=en&region=us"
+  },
+  {
+    "slug": "fra.1",
+    "name": "Ligue 1",
+    "displayName": "French Ligue 1",
+    "abbreviation": "Ligue 1",
+    "country": "France",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fra.1?lang=en&region=us"
+  },
+  {
+    "slug": "fra.1.promotion.relegation",
+    "name": "Ligue 1 Pro/Rel",
+    "displayName": "French Ligue 1 Promotion/Relegation Playoffs",
+    "abbreviation": "Ligue 1 Pro/Rel",
+    "country": "France",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fra.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "fra.2",
+    "name": "Ligue 2",
+    "displayName": "French Ligue 2",
+    "abbreviation": "Ligue 2",
+    "country": "France",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fra.2?lang=en&region=us"
+  },
+  {
+    "slug": "fra.coupe_de_france",
+    "name": "Coupe de France",
+    "displayName": "French Coupe de France",
+    "abbreviation": "Coupe de France",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fra.coupe_de_france?lang=en&region=us"
+  },
+  {
+    "slug": "fra.super_cup",
+    "name": "Trophee des Champions",
+    "displayName": "Trophee des Champions",
+    "abbreviation": "Trophee des Champions",
+    "country": "France",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fra.super_cup?lang=en&region=us"
+  },
+  {
+    "slug": "fra.w.1",
+    "name": "Première Ligue",
+    "displayName": "Division 1 Féminine",
+    "abbreviation": "Première Ligue",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fra.w.1?lang=en&region=us"
+  },
+  {
+    "slug": "friendly.emirates_cup",
+    "name": "Emirates Cup",
+    "displayName": "Emirates Cup",
+    "abbreviation": "Emirates Cup",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/friendly.emirates_cup?lang=en&region=us"
+  },
+  {
+    "slug": "ger.1",
+    "name": "Bundesliga",
+    "displayName": "Bundesliga",
+    "abbreviation": "Bundesliga",
+    "country": "Germany",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ger.1?lang=en&region=us"
+  },
+  {
+    "slug": "ger.2",
+    "name": "2. Bundesliga",
+    "displayName": "German 2. Bundesliga",
+    "abbreviation": "2. Bundesliga",
+    "country": "Germany",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ger.2?lang=en&region=us"
+  },
+  {
+    "slug": "ger.2.promotion.relegation",
+    "name": "2. Bundesliga Pro/Rel",
+    "displayName": "2. Bundesliga Pro/Rel",
+    "abbreviation": "2. Bundesliga Pro/Rel",
+    "country": "Germany",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ger.2.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "ger.dfb_pokal",
+    "name": "German Cup",
+    "displayName": "German DFB Pokal",
+    "abbreviation": "German Cup",
+    "country": "Germany",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ger.dfb_pokal?lang=en&region=us"
+  },
+  {
+    "slug": "ger.playoff.relegation",
+    "name": "Bundesliga Pro/Rel",
+    "displayName": "Bundesliga Pro/Rel",
+    "abbreviation": "Bundesliga Pro/Rel",
+    "country": "Germany",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ger.playoff.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "ger.super_cup",
+    "name": "German SuperCup",
+    "displayName": "German SuperCup",
+    "abbreviation": "German SuperCup",
+    "country": "Germany",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ger.super_cup?lang=en&region=us"
+  },
+  {
+    "slug": "global.arnold.clark_cup",
+    "name": "Arnold Clark Cup",
+    "displayName": "Arnold Clark Cup",
+    "abbreviation": "Arnold Clark Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.arnold.clark_cup?lang=en&region=us"
+  },
+  {
+    "slug": "global.club_challenge",
+    "name": "CONMEBOL-UEFA Club Challenge",
+    "displayName": "CONMEBOL-UEFA Club Challenge",
+    "abbreviation": "CONMEBOL-UEFA Club Challenge",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.club_challenge?lang=en&region=us"
+  },
+  {
+    "slug": "global.finalissima",
+    "name": "Men's Finalissima",
+    "displayName": "CONMEBOL-UEFA Cup of Champions",
+    "abbreviation": "Men's Finalissima",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.finalissima?lang=en&region=us"
+  },
+  {
+    "slug": "global.gulf_cup",
+    "name": "Arabian Gulf Cup",
+    "displayName": "Arabian Gulf Cup",
+    "abbreviation": "Arabian Gulf Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.gulf_cup?lang=en&region=us"
+  },
+  {
+    "slug": "global.pinatar_cup",
+    "name": "Pinatar Cup",
+    "displayName": "Pinatar Cup",
+    "abbreviation": "Pinatar Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.pinatar_cup?lang=en&region=us"
+  },
+  {
+    "slug": "global.u20.intercontinental_cup",
+    "name": "U20 Intercontinental Cup",
+    "displayName": "U20 Intercontinental Cup",
+    "abbreviation": "U20 Intercontinental Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.u20.intercontinental_cup?lang=en&region=us"
+  },
+  {
+    "slug": "global.w.finalissima",
+    "name": "Women's Finalissima",
+    "displayName": "Women's Finalissima",
+    "abbreviation": "Women's Finalissima",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/global.w.finalissima?lang=en&region=us"
+  },
+  {
+    "slug": "gre.1",
+    "name": "Greek Super League",
+    "displayName": "Greek Super League",
+    "abbreviation": "Greek Super League",
+    "country": "Greece",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/gre.1?lang=en&region=us"
+  },
+  {
+    "slug": "gua.1",
+    "name": "Guatemalan Liga Nacional",
+    "displayName": "Liga Nacional de Guatemala",
+    "abbreviation": "Guatemalan Liga Nacional",
+    "country": "Guatemala",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/gua.1?lang=en&region=us"
+  },
+  {
+    "slug": "hon.1",
+    "name": "Honduran Liga Nacional",
+    "displayName": "Primera División de Honduras",
+    "abbreviation": "Honduran Liga Nacional",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/hon.1?lang=en&region=us"
+  },
+  {
+    "slug": "ind.1",
+    "name": "Indian Super League",
+    "displayName": "Indian Super League",
+    "abbreviation": "Indian Super League",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ind.1?lang=en&region=us"
+  },
+  {
+    "slug": "ita.1",
+    "name": "Serie A",
+    "displayName": "Italian Serie A",
+    "abbreviation": "Serie A",
+    "country": "Italy",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ita.1?lang=en&region=us"
+  },
+  {
+    "slug": "ita.2",
+    "name": "Italian Serie B",
+    "displayName": "Italian Serie B",
+    "abbreviation": "Italian Serie B",
+    "country": "Italy",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ita.2?lang=en&region=us"
+  },
+  {
+    "slug": "ita.coppa_italia",
+    "name": "Coppa Italia",
+    "displayName": "Italian Coppa Italia",
+    "abbreviation": "Coppa Italia",
+    "country": "Italy",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ita.coppa_italia?lang=en&region=us"
+  },
+  {
+    "slug": "ita.super_cup",
+    "name": "Italian Supercoppa",
+    "displayName": "Italian Supercoppa",
+    "abbreviation": "Italian Supercoppa",
+    "country": "Italy",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ita.super_cup?lang=en&region=us"
+  },
+  {
+    "slug": "jpn.1",
+    "name": "Japanese J1 League",
+    "displayName": "Japanese J League",
+    "abbreviation": "Japanese J1 League",
+    "country": "Japan",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/jpn.1?lang=en&region=us"
+  },
+  {
+    "slug": "jpn.world_challenge",
+    "name": "J.League World Challenge",
+    "displayName": "Japanese J.League World Challenge",
+    "abbreviation": "J.League World Challenge",
+    "country": "Japan",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/jpn.world_challenge?lang=en&region=us"
+  },
+  {
+    "slug": "ksa.1",
+    "name": "Saudi Pro League",
+    "displayName": "Saudi Pro League",
+    "abbreviation": "Saudi Pro League",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ksa.1?lang=en&region=us"
+  },
+  {
+    "slug": "ksa.kings.cup",
+    "name": "Saudi King's Cup",
+    "displayName": " Saudi King's Cup",
+    "abbreviation": "Saudi King's Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ksa.kings.cup?lang=en&region=us"
+  },
+  {
+    "slug": "mex.1",
+    "name": "Liga MX",
+    "displayName": "Mexican Liga MX",
+    "abbreviation": "Liga MX",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/mex.1?lang=en&region=us"
+  },
+  {
+    "slug": "mex.2",
+    "name": "Liga de Expansión MX",
+    "displayName": "Mexican Ascenso MX",
+    "abbreviation": "Liga de Expansión MX",
+    "country": "Mexico",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/mex.2?lang=en&region=us"
+  },
+  {
+    "slug": "mex.campeon",
+    "name": "Campeon de Campeones",
+    "displayName": "Mexican Campeon de Campeones",
+    "abbreviation": "Campeon de Campeones",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/mex.campeon?lang=en&region=us"
+  },
+  {
+    "slug": "ned.1",
+    "name": "Eredivisie",
+    "displayName": "Dutch Eredivisie",
+    "abbreviation": "Eredivisie",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.1?lang=en&region=us"
+  },
+  {
+    "slug": "ned.2",
+    "name": "Keuken Kampioen Divisie",
+    "displayName": "Dutch Eerste Divisie",
+    "abbreviation": "Keuken Kampioen Divisie",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.2?lang=en&region=us"
+  },
+  {
+    "slug": "ned.3.promotion.relegation",
+    "name": "Dutch Tweede Divisie Pro/Rel Playoffs",
+    "displayName": "Dutch Tweede Divisie Promotion/Relegation Playoffs",
+    "abbreviation": "Dutch Playoffs 3/4",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.3.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "ned.cup",
+    "name": "KNVB Beker",
+    "displayName": "Dutch Cup",
+    "abbreviation": "KNVB Beker",
+    "country": "Netherlands",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.cup?lang=en&region=us"
+  },
+  {
+    "slug": "ned.playoff.relegation",
+    "name": "Eredivisie Pro/Rel",
+    "displayName": "Eredivisie Pro/Rel",
+    "abbreviation": "Eredivisie Pro/Rel",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.playoff.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "ned.supercup",
+    "name": "Johan Cruyff Shield",
+    "displayName": "Dutch Johan Cruyff Shield",
+    "abbreviation": "Johan Cruyff Shield",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.supercup?lang=en&region=us"
+  },
+  {
+    "slug": "ned.w.1",
+    "name": "Dutch Vrouwen Eredivisie",
+    "displayName": "Dutch Vrouwen Eredivisie",
+    "abbreviation": "Dutch Vrouwen Eredivisie",
+    "country": "Netherlands",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.w.1?lang=en&region=us"
+  },
+  {
+    "slug": "ned.w.knvb_cup",
+    "name": "Dutch Vrouwen KNVB Beker",
+    "displayName": "Dutch KNVB Beker Vrouwen",
+    "abbreviation": "Dutch Vrouwen KNVB Beker",
+    "country": "Netherlands",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ned.w.knvb_cup?lang=en&region=us"
+  },
+  {
+    "slug": "nonfifa",
+    "name": "NONFIFA",
+    "displayName": "Non-FIFA Friendly",
+    "abbreviation": "Non-FIFA Friendly",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/nonfifa?lang=en&region=us"
+  },
+  {
+    "slug": "nor.1",
+    "name": "Norwegian Eliteserien",
+    "displayName": "Norwegian Tippeligaen",
+    "abbreviation": "Norwegian Eliteserien",
+    "country": "Norway",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/nor.1?lang=en&region=us"
+  },
+  {
+    "slug": "nor.1.promotion.relegation",
+    "name": "Eliteserien Pro/Rel",
+    "displayName": "Norwegian Eliteserien Pro/Rel",
+    "abbreviation": "Norwegian Eliteserien Pro/Rel",
+    "country": "Norway",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/nor.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "par.1",
+    "name": "Paraguayan Primera",
+    "displayName": "Primera División de Paraguay",
+    "abbreviation": "Paraguayan Primera",
+    "country": "Paraguay",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/par.1?lang=en&region=us"
+  },
+  {
+    "slug": "par.1.supercopa",
+    "name": "Paraguayan Supercopa",
+    "displayName": "Paraguayan Supercopa",
+    "abbreviation": "Paraguayan Supercopa",
+    "country": "Paraguay",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/par.1.supercopa?lang=en&region=us"
+  },
+  {
+    "slug": "per.1",
+    "name": "Peru Liga 1",
+    "displayName": "Peruvian Primera Profesional",
+    "abbreviation": "Peru Liga 1",
+    "country": "Peru",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/per.1?lang=en&region=us"
+  },
+  {
+    "slug": "por.1",
+    "name": "Liga Portugal",
+    "displayName": "Portuguese Liga",
+    "abbreviation": "Portuguese Liga",
+    "country": "Portugal",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/por.1?lang=en&region=us"
+  },
+  {
+    "slug": "por.1.promotion.relegation",
+    "name": "Portuguese Liga Pro/Rel",
+    "displayName": "Portuguese Liga Pro/Rel",
+    "abbreviation": "Portuguese Liga Pro/Rel",
+    "country": "Portugal",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/por.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "por.taca.portugal",
+    "name": "Taca de Portugal",
+    "displayName": "Taca de Portugal",
+    "abbreviation": "Taca de Portugal",
+    "country": "Portugal",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/por.taca.portugal?lang=en&region=us"
+  },
+  {
+    "slug": "rsa.1",
+    "name": "South African Premier",
+    "displayName": "South African Premier",
+    "abbreviation": "South African Premiership",
+    "country": "South Africa",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/rsa.1?lang=en&region=us"
+  },
+  {
+    "slug": "rus.1",
+    "name": "Russian Premier",
+    "displayName": "Russian Premier League",
+    "abbreviation": "Russian Premier League",
+    "country": "Russia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/rus.1?lang=en&region=us"
+  },
+  {
+    "slug": "rus.1.promotion.relegation",
+    "name": "Russian Premier League Pro/Rel",
+    "displayName": "Russian Premier League Pro/Rel",
+    "abbreviation": "Russian Premier League Pro/Rel",
+    "country": "Russia",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/rus.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "sco.1",
+    "name": "SPFL Premiership",
+    "displayName": "Scottish Premiership",
+    "abbreviation": "SPFL Premiership",
+    "country": "Scotland",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.1?lang=en&region=us"
+  },
+  {
+    "slug": "sco.1.promotion.relegation",
+    "name": "SPFL Premiership Pro/Rel",
+    "displayName": "SPFL Premiership Pro/Rel",
+    "abbreviation": "SPFL Premiership Pro/Rel",
+    "country": "Scotland",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "sco.2",
+    "name": "SPFL Championship",
+    "displayName": "Scottish Championship",
+    "abbreviation": "SPFL Championship",
+    "country": "Scotland",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.2?lang=en&region=us"
+  },
+  {
+    "slug": "sco.2.promotion.relegation",
+    "name": "SPFL Championship Pro/Rel",
+    "displayName": "Scottish Championship Promotion/Relegation Playoffs",
+    "abbreviation": "SPFL Championship Pro/Rel",
+    "country": "Scotland",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.2.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "sco.challenge",
+    "name": "SPFL Challenge Cup",
+    "displayName": "Scottish League Challenge Cup",
+    "abbreviation": "SPFL Challenge Cup",
+    "country": "Scotland",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.challenge?lang=en&region=us"
+  },
+  {
+    "slug": "sco.cis",
+    "name": "Scottish League Cup",
+    "displayName": "Scottish Communities League Cup",
+    "abbreviation": "SLC",
+    "country": "Scotland",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.cis?lang=en&region=us"
+  },
+  {
+    "slug": "sco.tennents",
+    "name": "Scottish Cup",
+    "displayName": "Scottish Cup",
+    "abbreviation": "Scottish Cup",
+    "country": "Scotland",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.tennents?lang=en&region=us"
+  },
+  {
+    "slug": "sco.tennents_qual",
+    "name": "Scottish Cup Qualifying",
+    "displayName": "Scottish Cup Qualifying",
+    "abbreviation": "Scottish Cup Qualifying",
+    "country": "Scotland",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/sco.tennents_qual?lang=en&region=us"
+  },
+  {
+    "slug": "slv.1",
+    "name": "Salvadoran Primera",
+    "displayName": "Primera División de El Salvador",
+    "abbreviation": "Salvadoran Primera",
+    "country": "El Salvador",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/slv.1?lang=en&region=us"
+  },
+  {
+    "slug": "swe.1",
+    "name": "Swedish Allsvenskan",
+    "displayName": "Swedish Allsvenskanliga",
+    "abbreviation": "Swedish Allsvenskan",
+    "country": "Sweden",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/swe.1?lang=en&region=us"
+  },
+  {
+    "slug": "swe.1.promotion.relegation",
+    "name": "Swedish Allsvenskan Pro/Rel",
+    "displayName": "Swedish Allsvenskan Pro/Rel",
+    "abbreviation": "Swedish Allsvenskan Pro/Rel",
+    "country": "Sweden",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/swe.1.promotion.relegation?lang=en&region=us"
+  },
+  {
+    "slug": "tur.1",
+    "name": "Turkish Super Lig",
+    "displayName": "Turkish Super Lig",
+    "abbreviation": "Turkish Super Lig",
+    "country": "Türkiye",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/tur.1?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.champions",
+    "name": "UEFA Champions League",
+    "displayName": "UEFA Champions League",
+    "abbreviation": "UEFA Champions League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.champions?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.champions_qual",
+    "name": "UCL Qualifying",
+    "displayName": "UEFA Champions League Qualifying",
+    "abbreviation": "UEFA Champions League Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.champions_qual?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.euro",
+    "name": "EURO",
+    "displayName": "European Championship",
+    "abbreviation": "EURO",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.euro?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.euro_u21",
+    "name": "EURO Under-21",
+    "displayName": "European Under-21 Championship",
+    "abbreviation": "EURO Under-21",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.euro_u21?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.euro_u21_qual",
+    "name": "EURO U-21 Qualifying",
+    "displayName": "UEFA European Under-21 Championship Qualifying",
+    "abbreviation": "EURO U-21 Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.euro_u21_qual?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.euro.u19",
+    "name": "EURO Under-19",
+    "displayName": "European Under-19 Championship",
+    "abbreviation": "EURO Under-19",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.euro.u19?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.europa",
+    "name": "UEFA Europa League",
+    "displayName": "UEFA Europa League",
+    "abbreviation": "UEFA Europa League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.europa?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.europa_qual",
+    "name": "UEL Qualifying",
+    "displayName": "Europa League Qualfiying",
+    "abbreviation": "UEFA Europa League Qualfiying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.europa_qual?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.europa.conf",
+    "name": "UEFA Conference League",
+    "displayName": "UEFA Europa Conference",
+    "abbreviation": "UEFA Conference League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.europa.conf?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.europa.conf_qual",
+    "name": "UECL Qualifying",
+    "displayName": "UEFA Conference Qualifying",
+    "abbreviation": "UEFA Conference League Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.europa.conf_qual?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.euroq",
+    "name": "EURO Qualifying",
+    "displayName": "European Championship Qualifying",
+    "abbreviation": "EURO Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.euroq?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.nations",
+    "name": "UEFA Nations League",
+    "displayName": "UEFA Nations League",
+    "abbreviation": "UEFA Nations League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.nations?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.super_cup",
+    "name": "UEFA Super Cup",
+    "displayName": "UEFA Super Cup",
+    "abbreviation": "UEFA Super Cup",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.super_cup?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.w.europa",
+    "name": "Women's Europa Cup",
+    "displayName": "Women's Europa Cup",
+    "abbreviation": "Women's Europa Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.w.europa?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.w.nations",
+    "name": "Women's Nations League",
+    "displayName": "Women's Nations League",
+    "abbreviation": "Women's Nations League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.w.nations?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.wchampions",
+    "name": "UEFA Women's Champions League",
+    "displayName": "UEFA Women's Champions League",
+    "abbreviation": "UEFA Women's Champions League",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.wchampions?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.wchampions_qual",
+    "name": "UEFA Women's Champions League Qualifying",
+    "displayName": "UEFA Women's Champions League Qualifying",
+    "abbreviation": "UEFA Women's Champions League Qualifying",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.wchampions_qual?lang=en&region=us"
+  },
+  {
+    "slug": "uefa.weuro",
+    "name": "Women's EURO",
+    "displayName": "UEFA Women's European Championship",
+    "abbreviation": "Women's EURO",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uefa.weuro?lang=en&region=us"
+  },
+  {
+    "slug": "uru.1",
+    "name": "Liga AUF Uruguaya",
+    "displayName": "Liga AUF Uruguaya",
+    "abbreviation": "Liga AUF Uruguaya",
+    "country": "Uruguay",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uru.1?lang=en&region=us"
+  },
+  {
+    "slug": "uru.2",
+    "name": "Segunda",
+    "displayName": "URU2",
+    "abbreviation": "Seg",
+    "country": "Uruguay",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/uru.2?lang=en&region=us"
+  },
+  {
+    "slug": "usa.1",
+    "name": "MLS",
+    "displayName": "MLS",
+    "abbreviation": "MLS",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.1?lang=en&region=us"
+  },
+  {
+    "slug": "usa.ncaa.m.1",
+    "name": "NCAAM Soccer",
+    "displayName": "NCAA Men's Soccer",
+    "abbreviation": "CMSOC",
+    "country": "USA",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.ncaa.m.1?lang=en&region=us"
+  },
+  {
+    "slug": "usa.ncaa.w.1",
+    "name": "NCAAW Soccer",
+    "displayName": "NCAA Women's Soccer",
+    "abbreviation": "CWSOC",
+    "country": "USA",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.ncaa.w.1?lang=en&region=us"
+  },
+  {
+    "slug": "usa.nwsl",
+    "name": "NWSL",
+    "displayName": "NWSL",
+    "abbreviation": "NWSL",
+    "country": "USA",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.nwsl?lang=en&region=us"
+  },
+  {
+    "slug": "usa.nwsl.cup",
+    "name": "NWSL Challenge Cup",
+    "displayName": "NWSL Challenge Cup",
+    "abbreviation": "NWSL Challenge Cup",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.nwsl.cup?lang=en&region=us"
+  },
+  {
+    "slug": "usa.open",
+    "name": "U.S. Open Cup",
+    "displayName": "U.S. Open Cup",
+    "abbreviation": "U.S. Open Cup",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.open?lang=en&region=us"
+  },
+  {
+    "slug": "usa.usl.1",
+    "name": "USL Championship",
+    "displayName": "USL Championship",
+    "abbreviation": "USL Championship",
+    "country": "USA",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.usl.1?lang=en&region=us"
+  },
+  {
+    "slug": "usa.usl.l1",
+    "name": "USL League One",
+    "displayName": "USL League One",
+    "abbreviation": "USL League One",
+    "country": "USA",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.usl.l1?lang=en&region=us"
+  },
+  {
+    "slug": "usa.usl.l1.cup",
+    "name": "USL Cup",
+    "displayName": "USL Cup",
+    "abbreviation": "USL Cup",
+    "country": "USA",
+    "isTournament": true,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.usl.l1.cup?lang=en&region=us"
+  },
+  {
+    "slug": "usa.w.usl.1",
+    "name": "USL Super League",
+    "displayName": "USL Super League",
+    "abbreviation": "USL Super League",
+    "country": "USA",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/usa.w.usl.1?lang=en&region=us"
+  },
+  {
+    "slug": "ven.1",
+    "name": "Liga FUTVE",
+    "displayName": "Primera División de Venezuela",
+    "abbreviation": "Liga FUTVE",
+    "country": "Venezuela",
+    "isTournament": false,
+    "$ref": "https://sports.core.api.espn.com/v2/sports/soccer/leagues/ven.1?lang=en&region=us"
+  }
+]

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>footballscore — rejected v1 board</title>
+    <style>
+      :root {
+        --ink: #141714;
+        --quiet: #5e635c;
+        --paper: #f7f4ee;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+        background: #efece4;
+        color: var(--ink);
+        line-height: 1.45;
+      }
+      header {
+        padding: 40px 24px 16px;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      header p.kicker {
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--quiet);
+        margin: 0 0 8px;
+      }
+      h1 {
+        font-size: 32px;
+        letter-spacing: -0.03em;
+        margin: 0 0 8px;
+      }
+      .note {
+        max-width: 62ch;
+        color: #3d413c;
+      }
+      .note strong {
+        color: var(--ink);
+      }
+      main {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 8px 24px 80px;
+      }
+      h2 {
+        margin: 40px 0 12px;
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+      @media (min-width: 880px) {
+        .palettes {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .marks {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      article {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
+      }
+      .field {
+        height: 88px;
+        display: flex;
+        align-items: flex-end;
+        padding: 14px 16px;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        font-size: 22px;
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding: 16px;
+      }
+      .swatch {
+        min-height: 64px;
+        border-radius: 8px;
+        padding: 8px;
+        font-size: 10px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .body {
+        padding: 0 16px 16px;
+        font-size: 13px;
+        color: #3d413c;
+      }
+      .body h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        color: var(--ink);
+      }
+      .chip {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 3px 7px;
+        border-radius: 999px;
+        margin-bottom: 8px;
+      }
+      .row-demo {
+        margin: 12px 16px 16px;
+        border-radius: 12px;
+        padding: 12px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .score {
+        font-variant-numeric: tabular-nums;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+      .live {
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .mark-card {
+        padding: 28px 20px 20px;
+        text-align: center;
+      }
+      .mark {
+        font-size: 28px;
+        letter-spacing: -0.045em;
+        margin: 12px 0 16px;
+      }
+      footer {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 24px 48px;
+        color: var(--quiet);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="kicker">Rejected — do not approve</p>
+      <h1>v1 board (superseded)</h1>
+      <p class="note">
+        This board is <strong>rejected</strong>. Lime, cobalt, ember, and Geist splits are retired.
+        Open <a href="./brand-proposals.md">brand-proposals.md</a> and pick Medal, Archive, or Ribbon.
+      </p>
+    </header>
+    <main>
+      <h2>Palettes</h2>
+      <div class="grid palettes">
+        <article>
+          <div class="field" style="background: #10241c; color: #d6f230">footballscore</div>
+          <div class="swatches">
+            <div class="swatch" style="background: #10241c; color: #d6f230">Pitch<br />#10241C</div>
+            <div class="swatch" style="background: #f3f0e8; color: #141714">Paper<br />#F3F0E8</div>
+            <div class="swatch" style="background: #d6f230; color: #10241c">Flare<br />#D6F230</div>
+            <div class="swatch" style="background: #b01a1a; color: #fff">Cardinal<br />#B01A1A</div>
+          </div>
+          <div class="body">
+            <span class="chip" style="background: #d6f230; color: #10241c">A · Programme & floodlight</span>
+            <h3>Night pitch, printed programme, live phosphor</h3>
+            <p>Flare is for live and campaigns on Pitch. On paper, live type uses Flare ink #3E4A00 so contrast holds.</p>
+          </div>
+          <div class="row-demo" style="background: #fffdf8; color: #141714; border: 1px solid #ddd8cc">
+            <span>Home</span>
+            <span><span class="live" style="color: #3e4a00">78'</span> <span class="score">2–1</span></span>
+            <span>Away</span>
+          </div>
+        </article>
+        <article>
+          <div class="field" style="background: #0b1c3a; color: #fff">footballscore</div>
+          <div class="swatches">
+            <div class="swatch" style="background: #0b1c3a; color: #fff">Navy<br />#0B1C3A</div>
+            <div class="swatch" style="background: #f7f4ee; color: #1a1814">Cream<br />#F7F4EE</div>
+            <div class="swatch" style="background: #2154e8; color: #fff">Cobalt<br />#2154E8</div>
+            <div class="swatch" style="background: #b01a1a; color: #fff">Cardinal<br />#B01A1A</div>
+          </div>
+          <div class="body">
+            <span class="chip" style="background: #2154e8; color: #fff">B · Desk & cobalt</span>
+            <h3>Sports desk. One blue for interactive and live.</h3>
+            <p>Most conventional product palette. Cream keeps it off default white-and-blue SaaS if we stay disciplined.</p>
+          </div>
+          <div class="row-demo" style="background: #fff; color: #1a1814; border: 1px solid #e4dfd4">
+            <span>Home</span>
+            <span><span class="live" style="color: #2154e8">78'</span> <span class="score">2–1</span></span>
+            <span>Away</span>
+          </div>
+        </article>
+        <article>
+          <div class="field" style="background: #0e0e10; color: #f4f1ea">footballscore</div>
+          <div class="swatches">
+            <div class="swatch" style="background: #0e0e10; color: #f4f1ea">Night<br />#0E0E10</div>
+            <div class="swatch" style="background: #f4f1ea; color: #161616">Ticket<br />#F4F1EA</div>
+            <div class="swatch" style="background: #e23b2c; color: #fff">Ember<br />#E23B2C</div>
+            <div class="swatch" style="background: #9e1b1b; color: #fff">Cardinal<br />#9E1B1B</div>
+          </div>
+          <div class="body">
+            <span class="chip" style="background: #161616; color: #f4f1ea">C · Night ticket</span>
+            <h3>Almost no logo color. Ember is live only.</h3>
+            <p>Wordmark stays ink. Ember must never mean follow or brand. Red card uses darker Cardinal.</p>
+          </div>
+          <div class="row-demo" style="background: #fffdf7; color: #161616; border: 1px solid #e2ddd4">
+            <span>Home</span>
+            <span><span class="live" style="color: #e23b2c">78'</span> <span class="score">2–1</span></span>
+            <span>Away</span>
+          </div>
+        </article>
+      </div>
+
+      <h2>Wordmarks</h2>
+      <div class="grid marks">
+        <article class="mark-card">
+          <span class="chip" style="background: #ece8dc">1 · Unit</span>
+          <div class="mark" style="font-weight: 750">footballscore</div>
+          <p class="body" style="padding: 0">
+            One weight, one color. Works with A, B, or C. Recommended default.
+          </p>
+        </article>
+        <article class="mark-card">
+          <span class="chip" style="background: #ece8dc">2 · Weight split</span>
+          <div class="mark"><span style="font-weight: 500">football</span><span style="font-weight: 800">score</span></div>
+          <p class="body" style="padding: 0">Same color. Score is the payload. Works with A, B, or C.</p>
+        </article>
+        <article class="mark-card">
+          <span class="chip" style="background: #ece8dc">3 · Color split</span>
+          <div class="mark">
+            <span style="font-weight: 650">football</span><span style="font-weight: 650; color: #2154e8">score</span>
+          </div>
+          <p class="body" style="padding: 0">
+            Ink + signal. Needs A or B. Incompatible with C. Not recommended until you like the extra chroma.
+          </p>
+        </article>
+      </div>
+    </main>
+    <footer>
+      Suggested pair to accept or reject: Palette A + Wordmark 1. Do not pick C + 3.
+    </footer>
+  </body>
+</html>
