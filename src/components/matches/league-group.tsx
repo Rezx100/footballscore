@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { LeagueFlag } from "@/components/matches/league-flag";
 import { MatchRow } from "@/components/matches/match-row";
+import { leagueHref } from "@/lib/hrefs";
 import type { MatchesQuery } from "@/lib/matches-query";
 import type { LeagueGroup } from "@/lib/types";
 
@@ -15,9 +17,9 @@ export function LeagueGroupCard({
     <section className="px-4" data-league={group.id}>
       <header className="flex items-center gap-2.5 px-0.5 pb-2.5 pt-1">
         <LeagueFlag group={group} />
-        <h2 className="font-cond min-w-0 flex-1 truncate text-[13px] tracking-[0.01em] text-[var(--ink)]">
+        <Link href={leagueHref(group.id)} className="font-cond min-w-0 flex-1 truncate text-[13px] tracking-[0.01em] text-[var(--ink)]">
           {group.name}
-        </h2>
+        </Link>
         <span
           className="font-board text-[11px] tracking-[0.08em] text-[var(--muted)]"
           aria-hidden="true"

@@ -1,23 +1,26 @@
-import Link from "next/link";
-import { matchesHref, type MatchesQuery, type TabId } from "@/lib/matches-query";
+"use client";
 
-const tabs: { id: TabId; label: string }[] = [
-  { id: "matches", label: "matches" },
-  { id: "news", label: "news" },
-  { id: "leagues", label: "leagues" },
-  { id: "following", label: "following" },
-  { id: "more", label: "more" },
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const tabs = [
+  { href: "/matches", label: "matches", match: (path: string) => path === "/" || path.startsWith("/matches") || path.startsWith("/match/") },
+  { href: "/news", label: "news", match: (path: string) => path.startsWith("/news") },
+  { href: "/leagues", label: "leagues", match: (path: string) => path.startsWith("/leagues") || path.startsWith("/league/") || path.startsWith("/team/") },
+  { href: "/following", label: "following", match: (path: string) => path.startsWith("/following") },
+  { href: "/more", label: "more", match: (path: string) => path.startsWith("/more") },
 ];
 
-export function TabBar({ query }: { query: MatchesQuery }) {
+export function TabBar() {
+  const pathname = usePathname();
   return (
     <nav className="flex items-center justify-between border-t border-[var(--line)] px-5 pt-3 pb-[max(14px,env(safe-area-inset-bottom))]">
       {tabs.map((tab) => {
-        const isActive = tab.id === query.tab;
+        const isActive = tab.match(pathname);
         return (
           <Link
-            key={tab.id}
-            href={matchesHref({ ...query, tab: tab.id })}
+            key={tab.href}
+            href={tab.href}
             aria-current={isActive ? "page" : undefined}
             className={`font-board text-[11px] tracking-[0.04em] ${
               isActive ? "text-[var(--ink)]" : "text-[var(--muted)]"

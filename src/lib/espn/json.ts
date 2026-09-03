@@ -18,3 +18,12 @@ export function asNumber(value: unknown): number | undefined {
   }
   return undefined;
 }
+
+export function asRecord(value: unknown): Record<string, unknown> | undefined {
+  return isRecord(value) ? value : undefined;
+}
+
+export function asBoolean(value: unknown): boolean | undefined {
+  if (typeof value === "boolean") return value;
+  return undefined;
+}

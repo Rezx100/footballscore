@@ -119,7 +119,55 @@ function scoreOf(competitor: Record<string, unknown> | undefined): number | unde
   return asNumber(competitor.score);
 }
 
-export function mapEvent(event: unknown, fallbackId: string): Match | null {
+function broadcastOf(event: Record<string, unknown>): string | undefined {
+  const names: string[] = [];
+  for (const item of asArray(event.broadcasts)) {
+    if (typeof item === "string") names.push(item);
+    else if (isRecord(item)) {
+      const name = asString(item.name) ?? asString(item.shortName) ?? asString(item.type);
+      if (name) names.push(name);
+    }
+  }
+  if (names.length) return names[0];
+  const competitions = asArray(event.competitions).filter(isRecord);
+  for (const competition of competitions) {
+    for (const item of asArray(competition.broadcasts)) {
+      if (!isRecord(item)) continue;
+      const name = asString(item.shortName) ?? asString(item.name);
+      if (name) return name;
+    }
+  }
+  return undefined;
+}
+
+function roundOf(event: Record<string, unknown>): string | undefined {
+  if (isRecord(event.season) && asString(event.season.name)) {
+    const name = asString(event.season.name);
+    if (name && !/^\d/.test(name)) return name;
+  }
+  const notes = asArray(event.notes);
+  for (const note of notes) {
+    if (isRecord(note) && asString(note.headline)) return asString(note.headline);
+    if (typeof note === "string") return note;
+  }
+  const competitions = asArray(event.competitions).filter(isRecord);
+  for (const competition of competitions) {
+    for (const note of asArray(competition.notes)) {
+      if (isRecord(note) && asString(note.headline)) return asString(note.headline);
+    }
+    if (isRecord(competition.group) && asString(competition.group.name)) {
+      return asString(competition.group.name);
+    }
+  }
+  return asString(event.group);
+}
+
+export function mapEvent(
+  event: unknown,
+  fallbackId: string,
+  leagueId: string,
+  options?: { timeZone?: string; hour12?: boolean; leagueName?: string },
+): Match | null {
   if (!isRecord(event)) return null;
   const id = asString(event.id) ?? fallbackId;
   const iso = asString(event.date);
@@ -132,25 +180,37 @@ export function mapEvent(event: unknown, fallbackId: string): Match | null {
   const { status, minute } = mapStatus(event);
   const homeScore = scoreOf(sides.home);
   const awayScore = scoreOf(sides.away);
+  const timeZone = options?.timeZone ?? "UTC";
+  const hour12 = options?.hour12 ?? false;
+  const eventLeague = isRecord(event.league) ? asString(event.league.slug) : undefined;
   return {
     id,
+    leagueId: eventLeague ?? leagueId,
+    leagueName: options?.leagueName,
     home,
     away,
     status,
     minute,
     homeScore: status === "ns" || status === "pp" || status === "ab" ? undefined : homeScore,
     awayScore: status === "ns" || status === "pp" || status === "ab" ? undefined : awayScore,
-    kickoff: formatKickoff(iso),
+    kickoff: formatKickoff(iso, timeZone, hour12),
     kickoffIso: iso,
     hasTv: hasTv(event),
+    broadcast: broadcastOf(event),
+    round: roundOf(event),
   };
 }
 
-export function eventOnDay(event: unknown, isoDate: string, allowLiveOverflow = false): boolean {
+export function eventOnDay(
+  event: unknown,
+  isoDate: string,
+  allowLiveOverflow = false,
+  timeZone = "UTC",
+): boolean {
   if (!isRecord(event)) return false;
   const iso = asString(event.date);
   if (!iso) return false;
-  if (calendarDayOf(iso) === isoDate) return true;
+  if (calendarDayOf(iso, timeZone) === isoDate) return true;
   if (!allowLiveOverflow) return false;
   const { status } = mapStatus(event);
   return status === "live" || status === "ht";
@@ -198,13 +258,14 @@ export function finalizeGroups(
   groups: Map<string, LeagueGroup>,
   isoDate: string,
   allowLiveOverflow = false,
+  timeZone = "UTC",
 ): LeagueGroup[] {
   return [...groups.values()]
     .map((group) => ({
       ...group,
       matches: sortMatches(
         group.matches.filter((match) => {
-          if (calendarDayOf(match.kickoffIso) === isoDate) return true;
+          if (calendarDayOf(match.kickoffIso, timeZone) === isoDate) return true;
           return allowLiveOverflow && (match.status === "live" || match.status === "ht");
         }),
       ),
@@ -212,3 +273,5 @@ export function finalizeGroups(
     .filter((group) => group.matches.length > 0)
     .sort((a, b) => a.priority - b.priority || a.name.localeCompare(b.name));
 }
+
+export { mapTeam, hexColor, teamLogo, competitorsOf, homeAway, mapStatus, sortMatches };

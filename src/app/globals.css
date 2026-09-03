@@ -244,6 +244,27 @@ a {
   }
 }
 
+.pitch {
+  background:
+    radial-gradient(120% 80% at 50% 50%, color-mix(in srgb, var(--patina) 18%, transparent), transparent 70%),
+    var(--surface);
+  border: 1px solid var(--line);
+}
+
+.article-body :is(p, ul, ol, blockquote) {
+  margin: 0.85em 0;
+}
+
+.article-body a {
+  color: var(--live);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.live-rail {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+}
+
 @keyframes live-tick {
   50% {
     opacity: 0.55;

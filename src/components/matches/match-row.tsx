@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Crest } from "@/components/matches/crest";
-import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
+import { matchHref } from "@/lib/hrefs";
 import type { Match, Team } from "@/lib/types";
 
 function statusCopy(match: Match): string {
@@ -62,12 +62,11 @@ function TeamRow({
 
 export function MatchRow({
   match,
-  selected,
-  query,
+  selected = false,
 }: {
   match: Match;
-  selected: boolean;
-  query: MatchesQuery;
+  selected?: boolean;
+  query?: unknown;
 }) {
   const result =
     match.status === "ns"
@@ -95,7 +94,7 @@ export function MatchRow({
 
   return (
     <Link
-      href={matchesHref({ ...query, match: match.id, tab: "matches" })}
+      href={matchHref(match.id, match.leagueId)}
       aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
       className={`score-card group relative block overflow-hidden rounded-[12px] transition-[transform,background-color,border-color] duration-160 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${

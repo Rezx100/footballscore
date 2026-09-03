@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
+import { FollowProvider } from "@/components/follow/follow-provider";
+import { TimezoneProbe } from "@/components/shell/timezone-probe";
+import { serverFollow, serverPrefs } from "@/lib/server-state";
 import "./globals.css";
 
 const plex = IBM_Plex_Sans({
@@ -21,17 +25,23 @@ const board = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "footballscore — Matches",
-  description: "Live football scores. Association football only.",
+  title: "footballscore",
+  description: "Live football scores. Association football only. Scores from ESPN.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const [follow, prefs] = await Promise.all([serverFollow(), serverPrefs()]);
   return (
     <html
       lang="en"
       className={`${plex.variable} ${condensed.variable} ${board.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[var(--bg)] font-sans text-[var(--ink)]">{children}</body>
+      <body className="min-h-full bg-[var(--bg)] font-sans text-[var(--ink)]">
+        <FollowProvider initial={follow}>
+          <TimezoneProbe override={prefs.tzOverride} />
+          {children}
+        </FollowProvider>
+      </body>
     </html>
   );
 }
