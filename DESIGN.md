@@ -256,13 +256,13 @@ Crests: **shields**, native aspect, never `{rounded.full}` circle crops (Nike av
 ## Components
 
 ### `masthead-bar`
-Atmospheric wash driven by the **lead league palette** (first open group on Scores), falling back to copper-night. Same gradient *rhythm* as Apple Sports league headers — brand-true mid/deep hex from `league-palette.ts`, never generic system green. Constructed mark + `{typography.masthead}` in Bone. Find = frosted tinted pill.
+Neutral cool charcoal wash on Scores home (product chrome). League brand mid/deep from `league-palette.ts` applies only inside a `.league-silo` page — never repeated across the multi-league home list. Constructed mark + Condensed split wordmark (no underscore). Find = frosted pill.
 
 ### `date-board`
 Compact day rail as frosted glass over the masthead wash: neighbor weekday flaps + active `02`/`SEP` flap + live count chip right-aligned. Same radius language as score tiles. Not Yesterday / Today / Tomorrow text tabs.
 
 ### `league-group`
-Each section carries its own Apple-Sports-style aura (`--league` / `--league-deep` / `--league-accent`) plus a 6px accent chip. Score tiles stay `--elev` (cards are not recolored). Unknown slugs fall back by country prefix or a curated hash set.
+Neutral section header on Scores home: light logo plate + name + count. **No league brand aura/chip on home.** League color atmospheres are for dedicated league silo pages only.
 
 ### `match-row` / score card (signature — Stack tile)
 ```

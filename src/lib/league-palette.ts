@@ -1,7 +1,7 @@
 /**
- * League atmospheric palettes — Apple Sports rhythm (header wash per league),
- * Medal-dark friendly hex. Brand-true where leagues have a known identity;
- * country / confederation fallbacks for everything else.
+ * League atmospheric palettes — Apple Sports rhythm.
+ * Reserved for league silo / inner pages only.
+ * Do NOT apply on the multi-league Scores home list.
  */
 
 export type LeaguePalette = {

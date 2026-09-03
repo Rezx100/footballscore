@@ -66,7 +66,7 @@ a {
   border: 0;
 }
 
-/* Masthead — vivid league tint on true black (not muddy brown) */
+/* Masthead — product chrome only. League brand color is reserved for league silo pages. */
 .masthead {
   --masthead-mid: #3a3a3c;
   --masthead-deep: #1c1c1e;
@@ -75,14 +75,46 @@ a {
   background:
     radial-gradient(
       120% 95% at 50% -30%,
-      color-mix(in srgb, var(--masthead-mid) 62%, transparent) 0%,
+      color-mix(in srgb, var(--masthead-mid) 48%, transparent) 0%,
       transparent 55%
     ),
     linear-gradient(
       180deg,
       color-mix(in srgb, var(--masthead-deep) 92%, #000) 0%,
-      color-mix(in srgb, var(--masthead-mid) 22%, #000) 38%,
+      color-mix(in srgb, var(--masthead-mid) 18%, #000) 38%,
       var(--bg) 78%
+    );
+}
+
+/* League silo pages only — apply via .league-silo + palette CSS vars */
+.league-silo {
+  --league: #5b5b5f;
+  --league-deep: #1c1c1e;
+  --league-accent: #c17a3a;
+}
+
+.league-silo .masthead {
+  --masthead-mid: var(--league);
+  --masthead-deep: var(--league-deep);
+}
+
+.league-silo__aura {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  height: 92px;
+  background:
+    radial-gradient(
+      85% 110% at 8% 0%,
+      color-mix(in srgb, var(--league) 40%, transparent) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--league-deep) 45%, transparent) 0%,
+      transparent 100%
     );
 }
 
@@ -180,41 +212,7 @@ a {
   filter: drop-shadow(0 0 16px color-mix(in srgb, var(--masthead-mid) 40%, transparent));
 }
 
-/* League section aura on cool black — logos stay readable */
-.league-section {
-  --league: #5b5b5f;
-  --league-deep: #1c1c1e;
-  --league-accent: #c17a3a;
-}
-
-.league-section__aura {
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -6px;
-  height: 92px;
-  background:
-    radial-gradient(
-      85% 110% at 8% 0%,
-      color-mix(in srgb, var(--league) 40%, transparent) 0%,
-      transparent 60%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--league-deep) 45%, transparent) 0%,
-      transparent 100%
-    );
-}
-
-.league-section__chip {
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  background: var(--league-accent);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--league-accent) 60%, transparent);
-  flex-shrink: 0;
-}
+/* League section aura utilities kept for silo pages — not used on Scores home */
 
 .league-mark-plate {
   display: inline-flex;
