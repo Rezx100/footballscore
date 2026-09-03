@@ -26,16 +26,18 @@ export default async function NewsPage({
         <header className="masthead px-4 pt-4 pb-2">
           <SiteLockup />
           <h1 className="font-cond mt-5 text-[20px]">News</h1>
+          <div className="-mx-4 mt-3">
+            <SegmentTabs
+              value={tab}
+              items={[
+                { value: "foryou", label: "For you", href: "/news" },
+                { value: "world", label: "World", href: "/news?tab=world" },
+              ]}
+            />
+          </div>
         </header>
       }
     >
-      <SegmentTabs
-        value={tab}
-        items={[
-          { value: "foryou", label: "For you", href: "/news" },
-          { value: "world", label: "World", href: "/news?tab=world" },
-        ]}
-      />
       {items.length ? (
         <div className="space-y-2 px-4 pb-10">
           {tab === "foryou" && !forYou.length ? (

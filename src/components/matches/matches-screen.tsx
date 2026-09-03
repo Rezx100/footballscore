@@ -3,7 +3,6 @@ import { Lockup } from "@/components/brand/lockup";
 import { DayHead } from "@/components/matches/day-head";
 import { LeagueGroupCard } from "@/components/matches/league-group";
 import { LiveRail } from "@/components/matches/live-rail";
-import { TabBar } from "@/components/matches/tab-bar";
 import { dayLabel } from "@/lib/dates";
 import { DEFAULT_MARK } from "@/lib/brand";
 import type { FollowState } from "@/lib/follow";
@@ -82,7 +81,7 @@ export function MatchesScreen({
   const live = liveMatches(searched, follow);
 
   return (
-    <div className="flex min-h-dvh flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
+    <div className="bg-[var(--bg)] text-[var(--ink)]">
       <header className="masthead">
         {query.search ? (
           <>
@@ -159,7 +158,7 @@ export function MatchesScreen({
             </Link>
           </div>
         ) : (
-          <div className="flex flex-col gap-5 pt-1 pb-10">
+          <div className="flex flex-col gap-5 pt-1">
             {open.map((group) => (
               <LeagueGroupCard key={group.id} group={group} query={query} />
             ))}
@@ -191,8 +190,6 @@ export function MatchesScreen({
           </div>
         )}
       </div>
-
-      <TabBar />
     </div>
   );
 }

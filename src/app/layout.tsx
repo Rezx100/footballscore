@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
 import { FollowProvider } from "@/components/follow/follow-provider";
+import { TabBar } from "@/components/matches/tab-bar";
 import { TimezoneProbe } from "@/components/shell/timezone-probe";
 import { serverFollow, serverPrefs } from "@/lib/server-state";
 import "./globals.css";
@@ -43,6 +44,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <FollowProvider initial={follow}>
           <TimezoneProbe override={prefs.tzOverride} />
           {children}
+          <TabBar />
         </FollowProvider>
       </body>
     </html>

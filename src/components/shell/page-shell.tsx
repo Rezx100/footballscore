@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { BrandMark } from "@/components/brand/mark";
 import { Wordmark } from "@/components/brand/wordmark";
-import { TabBar } from "@/components/matches/tab-bar";
 
 export function SiteLockup() {
   return (
@@ -26,13 +25,12 @@ export function PageShell({
 }) {
   return (
     <div
-      className={`flex min-h-dvh flex-col bg-[var(--bg)] text-[var(--ink)] ${siloVars ? "league-silo" : ""}`}
+      className={`bg-[var(--bg)] text-[var(--ink)] ${siloVars ? "league-silo" : ""}`}
       style={siloVars as CSSProperties | undefined}
     >
-      <div className={`mx-auto flex min-h-dvh w-full flex-1 flex-col ${wide ? "max-w-[1100px]" : "max-w-[720px]"}`}>
+      <div className={`mx-auto w-full ${wide ? "max-w-[1100px]" : "max-w-[720px]"}`}>
         {masthead}
-        <div className="flex-1">{children}</div>
-        <TabBar />
+        {children}
       </div>
     </div>
   );
