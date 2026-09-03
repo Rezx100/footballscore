@@ -14,7 +14,7 @@ const tabs = [
 export function TabBar() {
   const pathname = usePathname();
   return (
-    <nav className="flex items-center justify-between border-t border-[var(--line)] px-5 pt-3 pb-[max(14px,env(safe-area-inset-bottom))]">
+    <nav className="sticky bottom-0 z-20 flex items-center justify-between border-t border-[var(--line)] bg-[var(--bg)] px-5 pt-3 pb-[max(14px,env(safe-area-inset-bottom))]">
       {tabs.map((tab) => {
         const isActive = tab.match(pathname);
         return (

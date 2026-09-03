@@ -29,9 +29,9 @@ export function PageShell({
       className={`flex min-h-dvh flex-col bg-[var(--bg)] text-[var(--ink)] ${siloVars ? "league-silo" : ""}`}
       style={siloVars as CSSProperties | undefined}
     >
-      <div className={`mx-auto flex min-h-dvh w-full flex-col ${wide ? "max-w-[1100px]" : "max-w-[720px]"}`}>
+      <div className={`mx-auto flex min-h-dvh w-full flex-1 flex-col ${wide ? "max-w-[1100px]" : "max-w-[720px]"}`}>
         {masthead}
-        <div className="min-h-0 flex-1">{children}</div>
+        <div className="flex-1">{children}</div>
         <TabBar />
       </div>
     </div>

@@ -10,18 +10,21 @@ const plex = IBM_Plex_Sans({
   variable: "--font-plex",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 const condensed = IBM_Plex_Sans_Condensed({
   variable: "--font-condensed",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 const board = IBM_Plex_Mono({
   variable: "--font-board",
   subsets: ["latin"],
   weight: ["500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,9 +37,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${plex.variable} ${condensed.variable} ${board.variable} h-full antialiased`}
+      className={`${plex.variable} ${condensed.variable} ${board.variable} min-h-dvh antialiased`}
     >
-      <body className="min-h-full bg-[var(--bg)] font-sans text-[var(--ink)]">
+      <body className="min-h-dvh bg-[var(--bg)] font-sans text-[var(--ink)]">
         <FollowProvider initial={follow}>
           <TimezoneProbe override={prefs.tzOverride} />
           {children}

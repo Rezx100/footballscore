@@ -82,7 +82,7 @@ export function MatchesScreen({
   const live = liveMatches(searched, follow);
 
   return (
-    <div className="flex h-full min-h-0 flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
+    <div className="flex min-h-dvh flex-1 flex-col bg-[var(--bg)] text-[var(--ink)]">
       <header className="masthead">
         {query.search ? (
           <>
@@ -112,7 +112,7 @@ export function MatchesScreen({
       </header>
       <LiveRail matches={live} />
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="flex-1">
         {error ? (
           <div className="px-5 pt-16">
             <p className="font-cond text-[20px] leading-none">Scores unavailable</p>

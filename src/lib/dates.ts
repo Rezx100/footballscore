@@ -2,6 +2,16 @@ import type { DayKey } from "@/lib/types";
 
 type Ymd = { y: number; m: number; d: number };
 
+export function isValidTimeZone(value: string | undefined): value is string {
+  if (!value) return false;
+  try {
+    Intl.DateTimeFormat("en-US", { timeZone: value }).format(new Date());
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function ymdInZone(date: Date, timeZone: string): Ymd {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone,
