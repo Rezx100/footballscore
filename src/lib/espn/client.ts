@@ -1,22 +1,81 @@
 import { asArray, asString, isRecord } from "@/lib/espn/json";
 
 const ESPN_SITE = "https://site.api.espn.com";
+const ESPN_SITE_WEB = "https://site.web.api.espn.com";
 const ESPN_CORE = "https://sports.core.api.espn.com";
 const ESPN_CONTENT = "https://content.core.api.espn.com";
 
-async function espnGet(path: string, revalidate: number): Promise<unknown> {
-  const url = path.startsWith("http") ? path : `${ESPN_SITE}${path}`;
+const FETCH_MS = 4000;
+
+const ESPN_HEADERS: Record<string, string> = {
+  Accept: "application/json",
+  "Accept-Language": "en-US,en;q=0.9",
+  "User-Agent": "footballscore/0.1",
+};
+
+export async function mapPool<T, R>(
+  items: readonly T[],
+  limit: number,
+  mapper: (item: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  if (items.length === 0) return [];
+  const out: R[] = new Array(items.length);
+  let next = 0;
+  async function worker() {
+    while (true) {
+      const index = next;
+      next += 1;
+      if (index >= items.length) return;
+      out[index] = await mapper(items[index], index);
+    }
+  }
+  const workers = Math.min(Math.max(1, limit), items.length);
+  await Promise.all(Array.from({ length: workers }, () => worker()));
+  return out;
+}
+
+function siteMirrors(url: string): string[] {
+  if (url.startsWith(ESPN_SITE_WEB)) {
+    return [url, `${ESPN_SITE}${url.slice(ESPN_SITE_WEB.length)}`];
+  }
+  if (url.startsWith(ESPN_SITE)) {
+    return [url, `${ESPN_SITE_WEB}${url.slice(ESPN_SITE.length)}`];
+  }
+  return [url];
+}
+
+function resolveUrl(path: string): string {
+  if (path.startsWith("http")) return path.replace(/^http:\/\//, "https://");
+  return `${ESPN_SITE_WEB}${path}`;
+}
+
+async function espnGetOnce(url: string, revalidate: number): Promise<unknown> {
   const response = await fetch(url, {
-    headers: {
-      Accept: "application/json",
-      "User-Agent": "footballscore/0.1",
-    },
+    headers: ESPN_HEADERS,
+    signal: AbortSignal.timeout(FETCH_MS),
     next: { revalidate },
   });
   if (!response.ok) {
     throw new Error(`ESPN ${response.status} for ${url}`);
   }
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("json")) {
+    throw new Error(`ESPN non-JSON for ${url}`);
+  }
   return response.json();
+}
+
+async function espnGet(path: string, revalidate: number): Promise<unknown> {
+  const urls = siteMirrors(resolveUrl(path));
+  let last: unknown;
+  for (const url of urls) {
+    try {
+      return await espnGetOnce(url, revalidate);
+    } catch (error) {
+      last = error;
+    }
+  }
+  throw last instanceof Error ? last : new Error(`ESPN fetch failed for ${path}`);
 }
 
 async function espnGetOrNull(path: string, revalidate: number): Promise<unknown | null> {

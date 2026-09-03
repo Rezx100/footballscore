@@ -7,6 +7,7 @@ import { serverFollow } from "@/lib/server-state";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300;
+export const maxDuration = 20;
 
 export default async function NewsPage({
   searchParams,

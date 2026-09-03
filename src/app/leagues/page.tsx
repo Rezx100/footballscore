@@ -14,7 +14,11 @@ export default async function LeaguesPage({
 }) {
   const query = await searchParams;
   const q = Array.isArray(query.q) ? query.q[0] : query.q ?? "";
-  const [catalog, clubs, follow] = await Promise.all([getCatalog(), getFirstClassClubs(), serverFollow()]);
+  const [catalog, clubs, follow] = await Promise.all([
+    getCatalog(),
+    q.trim() ? getFirstClassClubs() : Promise.resolve([]),
+    serverFollow(),
+  ]);
   return (
     <PageShell>
       <ExploreView catalog={catalog} clubs={clubs} follow={follow} q={q} />
