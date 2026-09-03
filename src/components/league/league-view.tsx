@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { LeagueMark } from "@/components/brand/league-mark";
 import { FollowButton } from "@/components/follow/follow-button";
 import { MatchRow } from "@/components/matches/match-row";
 import { RemoteMark } from "@/components/matches/remote-mark";
+import { BackChevronIcon } from "@/components/matches/tab-icons";
 import { NewsCard } from "@/components/news/news-card";
 import { MiniTable } from "@/components/ui/mini-table";
 import { EmptyState, Module, SegmentTabs } from "@/components/ui/blocks";
-import { SiteLockup } from "@/components/shell/page-shell";
 import type { LeaguePage } from "@/lib/espn/league-page";
 import { leagueHref, teamHref } from "@/lib/hrefs";
 import type { MatchesQuery } from "@/lib/matches-query";
@@ -56,26 +57,22 @@ export function LeagueView({
   return (
     <>
       <header className="masthead">
-        <div className="flex items-center justify-between gap-4 px-4 pt-4">
-          <SiteLockup />
-          <FollowButton league={meta.slug} label="Follow league" />
-        </div>
-        <div className="relative px-4 pb-4 pt-5">
+        <div className="relative overflow-hidden">
           <span className="league-silo__aura" aria-hidden="true" />
-          <div className="relative flex items-center gap-3">
-            <span className="league-mark-plate h-12 w-12">
-              <RemoteMark
-                src={meta.logo}
-                alt=""
-                size={32}
-                className="h-8 w-8 object-contain"
-                fallback={<span className="font-board text-[10px] text-[#1c1c1e]">{meta.name.slice(0, 3)}</span>}
-              />
-            </span>
-            <div>
-              <h1 className="font-cond text-[22px] leading-none">{meta.name}</h1>
+          <div className="relative flex items-center gap-2 px-2 pt-3 pb-3">
+            <Link
+              href="/leagues"
+              aria-label="Back to leagues"
+              className="grid h-11 w-11 shrink-0 place-items-center text-[var(--ink)]"
+            >
+              <BackChevronIcon />
+            </Link>
+            <LeagueMark slug={meta.slug} name={meta.name} logo={meta.logo} size={48} />
+            <div className="min-w-0 flex-1">
+              <h1 className="font-cond truncate text-[20px] leading-none">{meta.name}</h1>
               <p className="font-board mt-1 text-[11px] tracking-[0.06em] text-[var(--muted)]">{meta.country}</p>
             </div>
+            <FollowButton league={meta.slug} label="Follow" />
           </div>
         </div>
         <SegmentTabs value={tab} items={items} />
@@ -134,7 +131,7 @@ export function LeagueView({
 
       {tab === "fixtures" ? (
         <div className="pb-10">
-          <div className="flex gap-2 overflow-x-auto px-4 pt-3">
+          <div className="h-rail flex gap-2 px-4 pt-3">
             {page.fixtureDates.slice(0, 24).map((date) => {
               const iso = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
               const href = `${leagueHref(meta.slug, "fixtures")}&date=${iso}${teamFilter ? `&team=${teamFilter}` : ""}`;

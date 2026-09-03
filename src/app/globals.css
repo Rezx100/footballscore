@@ -31,13 +31,22 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100dvh;
+  height: auto;
+  overflow-x: clip;
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
+  overscroll-behavior-y: contain;
+  padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+a,
+button {
+  touch-action: manipulation;
 }
 
 a {
@@ -70,9 +79,13 @@ a {
 .masthead {
   --masthead-mid: #3a3a3c;
   --masthead-deep: #1c1c1e;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 30;
   isolation: isolate;
-  background:
+  padding-top: env(safe-area-inset-top, 0px);
+  background-color: var(--bg);
+  background-image:
     radial-gradient(
       120% 95% at 50% -30%,
       color-mix(in srgb, var(--masthead-mid) 48%, transparent) 0%,
@@ -84,6 +97,63 @@ a {
       color-mix(in srgb, var(--masthead-mid) 18%, #000) 38%,
       var(--bg) 78%
     );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.h-rail {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.tab-bar__inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  min-height: 56px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4px 8px 0;
+}
+
+.tab-bar__item {
+  display: flex;
+  min-width: 44px;
+  min-height: 44px;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--muted);
+}
+
+.tab-bar__item[aria-current="page"] {
+  color: var(--ink);
+}
+
+.tab-bar__icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.tab-bar__item[aria-current="page"] .tab-bar__icon {
+  box-shadow: 0 1px 0 0 var(--copper);
 }
 
 /* League silo pages only — apply via .league-silo + palette CSS vars */
@@ -103,8 +173,8 @@ a {
   position: absolute;
   left: 0;
   right: 0;
-  top: -6px;
-  height: 92px;
+  top: 0;
+  height: 72px;
   background:
     radial-gradient(
       85% 110% at 8% 0%,

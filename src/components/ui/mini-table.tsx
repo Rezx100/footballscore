@@ -15,7 +15,7 @@ export function MiniTable({
   fullHref?: string;
 }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="h-rail">
       <table className="w-full min-w-[520px] border-collapse text-left">
         <caption className="sr-only">{table.name}</caption>
         <thead>

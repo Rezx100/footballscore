@@ -8,7 +8,7 @@ export function LiveRail({ matches }: { matches: Match[] }) {
   return (
     <div className="live-rail border-b border-[var(--line)] px-4 py-2">
       <p className="sr-only">Live matches</p>
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="h-rail flex gap-2">
         {matches.map((match) => (
           <Link
             key={`${match.leagueId}-${match.id}`}

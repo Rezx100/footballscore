@@ -33,24 +33,26 @@ export function SegmentTabs({
   value: string;
 }) {
   return (
-    <div className="flex gap-1 overflow-x-auto px-4 pb-3">
-      {items.map((item) => {
-        const active = item.value === value;
-        return (
-          <Link
-            key={item.value}
-            href={item.href}
-            aria-current={active ? "page" : undefined}
-            className={`shrink-0 rounded-full px-3 py-1.5 font-board text-[11px] tracking-[0.06em] ${
-              active
-                ? "bg-[var(--elev)] text-[var(--ink)]"
-                : "text-[var(--muted)]"
-            }`}
-          >
-            {item.label}
-          </Link>
-        );
-      })}
+    <div className="h-rail px-4 pb-3">
+      <div className="inline-flex min-h-11 items-center gap-0.5 rounded-[10px] bg-[color-mix(in_srgb,var(--ink)_6%,transparent)] p-0.5">
+        {items.map((item) => {
+          const active = item.value === value;
+          return (
+            <Link
+              key={item.value}
+              href={item.href}
+              aria-current={active ? "page" : undefined}
+              className={`flex min-h-10 shrink-0 items-center rounded-[8px] px-3 font-board text-[11px] tracking-[0.06em] ${
+                active
+                  ? "bg-[var(--elev)] text-[var(--ink)]"
+                  : "text-[var(--muted)]"
+              }`}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
