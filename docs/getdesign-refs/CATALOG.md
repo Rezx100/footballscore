@@ -6,7 +6,7 @@ Source: [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-desig
 
 Install more: `npx getdesign@latest add <slug> --out docs/getdesign-refs/<slug>.md`
 
-## Pulled locally (16)
+## Pulled locally (17)
 
 | File | Live analysis | For footballscore |
 | --- | --- | --- |
@@ -26,8 +26,9 @@ Install more: `npx getdesign@latest add <slug> --out docs/getdesign-refs/<slug>.
 | [notion.md](./notion.md) | [notion](https://getdesign.md/notion/design-md) | **Take:** paper-calm chrome, personality elsewhere. **Leave:** sticker palette, Inter-as-identity. |
 | [linear-app.md](./linear-app.md) | [linear.app](https://getdesign.md/linear.app/design-md) | **Take:** one accent, hairline dark panels (if we ever do dark). **Leave:** #010102 as default Scores. |
 | [dell-1996.md](./dell-1996.md) | [dell-1996](https://getdesign.md/dell-1996/design-md) | **Take:** catalog grouping, ribbon tints per *league* if we ever want retro. **Leave:** GIF stickers, Times body. |
+| [figma-livescore.md](./figma-livescore.md) · [gallery](./figma-livescore/index.html) | [Figma Community live-score kits](https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=live%20score%20football&price=free) (CC BY 4.0) | **Take:** date rail, live band above FT, sticky board + Summary/Stats/Lineup segment, dual-stat rows, newest-first timeline. **Leave:** Watch CTAs, kit-pink/neon identity, circle crests, celebrity onboarding, jumbotron list scores, betting kits. |
 
-Closest to Pitch: **WIRED + Mastercard paper + Uber density + Binance data-colors-are-not-brand.** Loudest to avoid as a clone: The Verge, Starbucks green system, Nike campaign type.
+Closest to Pitch: **WIRED + Mastercard paper + Uber density + Binance data-colors-are-not-brand.** Closest live-score *IA* (not identity): **figma-livescore** (scorelive date/live band + Livesoccer match object). Loudest to avoid as a clone: The Verge, Starbucks green system, Nike campaign type, and any Community kit’s pink/neon/Watch chrome.
 
 ## Full collection (73)
 

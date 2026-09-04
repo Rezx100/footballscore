@@ -5,6 +5,7 @@ Live football scores for **app** and **website** — one product, association fo
 **Brand (foundation):** [docs/brand.md](docs/brand.md)  
 **Design system (getdesign.md format):** [DESIGN.md](DESIGN.md)  
 **Catalog of pulled analyses:** [docs/getdesign-refs/CATALOG.md](docs/getdesign-refs/CATALOG.md)  
+**Figma live-score screens (Community, CC BY 4.0):** [docs/getdesign-refs/figma-livescore.md](docs/getdesign-refs/figma-livescore.md) · [gallery](docs/getdesign-refs/figma-livescore/index.html)  
 **Approve wordmark + color:** [docs/brand-proposals.md](docs/brand-proposals.md) · [board](docs/brand-board.html)  
 **How we get to a full brand book:** [docs/brand-plan.md](docs/brand-plan.md)  
 **Product system (proposed Pitch):** [docs/design.md](docs/design.md)  
