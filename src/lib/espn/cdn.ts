@@ -13,7 +13,7 @@ export function teamLogoUrl(id: string | undefined, explicit?: string): string |
  * `a.espncdn.com/i/headshots/soccer/players/full/{id}.png` 404s for most
  * footballers (Cunha, Fernandes, Salah) even though Lisandro Martínez works.
  */
-export function headshotFromAthlete(node: Record<string, unknown>, _id?: string): string | undefined {
+export function headshotFromAthlete(node: Record<string, unknown>): string | undefined {
   const athlete = isRecord(node.athlete) && node.headshot == null ? node.athlete : node;
   const shot = athlete.headshot;
   if (isRecord(shot)) return asString(shot.href);

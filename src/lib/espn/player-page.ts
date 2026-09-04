@@ -44,7 +44,7 @@ function fromCore(raw: unknown, fallback: PlayerPage): PlayerPage | null {
     team: fallback.team,
     height: asString(raw.displayHeight) ?? asString(raw.height),
     citizenship: asString(raw.citizenship) ?? (isRecord(raw.citizenshipCountry) ? asString(raw.citizenshipCountry.name) : undefined),
-    headshot: headshotFromAthlete(raw, asString(raw.id) ?? fallback.id) ?? fallback.headshot,
+    headshot: headshotFromAthlete(raw) ?? fallback.headshot,
   };
 }
 

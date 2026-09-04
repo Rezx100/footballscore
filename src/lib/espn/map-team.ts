@@ -97,7 +97,7 @@ export function mapRoster(raw: unknown): { players: SquadPlayer[]; coach?: strin
       position: posName ?? abbr ?? "Player",
       positionGroup: positionGroup(posName, abbr),
       age: asNumber(athlete.age),
-      headshot: headshotFromAthlete(athlete, id),
+      headshot: headshotFromAthlete(athlete),
     });
   }
   const coach = asArray(raw.coach).find(isRecord);

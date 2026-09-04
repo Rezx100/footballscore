@@ -133,7 +133,7 @@ function mapLineup(raw: unknown, fallbackColor: string): LineupSide | null {
       position,
       starter: row.starter === true,
       formationPlace: asNumber(row.formationPlace),
-      headshot: athlete ? headshotFromAthlete(athlete, id) : undefined,
+      headshot: athlete ? headshotFromAthlete(athlete) : undefined,
     });
   }
   return {
