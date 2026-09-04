@@ -1,5 +1,6 @@
 import { EmptyState } from "@/components/ui/blocks";
 import { Crest } from "@/components/matches/crest";
+import { Headshot } from "@/components/matches/headshot";
 import { PageShell, SiteLockup } from "@/components/shell/page-shell";
 import { FollowButton } from "@/components/follow/follow-button";
 import { getPlayerPage } from "@/lib/espn/player-page";
@@ -44,13 +45,18 @@ export default async function PlayerPage({
       }
     >
       <div className="px-4 pb-10 pt-4">
-        <p className="font-board text-[11px] tracking-[0.08em] text-[var(--muted)]">{player.position}</p>
-        <h1 className="font-cond mt-1 text-[24px] leading-none">{player.name}</h1>
-        <p className="font-board mt-2 text-[13px] text-[var(--muted)]">
-          {[player.jersey ? `#${player.jersey}` : null, player.age ? `${player.age}` : null, player.citizenship, player.height]
-            .filter(Boolean)
-            .join(" · ")}
-        </p>
+        <div className="flex items-start gap-4">
+          <Headshot src={player.headshot} name={player.name} size={72} />
+          <div className="min-w-0">
+            <p className="font-board text-[11px] tracking-[0.08em] text-[var(--muted)]">{player.position}</p>
+            <h1 className="font-cond mt-1 text-[24px] leading-none">{player.name}</h1>
+            <p className="font-board mt-2 text-[13px] text-[var(--muted)]">
+              {[player.jersey ? `#${player.jersey}` : null, player.age ? `${player.age}` : null, player.citizenship, player.height]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          </div>
+        </div>
         {player.team && league ? (
           <div className="mt-5 flex items-center justify-between">
             <Link href={teamHref(league, player.team.id)} className="flex items-center gap-2">
