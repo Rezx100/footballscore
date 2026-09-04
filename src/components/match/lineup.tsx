@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Headshot } from "@/components/matches/headshot";
 import { playerHref } from "@/lib/hrefs";
 import type { LineupSide } from "@/lib/types";
 
@@ -44,10 +45,9 @@ export function Lineup({
                   href={playerHref(player.id, league, side.team.id)}
                   className="flex min-w-0 flex-col items-center"
                 >
-                  <span className="font-board flex h-7 w-7 items-center justify-center rounded-full bg-[var(--elev)] text-[10px]">
-                    {player.jersey ?? "–"}
-                  </span>
-                  <span className="font-cond mt-1 max-w-[72px] truncate text-center text-[11px]">{player.name}</span>
+                  <Headshot src={player.headshot} name={player.name} size={28} />
+                  <span className="font-board mt-1 text-[10px] text-[var(--muted)]">{player.jersey ?? "–"}</span>
+                  <span className="font-cond max-w-[72px] truncate text-center text-[11px]">{player.name}</span>
                 </Link>
               ))}
             </div>
@@ -57,7 +57,8 @@ export function Lineup({
         <ul className="mb-4 space-y-1">
           {starters.map((player) => (
             <li key={player.id}>
-              <Link href={playerHref(player.id, league, side.team.id)} className="font-cond flex gap-2 text-[14px]">
+              <Link href={playerHref(player.id, league, side.team.id)} className="font-cond flex items-center gap-2 text-[14px]">
+                <Headshot src={player.headshot} name={player.name} size={24} />
                 <span className="font-board w-6 text-[12px] text-[var(--muted)]">{player.jersey ?? ""}</span>
                 {player.name}
               </Link>
@@ -71,7 +72,8 @@ export function Lineup({
           <ul className="space-y-1">
             {bench.map((player) => (
               <li key={player.id}>
-                <Link href={playerHref(player.id, league, side.team.id)} className="font-cond flex gap-2 text-[13px] text-[color-mix(in_srgb,var(--ink)_80%,transparent)]">
+                <Link href={playerHref(player.id, league, side.team.id)} className="font-cond flex items-center gap-2 text-[13px] text-[color-mix(in_srgb,var(--ink)_80%,transparent)]">
+                  <Headshot src={player.headshot} name={player.name} size={24} />
                   <span className="font-board w-6 text-[12px] text-[var(--muted)]">{player.jersey ?? ""}</span>
                   {player.name}
                 </Link>

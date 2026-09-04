@@ -1,5 +1,6 @@
 import { fetchAthlete, fetchRoster, fetchTeam } from "@/lib/espn/client";
 import { asNumber, asString, isRecord } from "@/lib/espn/json";
+import { headshotFromAthlete } from "@/lib/espn/cdn";
 import { mapClub, mapRoster } from "@/lib/espn/map-team";
 import type { Club, SquadPlayer } from "@/lib/types";
 
@@ -12,6 +13,7 @@ export type PlayerPage = {
   team?: Club;
   height?: string;
   citizenship?: string;
+  headshot?: string;
 };
 
 function fromSquad(player: SquadPlayer, team?: Club): PlayerPage {
@@ -22,6 +24,7 @@ function fromSquad(player: SquadPlayer, team?: Club): PlayerPage {
     position: player.position,
     age: player.age,
     team,
+    headshot: player.headshot,
   };
 }
 
@@ -41,6 +44,7 @@ function fromCore(raw: unknown, fallback: PlayerPage): PlayerPage | null {
     team: fallback.team,
     height: asString(raw.displayHeight) ?? asString(raw.height),
     citizenship: asString(raw.citizenship) ?? (isRecord(raw.citizenshipCountry) ? asString(raw.citizenshipCountry.name) : undefined),
+    headshot: headshotFromAthlete(raw, asString(raw.id) ?? fallback.id) ?? fallback.headshot,
   };
 }
 
