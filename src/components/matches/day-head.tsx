@@ -3,7 +3,7 @@ import { boardDate, ymdForDay } from "@/lib/dates";
 import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
 import type { DayKey } from "@/lib/types";
 
-const DAYS: DayKey[] = ["today", "tomorrow", "next", "yesterday"];
+const DAYS: DayKey[] = ["yesterday", "today", "tomorrow", "next"];
 
 function chipLabel(day: DayKey, timeZone: string): string {
   if (day === "today") return "Today";

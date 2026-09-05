@@ -56,7 +56,7 @@ export function MatchRow({
         selected ? "score-card--selected" : ""
       }`}
     >
-      <p className="shrink-0 text-[16px] font-semibold leading-[20px] text-[var(--scory-text-primary,#ffffff)]">
+      <p className="shrink-0 whitespace-nowrap text-[16px] font-semibold leading-[20px] text-[var(--scory-text-primary,#ffffff)]">
         {copy}
       </p>
       <div className="flex min-w-0 flex-1 flex-col gap-3">
