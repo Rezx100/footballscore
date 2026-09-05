@@ -129,6 +129,81 @@ a {
   color: var(--scory-text-primary, #ffffff);
 }
 
+.status-bar__time {
+  margin: 0;
+  color: var(--scory-text-primary, #ffffff);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+}
+
+.status-bar__end {
+  display: flex;
+  box-sizing: border-box;
+  height: 14px;
+  width: 65px;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--scory-text-primary, #ffffff);
+}
+
+.status-bar__signal {
+  display: flex;
+  width: 30px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0;
+}
+
+.status-bar__battery {
+  margin-left: auto;
+  width: 27px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+}
+
+.sport-pill {
+  display: inline-flex;
+  box-sizing: border-box;
+  height: 24px;
+  width: 93px;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--scory-bg-brand, #6c0707);
+  color: var(--scory-text-on-brand, #ffffff);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+}
+
+.masthead-avatar {
+  display: block;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: var(--scory-bg-brand, #6c0707);
+  box-shadow: none;
+}
+
 .h-rail {
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -186,7 +261,24 @@ a {
   place-items: center;
   width: 24px;
   height: 24px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--scory-icon-default, #ffffff);
+}
+
+.tab-bar__icon svg {
+  overflow: visible;
+  fill: none;
+  background: transparent;
+}
+
+.tab-bar__icon path,
+.tab-bar__icon circle,
+.tab-bar__icon ellipse,
+.tab-bar__icon rect {
+  fill: none;
 }
 
 .tab-bar__label {
@@ -378,27 +470,14 @@ a {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  padding: 0;
+  overflow: visible;
   border: 0;
   border-radius: 999px;
   background: #ffffff;
-}
-
-/* 24px discs on the scores board: 2px halo composites over the chip, art stays 18×18. */
-.crest-disc,
-.league-mark-plate:has(> .crest-art) {
-  padding: 2px;
-  overflow: visible;
-  background-color: rgba(255, 255, 255, 0.65);
-  background-image: linear-gradient(#ffffff, #ffffff);
-  background-origin: content-box;
-  background-clip: content-box;
-  outline: 2px solid rgba(255, 255, 255, 0.65);
-  outline-offset: -2px;
-}
-
-.league-mark-plate:not(:has(> .crest-art)) {
-  border: 2px solid rgba(255, 255, 255, 0.65);
+  outline: none;
+  /* 2px halo sits OUTSIDE the 24px white plate (visual 28×28). */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.65);
 }
 
 .crest-art {

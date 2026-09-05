@@ -4,24 +4,20 @@ import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
 
 export function Lockup({ query }: { query: MatchesQuery }) {
   return (
-    <div className="flex w-full items-center justify-between overflow-hidden">
-      <div className="flex min-w-0 items-center gap-2 overflow-hidden">
-        <span className="shrink-0 text-[16px] font-medium leading-[24px] text-[var(--scory-text-brand,#f87171)]">
+    <div className="flex h-8 w-full items-center justify-between">
+      <div className="flex h-6 items-center">
+        <span className="inline-flex h-6 w-[17px] shrink-0 items-center text-[16px] font-medium leading-6 text-[var(--scory-text-brand,#f87171)]">
           [:]
         </span>
-        <span className="shrink-0 text-[18px] font-semibold leading-[24px] tracking-[-0.2px] text-[var(--scory-text-primary,#ffffff)]">
+        <span className="ml-2 inline-flex h-6 w-[51px] shrink-0 items-center text-[18px] font-semibold leading-6 tracking-[-0.2px] text-[var(--scory-text-primary,#ffffff)]">
           Scory
         </span>
-        <span className="flex shrink-0 items-center gap-[6px] rounded-[999px] bg-[var(--scory-bg-brand,#6c0707)] py-[4px] pr-3 pl-3">
-          <span className="text-[12px] font-medium leading-[16px] tracking-[0.1px] text-[var(--scory-text-on-brand,#ffffff)]">
-            Football
-          </span>
-          <span className="text-[var(--scory-text-on-brand,#ffffff)]">
-            <ChevronGlyph size={16} />
-          </span>
+        <span className="sport-pill ml-2">
+          <span>Football</span>
+          <ChevronGlyph size={16} />
         </span>
       </div>
-      <div className="flex shrink-0 items-center gap-[10px]">
+      <div className="flex h-8 shrink-0 items-center gap-[10px]">
         <Link
           href={
             query.search
@@ -45,7 +41,7 @@ export function Lockup({ query }: { query: MatchesQuery }) {
         >
           <FilterGlyph size={20} />
         </span>
-        <img src="/icons/scory/avatar.svg" alt="" width={28} height={28} className="size-[28px] rounded-full" />
+        <span className="masthead-avatar" aria-hidden="true" />
       </div>
     </div>
   );
