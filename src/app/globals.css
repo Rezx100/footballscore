@@ -161,7 +161,7 @@ a {
 }
 
 .status-bar__battery {
-  margin-left: auto;
+  margin-left: 7px;
   width: 27px;
   flex-shrink: 0;
   text-align: right;
