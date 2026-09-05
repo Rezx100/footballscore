@@ -57,6 +57,22 @@ body {
   overflow-x: clip;
 }
 
+/* Next.js 16 injects a bottom-left N-on-disc badge via nextjs-portal.
+   That overlay covers the Home tab in Chromium captures (C-2-02).
+   Hide the host even if a stale dev server still mounts the portal. */
+nextjs-portal,
+[data-next-badge-root],
+[data-next-badge],
+script[data-nextjs-dev-overlay] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
@@ -150,14 +166,27 @@ a {
 
 .status-bar__signal {
   display: flex;
+  box-sizing: border-box;
   width: 30px;
+  height: 14px;
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 14px;
-  letter-spacing: 0;
+}
+
+/* Three 8×8 discs, 3px gaps, vertically centered in the 14px cluster
+   → y = 13 + (14-8)/2 = 16. space-between in 30px → x 309 / 320 / 331. */
+.status-bar__signal span {
+  display: block;
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
 }
 
 .status-bar__battery {
