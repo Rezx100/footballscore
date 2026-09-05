@@ -53,7 +53,7 @@ export function TabBar() {
                 <span className="tab-bar__icon">
                   <Icon />
                 </span>
-                {tab.label}
+                <span className="tab-bar__label">{tab.label}</span>
               </Link>
             );
           })}

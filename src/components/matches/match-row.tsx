@@ -52,7 +52,7 @@ export function MatchRow({
       href={matchHref(match.id, match.leagueId)}
       aria-current={selected ? "true" : undefined}
       aria-label={`${match.home.name} versus ${match.away.name}, ${result}`}
-      className={`score-card flex h-[84px] w-full items-center justify-between gap-3 overflow-hidden rounded-[12px] bg-[var(--scory-bg-chip,#1f2937)] p-3 ${
+      className={`score-card flex h-[84px] w-full items-center justify-between gap-0 overflow-hidden rounded-[12px] bg-[var(--scory-bg-chip,#1f2937)] p-3 ${
         selected ? "score-card--selected" : ""
       }`}
     >

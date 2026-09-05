@@ -169,7 +169,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  color: var(--scory-icon-muted, #9ca3af);
+  color: var(--scory-icon-default, #ffffff);
   font-size: 11px;
   font-weight: 400;
   line-height: 14px;
@@ -178,7 +178,7 @@ a {
 }
 
 .tab-bar__item[aria-current="page"] {
-  color: var(--scory-icon-brand, #f87171);
+  color: var(--scory-icon-default, #ffffff);
 }
 
 .tab-bar__icon {
@@ -186,6 +186,15 @@ a {
   place-items: center;
   width: 24px;
   height: 24px;
+  color: var(--scory-icon-default, #ffffff);
+}
+
+.tab-bar__label {
+  color: var(--scory-text-secondary, #9ca3af);
+}
+
+.tab-bar__item[aria-current="page"] .tab-bar__label {
+  color: var(--scory-text-brand, #f87171);
 }
 
 .home-indicator {
@@ -370,17 +379,38 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.65);
+  border: 0;
   border-radius: 999px;
   background: #ffffff;
+}
+
+/* 24px discs on the scores board: 2px halo composites over the chip, art stays 18×18. */
+.crest-disc,
+.league-mark-plate:has(> .crest-art) {
+  padding: 2px;
+  overflow: visible;
+  background-color: rgba(255, 255, 255, 0.65);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  background-origin: content-box;
+  background-clip: content-box;
+  outline: 2px solid rgba(255, 255, 255, 0.65);
+  outline-offset: -2px;
+}
+
+.league-mark-plate:not(:has(> .crest-art)) {
+  border: 2px solid rgba(255, 255, 255, 0.65);
 }
 
 .crest-art {
   position: absolute;
   inset: 12.5%;
+  width: 75%;
+  height: 75%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 999px;
 }
 
 .crest-art img,
