@@ -13,13 +13,15 @@ function CountryBadge({ flag }: { flag: string }) {
 export function LeagueFlag({ group }: { group: LeagueGroup }) {
   return (
     <span className="league-mark-plate" title={group.name}>
-      <RemoteMark
-        src={group.logo}
-        alt=""
-        size={15}
-        className="h-[15px] w-[15px] object-contain"
-        fallback={<CountryBadge flag={group.flag} />}
-      />
+      <span className="crest-art">
+        <RemoteMark
+          src={group.logo}
+          alt=""
+          size={18}
+          className="h-full w-full object-contain"
+          fallback={<CountryBadge flag={group.flag} />}
+        />
+      </span>
     </span>
   );
 }
