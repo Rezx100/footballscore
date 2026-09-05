@@ -1,0 +1,40 @@
+# Harness numeric strip — loop 4
+# Fresh Figma 32:3111 (390×844). App Chromium 390×844 /matches HTTP 200.
+# Pair 781×844 with 1px #FF00FF gutter. Diff 91387/329160 (27.7637%).
+# Overlay host nextjs-portal was present in DOM (count 1) then removed before screenshot.
+
+viewport: 390x844 dpr_capture: 1
+type_body: Inter 400 16/24
+body_fill: "#060712"  # rgb(6,7,18)
+
+header: {0,0,390,80} pad 10/16 gap 8 fill #060712
+status_bar: {16,10,358,20}
+status_time: "9:41"
+signal_cluster: {309,13,30,14}
+status_bar.cellular_dots:
+  - {309,16,8,8} fill #ffffff r999
+  - {320,16,8,8} fill #ffffff r999
+  - {331,16,8,8} fill #ffffff r999
+battery: {346,13,27,14} text "100%" type Inter 400 11/14 ls 0.1px
+avatar: {346,40,28,28} fill #6c0707 r999
+Football_pill: {100,42,93,24} pad 4/12 gap 6 fill #6c0707 r999 type Inter 500 12/16 ls 0.1px
+
+date_rail: {0,80,390,48} pad 12/16/8/16 gap 8
+Today_chip: first {16,92,59.6,28} pad 6/12 fill #6c0707 r999 type Inter 500 12/16
+Tomorrow_chip: {83.6,92,83.1,28}
+Sep7_chip: {174.7,92,56.8,28}
+
+league_plate: {20,158,24,24} fill #ffffff r999
+league_art: {23,161,18,18}
+score_card: {16,204,358,84} pad 12 gap 0 fill #1f2937 r12
+score_card_2: {16,296,358,84}
+score_card_3: {16,388,358,84}
+
+nav: {0,768,390,56} fill #060712 border_top 1px #1f2937
+home_item: {4,770.5,76.4,52} fill transparent gap 2 type Inter 400 11/14 ls 0.1px
+home_svg: {30.2,776.5,24,24} fill transparent
+home_raster_white_bbox_y: 781-798
+home_raster_nearblack_px: 0
+matches_item: {80.4,770.5,76.4,52}
+home_indicator: {0,824,390,20} fill #060712
+home_indicator_white_bar_y: 824-828 x 128-261  # ~134px wide, 5px tall
