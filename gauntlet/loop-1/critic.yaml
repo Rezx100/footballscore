@@ -1,0 +1,52 @@
+loop: 1
+score_percent: 65
+verdict: FAIL
+findings:
+  - id: C-1-01
+    region: date_selector
+    figma_node: "32:3113"
+    app_locator: ".day-rail .day-chip"
+    severity: major
+    figma: "selected Date Chip Today is first at {16,92,60×28} fill #6c0707 r999; idle chips follow (Tomorrow at x=84)"
+    app: "idle chip Sep 4 at {16,92,57.8×28} fill transparent; selected Today at {81.8,92,59.6×28} fill #6c0707 r999"
+    delta: "selected chip x +66px; leading slot is idle, not selected"
+    instruction: "Start the date rail with the selected Today chip at {16,92,60×28}. Do not put an idle past-date chip before Today; order is selected Today, then Tomorrow, then dated chips."
+  - id: C-1-02
+    region: upcoming_match_row
+    figma_node: "32:3116"
+    app_locator: "a.score-card"
+    severity: major
+    figma: "row flex justify-between pad 12, gap 0; time then teams(flex-1) then bell; first-card crest {72,216,24×24}; name x=106"
+    app: "a.score-card gap 12px; time {28,236,39.4×20}; crest disc {79.4,216,24×24}; name {113.4,218,216.6×20}"
+    delta: "flex gap 12px vs 0; crest x +7.4px; name x +7.4px"
+    instruction: "Remove the 12px gap on the match row. Figma is pad 12 + time + teams(flex-1) + 20px bell with no gap, so the crest sits immediately after the time column."
+  - id: C-1-03
+    region: crest
+    figma_node: "I32:3116;9:136"
+    app_locator: ".crest-art"
+    severity: major
+    figma: "24×24 disc; artwork inset 12.5% = inner 18×18 (3px each side); object-fit contain"
+    app: "img 15×15 object-fit contain; league art {24.5,162.5,15×15}; team art {83.9,220.5,15×15} (4.5px inset)"
+    delta: "inner 15×15 vs 18×18; inset 4.5px vs 3px"
+    instruction: "Set crest artwork to 18×18 inside the 24px disc (12.5% / 3px inset), object-fit contain, on both league plates and team discs."
+  - id: C-1-04
+    region: crest
+    figma_node: "I32:3116;9:136"
+    app_locator: ".league-mark-plate, a.score-card img"
+    severity: minor
+    figma: "2px stroke rgba(255,255,255,0.65); 8×/radial: white plate then halo ~#b1b4b9 through r=13–13.5"
+    app: "CSS border 2px listed, but raster halo is ~1px"
+    delta: "visible stroke ~1px vs 2px"
+    instruction: "Render a visible 2px rgba(255,255,255,0.65) stroke around the 24px circle so a ~2px halo reads against chip/canvas, as in Figma at 200%."
+  - id: C-1-05
+    region: bottom_nav
+    figma_node: "I32:3121;7:10"
+    app_locator: "nav.tab-bar .tab-bar__item"
+    severity: major
+    figma: "Matches icon light/white (mean ~#b2b5b5), label #f87171; Home icon light/white (mean ~#a9a9ad); labels muted #9ca3af"
+    app: "Matches icon #f87171 (mean ~#b65457); Home icon dark (mean ~#4b4e54); Matches label correctly #f87171; Home label #9ca3af"
+    delta: "active icon tinted brand vs white; inactive icons much darker"
+    instruction: "Paint tab glyphs as light/white strokes like the Figma raster. Keep #f87171 on the Matches label only. Do not tint the Matches icon coral. Raise inactive icon luminance to Figma’s white/light outlines."
+fixed_from_prior: [C-0-1, C-0-2, C-0-3, C-0-4, C-0-5, C-0-6, C-0-7, C-0-8, C-0-9, C-0-10, C-0-11, C-0-12, C-0-13, C-0-14, C-0-15, C-0-16, C-0-17, C-0-18, C-0-19, C-0-20, C-0-21, C-0-22, C-0-23]
+reopened: []
+blocked: []

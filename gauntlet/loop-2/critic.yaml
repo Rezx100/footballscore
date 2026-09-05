@@ -1,0 +1,52 @@
+loop: 2
+score_percent: 75
+verdict: FAIL
+findings:
+  - id: C-2-01
+    region: crest
+    figma_node: "I32:3116;9:136"
+    app_locator: ".crest-art, .league-mark-plate, a.score-card img"
+    severity: major
+    figma: "24×24 white plate r999; 2px halo OUTSIDE the plate; art 18×18 with 3px white ring"
+    app: "24×24 disc includes 2px halo inside the box; white plate ~20×20; art cropped into the stroke"
+    delta: "stroke inside vs outside; halo r −2.5px"
+    instruction: "Keep a 24×24 white plate, then a 2px rgba(255,255,255,0.65) stroke around it so the halo reads at r=12.5–13.5 against chip/canvas. 18×18 art object-fit contain with 3px inset in the white plate. Do not include the stroke in the 24px box."
+  - id: C-2-02
+    region: bottom_nav
+    figma_node: "I32:3121;7:10"
+    app_locator: "nav.tab-bar .tab-bar__item"
+    severity: major
+    figma: "Home glyph light/white through y=796; Home label muted #9ca3af; no extra disc"
+    app: "Dark wash plus inner disc on Home; glyph clipped; label undersampled"
+    delta: "extra circular overlay on Home"
+    instruction: "Remove the extra dark circular overlay on the Home tab. Home glyph must be a full light/white 24px outline through y=796. Home label must raster #9ca3af. Keep #f87171 on the Matches label only."
+  - id: C-2-03
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "header.masthead avatar"
+    severity: minor
+    figma: "avatar 28×28 at {346,40} r999"
+    app: "crimson span width 27, height 26 on tight rows"
+    delta: "width −1px; height −1px to −2px"
+    instruction: "Size the profile avatar to 28×28 at {346,40} radius 999 fill #6c0707."
+  - id: C-2-04
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "header.masthead Football pill"
+    severity: minor
+    figma: "Football pill {100,42,93×24} fill #6c0707 r999"
+    app: "{99,42,92×24}"
+    delta: "x −1px; width −1px"
+    instruction: "Place the Football pill at Figma {100,42,93×24} (Inter Medium 12/16, pad 4/12, fill #6c0707, r999)."
+  - id: C-2-05
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: ".status-bar"
+    severity: minor
+    figma: "signal {309–338, w=30} then battery {346–372, w=27}"
+    app: "signal {318–337, w=20} then battery {344–373, w=30}"
+    delta: "signal x +9px; signal width −10px"
+    instruction: "Match the status-bar trailing group to Figma: cellular starts at x=309 width ~30, battery at x=346–372."
+fixed_from_prior: [C-0-1, C-0-2, C-0-3, C-0-4, C-0-5, C-0-6, C-0-7, C-0-8, C-0-9, C-0-10, C-0-11, C-0-12, C-0-13, C-0-14, C-0-15, C-0-16, C-0-17, C-0-18, C-0-19, C-0-20, C-0-21, C-0-22, C-0-23, C-1-01, C-1-02, C-1-03, C-1-05]
+reopened: [C-1-04]
+blocked: []

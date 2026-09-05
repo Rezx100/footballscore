@@ -1,0 +1,226 @@
+loop: 0
+score_percent: 0
+verdict: FAIL
+findings:
+  - id: C-0-1
+    region: frame
+    figma_node: "32:3111"
+    app_locator: "body"
+    severity: blocker
+    figma: "fill #060712; typeface Inter; box 390×844"
+    app: "fill #0B0B0D; typeface IBM Plex Sans 400 16/24; ink #F5F5F7"
+    delta: "UNKNOWN"
+    instruction: "Change the page background fill to #060712."
+  - id: C-0-2
+    region: frame
+    figma_node: "32:3111"
+    app_locator: "body"
+    severity: blocker
+    figma: "typeface Inter across the frame"
+    app: "IBM Plex Sans 400 16/24 on body; IBM Plex Mono 10/15 and 22px on chrome, times, and tabs"
+    delta: "UNKNOWN"
+    instruction: "Set the primary typeface to Inter everywhere; remove IBM Plex Sans and IBM Plex Mono."
+  - id: C-0-3
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "header.masthead"
+    severity: blocker
+    figma: "status bar present; time 9:41 Inter Medium 12/16; 100% Inter Regular 11/14; signal and battery"
+    app: "status bar absent"
+    delta: "missing component"
+    instruction: "Render the iOS status bar inside the header (time 9:41 Inter Medium 12/16, 100% Inter Regular 11/14, signal and battery)."
+  - id: C-0-4
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "header.masthead"
+    severity: major
+    figma: "box 390×80 fill #060712"
+    app: "box 390×141 fill #0B0B0D"
+    delta: "height +61px"
+    instruction: "Reduce header height to 80px and fill it #060712."
+  - id: C-0-5
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "lockup"
+    severity: blocker
+    figma: "wordmark 'Scory' Inter Semi Bold 18/24 ls -0.2 #ffffff"
+    app: "text 'football score' IBM Plex Sans 400 16/24 #F5F5F7 box {16,22,115×18}"
+    delta: "IA mismatch"
+    instruction: "Replace the lockup with wordmark 'Scory' Inter Semi Bold 18/24 letter-spacing -0.2 color #ffffff."
+  - id: C-0-6
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "lockup"
+    severity: blocker
+    figma: "mark '[:]' Inter Medium 16/24 #f87171 left of wordmark"
+    app: "orange/white split rectangle left of lockup"
+    delta: "missing component"
+    instruction: "Replace the lockup mark with the red '[:]' glyph Inter Medium 16/24 #f87171."
+  - id: C-0-7
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "header.masthead"
+    severity: blocker
+    figma: "Football pill Inter Medium 12/16 on #6c0707 radius 999"
+    app: "Football pill absent"
+    delta: "missing component"
+    instruction: "Add the Football selector pill Inter Medium 12/16 on fill #6c0707 radius 999."
+  - id: C-0-8
+    region: app_header
+    figma_node: "32:3112"
+    app_locator: "header.masthead"
+    severity: blocker
+    figma: "three 32×32 icon buttons radius 8 plus 28×28 avatar"
+    app: "find-pill {321,16,53×29} pad 6/12 radius pill fill rgba(245,245,247,0.1) IBM Plex Mono 10/15 ls 0.8px; icons and avatar absent"
+    delta: "missing component"
+    instruction: "Remove the Find pill. Add three 32×32 icon buttons radius 8 (search, calendar, filter) and a 28×28 circular avatar."
+  - id: C-0-9
+    region: date_selector
+    figma_node: "32:3113"
+    app_locator: "div.day-rail"
+    severity: blocker
+    figma: "chip rail box {0,80,390×48} pad 12/16/8/16 gap 8; no container fill"
+    app: "div.day-rail {16,59,358×66} pad 8/10 radius 12 fill rgba(~28,28,31,0.7); FRI / 05 SEP chip / SUN / UTC SAT widget"
+    delta: "x +16px; y -21px; w -32px; h +18px"
+    instruction: "Replace the boxed day-rail widget with the horizontal date-chip rail at {0,80,390×48} padding 12/16/8/16 gap 8 and no container wash. Remove the UTC SAT block."
+  - id: C-0-10
+    region: date_selector
+    figma_node: "32:3113"
+    app_locator: "div.day-rail"
+    severity: major
+    figma: "active chip fill #6c0707 radius 999 Inter Medium 12/16"
+    app: "active chip orange/white split; container radius 12; IBM Plex Sans 16/24"
+    delta: "radius 999 vs 12"
+    instruction: "Make the active date a pill radius 999 filled #6c0707 with Inter Medium 12/16."
+  - id: C-0-11
+    region: date_selector
+    figma_node: "32:3113"
+    app_locator: "div.day-rail"
+    severity: major
+    figma: "pad 12/16/8/16 gap 8"
+    app: "pad 8/10; gap UNKNOWN"
+    delta: "UNKNOWN"
+    instruction: "Set date-rail padding to 12px top, 16px right, 8px bottom, 16px left and gap 8px."
+  - id: C-0-12
+    region: competition_header
+    figma_node: "32:3115"
+    app_locator: "league-mark-plate"
+    severity: blocker
+    figma: "crest 24×24 circle r999 fill #ffffff stroke 2px rgba(255,255,255,0.65); artwork inset 12.5%"
+    app: "league-mark-plate {18,149,22×22} radius 6 fill #ECECEF"
+    delta: "size -2px; radius 999 vs 6"
+    instruction: "Use a 24×24 circular crest r999, white fill, 2px stroke rgba(255,255,255,0.65), artwork inset 12.5%."
+  - id: C-0-13
+    region: competition_header
+    figma_node: "32:3115"
+    app_locator: "UNKNOWN"
+    severity: blocker
+    figma: "header {16,140,358×56} pad 12/4/8/4; downward chevron on the right"
+    app: "trailing numeral 7; chevron absent; header padding UNKNOWN"
+    delta: "UNKNOWN"
+    instruction: "Size the competition header to {16,140,358×56} with padding 12/4/8/4 and a downward chevron on the right; remove the trailing count control."
+  - id: C-0-14
+    region: competition_header
+    figma_node: "32:3115"
+    app_locator: "UNKNOWN"
+    severity: blocker
+    figma: "title Inter Medium 14/20 #ffffff; meta Inter Regular 11/14 #9ca3af"
+    app: "type UNKNOWN"
+    delta: "UNKNOWN"
+    instruction: "Set competition title to Inter Medium 14/20 #ffffff and meta to Inter Regular 11/14 #9ca3af."
+  - id: C-0-15
+    region: upcoming_match_row
+    figma_node: "32:3116"
+    app_locator: "a.score-card"
+    severity: major
+    figma: "fill #1f2937; box {16,204,358×84} radius 12"
+    app: "fill #1C1C1F; box {16,181,358×134} radius 12"
+    delta: "height +50px; y -23px"
+    instruction: "Set each match row to 358×84 at x 16, fill #1f2937, radius 12."
+  - id: C-0-16
+    region: upcoming_match_row
+    figma_node: "32:3116"
+    app_locator: "a.score-card"
+    severity: major
+    figma: "pad 12; time Inter Semi Bold 16/20 on the left; names Inter Regular 14/20"
+    app: "pad 0; time top-left IBM Plex Mono 22px; names IBM Plex Sans 16/24"
+    delta: "pad 12 vs 0"
+    instruction: "Add 12px inner padding. Place kickoff time on the left in Inter Semi Bold 16/20 and team names Inter Regular 14/20."
+  - id: C-0-17
+    region: upcoming_match_row
+    figma_node: "32:3116"
+    app_locator: "a.score-card img"
+    severity: blocker
+    figma: "crest 24×24 circle r999 fill #ffffff stroke 2px rgba(255,255,255,0.65); artwork inset 12.5%"
+    app: "img 24×24 object-fit contain radius 0"
+    delta: "radius 999 vs 0"
+    instruction: "Mask team crests as 24×24 circles r999 with white fill, 2px stroke rgba(255,255,255,0.65), artwork inset 12.5%."
+  - id: C-0-18
+    region: upcoming_match_row
+    figma_node: "32:3116"
+    app_locator: "a.score-card"
+    severity: blocker
+    figma: "bell 20×20 on the right"
+    app: "bell absent"
+    delta: "missing component"
+    instruction: "Add the 20×20 notification bell on the right of each match row."
+  - id: C-0-19
+    region: upcoming_match_row
+    figma_node: "32:3116"
+    app_locator: "a.score-card"
+    severity: blocker
+    figma: "no left edge accent; no three-letter code under the name"
+    app: "vertical red/blue/gray accent on the left edge; extra three-letter abbreviations under names"
+    delta: "extra blocks"
+    instruction: "Remove the left accent bar and the three-letter abbreviation row from match cards."
+  - id: C-0-20
+    region: bottom_nav
+    figma_node: "32:3121"
+    app_locator: "nav.tab-bar"
+    severity: blocker
+    figma: "labels Home | Matches | News | Leagues | Following; Title Case; Inter Regular 11/14 ls 0.1; icons 24; item h 52"
+    app: "labels matches | news | leagues | following | more; lowercase; IBM Plex Mono 10/15 ls 0.4px; item h 52 gap 3"
+    delta: "IA mismatch"
+    instruction: "Use tabs Home, Matches, News, Leagues, Following in Title Case Inter Regular 11/14 ls 0.1 with 24px icons; remove More."
+  - id: C-0-21
+    region: bottom_nav
+    figma_node: "32:3121"
+    app_locator: "nav.tab-bar"
+    severity: major
+    figma: "box {0,768,390×56} fill #060712; 1px top stroke #1f2937; active #f87171; muted #9ca3af"
+    app: "box {0,787,390×57} fill #0B0B0D; 1px top stroke #2C2C2E; active #F5F5F7; inactive #8E8E93"
+    delta: "y +19px; height +1px"
+    instruction: "Place the tab bar at {0,768,390×56}, fill #060712, top stroke #1f2937, active #f87171, muted #9ca3af."
+  - id: C-0-22
+    region: bottom_nav
+    figma_node: "32:3121"
+    app_locator: "nav.tab-bar"
+    severity: minor
+    figma: "height 56px"
+    app: "height 57px"
+    delta: "1px"
+    instruction: "Set tab bar height to 56px."
+  - id: C-0-23
+    region: home_indicator
+    figma_node: "32:3122"
+    app_locator: "UNKNOWN"
+    severity: blocker
+    figma: "region {0,824,390×20}; bar 134×5 r999 fill #ffffff"
+    app: "absent"
+    delta: "missing component"
+    instruction: "Add the white home-indicator bar 134×5 radius 999 at the bottom center of the frame."
+fixed_from_prior: []
+reopened: []
+blocked:
+  - region: competition_header
+    figma_node: "32:3115"
+    app_locator: "UNKNOWN"
+    note: "Harness reports competition title/meta type as UNKNOWN"
+  - region: competition_header
+    figma_node: "32:3115"
+    app_locator: "UNKNOWN"
+    note: "App header padding UNKNOWN"
+  - region: date_selector
+    figma_node: "32:3113"
+    app_locator: "div.day-rail"
+    note: "App date-rail gap UNKNOWN"

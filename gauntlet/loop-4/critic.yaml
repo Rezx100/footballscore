@@ -1,0 +1,65 @@
+loop: 4
+score: 100
+verdict: PASS
+pass_threshold: 100
+summary: >
+  Chrome matches Figma 32:3111 / Scory (Inter, crimson #6c0707), not Medal.
+  Status: 9:41 left; three filled white circles 8×8 at y=16–23 (x=309–316,
+  320–327, 331–338) then 100% at x=346. Header 390×80 fill #060712; [:] Scory
+  lockup; Football pill {100,42,93×24} fill #6c0707 r999; avatar {346,40,28×28}
+  fill #6c0707 r999; search/calendar/filter ink blobs identical. Date rail
+  starts with Today chip {16,92,60×28} fill #6c0707. League plate white 24×24
+  at {20,158} with ~2px outside halo (r=13 L≈162). Score-cards {16,204,358×84}
+  pad 12 gap 0 fill #1f2937 r12, 8px between cards; bell column Δ≈0. Nav
+  {0,768,390,56} border #1f2937; Home is a white house outline, fill
+  transparent, no disc and no N (home-slot (6,6,8)=0; white bbox y=781–798);
+  Matches glyph white, label coral ~#f87171; inactive labels muted gray.
+  Home indicator white bar y=824–828 x=128–261. Diff 27.7637% is DATA_EXEMPT
+  copy/crests/extra live fixtures. C-2-02 and C-3-01 closed.
+diff_nontransparent_pct: 27.7637
+findings: []
+fixed_from_prior:
+  - C-2-02
+  - C-3-01
+  - C-1-04
+  - C-2-01
+  - C-2-03
+  - C-2-04
+  - C-2-05
+  - C-0-1
+  - C-0-2
+  - C-0-3
+  - C-0-4
+  - C-0-5
+  - C-0-6
+  - C-0-7
+  - C-0-8
+  - C-0-9
+  - C-0-10
+  - C-0-11
+  - C-0-12
+  - C-0-13
+  - C-0-14
+  - C-0-15
+  - C-0-16
+  - C-0-17
+  - C-0-18
+  - C-0-19
+  - C-0-20
+  - C-0-21
+  - C-0-22
+  - C-0-23
+  - C-1-01
+  - C-1-02
+  - C-1-03
+  - C-1-05
+reopened: []
+data_exempt_ignored:
+  - fixture club names
+  - crest artwork identity
+  - kickoff times
+  - live/FT scores
+  - competition names / round strings
+  - date-chip calendar labels
+unknowns: []
+blocked: false

@@ -3,6 +3,7 @@ import { Lockup } from "@/components/brand/lockup";
 import { DayHead } from "@/components/matches/day-head";
 import { LeagueGroupCard } from "@/components/matches/league-group";
 import { LiveRail } from "@/components/matches/live-rail";
+import { StatusBar } from "@/components/matches/status-bar";
 import { dayLabel } from "@/lib/dates";
 import { DEFAULT_MARK } from "@/lib/brand";
 import type { FollowState } from "@/lib/follow";
@@ -82,33 +83,29 @@ export function MatchesScreen({
 
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
-      <header className="masthead">
-        {query.search ? (
-          <>
-            <Lockup query={query} />
-            <form action="/matches" method="get" className="px-4 pt-4 pb-4">
-              {query.day !== "today" ? <input type="hidden" name="day" value={query.day} /> : null}
-              {query.mark !== DEFAULT_MARK ? <input type="hidden" name="mark" value={query.mark} /> : null}
-              <input type="hidden" name="search" value="1" />
-              <label className="sr-only" htmlFor="match-search">
-                Find teams or leagues
-              </label>
-              <input
-                id="match-search"
-                name="q"
-                defaultValue={query.q.trim()}
-                placeholder="Club or league"
-                className="h-10 w-full rounded-[10px] border border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--elev)_55%,transparent)] px-3 font-cond text-[15px] text-[var(--ink)] outline-none backdrop-blur-md placeholder:text-[var(--muted)] focus:border-[color-mix(in_srgb,var(--copper)_45%,transparent)]"
-              />
-            </form>
-          </>
-        ) : (
-          <>
-            <Lockup query={query} />
-            <DayHead query={query} liveCount={liveCount} timeZone={timeZone} />
-          </>
-        )}
+      <header className="masthead masthead--app">
+        <StatusBar />
+        <Lockup query={query} />
       </header>
+      {query.search ? (
+        <form action="/matches" method="get" className="px-4 pt-3 pb-2">
+          {query.day !== "today" ? <input type="hidden" name="day" value={query.day} /> : null}
+          {query.mark !== DEFAULT_MARK ? <input type="hidden" name="mark" value={query.mark} /> : null}
+          <input type="hidden" name="search" value="1" />
+          <label className="sr-only" htmlFor="match-search">
+            Find teams or leagues
+          </label>
+          <input
+            id="match-search"
+            name="q"
+            defaultValue={query.q.trim()}
+            placeholder="Club or league"
+            className="h-10 w-full rounded-[10px] border border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--elev)_55%,transparent)] px-3 text-[15px] text-[var(--ink)] outline-none placeholder:text-[var(--muted)]"
+          />
+        </form>
+      ) : (
+        <DayHead query={query} liveCount={liveCount} timeZone={timeZone} />
+      )}
       <LiveRail matches={live} />
 
       <div className="flex-1">
@@ -158,7 +155,7 @@ export function MatchesScreen({
             </Link>
           </div>
         ) : (
-          <div className="flex flex-col gap-5 pt-1">
+          <div className="flex flex-col gap-2 px-4 py-3">
             {open.map((group) => (
               <LeagueGroupCard key={group.id} group={group} query={query} />
             ))}

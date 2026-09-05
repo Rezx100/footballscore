@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# gauntlet capture binaries (yaml stays)
+/gauntlet/**/*.png
+/gauntlet/**/*-measure*.json
