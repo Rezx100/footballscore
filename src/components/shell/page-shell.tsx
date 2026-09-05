@@ -1,12 +1,11 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { BrandMark } from "@/components/brand/mark";
 import { Wordmark } from "@/components/brand/wordmark";
 
 export function SiteLockup() {
   return (
-    <Link href="/matches" className="flex items-center gap-2.5 text-[var(--ink)]" aria-label="footballscore, matches">
-      <BrandMark id="flap" size={18} />
+    <Link href="/" className="flex items-center gap-2 text-[var(--ink)]" aria-label="Scory home">
+      <span className="text-[16px] font-medium leading-6 text-[var(--scory-text-brand)]">[:]</span>
       <Wordmark />
     </Link>
   );

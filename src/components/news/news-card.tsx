@@ -5,16 +5,18 @@ import type { NewsItem } from "@/lib/types";
 
 export function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <Link href={newsHref(item.id)} className="score-card flex gap-3 overflow-hidden rounded-[12px] p-3">
+    <Link href={newsHref(item.id)} className="scory-news-card">
       {item.image ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={item.image} alt="" className="h-16 w-24 shrink-0 rounded-[8px] object-cover" />
+        <img src={item.image} alt="" className="scory-news-card__thumb" />
       ) : (
-        <span className="h-16 w-24 shrink-0 rounded-[8px] bg-[var(--elev)]" />
+        <span className="scory-news-card__thumb" />
       )}
-      <span className="min-w-0">
-        <span className="font-cond block text-[15px] leading-snug">{item.headline}</span>
-        <span className="font-board mt-1 block text-[10px] tracking-[0.06em] text-[var(--muted)]">
+      <span className="min-w-0 flex-1">
+        <span className="line-clamp-2 text-[14px] font-medium leading-5 text-[var(--scory-text-primary)]">
+          {item.headline}
+        </span>
+        <span className="mt-1 block text-[11px] leading-[14px] text-[var(--scory-text-secondary)]">
           {[item.byline, item.published ? formatRelative(item.published) : null].filter(Boolean).join(" · ")}
         </span>
       </span>

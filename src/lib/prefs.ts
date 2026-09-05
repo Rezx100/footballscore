@@ -23,7 +23,13 @@ export function parsePrefsCookie(raw: string | undefined, tzCookie?: string): Pr
     }
     if (typeof parsed.hour12 === "boolean") prefs.hour12 = parsed.hour12;
     if (typeof parsed.hideFinished === "boolean") prefs.hideFinished = parsed.hideFinished;
-    if (parsed.startTab === "matches" || parsed.startTab === "news" || parsed.startTab === "leagues" || parsed.startTab === "following") {
+    if (
+      parsed.startTab === "home" ||
+      parsed.startTab === "matches" ||
+      parsed.startTab === "news" ||
+      parsed.startTab === "leagues" ||
+      parsed.startTab === "following"
+    ) {
       prefs.startTab = parsed.startTab;
     }
     if (typeof parsed.tzOverride === "boolean") prefs.tzOverride = parsed.tzOverride;

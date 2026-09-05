@@ -1,4 +1,4 @@
-import { isoDateForDay, espnDateForDay } from "@/lib/dates";
+import { isoDateForDay, isoToEspnDate } from "@/lib/dates";
 import { fetchSoccerHeader } from "@/lib/espn/client";
 import { eventOnDay, finalizeGroups, mapEvent, upsertMatch } from "@/lib/espn/map";
 import type { DayKey, LeagueGroup, Prefs } from "@/lib/types";
@@ -10,10 +10,12 @@ export type MatchesLoad = {
   nextUp?: LeagueGroup[];
 };
 
-async function loadGroupsForDay(day: DayKey, prefs: Prefs): Promise<MatchesLoad> {
-  const espnDate = espnDateForDay(day, new Date(), prefs.tz);
-  const isoDate = isoDateForDay(day, new Date(), prefs.tz);
-  const allowLiveOverflow = day === "today";
+async function loadGroupsForIso(
+  isoDate: string,
+  prefs: Prefs,
+  allowLiveOverflow: boolean,
+): Promise<MatchesLoad> {
+  const espnDate = isoToEspnDate(isoDate);
   const mapOpts = { timeZone: prefs.tz, hour12: prefs.hour12 };
 
   const headerResult = await fetchSoccerHeader(espnDate).then(
@@ -38,6 +40,17 @@ async function loadGroupsForDay(day: DayKey, prefs: Prefs): Promise<MatchesLoad>
   }
 
   return { groups: finalizeGroups(groups, isoDate, allowLiveOverflow, prefs.tz), error: null };
+}
+
+async function loadGroupsForDay(day: DayKey, prefs: Prefs): Promise<MatchesLoad> {
+  const isoDate = isoDateForDay(day, new Date(), prefs.tz);
+  return loadGroupsForIso(isoDate, prefs, day === "today");
+}
+
+export async function getMatchesForIso(iso: string, prefs: Prefs): Promise<MatchesLoad> {
+  const isoDate = iso.slice(0, 10);
+  const todayIso = isoDateForDay("today", new Date(), prefs.tz);
+  return loadGroupsForIso(isoDate, prefs, isoDate === todayIso);
 }
 
 export async function getMatchesForDay(day: DayKey, prefs: Prefs): Promise<MatchesLoad> {

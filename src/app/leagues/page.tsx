@@ -1,5 +1,6 @@
+import { AppShell } from "@/components/app-shell";
+import { AppHeader } from "@/components/scory/chrome";
 import { ExploreView } from "@/components/explore/explore-view";
-import { PageShell } from "@/components/shell/page-shell";
 import { getCatalog } from "@/lib/espn/catalog";
 import { getFirstClassClubs } from "@/lib/espn/explore";
 import { serverFollow } from "@/lib/server-state";
@@ -20,8 +21,9 @@ export default async function LeaguesPage({
     serverFollow(),
   ]);
   return (
-    <PageShell>
+    <AppShell>
+      <AppHeader />
       <ExploreView catalog={catalog} clubs={clubs} follow={follow} q={q} />
-    </PageShell>
+    </AppShell>
   );
 }

@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { CalendarGlyph, ChevronGlyph, FilterGlyph, SearchGlyph } from "@/components/matches/figma-icons";
-import { matchesHref, type MatchesQuery } from "@/lib/matches-query";
+import { calendarHref, searchHref } from "@/lib/hrefs";
+import type { MatchesQuery } from "@/lib/matches-query";
 
-export function Lockup({ query }: { query: MatchesQuery }) {
+export function Lockup({ query: _query }: { query: MatchesQuery }) {
   return (
     <div className="flex h-8 w-full items-center justify-between">
-      <div className="flex h-6 items-center">
+      <Link href="/" className="flex h-6 items-center" aria-label="Scory home">
         <span className="inline-flex h-6 w-[17px] shrink-0 items-center text-[16px] font-medium leading-6 text-[var(--scory-text-brand,#f87171)]">
           [:]
         </span>
@@ -16,32 +17,30 @@ export function Lockup({ query }: { query: MatchesQuery }) {
           <span>Football</span>
           <ChevronGlyph size={16} />
         </span>
-      </div>
+      </Link>
       <div className="flex h-8 shrink-0 items-center gap-[10px]">
         <Link
-          href={
-            query.search
-              ? matchesHref({ ...query, q: "", search: false, tab: "matches" })
-              : matchesHref({ ...query, search: true, tab: "matches" })
-          }
-          aria-label={query.search ? "Close search" : "Search"}
+          href={searchHref()}
+          aria-label="Search"
           className="flex size-[32px] items-center justify-center rounded-[8px] text-[var(--scory-icon-default,#ffffff)]"
         >
           <SearchGlyph size={20} />
         </Link>
-        <span
-          aria-hidden="true"
+        <Link
+          href={calendarHref()}
+          aria-label="Calendar"
           className="flex size-[32px] items-center justify-center rounded-[8px] text-[var(--scory-icon-default,#ffffff)]"
         >
           <CalendarGlyph size={20} />
-        </span>
-        <span
-          aria-hidden="true"
+        </Link>
+        <Link
+          href="/leagues"
+          aria-label="Leagues"
           className="flex size-[32px] items-center justify-center rounded-[8px] text-[var(--scory-icon-default,#ffffff)]"
         >
           <FilterGlyph size={20} />
-        </span>
-        <span className="masthead-avatar" aria-hidden="true" />
+        </Link>
+        <Link href="/more" className="masthead-avatar" aria-label="Preferences" />
       </div>
     </div>
   );

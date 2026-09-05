@@ -1,7 +1,6 @@
+import { AppShell } from "@/components/app-shell";
 import { LeagueView, parseLeagueTab } from "@/components/league/league-view";
-import { PageShell } from "@/components/shell/page-shell";
 import { getLeaguePage } from "@/lib/espn/league-page";
-import { leaguePaletteVars, paletteForLeague } from "@/lib/league-palette";
 import { serverPrefs } from "@/lib/server-state";
 
 export const dynamic = "force-dynamic";
@@ -22,11 +21,10 @@ export default async function LeaguePage({
   const team = Array.isArray(query.team) ? query.team[0] : query.team;
   const prefs = await serverPrefs();
   const page = await getLeaguePage(decodeURIComponent(slug), prefs, date, team);
-  const palette = paletteForLeague({ id: page.meta.slug, name: page.meta.name, country: page.meta.country });
 
   return (
-    <PageShell siloVars={leaguePaletteVars(palette)}>
+    <AppShell>
       <LeagueView page={page} tab={tab} teamFilter={team} />
-    </PageShell>
+    </AppShell>
   );
 }

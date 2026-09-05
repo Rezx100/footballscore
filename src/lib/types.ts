@@ -197,6 +197,6 @@ export type Prefs = {
   tz: string;
   hour12: boolean;
   hideFinished: boolean;
-  startTab: "matches" | "news" | "leagues" | "following";
+  startTab: "home" | "matches" | "news" | "leagues" | "following";
   tzOverride: boolean;
 };

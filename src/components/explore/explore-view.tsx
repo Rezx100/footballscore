@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LeagueMark } from "@/components/brand/league-mark";
 import { FollowButton } from "@/components/follow/follow-button";
-import { SiteLockup } from "@/components/shell/page-shell";
+import { EmptyState, SearchField } from "@/components/scory/primitives";
 import { FIRST_CLASS_BY_SLUG, FIRST_CLASS_LEAGUES } from "@/lib/espn/leagues";
 import { catalogByCountry } from "@/lib/espn/catalog";
 import { leagueHref, teamHref } from "@/lib/hrefs";
@@ -32,32 +32,34 @@ export function ExploreView({
   const grouped = catalogByCountry(leagues);
 
   return (
-    <>
-      <header className="masthead px-4 pt-4 pb-4">
-        <SiteLockup />
-        <form action="/leagues" method="get" className="mt-4">
-          <label className="sr-only" htmlFor="explore-q">
-            Find leagues and clubs
-          </label>
-          <input
-            id="explore-q"
-            name="q"
-            defaultValue={q}
-            placeholder="Find leagues and clubs"
-            className="h-10 w-full rounded-[8px] border border-[var(--line)] bg-[var(--elev)] px-3 font-cond text-[15px] outline-none placeholder:text-[var(--muted)] focus:border-[color-mix(in_srgb,var(--copper)_45%,transparent)]"
-          />
-        </form>
-      </header>
+    <div className="px-4 pb-10 pt-3">
+      <h1 className="text-[18px] font-semibold leading-6">Leagues</h1>
+      <form action="/leagues" method="get" className="mt-3">
+        <label className="sr-only" htmlFor="explore-q">
+          Find leagues and clubs
+        </label>
+        <SearchField
+          id="explore-q"
+          name="q"
+          defaultValue={q}
+          placeholder="Find leagues and clubs"
+        />
+      </form>
+
+      <div className="mt-3 h-rail flex gap-2">
+        <span className="sport-pill">Football</span>
+        <span className="day-chip bg-[var(--scory-bg-chip)]">All</span>
+      </div>
 
       {clubHits.length ? (
-        <section className="px-4 pt-4">
-          <h2 className="font-cond mb-2 text-[16px]">Clubs</h2>
-          <ul>
+        <section className="pt-5">
+          <h2 className="mb-2 text-[16px] font-semibold">Clubs</h2>
+          <ul className="space-y-2">
             {clubHits.map((club) => (
               <li key={`${club.leagueId}-${club.id}`}>
-                <Link href={teamHref(club.leagueId, club.id)} className="flex min-h-14 items-center justify-between py-2">
-                  <span className="font-cond text-[15px]">{club.name}</span>
-                  <span className="font-board text-[10px] tracking-[0.06em] text-[var(--muted)]">{club.short}</span>
+                <Link href={teamHref(club.leagueId, club.id)} className="scory-player-row">
+                  <span className="min-w-0 flex-1 truncate text-[15px]">{club.name}</span>
+                  <span className="text-[11px] text-[var(--muted)]">{club.short}</span>
                 </Link>
               </li>
             ))}
@@ -66,48 +68,48 @@ export function ExploreView({
       ) : null}
 
       {query ? (
-        <section className="px-4 pt-5">
-          <h2 className="font-cond mb-3 text-[16px]">Leagues</h2>
+        <section className="pt-5">
+          <h2 className="mb-3 text-[16px] font-semibold">Leagues</h2>
           {leagues.length ? (
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+            <ul className="space-y-2">
               {leagues.slice(0, 36).map((league) => (
-                <IdentityCard key={league.slug} slug={league.slug} name={league.name} logo={FIRST_CLASS_BY_SLUG.get(league.slug)?.logo} />
+                <LeagueRow key={league.slug} slug={league.slug} name={league.name} />
               ))}
-            </div>
+            </ul>
           ) : (
-            <p className="text-[14px] text-[var(--muted)]">No competitions matched that search.</p>
+            <EmptyState title="No competitions" body="No competitions matched that search." />
           )}
         </section>
       ) : (
         <>
           {yours.length ? (
-            <section className="px-4 pt-5">
-              <h2 className="font-cond mb-3 text-[16px]">Yours</h2>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            <section className="pt-5">
+              <h2 className="mb-3 text-[16px] font-semibold">Yours</h2>
+              <ul className="space-y-2">
                 {yours.map((league) => (
-                  <IdentityCard key={league.slug} slug={league.slug} name={league.name} logo={FIRST_CLASS_BY_SLUG.get(league.slug)?.logo} featured />
+                  <LeagueRow key={league.slug} slug={league.slug} name={league.name} />
                 ))}
-              </div>
+              </ul>
             </section>
           ) : null}
 
-          <section className="px-4 pt-5">
-            <h2 className="font-cond mb-3 text-[16px]">World</h2>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+          <section className="pt-5">
+            <h2 className="mb-3 text-[16px] font-semibold">World</h2>
+            <ul className="space-y-2">
               {world.map((league) => (
-                <IdentityCard key={league.slug} slug={league.slug} name={league.name} logo={league.logo} />
+                <LeagueRow key={league.slug} slug={league.slug} name={league.name} />
               ))}
-            </div>
+            </ul>
           </section>
 
-          <section className="px-4 pt-6">
-            <h2 className="font-cond mb-2 text-[16px]">All {catalog.length}</h2>
+          <section className="pt-6">
+            <h2 className="mb-2 text-[16px] font-semibold">All {catalog.length}</h2>
             <p className="mb-3 text-[13px] leading-[20px] text-[var(--muted)]">
               Every competition in the catalog, grouped by country.
             </p>
             {grouped.map((group) => (
-              <details key={group.country} className="border-b border-[var(--line)] py-2">
-                <summary className="font-board min-h-11 cursor-pointer py-2 text-[12px] tracking-[0.06em] text-[var(--muted)]">
+              <details key={group.country} className="border-b border-[var(--scory-border-subtle)] py-2">
+                <summary className="min-h-11 cursor-pointer py-2 text-[12px] tracking-[0.06em] text-[var(--muted)]">
                   {group.country} · {group.leagues.length}
                 </summary>
                 <ul className="pb-2">
@@ -116,8 +118,8 @@ export function ExploreView({
                       <Link href={leagueHref(league.slug)} className="flex min-w-0 flex-1 items-center gap-3">
                         <LeagueMark slug={league.slug} name={league.name} logo={FIRST_CLASS_BY_SLUG.get(league.slug)?.logo} size={28} />
                         <span className="min-w-0">
-                          <span className="font-cond block truncate text-[15px]">{league.name}</span>
-                          <span className="font-board text-[10px] tracking-[0.06em] text-[var(--muted)]">
+                          <span className="block truncate text-[15px]">{league.name}</span>
+                          <span className="text-[10px] tracking-[0.06em] text-[var(--muted)]">
                             {regionForSlug(league.slug).country}
                           </span>
                         </span>
@@ -131,32 +133,22 @@ export function ExploreView({
           </section>
         </>
       )}
-    </>
+    </div>
   );
 }
 
-function IdentityCard({
-  slug,
-  name,
-  logo,
-  featured = false,
-}: {
-  slug: string;
-  name: string;
-  logo?: string;
-  featured?: boolean;
-}) {
+function LeagueRow({ slug, name }: { slug: string; name: string }) {
   const region = regionForSlug(slug);
   return (
-    <article className="score-card flex flex-col rounded-[12px]">
-      <Link href={leagueHref(slug)} className="flex min-h-14 flex-1 flex-col items-center px-2 pt-3 pb-1">
-        <LeagueMark slug={slug} name={name} logo={logo} size={featured ? 56 : 48} />
-        <span className="font-cond mt-2 line-clamp-2 text-center text-[13px] leading-[16px]">{name}</span>
-        <span className="font-board mt-1 text-[10px] tracking-[0.06em] text-[var(--muted)]">{region.country}</span>
+    <li className="flex items-center justify-between gap-3">
+      <Link href={leagueHref(slug)} className="scory-player-row flex-1">
+        <LeagueMark slug={slug} name={name} logo={FIRST_CLASS_BY_SLUG.get(slug)?.logo} size={40} />
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[14px] font-medium">{name}</span>
+          <span className="text-[11px] text-[var(--muted)]">{region.country}</span>
+        </span>
       </Link>
-      <div className="flex justify-center pb-2.5 pt-1">
-        <FollowButton league={slug} compact />
-      </div>
-    </article>
+      <FollowButton league={slug} compact />
+    </li>
   );
 }

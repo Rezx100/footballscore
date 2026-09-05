@@ -1,8 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { ShareGlyph } from "@/components/matches/figma-icons";
 
-export function ShareButton({ title, url }: { title: string; url: string }) {
+export function ShareButton({
+  title,
+  url,
+  variant = "text",
+}: {
+  title: string;
+  url: string;
+  variant?: "text" | "icon";
+}) {
   const [copied, setCopied] = useState(false);
 
   async function share() {
@@ -24,11 +33,24 @@ export function ShareButton({ title, url }: { title: string; url: string }) {
     }
   }
 
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        onClick={() => void share()}
+        className="scory-icon-btn scory-icon-btn--soft"
+        aria-label={copied ? "Copied" : "Share"}
+      >
+        <ShareGlyph size={20} />
+      </button>
+    );
+  }
+
   return (
     <button
       type="button"
       onClick={() => void share()}
-      className="font-board rounded-full px-3 py-1.5 text-[10px] tracking-[0.08em] text-[var(--muted)] ring-1 ring-[var(--line)]"
+      className="rounded-full px-3 py-1.5 text-[10px] tracking-[0.08em] text-[var(--scory-text-secondary)] ring-1 ring-[var(--scory-border-subtle)]"
     >
       {copied ? "Copied" : "Share"}
     </button>

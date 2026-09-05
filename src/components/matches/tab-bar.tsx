@@ -11,18 +11,29 @@ import {
 } from "@/components/matches/figma-icons";
 
 const tabs = [
-  { href: "/", label: "Home", match: (path: string) => path === "/", Icon: HomeTabGlyph },
+  {
+    href: "/",
+    label: "Home",
+    match: (path: string) => path === "/" || path === "/search" || path.startsWith("/search/"),
+    Icon: HomeTabGlyph,
+  },
   {
     href: "/matches",
     label: "Matches",
-    match: (path: string) => path === "/matches" || path.startsWith("/matches/") || path.startsWith("/match/"),
+    match: (path: string) =>
+      path === "/matches" ||
+      path.startsWith("/matches/") ||
+      path.startsWith("/match/") ||
+      path === "/live" ||
+      path === "/calendar",
     Icon: MatchesTabGlyph,
   },
   { href: "/news", label: "News", match: (path: string) => path.startsWith("/news"), Icon: NewsTabGlyph },
   {
     href: "/leagues",
     label: "Leagues",
-    match: (path: string) => path.startsWith("/leagues") || path.startsWith("/league/") || path.startsWith("/team/"),
+    match: (path: string) =>
+      path.startsWith("/leagues") || path.startsWith("/league/") || path.startsWith("/team/") || path.startsWith("/player/"),
     Icon: LeaguesTabGlyph,
   },
   {
