@@ -1,0 +1,181 @@
+# Harness numeric strip — loop 0
+# Figma numbers from get_metadata + get_variable_defs + get_design_context on 32:3111 (Dark 1:2).
+# App numbers from Chromium getComputedStyle at 390×844, URL http://127.0.0.1:3000/matches, HTTP 200.
+# Pair/diff/onion: /workspace/gauntlet/loop-0/loop-0-{figma,app,pair,diff,onion}.png  all 390×844 (pair 781×844 with 1px #FF00FF gutter).
+# Diff: 329160/329160 pixels differ (100% of frame). Not scored by harness.
+# Crest scaleMode (Figma): artwork node absolute inset 12.5% inside 24×24 circle (overflow clip). App: img 24×24 object-fit contain, radius 0.
+
+region: frame
+figma_node: "32:3111"
+app_selector: "html/body viewport"
+box:
+  figma: { x: 0, y: 0, w: 390, h: 844 }
+  app: { x: 0, y: 0, w: 390, h: 844 }
+pad:
+  figma: UNKNOWN
+  app: [0, 0, 72, 0]
+gap:
+  figma: UNKNOWN
+  app: UNKNOWN
+radius:
+  figma: 0
+  app: 0
+fill:
+  figma: "var(--scory-bg-canvas) #060712"
+  app: "rgb(11, 11, 13) #0B0B0D"
+stroke: none
+type:
+  figma: "Inter (document styles: H3 18/24 w600, H4 16/24 w500, H5 14/20 w500, Body/Small 14/20 w400, Score/Time 16/20 w600, Label/Button-Sm 12/16 w500 ls 0.1, Meta/Caption 11/14 w400 ls 0.1)"
+  app: "IBM Plex Sans 400 16px/24px; ink rgb(245,245,247)"
+
+region: canvas
+figma_node: "32:3111"
+app_selector: "body"
+fill:
+  figma: "#060712"
+  app: "#0B0B0D"
+
+region: app_header
+figma_node: "32:3112"
+app_selector: "header.masthead"
+box:
+  figma: { x: 0, y: 0, w: 390, h: 80 }
+  app: { x: 0, y: 0, w: 390, h: 141 }
+pad:
+  figma: "[10px, 16px, 10px, 16px] gap 8"
+  app: UNKNOWN
+radius:
+  figma: 0
+  app: 0
+fill:
+  figma: "#060712"
+  app: "rgb(11, 11, 13)"
+type:
+  figma: "wordmark Inter Semi Bold 18/24 ls -0.2 #ffffff; mark Inter Medium 16/24 #f87171; pill Inter Medium 12/16 on #6c0707 radius 999"
+  app: "lockup IBM Plex Sans 400 16px/24px rgb(245,245,247); box {x:16,y:22,w:115,h:18}"
+status_bar:
+  figma: "9:41 Inter Medium 12/16; ●●● 100% Inter Regular 11/14"
+  app: "absent in screenshot"
+
+region: find_or_actions
+figma_node: "I32:3112;7:58"
+app_selector: "a.find-pill"
+box:
+  figma: "three 32×32 icon buttons radius 8 + 28×28 avatar"
+  app: { x: 321, y: 16, w: 53, h: 29, pad: [6,12,6,12], radius: pill, fill: "rgba(245,245,247,0.1)", type: "IBM Plex Mono 400 10px/15px ls 0.8px" }
+
+region: date_selector
+figma_node: "32:3113"
+app_selector: "div.day-rail"
+box:
+  figma: { x: 0, y: 80, w: 390, h: 48 }
+  app: { x: 16, y: 59, w: 358, h: 66 }
+pad:
+  figma: "[12, 16, 8, 16] gap 8"
+  app: "[8, 10, 8, 10] gap 10"
+radius:
+  figma: "chips 999; bar 0"
+  app: "12px"
+fill:
+  figma: "transparent; active chip #6c0707"
+  app: "srgb 0.109804 0.109804 0.121569 / 0.7"
+type:
+  figma: "Inter Medium 12/16 ls 0.1; active on-brand #ffffff; idle #ffffff"
+  app: "IBM Plex Sans 400 16px/24px rgb(245,245,247)"
+
+region: competition_header
+figma_node: "32:3115"
+app_selector: "UNKNOWN (league group header); plate span.league-mark-plate"
+box:
+  figma: { x: 16, y: 140, w: 358, h: 56 }
+  app_plate: { x: 18, y: 149, w: 22, h: 22, radius: 6, fill: "#ECECEF" }
+pad:
+  figma: "[12, 4, 8, 4] gap 6"
+  app: UNKNOWN
+type:
+  figma: "title Inter Medium 14/20 #ffffff; meta Inter Regular 11/14 #9ca3af"
+  app: UNKNOWN
+crest:
+  figma: "24×24 circle radius 999 fill #ffffff stroke 2px rgba(255,255,255,0.65); artwork inset 12.5%"
+  app: "22×22 plate radius 6 fill #ECECEF"
+
+region: upcoming_match_row
+figma_node: "32:3116"
+app_selector: "a.score-card[href*='/match/']"
+box:
+  figma: { x: 16, y: 204, w: 358, h: 84 }
+  app: { x: 16, y: 181, w: 358, h: 134 }
+pad:
+  figma: "[12, 12, 12, 12]"
+  app: "[0, 0, 0, 0]"
+gap:
+  figma: "teams column gap 12; crest-to-name 10"
+  app: UNKNOWN
+radius:
+  figma: 12
+  app: 12
+fill:
+  figma: "var(--scory-bg-chip) #1f2937"
+  app: "rgb(28, 28, 31) #1C1C1F"
+type:
+  figma: "time Inter Semi Bold 16/20 #ffffff; name Inter Regular 14/20 #ffffff"
+  app: "IBM Plex Sans 400 16px/24px rgb(245,245,247); inner score IBM Plex Mono 22px (class score-digit)"
+crest:
+  figma: "24×24 circle radius 999 fill #ffffff stroke 2px rgba(255,255,255,0.65); artwork inset 12.5%"
+  app: "img 24×24 object-fit contain radius 0"
+
+region: bottom_nav
+figma_node: "32:3121"
+app_selector: "nav.tab-bar"
+box:
+  figma: { x: 0, y: 768, w: 390, h: 56 }
+  app: { x: 0, y: 787, w: 390, h: 57 }
+pad:
+  figma: "[0, 4, 0, 4]"
+  app: "[0, 0, 0, 0]"
+radius:
+  figma: 0
+  app: 0
+fill:
+  figma: "var(--scory-bg-nav) #060712"
+  app: "rgb(11, 11, 13)"
+stroke:
+  figma: "1px top var(--scory-border-subtle) #1f2937"
+  app: "1px top rgb(44, 44, 46) #2C2C2E"
+type:
+  figma: "Inter Regular 11/14 ls 0.1; active color #f87171; muted #9ca3af; icon 24; item h 52 gap 2"
+  app: "IBM Plex Mono 400 10px/15px ls 0.4px; active rgb(245,245,247); inactive rgb(142,142,147); item h 52 gap 3; labels matches|news|leagues|following|more"
+labels:
+  figma: "Home | Matches | News | Leagues | Following"
+  app: "matches | news | leagues | following | more"
+
+region: home_indicator
+figma_node: "32:3122"
+app_selector: "UNKNOWN"
+box:
+  figma: { x: 0, y: 824, w: 390, h: 20, bar: { w: 134, h: 5, radius: 999, fill: "#ffffff" } }
+  app: "absent"
+
+tokens_figma_dark:
+  --scory-bg-canvas: "#060712"
+  --scory-bg-nav: "#060712"
+  --scory-bg-brand: "#6c0707"
+  --scory-bg-chip: "#1f2937"
+  --scory-bg-inverse: "#ffffff"
+  --scory-text-primary: "#ffffff"
+  --scory-text-secondary: "#9ca3af"
+  --scory-text-brand: "#f87171"
+  --scory-text-on-brand: "#ffffff"
+  --scory-icon-brand: "#f87171"
+  --scory-icon-muted: "#9ca3af"
+  --scory-icon-default: "#ffffff"
+  --scory-border-subtle: "#1f2937"
+  --scory-radius-md: 8
+  --scory-radius-full: 999
+  --scory-space-1: 2
+  --scory-space-2: 4
+  --scory-space-3: 6
+  --scory-space-4: 8
+  --scory-space-6: 12
+  --scory-space-8: 16
+  color/bg/crest: "#ffffff"

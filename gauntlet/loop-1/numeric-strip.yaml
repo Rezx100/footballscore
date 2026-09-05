@@ -1,0 +1,84 @@
+# Harness numeric strip — loop 1
+# Fresh Figma export 32:3111 390×844. App Chromium 390×844 http://127.0.0.1:3000/matches HTTP 200.
+# Pair 781×844, 1px #FF00FF gutter. Diff mismatch_pixels 98711/329160 (29.99%). Not a score.
+
+region: frame
+figma: { w: 390, h: 844, fill: "#060712", type: Inter }
+app: { w: 390, h: 844, fill: "rgb(6,7,18) #060712", type: "Inter 400 16/24", color: "#ffffff", pad_bottom: 76 }
+
+region: app_header
+figma_node: "32:3112"
+figma: { box: {0,0,390,80}, pad: [10,16,10,16], gap: 8, fill: "#060712" }
+app_selector: header.masthead
+app: { box: {0,0,390,80}, pad: [10px,16px,10px,16px], gap: 8px, fill: "rgb(6,7,18)", radius: 0 }
+
+region: status_bar
+figma: "9:41 Inter Medium 12/16; ●●●  100% Inter Regular 11/14"
+app_selector: .status-bar
+app: { box: {16,10,358,20}, time: {16,12,24.2,16, fw:500, fs:12, lh:16, ls:0.1, color:"#ffffff"}, battery: {317.8,13,56.2,14, fw:400, fs:11, lh:14, ls:0.1} }
+
+region: wordmark
+figma: "[:] Inter Medium 16/24 #f87171; Scory Inter Semi Bold 18/24 ls -0.2 #ffffff"
+app:
+  mark: { text: "[:]", box: {16,42,16.7,24}, fw:500, fs:16, lh:24, color: "rgb(248,113,113) #f87171" }
+  scory: { text: "Scory", box: {40.7,42,50.2,24}, fw:600, fs:18, lh:24, ls:-0.2, color: "#ffffff" }
+
+region: football_pill
+figma: "Inter Medium 12/16 on #6c0707 radius 999 py 4 px 12 gap 6"
+app: { box: {98.8,42,92.4,24}, fill: "rgb(108,7,7) #6c0707", radius: 999, pad: [4,12,4,12], gap: 6 }
+app_label: { text: Football, box: {110.8,46,46.4,16}, fw:500, fs:12, lh:16, ls:0.1, color: "#ffffff" }
+
+region: header_actions
+figma: "three 32×32 radius 8 + 28×28 avatar"
+app: { icon1: {220,38,32,32, radius:8}, avatar: {346,40,28,28, radius:999} }
+# remaining two 32×32 icons present in header; exact x UNKNOWN in this strip if not listed
+
+region: date_selector
+figma_node: "32:3113"
+figma: { box: {0,80,390,48}, pad: [12,16,8,16], gap: 8, fill: transparent }
+app_selector: .day-rail
+app: { box: {0,80,390,48}, pad: [12px,16px,8px,16px], gap: 8px, fill: transparent, radius: 0 }
+active_chip:
+  figma: { fill: "#6c0707", radius: 999, type: "Inter Medium 12/16" }
+  app: { text: Today, box: {81.8,92,59.6,28}, fill: "rgb(108,7,7)", radius: 999, fw:500, fs:12, lh:16, ls:0.1, pad: [6,12,6,12] }
+idle_chip_example:
+  app: { text: "Sep 4", box: {16,92,57.8,28}, fill: transparent, radius: 999, fw:500, fs:12, lh:16 }
+
+region: competition_header
+figma_node: "32:3115"
+figma: { box: {16,140,358,56}, pad: [12,4,8,4], gap: 6, title: "Inter Medium 14/20 #fff", meta: "Inter Regular 11/14 #9ca3af" }
+app_selector: .competition-header
+app: { box: {16,140,358,56}, pad: [12px, 4px, 8px, 4px], gap: 6px, fill: transparent }
+app_title: { text: "Premier League", box: {52,152,292,20}, fw:500, fs:14, lh:20, color: "#ffffff" }
+app_crest_plate: { box: {20,158,24,24}, radius: 999, fill: "#ffffff", border: "2px solid rgba(255,255,255,0.65)" }
+app_meta: UNKNOWN
+
+region: upcoming_match_row
+figma_node: "32:3116"
+figma: { box: {16,204,358,84}, pad: 12, radius: 12, fill: "#1f2937", time: "Inter Semi Bold 16/20", name: "Inter Regular 14/20", crest: "24 circle r999 fill #fff stroke 2 rgba(255,255,255,0.65) artwork inset 12.5% (=18×18 inner)", bell: 20 }
+app_selector: a.score-card
+app: { box: {16,204,358,84}, pad: [12,12,12,12], gap: 12px, radius: 12, fill: "rgb(31,41,55) #1f2937" }
+app_time: { box: {28,236,39.4,20}, fw:600, fs:16, lh:20, color: "#ffffff" }
+app_name: { box: {113.4,218,216.6,20}, fw:400, fs:14, lh:20, color: "#ffffff" }
+app_crest_disc: { box: {79.4,216,24,24}, radius: 999, fill: "#ffffff", border: "2px solid rgba(255,255,255,0.65)" }
+app_crest_art: { box: {83.9,220.5,15,15}, fit: contain }
+app_bell: { box: {342,236,20,20} }
+
+region: bottom_nav
+figma_node: "32:3121"
+figma: { box: {0,768,390,56}, fill: "#060712", stroke_top: "#1f2937", labels: "Home|Matches|News|Leagues|Following", active: "#f87171", muted: "#9ca3af", type: "Inter Regular 11/14 ls 0.1", item_h: 52, icon: 24 }
+app_selector: nav.tab-bar
+app: { box: {0,768,390,56}, fill: "rgb(6,7,18)", borderTop: "1px rgb(31,41,55) #1f2937", pad: [0,4 inferred from items x=4] }
+app_items:
+  - { text: Home, box: {4,770.5,76.4,52}, color: "rgb(156,163,175) #9ca3af", fs:11, lh:14, ls:0.1, fw:400, gap:2 }
+  - { text: Matches, box: {80.4,770.5,76.4,52}, color: "rgb(248,113,113) #f87171", fs:11, lh:14, ls:0.1 }
+  - { text: News, color: "#9ca3af" }
+  - { text: Leagues, color: "#9ca3af" }
+  - { text: Following, color: "#9ca3af" }
+
+region: home_indicator
+figma_node: "32:3122"
+figma: { region: {0,824,390,20}, bar: {w:134,h:5,r:999,fill:"#ffffff"} }
+app_selector: .home-indicator
+app: { region: {0,824,390,20}, fill: "rgb(6,7,18)" }
+app_bar: { box: {128,824,134,5}, radius: 999, fill: "rgb(255,255,255)" }

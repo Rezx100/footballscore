@@ -11,13 +11,12 @@ function initialsOn(color: string): string {
   return luminance > 160 ? "#141210" : "#F3EDE4";
 }
 
-export function Crest({ team, size = 20 }: { team: Team; size?: number }) {
+export function Crest({ team, size = 24 }: { team: Team; size?: number }) {
+  const art = Math.round(size * 0.75);
   const initials = (
     <span
-        className="font-board inline-flex shrink-0 items-center justify-center text-[8px]"
+      className="inline-flex h-full w-full items-center justify-center text-[8px] font-medium"
       style={{
-        width: size,
-        height: size,
         background: team.color,
         color: initialsOn(team.color),
         fontSize: size < 22 ? 8 : 10,
@@ -29,12 +28,16 @@ export function Crest({ team, size = 20 }: { team: Team; size?: number }) {
   );
 
   return (
-    <RemoteMark
-      src={team.logo}
-      alt=""
-      size={size}
-      className="inline-block shrink-0 object-contain"
-      fallback={initials}
-    />
+    <span className="crest-disc" style={{ width: size, height: size }}>
+      <span className="crest-art">
+        <RemoteMark
+          src={team.logo}
+          alt=""
+          size={art}
+          className="h-full w-full object-contain"
+          fallback={initials}
+        />
+      </span>
+    </span>
   );
 }

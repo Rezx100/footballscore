@@ -1,0 +1,20 @@
+# Harness numeric strip — loop 3
+# Fresh Figma 32:3111. App 390×844 /matches 200. Diff 94804/329160 (28.80%) — largely DATA_EXEMPT copy.
+
+header: {0,0,390,80} fill #060712 Inter
+avatar: {346,40,28,28} fill #6c0707 r999
+Football pill: {100,42,93,24} fill #6c0707 r999
+status time: {16,12}
+signal: {309,13,30,14}
+battery: {346,13,27,14}
+date-rail: {0,80,390,48}
+Today chip: first in rail (loop-2 C-1-01)
+competition-header: {16,140,358,56}
+crest disc: {67.4,216,24,24} fill #ffffff box-shadow 0 0 0 2px rgba(255,255,255,0.65)
+crest art: {70.4,219,18,18}
+league disc: {20,158,24,24} same shadow
+score-card: {16,204,358,84} pad 12 gap 0 fill #1f2937 r12
+nav: {0,768,390,56}
+home item: {4,770.5,76.4,52} fill transparent
+home_indicator: {0,824,390,20}
+body fill: #060712 Inter

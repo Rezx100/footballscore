@@ -1,0 +1,70 @@
+loop: 3
+score: 89
+verdict: FAIL
+pass_threshold: 100
+summary: >
+  Header geometry (avatar 28×28 @ {346,40}, Football 93×24 @ {100,42},
+  signal {309,13,30×14}, battery {346,13,27×14}) and crest 24×24 white
+  plate with 2px outside halo match the Figma numbers. Matches tab
+  glyph is white (0 red pixels in crop). Two findings remain: Home
+  tab still rasters a circular dark overlay plus a white N/slash
+  instead of a clean house outline (C-2-02 reopened), and status-bar
+  cellular markers are ~5×4 dots at y≈19 instead of ~8×8 circles at
+  y=16 (C-3-01). Diff 28.80% is fixture copy / crest artwork
+  (DATA_EXEMPT).
+diff_nontransparent_pct: 28.80
+findings:
+  - id: C-2-02
+    severity: major
+    region: bottom_nav.home_glyph
+    status: open
+    from_loop: 2
+    figma: >
+      White house outline, no fill disc, roof peak through y≈796.
+      Label "Home" #9ca3af. No circular overlay.
+    app: >
+      Extra dark circular overlay on the Home slot. White "N" plus
+      diagonal slash inside the disc; house roof clipped to an arc;
+      "Home" label occluded. Matches glyph in the same bar is white
+      (0 red / 160 white in crop) — this finding is Home only.
+    instruction: >
+      Raster Home as a white house outline (no fill disc, no N, no
+      slash). Roof peak must remain visible through y≈796. Do not
+      change Matches / News / Leagues / Following glyphs.
+    evidence:
+      - /workspace/gauntlet/loop-3/crop-app-home.png
+      - /workspace/gauntlet/loop-3/crop-figma-home.png
+      - /workspace/gauntlet/loop-3/loop-3-pair.png
+  - id: C-3-01
+    severity: minor
+    region: status_bar.cellular
+    status: open
+    figma: >
+      Three filled white circles ~8×8 at y≈16, spanning the
+      {309,13,30×14} signal cluster (x≈310–337).
+    app: >
+      Three ~5×4 rounded dots at y≈19 (numeric-strip
+      status_bar.cellular_dots). Too small and 3px too low.
+    instruction: >
+      Raster three ~8×8 filled white circles at y=16 spanning
+      {309,13,30×14}. Do not move the battery (keep {346,13,27×14}).
+    evidence:
+      - /workspace/gauntlet/loop-3/loop-3-pair.png
+      - /workspace/gauntlet/loop-3/numeric-strip.yaml
+fixed_from_prior:
+  - C-1-04
+  - C-2-01
+  - C-2-03
+  - C-2-04
+  - C-2-05
+reopened:
+  - C-2-02
+data_exempt_ignored:
+  - fixture club names
+  - crest artwork identity
+  - kickoff times
+  - live/FT scores
+  - competition names
+  - date-chip calendar labels
+unknowns: []
+blocked: false

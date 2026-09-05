@@ -1,0 +1,29 @@
+# Pixel-perfect gauntlet — run card (filled before loop 0)
+# Evidence: Figma get_metadata on XZr22nxzzfkrQ1qz8oYk5D node 32:3111
+# (name Upcoming Matches / Dark, 390×844) and page 2:91 (Screens · Dark).
+# build_target is scory because that frame is Inter + crimson #6c0707,
+# not Medal (IBM Plex + copper #C17A3A).
+
+target_screen_name: Upcoming Matches
+figma_file_key: XZr22nxzzfkrQ1qz8oYk5D
+figma_page: Screens · Dark
+figma_frame_node_id: "32:3111"
+figma_mode: Dark 1:2
+app_route: /matches
+app_query_or_state: "http://127.0.0.1:3000/matches (live ESPN day; no frozen mock)"
+build_target: scory
+device_width_px: 390
+device_height_px: 844
+dpr: 2
+browser: Chromium
+max_loops: 40
+pass_threshold: 100
+
+DATA_EXEMPT:
+  - fixture club names
+  - crest artwork identity
+  - kickoff times
+  - live/FT scores
+  - competition names and round/matchweek strings
+  - date-chip calendar labels (Today/Tomorrow/Jun N vs live day rail)
+  reason: ESPN payload cannot be forced to the Figma mock (PSG–Juve, etc.). Layout, type, color, pad, gap, radius, and chrome are NOT exempt.
