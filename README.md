@@ -6,7 +6,26 @@ Brand: night studio, volt signal (`#D7FF3C`), Aperture mark. Design system: [`do
 
 The existing Next.js site at the repo root is the previous footballscore web prototype. **Scoreva** is the mobile product in `apps/mobile`.
 
-## Run in Expo Go
+## Run on a laptop
+
+Scoreva is a phone app. On a laptop you run it in the browser (a phone-width column).
+
+You need **Node.js 20+** and Git. Then:
+
+```bash
+git clone https://github.com/Rezx100/footballscore.git
+cd footballscore
+git checkout cursor/scoreva-expo-live-ff43
+cd apps/mobile
+npm install
+npx expo start --web
+```
+
+When Metro prints a URL, open it (usually `http://localhost:8081`). Chrome / Edge / Safari all work. After it loads, Chrome can **Install Scoreva** from the address bar if you want a desktop window.
+
+No account is required.
+
+### Phone (Expo Go)
 
 ```bash
 cd apps/mobile
@@ -14,7 +33,7 @@ npm install
 npx expo start
 ```
 
-Scan the QR code with Expo Go. Web preview: `npx expo start --web`.
+Scan the QR code with Expo Go.
 
 No account is required. Favorites and notification prefs persist on device. Optional Supabase sync:
 

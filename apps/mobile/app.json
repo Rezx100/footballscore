@@ -28,7 +28,12 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "name": "Scoreva",
+      "shortName": "Scoreva",
+      "themeColor": "#08090D",
+      "backgroundColor": "#08090D",
+      "lang": "en"
     },
     "plugins": [
       "expo-router",
