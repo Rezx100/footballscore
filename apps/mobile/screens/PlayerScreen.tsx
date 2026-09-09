@@ -1,41 +1,29 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Crest, Screen, useScorevaTheme } from '@/components/scoreva';
-import type { Team } from '@/components/scoreva';
-
-import { TEAMS } from './mocks';
+import { TEAMS } from '@/lib/demo';
+import type { Player } from '@/lib/types';
 
 export interface PlayerScreenProps {
-  name?: string;
-  position?: string;
-  shirtNumber?: number;
-  team?: Team;
-  rating?: number;
+  player: Player;
 }
 
-const STATS = [
-  { label: 'Goals', value: '14' },
-  { label: 'Assists', value: '6' },
-  { label: 'Apps', value: '22' },
-  { label: 'Yellow cards', value: '3' },
-  { label: 'Red cards', value: '0' },
-];
-
-const RECENT_RATINGS = [8.1, 7.4, 6.9, 8.6, 7.2, 7.9];
-
-export function PlayerScreen({
-  name = 'B. Saka',
-  position = 'Forward',
-  shirtNumber = 7,
-  team = TEAMS.arsenal,
-  rating = 7.4,
-}: PlayerScreenProps) {
+export function PlayerScreen({ player }: PlayerScreenProps) {
   const theme = useScorevaTheme();
-  const initials = name
+  const team = TEAMS[player.teamId];
+  const initials = player.shortName
     .split(' ')
     .map((p) => p.replace('.', '')[0])
     .join('')
     .toUpperCase();
+  const stats = [
+    { label: 'Goals', value: String(player.goals ?? 0) },
+    { label: 'Assists', value: String(player.assists ?? 0) },
+    { label: 'Apps', value: String(player.apps ?? 0) },
+    { label: 'Yellow cards', value: String(player.yellows ?? 0) },
+    { label: 'Red cards', value: String(player.reds ?? 0) },
+  ];
+  const recent = [player.rating ?? 7, 7.4, 6.9, 8.1, 7.2, 7.6];
 
   return (
     <Screen>
@@ -47,13 +35,13 @@ export function PlayerScreen({
           </Text>
         </View>
         <Text style={[styles.name, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
-          {name}
+          {player.name}
         </Text>
         <View style={styles.metaRow}>
           <Text style={[styles.meta, { fontFamily: theme.typography.meta.fontFamily, color: theme.colors.textMuted }]}>
-            {position} · {team.name} · #{shirtNumber}
+            {player.position} · {team?.name ?? ''} · #{player.shirt}
           </Text>
-          <Crest team={team} size="sm" tint="wash" />
+          {team ? <Crest team={team} size="sm" tint="wash" /> : null}
         </View>
       </View>
 
@@ -63,13 +51,13 @@ export function PlayerScreen({
       <View style={styles.grid}>
         <View style={[styles.tile, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}>
           <Text style={[styles.tileValue, { fontFamily: theme.typography.score.fontFamily, color: theme.colors.volt }]}>
-            {rating.toFixed(1)}
+            {(player.rating ?? 0).toFixed(1)}
           </Text>
           <Text style={[styles.tileLabel, { fontFamily: theme.typography.meta.fontFamily, color: theme.colors.textMuted }]}>
             Avg rating
           </Text>
         </View>
-        {STATS.map((s) => (
+        {stats.map((s) => (
           <View key={s.label} style={[styles.tile, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}>
             <Text style={[styles.tileValue, { fontFamily: theme.typography.score.fontFamily, color: theme.colors.text }]}>
               {s.value}
@@ -85,10 +73,10 @@ export function PlayerScreen({
         Recent ratings
       </Text>
       <View style={styles.ratingsRow}>
-        {RECENT_RATINGS.map((r, i) => (
+        {recent.map((r, i) => (
           <View key={i} style={[styles.ratingChip, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}>
             <Text style={[styles.ratingText, { fontFamily: theme.typography.minute.fontFamily, color: theme.colors.text }]}>
-              {r.toFixed(1)}
+              {Number(r).toFixed(1)}
             </Text>
           </View>
         ))}
@@ -98,11 +86,7 @@ export function PlayerScreen({
 }
 
 const styles = StyleSheet.create({
-  identity: {
-    alignItems: 'center',
-    gap: 8,
-    paddingTop: 8,
-  },
+  identity: { alignItems: 'center', gap: 8, paddingTop: 8 },
   avatar: {
     width: 88,
     height: 88,
@@ -124,32 +108,12 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     transform: [{ rotate: '-45deg' }],
   },
-  avatarText: {
-    fontSize: 24,
-    fontWeight: '700',
-  },
-  name: {
-    fontSize: 22,
-    fontWeight: '600',
-  },
-  metaRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  meta: {
-    fontSize: 13,
-  },
-  sectionLabel: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginTop: 16,
-  },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 10,
-  },
+  avatarText: { fontSize: 24, fontWeight: '700' },
+  name: { fontSize: 22, fontWeight: '600' },
+  metaRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  meta: { fontSize: 13 },
+  sectionLabel: { fontSize: 18, fontWeight: '600', marginTop: 16 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   tile: {
     width: '31%',
     borderWidth: 1,
@@ -158,26 +122,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
   },
-  tileValue: {
-    fontSize: 20,
-    fontWeight: '600',
-  },
-  tileLabel: {
-    fontSize: 11,
-    textAlign: 'center',
-  },
-  ratingsRow: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  ratingChip: {
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-  },
-  ratingText: {
-    fontSize: 13,
-    fontWeight: '600',
-  },
+  tileValue: { fontSize: 20, fontWeight: '600' },
+  tileLabel: { fontSize: 11, textAlign: 'center' },
+  ratingsRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
+  ratingChip: { borderWidth: 1, borderRadius: 8, paddingVertical: 8, paddingHorizontal: 10 },
+  ratingText: { fontSize: 13, fontWeight: '600' },
 });

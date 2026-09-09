@@ -3,27 +3,21 @@ import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-na
 import { SymbolView } from 'expo-symbols';
 
 import { Crest, EmptyState, Screen, useScorevaTheme } from '@/components/scoreva';
-import type { Team } from '@/components/scoreva';
-
-import { TEAMS } from './mocks';
+import { searchCatalog } from '@/lib/demo';
+import type { SearchHit } from '@/lib/types';
 
 export interface SearchScreenProps {
-  onSelectTeam?: (team: Team) => void;
+  onSelect?: (hit: SearchHit) => void;
 }
 
-export function SearchScreen({ onSelectTeam }: SearchScreenProps) {
+export function SearchScreen({ onSelect }: SearchScreenProps) {
   const theme = useScorevaTheme();
   const [query, setQuery] = useState('');
-  const all = useMemo(() => Object.values(TEAMS), []);
-  const results = query
-    ? all.filter((t) => t.name.toLowerCase().includes(query.toLowerCase()))
-    : [];
+  const results = useMemo(() => searchCatalog(query), [query]);
 
   return (
     <Screen scroll={false}>
-      <View
-        style={[styles.field, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}
-      >
+      <View style={[styles.field, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}>
         <SymbolView
           name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }}
           tintColor={theme.colors.textMuted}
@@ -32,30 +26,43 @@ export function SearchScreen({ onSelectTeam }: SearchScreenProps) {
         <TextInput
           value={query}
           onChangeText={setQuery}
-          placeholder="Search clubs, competitions"
+          placeholder="Search clubs, competitions, players"
           placeholderTextColor={theme.colors.textMuted}
           style={[styles.input, { fontFamily: theme.typography.body.fontFamily, color: theme.colors.text }]}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
       </View>
 
       {query === '' ? (
-        <EmptyState title="Search the night" body="Find a club or competition to follow." />
+        <EmptyState title="Search the night" body="Find a club, competition, player or match." />
       ) : results.length === 0 ? (
-        <EmptyState title="No matches" body={`Nothing found for "${query}".`} />
+        <EmptyState title="No matches" body={`Nothing found for “${query}”.`} />
       ) : (
         <FlatList
           data={results}
-          keyExtractor={(t) => t.id}
+          keyExtractor={(item) => `${item.kind}:${item.id}`}
           contentContainerStyle={styles.list}
           renderItem={({ item }) => (
             <Pressable
-              onPress={() => onSelectTeam?.(item)}
+              onPress={() => onSelect?.(item)}
               style={[styles.row, { borderBottomColor: theme.colors.hairline }]}
             >
-              <Crest team={item} size="sm" tint="wash" />
-              <Text style={[styles.name, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
-                {item.name}
-              </Text>
+              {item.kind === 'team' ? (
+                <Crest team={{ name: item.title, short: item.short ?? item.title.slice(0, 3), color: item.color ?? '#8B93A1' }} size="sm" tint="wash" />
+              ) : (
+                <View style={[styles.kind, { borderColor: theme.colors.hairline }]}>
+                  <Text style={[styles.kindText, { color: theme.colors.textMuted }]}>{item.kind.slice(0, 1).toUpperCase()}</Text>
+                </View>
+              )}
+              <View style={styles.copy}>
+                <Text style={[styles.name, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
+                  {item.title}
+                </Text>
+                <Text style={[styles.sub, { fontFamily: theme.typography.meta.fontFamily, color: theme.colors.textMuted }]}>
+                  {item.subtitle}
+                </Text>
+              </View>
             </Pressable>
           )}
         />
@@ -80,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   list: {
-    gap: 0,
+    paddingBottom: 32,
   },
   row: {
     flexDirection: 'row',
@@ -89,7 +96,26 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderBottomWidth: 1,
   },
+  copy: {
+    flex: 1,
+    gap: 2,
+  },
   name: {
     fontSize: 15,
+  },
+  sub: {
+    fontSize: 12,
+  },
+  kind: {
+    width: 28,
+    height: 28,
+    borderRadius: 8,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  kindText: {
+    fontSize: 11,
+    fontWeight: '700',
   },
 });

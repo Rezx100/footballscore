@@ -8,15 +8,15 @@ import { SymbolView, type SymbolViewProps } from 'expo-symbols';
 
 import { useScorevaTheme } from './theme';
 
-export type ScorevaTabKey = 'home' | 'explore' | 'following' | 'notifications' | 'settings';
+export type ScorevaTabKey = 'home' | 'explore' | 'following' | 'search' | 'settings';
 
 type SymbolName = NonNullable<SymbolViewProps['name']>;
 
 const ICONS: Record<ScorevaTabKey, SymbolName> = {
   home: { ios: 'house.fill', android: 'home', web: 'home' },
-  explore: { ios: 'list.bullet.rectangle', android: 'leaderboard', web: 'leaderboard' },
+  explore: { ios: 'trophy.fill', android: 'emoji_events', web: 'emoji_events' },
   following: { ios: 'star.fill', android: 'star', web: 'star' },
-  notifications: { ios: 'bell.fill', android: 'notifications', web: 'notifications' },
+  search: { ios: 'magnifyingglass', android: 'search', web: 'search' },
   settings: { ios: 'gearshape.fill', android: 'settings', web: 'settings' },
 };
 

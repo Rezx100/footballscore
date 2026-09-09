@@ -1,87 +1,107 @@
 import { useState } from 'react';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SymbolView } from 'expo-symbols';
 
-import { Crest, Screen, useScorevaTheme, Wordmark, type Team } from '@/components/scoreva';
+import { Crest, Screen, useScorevaTheme, Wordmark } from '@/components/scoreva';
+import { COMPETITIONS, TEAMS } from '@/lib/demo';
+import type { Competition, Team } from '@/lib/types';
 
-import { TEAMS } from './mocks';
+export interface FavoritePickerScreenProps {
+  initialTeamIds?: string[];
+  initialCompetitionIds?: string[];
+  onContinue: (selected: { teams: string[]; competitions: string[] }) => void;
+}
 
 const ALL_TEAMS: Team[] = Object.values(TEAMS);
 
-export interface FavoritePickerScreenProps {
-  onContinue: (selectedIds: string[]) => void;
-}
-
-export function FavoritePickerScreen({ onContinue }: FavoritePickerScreenProps) {
+export function FavoritePickerScreen({
+  initialTeamIds = [],
+  initialCompetitionIds = ['pl', 'ucl'],
+  onContinue,
+}: FavoritePickerScreenProps) {
   const theme = useScorevaTheme();
-  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [teams, setTeams] = useState<Set<string>>(new Set(initialTeamIds));
+  const [competitions, setCompetitions] = useState<Set<string>>(new Set(initialCompetitionIds));
 
-  const toggle = (id: string) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+  const toggle = (set: Set<string>, id: string, write: (next: Set<string>) => void) => {
+    const next = new Set(set);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    write(next);
   };
 
   return (
-    <Screen scroll={false}>
+    <Screen scroll={false} noPadding>
       <View style={styles.header}>
         <Wordmark size={20} />
         <Text style={[styles.title, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
-          Pick your clubs
+          Follow the night
         </Text>
         <Text style={[styles.subtitle, { fontFamily: theme.typography.body.fontFamily, color: theme.colors.textMuted }]}>
-          Followed clubs light up first on your home feed.
+          Clubs and competitions you follow light up first. You can skip this.
         </Text>
       </View>
 
-      <FlatList
-        data={ALL_TEAMS}
-        keyExtractor={(t) => t.id}
-        numColumns={2}
-        columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => {
-          const isSelected = selected.has(item.id);
-          return (
-            <Pressable
-              onPress={() => toggle(item.id)}
-              accessibilityRole="checkbox"
-              accessibilityState={{ checked: isSelected }}
-              style={[
-                styles.tile,
-                {
-                  backgroundColor: theme.colors.card,
-                  borderColor: isSelected ? theme.colors.volt : theme.colors.hairline,
-                },
-              ]}
-            >
-              <Crest team={item} size="md" tint="wash" />
-              <Text style={[styles.name, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
-                {item.name}
-              </Text>
-              {isSelected ? (
-                <SymbolView
-                  name={{ ios: 'checkmark.circle.fill', android: 'check_circle', web: 'check_circle' }}
-                  tintColor={theme.colors.volt}
-                  size={18}
-                  style={styles.check}
-                />
-              ) : null}
-            </Pressable>
-          );
-        }}
-      />
+      <ScrollView contentContainerStyle={styles.list}>
+        <Text style={[styles.section, { color: theme.colors.textMuted }]}>Competitions</Text>
+        <View style={styles.chips}>
+          {COMPETITIONS.map((c: Competition) => {
+            const on = competitions.has(c.id);
+            return (
+              <Pressable
+                key={c.id}
+                onPress={() => toggle(competitions, c.id, setCompetitions)}
+                style={[styles.chip, { borderColor: on ? theme.colors.volt : theme.colors.hairline, backgroundColor: theme.colors.card }]}
+              >
+                <Text style={[styles.chipText, { color: on ? theme.colors.volt : theme.colors.text }]}>{c.name}</Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        <Text style={[styles.section, { color: theme.colors.textMuted }]}>Clubs</Text>
+        <View style={styles.grid}>
+          {ALL_TEAMS.map((item) => {
+            const isSelected = teams.has(item.id);
+            return (
+              <Pressable
+                key={item.id}
+                onPress={() => toggle(teams, item.id, setTeams)}
+                accessibilityRole="checkbox"
+                accessibilityState={{ checked: isSelected }}
+                style={[
+                  styles.tile,
+                  {
+                    backgroundColor: theme.colors.card,
+                    borderColor: isSelected ? theme.colors.volt : theme.colors.hairline,
+                  },
+                ]}
+              >
+                <Crest team={item} size="md" tint="wash" />
+                <Text style={[styles.name, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
+                  {item.name}
+                </Text>
+                {isSelected ? (
+                  <SymbolView
+                    name={{ ios: 'checkmark.circle.fill', android: 'check_circle', web: 'check_circle' }}
+                    tintColor={theme.colors.volt}
+                    size={18}
+                    style={styles.check}
+                  />
+                ) : null}
+              </Pressable>
+            );
+          })}
+        </View>
+      </ScrollView>
 
       <Pressable
-        onPress={() => onContinue(Array.from(selected))}
+        onPress={() => onContinue({ teams: Array.from(teams), competitions: Array.from(competitions) })}
         accessibilityRole="button"
         style={[styles.cta, { borderColor: theme.colors.hairline }]}
       >
         <Text style={[styles.ctaText, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
-          {selected.size > 0 ? `Continue (${selected.size})` : 'Skip for now'}
+          {teams.size + competitions.size > 0 ? `Continue (${teams.size} clubs)` : 'Skip for now'}
         </Text>
       </Pressable>
     </Screen>
@@ -109,11 +129,34 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     gap: 12,
   },
-  row: {
+  section: {
+    fontSize: 12,
+    letterSpacing: 0.4,
+    textTransform: 'uppercase',
+    marginTop: 8,
+  },
+  chips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  chip: {
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  chipText: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 12,
   },
   tile: {
-    flex: 1,
+    width: '47%',
     borderWidth: 1,
     borderRadius: 12,
     padding: 14,
@@ -122,8 +165,9 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   name: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
+    textAlign: 'center',
   },
   check: {
     position: 'absolute',

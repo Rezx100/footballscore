@@ -4,15 +4,14 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   DualStats,
   FormationPitch,
+  LiveTracker,
   MatchHeader,
   Screen,
   StandingsTable,
   Timeline,
   useScorevaTheme,
 } from '@/components/scoreva';
-import type { Match } from '@/components/scoreva';
-
-import { DUAL_STATS, FORMATION_PLAYERS, HERO_MATCH, STANDINGS, TIMELINE_EVENTS } from './mocks';
+import type { MatchDetail } from '@/lib/types';
 
 type Tab = 'timeline' | 'lineups' | 'stats' | 'table';
 
@@ -24,15 +23,32 @@ const TABS: { key: Tab; label: string }[] = [
 ];
 
 export interface MatchCentreScreenProps {
-  match?: Match;
+  detail: MatchDetail;
+  followed?: boolean;
+  spoiler?: boolean;
+  onToggleFollow?: () => void;
 }
 
-export function MatchCentreScreen({ match = HERO_MATCH }: MatchCentreScreenProps) {
+export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, onToggleFollow }: MatchCentreScreenProps & { match?: MatchDetail['match'] }) {
   const theme = useScorevaTheme();
   const [tab, setTab] = useState<Tab>('timeline');
+  const [keysOnly, setKeysOnly] = useState(true);
+  const match = detail.match;
+  const events = keysOnly ? detail.events.filter((e) => e.key || e.type !== 'comment') : detail.events;
+  const commentary = keysOnly ? detail.commentary.filter((c) => c.key) : detail.commentary;
 
   return (
-    <Screen noPadding header={<MatchHeader match={match} />}>
+    <Screen
+      noPadding
+      header={
+        <View>
+          <MatchHeader match={match} />
+          <View style={styles.trackWrap}>
+            <LiveTracker match={match} delayed={spoiler} />
+          </View>
+        </View>
+      }
+    >
       <View style={[styles.segmented, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}>
         {TABS.map((t) => {
           const active = t.key === tab;
@@ -56,20 +72,132 @@ export function MatchCentreScreen({ match = HERO_MATCH }: MatchCentreScreenProps
       </View>
 
       <View style={styles.body}>
-        {tab === 'timeline' ? <Timeline events={TIMELINE_EVENTS} /> : null}
+        {tab === 'timeline' ? (
+          <View style={styles.gap}>
+            <View style={styles.filterRow}>
+              <Pressable
+                onPress={() => setKeysOnly(true)}
+                style={[styles.chip, { borderColor: keysOnly ? theme.colors.volt : theme.colors.hairline }]}
+              >
+                <Text style={[styles.chipText, { color: keysOnly ? theme.colors.volt : theme.colors.textMuted }]}>Key</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => setKeysOnly(false)}
+                style={[styles.chip, { borderColor: !keysOnly ? theme.colors.volt : theme.colors.hairline }]}
+              >
+                <Text style={[styles.chipText, { color: !keysOnly ? theme.colors.volt : theme.colors.textMuted }]}>All</Text>
+              </Pressable>
+              <Pressable onPress={onToggleFollow} style={[styles.chip, { borderColor: theme.colors.hairline }]}>
+                <Text style={[styles.chipText, { color: theme.colors.text }]}>{followed ? 'Following' : 'Follow match'}</Text>
+              </Pressable>
+            </View>
+            {events.length > 0 ? (
+              <Timeline
+                events={events.map((e) => ({
+                  id: e.id,
+                  minute: e.minute,
+                  type: e.type === 'var' || e.type === 'comment' ? 'other' : e.type,
+                  text: e.text,
+                  side: e.side,
+                }))}
+              />
+            ) : (
+              <Text style={[styles.empty, { color: theme.colors.textMuted }]}>No play-by-play yet.</Text>
+            )}
+            {commentary.length > 0 ? (
+              <View style={styles.gap}>
+                <Text style={[styles.section, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
+                  Commentary
+                </Text>
+                {commentary.map((line) => (
+                  <View key={line.id} style={[styles.comment, { borderColor: theme.colors.hairline }]}>
+                    {line.minute != null ? (
+                      <Text style={[styles.minute, { fontFamily: theme.typography.minute.fontFamily, color: theme.colors.textMuted }]}>
+                        {line.minute}′
+                      </Text>
+                    ) : null}
+                    <Text style={[styles.commentText, { fontFamily: theme.typography.body.fontFamily, color: theme.colors.text }]}>
+                      {line.text}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            ) : null}
+          </View>
+        ) : null}
+
         {tab === 'lineups' ? (
-          <FormationPitch formation="4-3-3" players={FORMATION_PLAYERS} />
+          <View style={styles.gap}>
+            <FormationPitch formation={detail.homeLineup.formation} players={detail.homeLineup.players} />
+            {detail.ratings.length > 0 ? (
+              <View>
+                <Text style={[styles.section, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
+                  Player ratings
+                </Text>
+                {detail.ratings.map((r) => (
+                  <View key={r.playerId} style={[styles.ratingRow, { borderBottomColor: theme.colors.hairline }]}>
+                    <Text style={[styles.ratingName, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
+                      {r.name}
+                    </Text>
+                    <Text style={[styles.ratingVal, { fontFamily: theme.typography.score.fontFamily, color: theme.colors.volt }]}>
+                      {r.rating.toFixed(1)}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            ) : (
+              <Text style={[styles.empty, { color: theme.colors.textMuted }]}>Lineups not in yet.</Text>
+            )}
+          </View>
         ) : null}
+
         {tab === 'stats' ? (
-          <DualStats rows={DUAL_STATS} homeColor={match.home.color} awayColor={match.away.color} />
+          <View style={styles.gap}>
+            {detail.stats.length > 0 ? (
+              <DualStats rows={detail.stats} homeColor={match.home.color} awayColor={match.away.color} />
+            ) : (
+              <Text style={[styles.empty, { color: theme.colors.textMuted }]}>Numbers not in yet.</Text>
+            )}
+            <Text style={[styles.section, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
+              Head to head
+            </Text>
+            <Text style={[styles.empty, { color: theme.colors.textMuted }]}>{detail.h2h.summary}</Text>
+            {detail.h2h.events.map((ev) => (
+              <View key={ev.id} style={[styles.h2h, { borderColor: theme.colors.hairline }]}>
+                <Text style={[styles.h2hDate, { fontFamily: theme.typography.caption.fontFamily, color: theme.colors.textMuted }]}>
+                  {ev.date}
+                </Text>
+                <Text style={[styles.h2hScore, { fontFamily: theme.typography.ui.fontFamily, color: theme.colors.text }]}>
+                  {ev.homeName} {ev.homeScore}–{ev.awayScore} {ev.awayName}
+                </Text>
+              </View>
+            ))}
+            {match.venue ? (
+              <Text style={[styles.empty, { color: theme.colors.textMuted }]}>
+                {match.venue}
+                {match.referee ? ` · ${match.referee}` : ''}
+              </Text>
+            ) : null}
+          </View>
         ) : null}
-        {tab === 'table' ? <StandingsTable rows={STANDINGS} /> : null}
+
+        {tab === 'table' ? (
+          detail.table.length > 0 ? (
+            <StandingsTable rows={detail.table} />
+          ) : (
+            <Text style={[styles.empty, { color: theme.colors.textMuted }]}>No table for this competition.</Text>
+          )
+        ) : null}
       </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+  trackWrap: {
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+  },
   segmented: {
     flexDirection: 'row',
     borderBottomWidth: 1,
@@ -89,5 +217,70 @@ const styles = StyleSheet.create({
   body: {
     paddingHorizontal: 16,
     paddingTop: 16,
+    paddingBottom: 32,
+  },
+  gap: {
+    gap: 12,
+  },
+  filterRow: {
+    flexDirection: 'row',
+    gap: 8,
+    flexWrap: 'wrap',
+  },
+  chip: {
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  chipText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  section: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginTop: 8,
+  },
+  empty: {
+    fontSize: 15,
+    paddingTop: 8,
+  },
+  comment: {
+    borderWidth: 1,
+    borderRadius: 12,
+    padding: 12,
+    gap: 4,
+  },
+  minute: {
+    fontSize: 12,
+  },
+  commentText: {
+    fontSize: 15,
+    lineHeight: 21,
+  },
+  ratingRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+  },
+  ratingName: {
+    fontSize: 15,
+  },
+  ratingVal: {
+    fontSize: 18,
+  },
+  h2h: {
+    borderWidth: 1,
+    borderRadius: 12,
+    padding: 12,
+    gap: 4,
+  },
+  h2hDate: {
+    fontSize: 11,
+  },
+  h2hScore: {
+    fontSize: 14,
   },
 });

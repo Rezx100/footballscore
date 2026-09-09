@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Scoreva Aperture">
+  <rect width="1024" height="1024" fill="#08090D"/>
+  <ellipse cx="512" cy="512" rx="340" ry="220" fill="none" stroke="#D7FF3C" stroke-width="56"/>
+  <rect x="500" y="140" width="48" height="760" rx="8" fill="#D7FF3C" transform="rotate(20 512 512)"/>
+</svg>
