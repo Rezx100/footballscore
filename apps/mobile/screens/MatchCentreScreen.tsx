@@ -46,7 +46,9 @@ export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, h
         <View>
           <MatchHeader match={match} hour12={hour12} timeZone={timeZone} />
           <View style={styles.trackWrap}>
-            <LiveTracker match={match} delayed={spoiler} />
+            {match.status === 'live' || match.status === 'ht' ? (
+              <LiveTracker match={match} delayed={spoiler} />
+            ) : null}
           </View>
         </View>
       }

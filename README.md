@@ -40,6 +40,10 @@ Widgets and Live Activities are specified in `apps/mobile/widgets/` and included
 
 Onboarding → favorite clubs/competitions → Live feed → match centre (timeline, lineups, stats, table) → competition → team → player → search → notifications (spoiler + delay) → settings.
 
-## Data honesty
+## Store assets
+
+App Store UI frames: `apps/mobile/assets/store/01-home.png` … `07-notifications.png`.
+Captured product screens from the running app: `apps/mobile/assets/store/product-*.png`.
+
 
 If a feed does not send a module, the UI says so. No odds, no Watch CTAs, no invented xG outside demo fixtures that are labelled as demo when ESPN/API is down.

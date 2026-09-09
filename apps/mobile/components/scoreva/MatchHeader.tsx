@@ -38,7 +38,7 @@ function ScoreLg({ value, flash }: { value: number | undefined; flash: boolean }
     <Animated.Text
       style={[styles.score, { fontFamily: theme.typography.scoreLg.fontFamily, color }]}
     >
-      {value ?? 0}
+      {value == null ? '–' : value}
     </Animated.Text>
   );
 }
