@@ -11,9 +11,12 @@ import { Crest } from './Crest';
 import { LivePulse } from './LivePulse';
 import { useScorevaTheme } from './theme';
 import type { Match } from './types';
+import { formatKickoff } from '@/lib/dates';
 
 export interface MatchHeaderProps {
   match: Match;
+  hour12?: boolean;
+  timeZone?: string;
 }
 
 function ScoreLg({ value, flash }: { value: number | undefined; flash: boolean }) {
@@ -40,7 +43,7 @@ function ScoreLg({ value, flash }: { value: number | undefined; flash: boolean }
   );
 }
 
-function statusText(match: Match): string {
+function statusText(match: Match, hour12: boolean, timeZone?: string): string {
   switch (match.status) {
     case 'ht':
       return 'HT';
@@ -51,17 +54,15 @@ function statusText(match: Match): string {
     case 'ab':
       return 'Abandoned';
     case 'ns': {
-      const d = new Date(match.kickoffIso);
-      return Number.isNaN(d.getTime())
-        ? 'Kick-off'
-        : `Kick-off ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+      const time = formatKickoff(match.kickoffIso, hour12, timeZone);
+      return time ? `Kick-off ${time}` : 'Kick-off';
     }
     default:
       return '';
   }
 }
 
-export function MatchHeader({ match }: MatchHeaderProps) {
+export function MatchHeader({ match, hour12 = false, timeZone }: MatchHeaderProps) {
   const theme = useScorevaTheme();
   const isLive = match.status === 'live';
   const prevScores = useRef({ home: match.homeScore, away: match.awayScore });
@@ -124,7 +125,7 @@ export function MatchHeader({ match }: MatchHeaderProps) {
                 { fontFamily: theme.typography.caption.fontFamily, color: theme.colors.textMuted },
               ]}
             >
-              {statusText(match)}
+              {statusText(match, hour12, timeZone)}
             </Text>
           )}
           <View style={styles.scoreRow}>

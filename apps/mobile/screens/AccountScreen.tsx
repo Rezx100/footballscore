@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Screen, useScorevaTheme } from '@/components/scoreva';
+import { registerForPushAsync } from '@/lib/notifications';
+import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/providers';
 
 export function AccountScreen() {
@@ -10,6 +12,27 @@ export function AccountScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState<string | null>(null);
+
+  async function enableAlerts() {
+    const token = await registerForPushAsync();
+    if (!token) {
+      setMessage(
+        Platform.OS === 'web'
+          ? 'Push tokens are not available on web. Use Expo Go on a device.'
+          : 'Notifications permission was not granted.',
+      );
+      return;
+    }
+    if (supabase) {
+      const { data } = await supabase.auth.getUser();
+      await supabase.from('device_tokens').upsert({
+        user_id: data.user?.id ?? null,
+        token,
+        platform: Platform.OS,
+      });
+    }
+    setMessage('Device registered for match alerts.');
+  }
 
   return (
     <Screen>
@@ -62,9 +85,12 @@ export function AccountScreen() {
           >
             <Text style={[styles.ctaText, { color: theme.colors.text }]}>Create account</Text>
           </Pressable>
-          {message ? <Text style={[styles.body, { color: theme.colors.ember }]}>{message}</Text> : null}
         </View>
       )}
+      <Pressable onPress={enableAlerts} style={[styles.cta, { borderColor: theme.colors.hairline }]}>
+        <Text style={[styles.ctaText, { color: theme.colors.text }]}>Enable match alerts</Text>
+      </Pressable>
+      {message ? <Text style={[styles.body, { color: theme.colors.ember }]}>{message}</Text> : null}
     </Screen>
   );
 }

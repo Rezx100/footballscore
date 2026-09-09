@@ -26,10 +26,12 @@ export interface MatchCentreScreenProps {
   detail: MatchDetail;
   followed?: boolean;
   spoiler?: boolean;
+  hour12?: boolean;
+  timeZone?: string;
   onToggleFollow?: () => void;
 }
 
-export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, onToggleFollow }: MatchCentreScreenProps & { match?: MatchDetail['match'] }) {
+export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, hour12, timeZone, onToggleFollow }: MatchCentreScreenProps & { match?: MatchDetail['match'] }) {
   const theme = useScorevaTheme();
   const [tab, setTab] = useState<Tab>('timeline');
   const [keysOnly, setKeysOnly] = useState(true);
@@ -42,7 +44,7 @@ export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, o
       noPadding
       header={
         <View>
-          <MatchHeader match={match} />
+          <MatchHeader match={match} hour12={hour12} timeZone={timeZone} />
           <View style={styles.trackWrap}>
             <LiveTracker match={match} delayed={spoiler} />
           </View>
@@ -128,7 +130,19 @@ export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, o
 
         {tab === 'lineups' ? (
           <View style={styles.gap}>
+            <Text style={[styles.section, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
+              {detail.homeLineup.team.short}
+              {detail.homeLineup.formation ? ` · ${detail.homeLineup.formation}` : ''}
+            </Text>
             <FormationPitch formation={detail.homeLineup.formation} players={detail.homeLineup.players} />
+            <Text style={[styles.section, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
+              {detail.awayLineup.team.short}
+              {detail.awayLineup.formation ? ` · ${detail.awayLineup.formation}` : ''}
+            </Text>
+            <FormationPitch formation={detail.awayLineup.formation} players={detail.awayLineup.players} />
+            {detail.homeLineup.players.length === 0 && detail.awayLineup.players.length === 0 ? (
+              <Text style={[styles.empty, { color: theme.colors.textMuted }]}>Lineups not in yet.</Text>
+            ) : null}
             {detail.ratings.length > 0 ? (
               <View>
                 <Text style={[styles.section, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
@@ -145,9 +159,7 @@ export function MatchCentreScreen({ match: _legacy, detail, followed, spoiler, o
                   </View>
                 ))}
               </View>
-            ) : (
-              <Text style={[styles.empty, { color: theme.colors.textMuted }]}>Lineups not in yet.</Text>
-            )}
+            ) : null}
           </View>
         ) : null}
 

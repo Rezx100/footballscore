@@ -16,15 +16,18 @@ import { Crest } from './Crest';
 import { LivePulse } from './LivePulse';
 import { useScorevaTheme } from './theme';
 import type { Match } from './types';
+import { formatKickoff } from '@/lib/dates';
 
 export interface ScoreCardProps {
   match: Match;
   followed?: boolean;
+  hour12?: boolean;
+  timeZone?: string;
   onPress?: (match: Match) => void;
   onToggleFollow?: (match: Match) => void;
 }
 
-function statusCaption(match: Match): string | null {
+function statusCaption(match: Match, hour12: boolean, timeZone?: string): string | null {
   switch (match.status) {
     case 'ht':
       return 'HT';
@@ -34,11 +37,8 @@ function statusCaption(match: Match): string | null {
       return 'PP';
     case 'ab':
       return 'AB';
-    case 'ns': {
-      const d = new Date(match.kickoffIso);
-      if (Number.isNaN(d.getTime())) return null;
-      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    }
+    case 'ns':
+      return formatKickoff(match.kickoffIso, hour12, timeZone) || null;
     default:
       return null;
   }
@@ -120,9 +120,9 @@ function TeamRow({
   );
 }
 
-export function ScoreCard({ match, followed, onPress, onToggleFollow }: ScoreCardProps) {
+export function ScoreCard({ match, followed, hour12 = false, timeZone, onPress, onToggleFollow }: ScoreCardProps) {
   const theme = useScorevaTheme();
-  const caption = statusCaption(match);
+  const caption = statusCaption(match, hour12, timeZone);
   const isLive = match.status === 'live';
   const isFt = match.status === 'ft';
 

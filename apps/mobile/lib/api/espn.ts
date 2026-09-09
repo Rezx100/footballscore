@@ -1,5 +1,15 @@
 import { espnDate } from '../dates';
-import type { Match, MatchStatus, Team } from '../types';
+import type {
+  DualStat,
+  LineupPlayer,
+  Match,
+  MatchDetail,
+  MatchStatus,
+  StandingRow,
+  Team,
+  TimelineEvent,
+  TimelineKind,
+} from '../types';
 
 const ESPN_SITE = 'https://site.api.espn.com';
 const ESPN_WEB = 'https://site.web.api.espn.com';
@@ -109,4 +119,187 @@ export async function fetchEspnMatches(day: string): Promise<Match[]> {
   );
 
   return groups.flatMap((result) => (result.status === 'fulfilled' ? result.value : []));
+}
+
+export function espnLeagueSlug(leagueId: string): string | undefined {
+  return LEAGUES.find((l) => l.id === leagueId)?.slug;
+}
+
+function asNumber(value: unknown): number | undefined {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (typeof value === 'string') {
+    const n = Number.parseFloat(value.replace('%', ''));
+    return Number.isFinite(n) ? n : undefined;
+  }
+  return undefined;
+}
+
+function mapPlayType(play: Record<string, unknown>): TimelineKind {
+  const type = isRecord(play.type) ? play.type : {};
+  const text = `${asString(type.text) ?? ''} ${asString(type.id) ?? ''} ${asString(play.text) ?? ''}`.toLowerCase();
+  if (play.scoringPlay === true || text.includes('goal')) return 'goal';
+  if (text.includes('red card') || text.includes('red-card')) return 'red-card';
+  if (text.includes('yellow')) return 'yellow-card';
+  if (text.includes('substitut')) return 'substitution';
+  if (text.includes('var')) return 'var';
+  return 'comment';
+}
+
+function mapLineup(rosterBlock: Record<string, unknown>, team: Team): LineupPlayer[] {
+  const rows = asArray(rosterBlock.roster).filter(isRecord);
+  const starters = rows.filter((row) => row.starter === true);
+  const source = starters.length > 0 ? starters : rows.slice(0, 11);
+  return source.map((row, index) => {
+    const athlete = isRecord(row.athlete) ? row.athlete : {};
+    const name = asString(athlete.displayName) ?? asString(athlete.shortName) ?? 'Player';
+    const shorts = name
+      .split(' ')
+      .map((part) => part[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase();
+    const jersey = Number.parseInt(asString(row.jersey) ?? asString(athlete.jersey) ?? `${index + 1}`, 10);
+    const col = index % 4;
+    const rowIndex = Math.floor(index / 4);
+    return {
+      id: asString(athlete.id) ?? `${team.id}-${index}`,
+      name,
+      initials: shorts || name.slice(0, 2).toUpperCase(),
+      number: Number.isFinite(jersey) ? jersey : index + 1,
+      position: asString(isRecord(row.position) ? row.position.abbreviation : undefined) ?? 'Player',
+      starter: row.starter === true || index < 11,
+      x: Math.min(0.9, 0.12 + rowIndex * 0.22),
+      y: 0.15 + col * 0.23,
+    };
+  });
+}
+
+function mapStats(homeBlock?: Record<string, unknown>, awayBlock?: Record<string, unknown>): DualStat[] {
+  const homeStats = asArray(homeBlock?.statistics).filter(isRecord);
+  const awayStats = asArray(awayBlock?.statistics).filter(isRecord);
+  const labels = new Map<string, DualStat>();
+  for (const row of homeStats) {
+    const label = asString(row.label) ?? asString(row.name) ?? asString(row.abbreviation);
+    const value = asNumber(row.displayValue) ?? asNumber(row.value);
+    if (!label || value == null) continue;
+    labels.set(label, { label, homeValue: value, awayValue: 0 });
+  }
+  for (const row of awayStats) {
+    const label = asString(row.label) ?? asString(row.name) ?? asString(row.abbreviation);
+    const value = asNumber(row.displayValue) ?? asNumber(row.value);
+    if (!label || value == null) continue;
+    const existing = labels.get(label);
+    if (existing) existing.awayValue = value;
+    else labels.set(label, { label, homeValue: 0, awayValue: value });
+  }
+  return Array.from(labels.values()).slice(0, 10);
+}
+
+export async function fetchEspnMatchDetail(match: Match): Promise<MatchDetail | null> {
+  const eventId = match.id.replace(/^espn-/, '');
+  const slug = espnLeagueSlug(match.leagueId) ?? 'eng.1';
+  const json = await espnGet(`/apis/site/v2/sports/soccer/${slug}/summary?event=${eventId}`);
+  if (!isRecord(json)) return null;
+
+  const header = isRecord(json.header) ? json.header : {};
+  const competitions = asArray(header.competitions).filter(isRecord);
+  const first = competitions[0] ?? header;
+  const venue = isRecord(first) && isRecord(first.venue) ? asString(first.venue.fullName) : match.venue;
+  const { status, minute } = mapStatus(isRecord(json.header) ? json.header : first);
+  const competitors = asArray(isRecord(first) ? first.competitors : []).filter(isRecord);
+  const homeRaw = competitors.find((c) => asString(c.homeAway) === 'home') ?? competitors[0];
+  const awayRaw = competitors.find((c) => asString(c.homeAway) === 'away') ?? competitors[1];
+  const homeScore = homeRaw ? asNumber(homeRaw.score) : match.homeScore;
+  const awayScore = awayRaw ? asNumber(awayRaw.score) : match.awayScore;
+
+  const plays = [...asArray(json.keyEvents), ...asArray(json.plays)].filter(isRecord);
+  const events: TimelineEvent[] = plays.slice(0, 40).map((play, index) => {
+    const clock = isRecord(play.clock) ? asString(play.clock.displayValue) : asString(play.clock);
+    const minuteValue = clock ? Number.parseInt(clock.replace(/\D/g, ''), 10) : 0;
+    const type = mapPlayType(play);
+    return {
+      id: asString(play.id) ?? `play-${index}`,
+      minute: Number.isFinite(minuteValue) ? minuteValue : 0,
+      type,
+      text: asString(play.text) ?? asString(play.shortText) ?? 'Event',
+      side: asString(play.homeAway) === 'away' || play.awayTeam === true ? 'away' : 'home',
+      key: type === 'goal' || type === 'red-card' || type === 'yellow-card' || play.scoringPlay === true,
+    };
+  });
+
+  const boxscore = isRecord(json.boxscore) ? json.boxscore : {};
+  const boxTeams = asArray(boxscore.teams).filter(isRecord);
+  const homeBox = boxTeams.find((t) => asString(isRecord(t.team) ? t.team.id : undefined) === match.home.id.replace(/^espn-/, '')) ?? boxTeams[0];
+  const awayBox = boxTeams.find((t) => asString(isRecord(t.team) ? t.team.id : undefined) === match.away.id.replace(/^espn-/, '')) ?? boxTeams[1];
+
+  const rosters = asArray(json.rosters).filter(isRecord);
+  const homeRoster = rosters.find((r) => asString(isRecord(r.team) ? r.team.id : undefined) === match.home.id.replace(/^espn-/, '')) ?? rosters[0];
+  const awayRoster = rosters.find((r) => asString(isRecord(r.team) ? r.team.id : undefined) === match.away.id.replace(/^espn-/, '')) ?? rosters[1];
+
+  const liveMatch: Match = {
+    ...match,
+    status: status || match.status,
+    minute: minute ?? match.minute,
+    homeScore: status === 'ns' ? undefined : (homeScore ?? match.homeScore),
+    awayScore: status === 'ns' ? undefined : (awayScore ?? match.awayScore),
+    venue: venue ?? match.venue,
+  };
+
+  return {
+    match: liveMatch,
+    events,
+    commentary: events.slice(0, 12).map((event) => ({
+      id: `c-${event.id}`,
+      minute: event.minute,
+      text: event.text,
+      key: event.key,
+    })),
+    homeLineup: {
+      team: match.home,
+      formation: asString(homeRoster?.formation) ?? '',
+      players: homeRoster ? mapLineup(homeRoster, match.home) : [],
+    },
+    awayLineup: {
+      team: match.away,
+      formation: asString(awayRoster?.formation) ?? '',
+      players: awayRoster ? mapLineup(awayRoster, match.away) : [],
+    },
+    stats: mapStats(homeBox, awayBox),
+    table: [],
+    h2h: { summary: 'Head-to-head not in this feed.', events: [] },
+    ratings: [],
+  };
+}
+
+export async function fetchEspnStandings(leagueId: string): Promise<StandingRow[]> {
+  const slug = espnLeagueSlug(leagueId);
+  if (!slug) return [];
+  const json = await espnGet(`/apis/v2/sports/soccer/${slug}/standings`);
+  if (!isRecord(json)) return [];
+  const children = asArray(json.children).filter(isRecord);
+  const groups = children.length > 0 ? children : [json];
+  const first = groups[0];
+  const standings = isRecord(first) && isRecord(first.standings) ? first.standings : first;
+  const entries = asArray(isRecord(standings) ? standings.entries : []).filter(isRecord);
+  return entries.map((row, index) => {
+    const team = isRecord(row.team) ? mapTeam(row.team) : { id: `row-${index}`, name: 'Club', short: 'CLB', color: '#6B7280' };
+    const stats = asArray(row.stats).filter(isRecord);
+    const read = (name: string) => {
+      const hit = stats.find((s) => asString(s.name) === name || asString(s.abbreviation) === name);
+      return asNumber(hit?.value) ?? asNumber(hit?.displayValue) ?? 0;
+    };
+    return {
+      position: index + 1,
+      team,
+      played: read('gamesPlayed'),
+      won: read('wins'),
+      drawn: read('ties'),
+      lost: read('losses'),
+      gf: read('pointsFor'),
+      ga: read('pointsAgainst'),
+      goalDifference: read('pointDifferential') || read('pointsFor') - read('pointsAgainst'),
+      points: read('points'),
+      form: [],
+    } satisfies StandingRow;
+  });
 }

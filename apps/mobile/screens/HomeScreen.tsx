@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SymbolView } from 'expo-symbols';
+import { useMemo, useState } from 'react';
 
 import {
   DateRail,
@@ -22,10 +23,13 @@ export interface HomeScreenProps {
   onSelectDay: (iso: string) => void;
   followedTeamIds?: string[];
   followedMatchIds?: string[];
+  followedCompetitionIds?: string[];
   spoiler?: boolean;
   loading?: boolean;
   source?: DataSource;
   stale?: boolean;
+  hour12?: boolean;
+  timeZone?: string;
   onOpenMatch?: (match: Match) => void;
   onOpenSearch?: () => void;
   onToggleFollow?: (match: Match) => void;
@@ -49,23 +53,48 @@ export function HomeScreen({
   onSelectDay,
   followedTeamIds = [],
   followedMatchIds = [],
+  followedCompetitionIds = [],
   spoiler,
   loading,
   source,
   stale,
+  hour12,
+  timeZone,
   onOpenMatch,
   onOpenSearch,
   onToggleFollow,
 }: HomeScreenProps) {
   const theme = useScorevaTheme();
-  const live = matches.filter((m) => isLiveStatus(m.status));
-  const followed = matches.filter(
+  const leagues = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const match of matches) {
+      map.set(match.leagueId, match.leagueName ?? match.leagueId);
+    }
+    return Array.from(map, ([id, name]) => ({ id, name }));
+  }, [matches]);
+  const [leagueId, setLeagueId] = useState<string | 'all' | 'following'>('all');
+  const filtered = useMemo(() => {
+    if (leagueId === 'following') {
+      return matches.filter(
+        (m) =>
+          followedMatchIds.includes(m.id) ||
+          followedTeamIds.includes(m.home.id) ||
+          followedTeamIds.includes(m.away.id) ||
+          followedCompetitionIds.includes(m.leagueId),
+      );
+    }
+    if (leagueId === 'all') return matches;
+    return matches.filter((m) => m.leagueId === leagueId);
+  }, [followedCompetitionIds, followedMatchIds, followedTeamIds, leagueId, matches]);
+  const live = filtered.filter((m) => isLiveStatus(m.status));
+  const followed = filtered.filter(
     (m) =>
-      followedMatchIds.includes(m.id) ||
-      followedTeamIds.includes(m.home.id) ||
-      followedTeamIds.includes(m.away.id),
+      !live.includes(m) &&
+      (followedMatchIds.includes(m.id) ||
+        followedTeamIds.includes(m.home.id) ||
+        followedTeamIds.includes(m.away.id)),
   );
-  const rest = matches.filter((m) => !live.includes(m));
+  const rest = filtered.filter((m) => !live.includes(m) && !followed.includes(m));
   const groups = groupByLeague(rest);
 
   return (
@@ -91,6 +120,42 @@ export function HomeScreen({
             </View>
           </View>
           <DateRail days={days} activeIso={activeIso} onSelect={onSelectDay} />
+          {leagues.length > 1 ? (
+            <View style={styles.filters}>
+              {[
+                { id: 'all' as const, name: 'All' },
+                { id: 'following' as const, name: 'Following' },
+                ...leagues,
+              ].map((chip) => {
+                const active = leagueId === chip.id;
+                return (
+                  <Pressable
+                    key={chip.id}
+                    onPress={() => setLeagueId(chip.id)}
+                    style={[
+                      styles.filterChip,
+                      {
+                        borderColor: active ? theme.colors.volt : theme.colors.hairline,
+                        backgroundColor: theme.colors.card,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.filterText,
+                        {
+                          fontFamily: theme.typography.meta.fontFamily,
+                          color: active ? theme.colors.volt : theme.colors.textMuted,
+                        },
+                      ]}
+                    >
+                      {chip.name}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          ) : null}
         </View>
       }
     >
@@ -129,6 +194,8 @@ export function HomeScreen({
               match={m}
               followed
               spoiler={spoiler}
+              hour12={hour12}
+              timeZone={timeZone}
               onOpenMatch={onOpenMatch}
               onToggleFollow={onToggleFollow}
             />
@@ -147,6 +214,8 @@ export function HomeScreen({
               match={m}
               followed={followedMatchIds.includes(m.id) || followedTeamIds.includes(m.home.id) || followedTeamIds.includes(m.away.id)}
               spoiler={spoiler}
+              hour12={hour12}
+              timeZone={timeZone}
               onOpenMatch={onOpenMatch}
               onToggleFollow={onToggleFollow}
             />
@@ -154,7 +223,7 @@ export function HomeScreen({
         </View>
       ))}
 
-      {!loading && matches.length === 0 ? (
+      {!loading && filtered.length === 0 ? (
         <View style={styles.empty}>
           <Text style={[styles.emptyTitle, { fontFamily: theme.typography.title.fontFamily, color: theme.colors.text }]}>
             No fixtures
@@ -172,17 +241,28 @@ function ScoreBlock({
   match,
   followed,
   spoiler,
+  hour12,
+  timeZone,
   onOpenMatch,
   onToggleFollow,
 }: {
   match: Match;
   followed?: boolean;
   spoiler?: boolean;
+  hour12?: boolean;
+  timeZone?: string;
   onOpenMatch?: (match: Match) => void;
   onToggleFollow?: (match: Match) => void;
 }) {
   const card = (
-    <ScoreCard match={match} followed={followed} onPress={onOpenMatch} onToggleFollow={onToggleFollow} />
+    <ScoreCard
+      match={match}
+      followed={followed}
+      hour12={hour12}
+      timeZone={timeZone}
+      onPress={onOpenMatch}
+      onToggleFollow={onToggleFollow}
+    />
   );
   if (spoiler && (match.status === 'live' || match.status === 'ht' || match.status === 'ft')) {
     return <SpoilerCover>{card}</SpoilerCover>;
@@ -208,6 +288,24 @@ const styles = StyleSheet.create({
     fontSize: 10,
     letterSpacing: 0.4,
     textTransform: 'uppercase',
+  },
+  filters: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+    paddingTop: 8,
+  },
+  filterChip: {
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  filterText: {
+    fontSize: 11,
+    letterSpacing: 0.2,
   },
   section: {
     paddingHorizontal: 16,

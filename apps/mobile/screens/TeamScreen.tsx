@@ -7,6 +7,7 @@ import type { Match, Player, Team } from '@/lib/types';
 export interface TeamScreenProps {
   team: Team;
   followed?: boolean;
+  nextMatch?: Match;
   onToggleFollow?: () => void;
   onOpenMatch?: (match: Match) => void;
   onOpenPlayer?: (player: Player) => void;
@@ -18,9 +19,10 @@ function formColor(result: 'W' | 'D' | 'L', theme: ReturnType<typeof useScorevaT
   return theme.colors.mute;
 }
 
-export function TeamScreen({ team, followed, onToggleFollow, onOpenMatch, onOpenPlayer }: TeamScreenProps) {
+export function TeamScreen({ team, followed, nextMatch: nextMatchProp, onToggleFollow, onOpenMatch, onOpenPlayer }: TeamScreenProps) {
   const theme = useScorevaTheme();
   const nextMatch =
+    nextMatchProp ??
     MATCHES.find((m) => m.status === 'ns' && (m.home.id === team.id || m.away.id === team.id)) ??
     MATCHES.find((m) => m.home.id === team.id || m.away.id === team.id);
   const rank = PL_TABLE.find((r) => r.team.id === team.id)?.position ?? 0;

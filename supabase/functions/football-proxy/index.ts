@@ -13,13 +13,16 @@ serve(async (req) => {
   const url = new URL(req.url);
   const day = url.searchParams.get('date') ?? new Date().toISOString().slice(0, 10).replaceAll('-', '');
   const league = url.searchParams.get('league') ?? 'eng.1';
+  const event = url.searchParams.get('event');
   const apiKey = Deno.env.get('FOOTBALL_API_KEY');
   const host = Deno.env.get('FOOTBALL_API_HOST') ?? 'v3.football.api-sports.io';
 
   try {
     if (apiKey) {
-      const target = `https://${host}/fixtures?date=${day.slice(0, 4)}-${day.slice(4, 6)}-${day.slice(6, 8)}`;
-      const response = await fetch(target, {
+      const path = event
+        ? `https://${host}/fixtures?id=${event}`
+        : `https://${host}/fixtures?date=${day.slice(0, 4)}-${day.slice(4, 6)}-${day.slice(6, 8)}`;
+      const response = await fetch(path, {
         headers: { 'x-apisports-key': apiKey },
       });
       const json = await response.json();
@@ -28,7 +31,10 @@ serve(async (req) => {
       });
     }
 
-    const response = await fetch(`${ESPN}/${league}/scoreboard?dates=${day}`, {
+    const espnPath = event
+      ? `${ESPN}/${league}/summary?event=${event}`
+      : `${ESPN}/${league}/scoreboard?dates=${day}`;
+    const response = await fetch(espnPath, {
       headers: { Accept: 'application/json' },
     });
     const json = await response.json();

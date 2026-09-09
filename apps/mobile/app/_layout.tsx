@@ -6,6 +6,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Platform } from 'react-native';
 import { useScorevaTheme } from '@/components/scoreva';
 import { AppProviders } from '@/providers';
 import 'react-native-reanimated';
@@ -36,7 +37,9 @@ export default function RootLayout() {
     if (loaded) SplashScreen.hideAsync();
   }, [loaded]);
 
-  if (!loaded) return null;
+  if (!loaded && Platform.OS !== 'web') {
+    return null;
+  }
 
   return (
     <AppProviders>

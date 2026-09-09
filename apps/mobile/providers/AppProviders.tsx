@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import { ScorevaThemeProvider, type ScorevaColorScheme } from '@/components/scoreva';
 import { AuthProvider } from './AuthProvider';
+import { FeedProvider } from './FeedProvider';
 import { FollowProvider } from './FollowProvider';
 import { PrefsProvider, usePrefs } from './PrefsProvider';
 
@@ -16,7 +17,9 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <AuthProvider>
       <PrefsProvider>
         <FollowProvider>
-          <ThemeBridge>{children}</ThemeBridge>
+          <ThemeBridge>
+            <FeedProvider>{children}</FeedProvider>
+          </ThemeBridge>
         </FollowProvider>
       </PrefsProvider>
     </AuthProvider>

@@ -21,6 +21,9 @@ export function clockFromKickoff(
 export function withLiveClock(match: Match, now = Date.now()): Match {
   if (match.status === 'pp' || match.status === 'ab') return match;
   if (match.status === 'ft') return match;
+  // ESPN (and API-Football) already send status + minute. Do not overwrite them
+  // from kick-off — that clock is only for seeded demo fixtures.
+  if (match.id.startsWith('espn-') || match.id.startsWith('apif-')) return match;
   if (match.status === 'ns') {
     const derived = clockFromKickoff(match.kickoffIso, now);
     if (derived.status === 'ns') return match;

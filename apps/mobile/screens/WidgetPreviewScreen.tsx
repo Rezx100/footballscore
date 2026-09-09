@@ -3,10 +3,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import { LiveTracker, Screen, useScorevaTheme } from '@/components/scoreva';
 import { MATCHES } from '@/lib/demo';
 import { withLiveClock } from '@/lib/live';
+import { listMatches } from '@/lib/registry';
 
 export function WidgetPreviewScreen() {
   const theme = useScorevaTheme();
-  const live = MATCHES.filter((m) => m.status === 'live' || m.status === 'ht').map((m) => withLiveClock(m));
+  const live = (listMatches().length > 0 ? listMatches() : MATCHES)
+    .filter((m) => m.status === 'live' || m.status === 'ht')
+    .map((m) => withLiveClock(m));
 
   return (
     <Screen>

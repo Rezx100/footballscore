@@ -6,6 +6,7 @@ import type { Match, Team } from '@/lib/types';
 export interface FollowingScreenProps {
   followedTeams?: Team[];
   liveMatches?: Match[];
+  followedCompetitions?: number;
   onOpenMatch?: (match: Match) => void;
   onOpenTeam?: (team: Team) => void;
   onExplore?: () => void;
@@ -14,13 +15,14 @@ export interface FollowingScreenProps {
 export function FollowingScreen({
   followedTeams = [],
   liveMatches = [],
+  followedCompetitions = 0,
   onOpenMatch,
   onOpenTeam,
   onExplore,
 }: FollowingScreenProps) {
   const theme = useScorevaTheme();
 
-  if (followedTeams.length === 0) {
+  if (followedTeams.length === 0 && followedCompetitions === 0) {
     return (
       <Screen>
         <EmptyState

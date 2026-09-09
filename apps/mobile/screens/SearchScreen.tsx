@@ -8,12 +8,13 @@ import type { SearchHit } from '@/lib/types';
 
 export interface SearchScreenProps {
   onSelect?: (hit: SearchHit) => void;
+  searchFn?: (query: string) => SearchHit[];
 }
 
-export function SearchScreen({ onSelect }: SearchScreenProps) {
+export function SearchScreen({ onSelect, searchFn = searchCatalog }: SearchScreenProps) {
   const theme = useScorevaTheme();
   const [query, setQuery] = useState('');
-  const results = useMemo(() => searchCatalog(query), [query]);
+  const results = useMemo(() => searchFn(query), [query, searchFn]);
 
   return (
     <Screen scroll={false}>

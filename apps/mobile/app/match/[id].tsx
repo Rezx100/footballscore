@@ -1,11 +1,13 @@
+import { useEffect, useState } from 'react';
 import { useLocalSearchParams } from 'expo-router';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 
 import { MatchCentreScreen } from '@/screens';
-import { getMatchDetail } from '@/lib/demo';
+import { loadMatchDetail } from '@/lib/api';
 import { withLiveClock } from '@/lib/live';
+import type { MatchDetail } from '@/lib/types';
 import { useFollow, useLiveTick, usePrefs } from '@/providers';
-import { useScorevaTheme } from '@/components/scoreva';
+import { EmptyState, ScoreCardSkeleton, useScorevaTheme } from '@/components/scoreva';
 
 export default function MatchRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -13,10 +15,36 @@ export default function MatchRoute() {
   const tick = useLiveTick();
   const follow = useFollow();
   const { prefs } = usePrefs();
-  const detail = getMatchDetail(id ?? '');
+  const [detail, setDetail] = useState<MatchDetail | null>(null);
+  const [ready, setReady] = useState(false);
 
+  useEffect(() => {
+    let cancelled = false;
+    const load = () =>
+      loadMatchDetail(id ?? '').then((row) => {
+        if (!cancelled) {
+          setDetail(row);
+          setReady(true);
+        }
+      });
+    load();
+    const timer = setInterval(load, 8_000);
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+    };
+  }, [id]);
+
+  if (!ready) {
+    return (
+      <View style={{ padding: 16, gap: 12, backgroundColor: theme.colors.background, flex: 1 }}>
+        <ScoreCardSkeleton />
+        <ScoreCardSkeleton />
+      </View>
+    );
+  }
   if (!detail) {
-    return <Text style={{ color: theme.colors.text, padding: 24 }}>Match not on the board.</Text>;
+    return <EmptyState title="Match not on the board" body="This fixture is not in the current feed." />;
   }
 
   return (
@@ -24,6 +52,8 @@ export default function MatchRoute() {
       detail={{ ...detail, match: withLiveClock(detail.match, tick) }}
       followed={follow.isFollowingMatch(detail.match.id)}
       spoiler={prefs.spoiler}
+      hour12={prefs.hour12}
+      timeZone={prefs.tz}
       onToggleFollow={() => follow.toggleMatch(detail.match.id)}
     />
   );

@@ -1,4 +1,4 @@
-import { StyleSheet, Switch, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Switch, Text, View } from 'react-native';
 import { SymbolView } from 'expo-symbols';
 
 import { EmptyState, Screen, useScorevaTheme } from '@/components/scoreva';
@@ -30,6 +30,7 @@ export function NotificationsScreen({
   onChangeSpoiler,
   onChangeDelay,
   onToggleKind,
+  onOpenMatch,
 }: NotificationsScreenProps) {
   const theme = useScorevaTheme();
 
@@ -108,7 +109,11 @@ export function NotificationsScreen({
         <EmptyState title="All quiet" body="Follow a club to get goal and kick-off alerts." />
       ) : (
         items.map((item) => (
-          <View key={item.id} style={[styles.row, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}>
+          <Pressable
+            key={item.id}
+            onPress={() => item.matchId && onOpenMatch?.(item.matchId)}
+            style={[styles.row, { backgroundColor: theme.colors.card, borderColor: theme.colors.hairline }]}
+          >
             <View
               style={[
                 styles.iconDot,
@@ -121,7 +126,7 @@ export function NotificationsScreen({
             <Text style={[styles.rowTime, { fontFamily: theme.typography.minute.fontFamily, color: theme.colors.textMuted }]}>
               {item.time}
             </Text>
-          </View>
+          </Pressable>
         ))
       )}
     </Screen>

@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Screen, ScoreCard, StandingsTable, useScorevaTheme } from '@/components/scoreva';
 import { PL_TABLE, TOP_SCORERS } from '@/lib/demo';
-import type { Competition, Match } from '@/lib/types';
+import type { Competition, Match, StandingRow } from '@/lib/types';
 
 type Tab = 'table' | 'fixtures' | 'results' | 'scorers';
 
@@ -18,6 +18,7 @@ export interface CompetitionScreenProps {
   competition: Competition;
   fixtures?: Match[];
   results?: Match[];
+  table?: StandingRow[];
   followed?: boolean;
   onToggleFollow?: () => void;
   onOpenMatch?: (match: Match) => void;
@@ -28,6 +29,7 @@ export function CompetitionScreen({
   competition,
   fixtures = [],
   results = [],
+  table: tableProp,
   followed,
   onToggleFollow,
   onOpenMatch,
@@ -35,7 +37,7 @@ export function CompetitionScreen({
 }: CompetitionScreenProps) {
   const theme = useScorevaTheme();
   const [tab, setTab] = useState<Tab>('table');
-  const table = competition.id === 'pl' ? PL_TABLE : [];
+  const table = tableProp ?? (competition.id === 'pl' ? PL_TABLE : []);
 
   return (
     <Screen

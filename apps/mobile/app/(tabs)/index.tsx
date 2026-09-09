@@ -1,66 +1,29 @@
-import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'expo-router';
 
 import { HomeScreen } from '@/screens';
-import { MATCHES } from '@/lib/demo';
-import { loadDayFeed } from '@/lib/api';
-import { buildDateRail, dayKey, todayKey } from '@/lib/dates';
-import { withLiveClock } from '@/lib/live';
-import type { FeedResult } from '@/lib/api';
-import { useFollow, useLiveTick, usePrefs } from '@/providers';
+import { useFeed, useFollow, usePrefs } from '@/providers';
 
 export default function LiveTab() {
   const router = useRouter();
   const { prefs } = usePrefs();
   const follow = useFollow();
-  const tick = useLiveTick();
-  const [day, setDay] = useState(() => todayKey(prefs.tz));
-  const [feed, setFeed] = useState<FeedResult>({ matches: MATCHES, source: 'demo' });
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    loadDayFeed(day, prefs.tz)
-      .then((result) => {
-        if (!cancelled) setFeed(result);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [day, tick, prefs.tz]);
-
-  const matches = useMemo(() => {
-    let rows = feed.matches.map((m) => withLiveClock(m, tick));
-    if (prefs.hideFinished) rows = rows.filter((m) => m.status !== 'ft');
-    return rows;
-  }, [feed.matches, prefs.hideFinished, tick]);
-
-  const days = useMemo(() => {
-    return buildDateRail(todayKey(prefs.tz)).map((d) => ({
-      ...d,
-      liveCount: MATCHES.filter((m) => {
-        const live = withLiveClock(m, tick);
-        return dayKey(m.kickoffIso, prefs.tz) === d.iso && (live.status === 'live' || live.status === 'ht');
-      }).length,
-    }));
-  }, [prefs.tz, tick]);
+  const feed = useFeed();
 
   return (
     <HomeScreen
-      matches={matches}
-      days={days}
-      activeIso={day}
-      onSelectDay={setDay}
+      matches={feed.matches}
+      days={feed.days}
+      activeIso={feed.day}
+      onSelectDay={feed.setDay}
       followedTeamIds={follow.follow.teams}
       followedMatchIds={follow.follow.matches}
+      followedCompetitionIds={follow.follow.competitions}
       spoiler={prefs.spoiler}
-      loading={loading}
+      loading={feed.loading}
       source={feed.source}
       stale={feed.stale}
+      hour12={prefs.hour12}
+      timeZone={prefs.tz}
       onOpenMatch={(m) => router.push(`/match/${m.id}`)}
       onOpenSearch={() => router.push('/(tabs)/search')}
       onToggleFollow={(m) => follow.toggleMatch(m.id)}
