@@ -1,28 +1,42 @@
-# footballscore
+# ESPN football API
 
-Live football scores for **app** and **website** — one product, association football only.
+Unofficial ESPN **soccer** client (`sport=soccer`). Association football only. No UI.
 
-**Brand (foundation):** [docs/brand.md](docs/brand.md)  
-**Design system (getdesign.md format):** [DESIGN.md](DESIGN.md)  
-**Catalog of pulled analyses:** [docs/getdesign-refs/CATALOG.md](docs/getdesign-refs/CATALOG.md)  
-**Approve wordmark + color:** [docs/brand-proposals.md](docs/brand-proposals.md) · [board](docs/brand-board.html)  
-**How we get to a full brand book:** [docs/brand-plan.md](docs/brand-plan.md)  
-**Product system (proposed Pitch):** [docs/design.md](docs/design.md)  
-**Build prompt:** [docs/redesign-and-espn-prompt.md](docs/redesign-and-espn-prompt.md)
+Import from `@/lib/espn`. Fetch uses Next.js `revalidate` caching.
 
-Wordmark construction and color palette are **not locked**. Do not treat CSS tokens as identity until a pair is approved.
+```ts
+import { DEFAULT_PREFS } from "@/lib/types";
+import { getMatchesForDay, getLeaguePage, getMatchDetail } from "@/lib/espn";
 
-## Implemented so far
+const prefs = DEFAULT_PREFS; // { tz: "UTC", hour12: false }
 
-**Scores** at `/matches`, fed by ESPN’s unofficial soccer API (`sport=soccer`).
+const { groups } = await getMatchesForDay("today", prefs);
+const league = await getLeaguePage("eng.1", prefs);
+const match = await getMatchDetail("eng.1", "eventId", prefs);
+```
 
-- **Matches list:** that day’s games from the soccer header, merged with 28 first-class leagues (Big 5, UEFA clubs, FIFA, MLS, and other widely followed competitions). Extra cups and lower divisions still appear when they have fixtures.
-- **Times and grouping:** America/New_York, matching ESPN’s US feed (viewer timezone is planned).
-- Scores refresh about every 30 seconds.
+## Loaders
+
+| Function | What it returns |
+|---|---|
+| `getMatchesForDay(day, prefs)` | Scoreboard groups for yesterday / today / tomorrow / next |
+| `getLeaguePage(slug, prefs)` | League meta, live/today, table, clubs, news, fixtures |
+| `getMatchDetail(league, id, prefs)` | Match, timeline, lineups, stats, venue |
+| `getTeamPage(league, id, prefs)` | Club profile, schedule, form, squad, injuries |
+| `getPlayerPage(id, league?, teamId?)` | Player from core athletes + optional roster |
+| `getNewsIndex(follow)` | World + followed news |
+| `getArticle(id)` | Story HTML |
+| `getCatalog()` | All soccer leagues (live ESPN catalog, persisted fallback) |
+| `getFirstClassClubs()` | Clubs in the 28 first-class competitions |
+| `getFollowedClubs(teams)` | Clubs for followed team ids |
+
+## Raw ESPN fetches
+
+`fetchSoccerHeader`, `fetchScoreboard`, `fetchSummary`, `fetchStandings`, `fetchTeams`, `fetchTeam`, `fetchRoster`, `fetchSchedule`, `fetchInjuries`, `fetchNews`, `fetchArticle`, `fetchLeaguesCatalog`, `fetchLeaders`, `fetchCoreLeague`, `fetchOnDayDates`, `fetchAthlete`.
+
+First-class slugs live in `FIRST_CLASS_LEAGUES` (`eng.1`, `esp.1`, `uefa.champions`, …).
 
 ```bash
 npm install
 npm run dev
 ```
-
-Open [http://localhost:3000/matches](http://localhost:3000/matches). Date tabs, Hide all, search, and live/`FT` rows are interactive.

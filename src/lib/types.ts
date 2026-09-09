@@ -196,7 +196,6 @@ export type InjuryRow = {
 export type Prefs = {
   tz: string;
   hour12: boolean;
-  hideFinished: boolean;
-  startTab: "matches" | "news" | "leagues" | "following";
-  tzOverride: boolean;
 };
+
+export const DEFAULT_PREFS: Prefs = { tz: "UTC", hour12: false };
