@@ -1,28 +1,49 @@
-# footballscore
+# Scoreva
 
-Live football scores for **app** and **website** — one product, association football only.
+Football-only live scores for **iOS and Android**, built with **React Native + Expo** and **Supabase**.
 
-**Brand (foundation):** [docs/brand.md](docs/brand.md)  
-**Design system (getdesign.md format):** [DESIGN.md](DESIGN.md)  
-**Catalog of pulled analyses:** [docs/getdesign-refs/CATALOG.md](docs/getdesign-refs/CATALOG.md)  
-**Approve wordmark + color:** [docs/brand-proposals.md](docs/brand-proposals.md) · [board](docs/brand-board.html)  
-**How we get to a full brand book:** [docs/brand-plan.md](docs/brand-plan.md)  
-**Product system (proposed Pitch):** [docs/design.md](docs/design.md)  
-**Build prompt:** [docs/redesign-and-espn-prompt.md](docs/redesign-and-espn-prompt.md)
+Brand: night studio, volt signal (`#D7FF3C`), Aperture mark. Design system: [`docs/scoreva/DESIGN.md`](docs/scoreva/DESIGN.md).
 
-Wordmark construction and color palette are **not locked**. Do not treat CSS tokens as identity until a pair is approved.
+The existing Next.js site at the repo root is the previous footballscore web prototype. **Scoreva** is the mobile product in `apps/mobile`.
 
-## Implemented so far
-
-**Scores** at `/matches`, fed by ESPN’s unofficial soccer API (`sport=soccer`).
-
-- **Matches list:** that day’s games from the soccer header, merged with 28 first-class leagues (Big 5, UEFA clubs, FIFA, MLS, and other widely followed competitions). Extra cups and lower divisions still appear when they have fixtures.
-- **Times and grouping:** America/New_York, matching ESPN’s US feed (viewer timezone is planned).
-- Scores refresh about every 30 seconds.
+## Run in Expo Go
 
 ```bash
+cd apps/mobile
 npm install
-npm run dev
+npx expo start
 ```
 
-Open [http://localhost:3000/matches](http://localhost:3000/matches). Date tabs, Hide all, search, and live/`FT` rows are interactive.
+Scan the QR code with Expo Go. Web preview: `npx expo start --web`.
+
+No account is required. Favorites and notification prefs persist on device. Optional Supabase sync:
+
+```
+EXPO_PUBLIC_SUPABASE_URL=
+EXPO_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+Football API keys stay **server-side**. Set `FOOTBALL_API_KEY` as a Supabase Edge Function secret (never `EXPO_PUBLIC_*`). The `football-proxy` function uses API-Football when the key is present, otherwise ESPN’s public soccer scoreboard. Demo data keeps every screen working offline.
+
+## EAS production builds
+
+```bash
+cd apps/mobile
+npx eas-cli login
+npx eas-cli build --platform ios --profile production
+npx eas-cli build --platform android --profile production
+```
+
+Widgets and Live Activities are specified in `apps/mobile/widgets/` and included in the native EAS project. Expo Go shows the same compact live tracker in **More → Home screen widgets**.
+
+## Product flow
+
+Onboarding → favorite clubs/competitions → Live feed → match centre (timeline, lineups, stats, table) → competition → team → player → search → notifications (spoiler + delay) → settings.
+
+## Store assets
+
+App Store UI frames: `apps/mobile/assets/store/01-home.png` … `07-notifications.png`.
+Captured product screens from the running app: `apps/mobile/assets/store/product-*.png`.
+
+
+If a feed does not send a module, the UI says so. No odds, no Watch CTAs, no invented xG outside demo fixtures that are labelled as demo when ESPN/API is down.
