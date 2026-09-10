@@ -1,4 +1,5 @@
 import { calendarDayOf, formatKickoff } from "@/lib/dates";
+import { teamLogoUrl } from "@/lib/espn/cdn";
 import { asArray, asNumber, asString, isRecord } from "@/lib/espn/json";
 import {
   displayNameForSlug,
@@ -9,9 +10,7 @@ import {
 import type { LeagueGroup, Match, MatchStatus, Team } from "@/lib/types";
 
 function teamLogo(id: string | undefined, explicit?: string): string | undefined {
-  if (explicit) return explicit;
-  if (!id) return undefined;
-  return `https://a.espncdn.com/i/teamlogos/soccer/500/${id}.png`;
+  return teamLogoUrl(id, explicit);
 }
 
 function hexColor(value: string | undefined): string {

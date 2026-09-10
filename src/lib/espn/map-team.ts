@@ -1,4 +1,5 @@
 import { asArray, asNumber, asString, isRecord } from "@/lib/espn/json";
+import { headshotFromAthlete, teamLogoUrl } from "@/lib/espn/cdn";
 import { mapEvent } from "@/lib/espn/map";
 import type { Club, InjuryRow, Match, SquadPlayer, Team } from "@/lib/types";
 
@@ -17,7 +18,7 @@ function logoFrom(team: Record<string, unknown>, id: string): string | undefined
   });
   const chosen = isRecord(logo) ? logo : asArray(team.logos).find(isRecord);
   if (isRecord(chosen) && asString(chosen.href)) return asString(chosen.href);
-  return `https://a.espncdn.com/i/teamlogos/soccer/500/${id}.png`;
+  return teamLogoUrl(id);
 }
 
 export function mapClub(raw: unknown, leagueId: string): Club | null {
@@ -96,6 +97,7 @@ export function mapRoster(raw: unknown): { players: SquadPlayer[]; coach?: strin
       position: posName ?? abbr ?? "Player",
       positionGroup: positionGroup(posName, abbr),
       age: asNumber(athlete.age),
+      headshot: headshotFromAthlete(athlete),
     });
   }
   const coach = asArray(raw.coach).find(isRecord);

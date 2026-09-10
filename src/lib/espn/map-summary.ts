@@ -1,4 +1,5 @@
 import { asArray, asNumber, asString, isRecord } from "@/lib/espn/json";
+import { headshotFromAthlete } from "@/lib/espn/cdn";
 import { mapStandingEntries } from "@/lib/espn/map-standings";
 import { mapEvent, mapTeam } from "@/lib/espn/map";
 import type {
@@ -132,6 +133,7 @@ function mapLineup(raw: unknown, fallbackColor: string): LineupSide | null {
       position,
       starter: row.starter === true,
       formationPlace: asNumber(row.formationPlace),
+      headshot: athlete ? headshotFromAthlete(athlete) : undefined,
     });
   }
   return {

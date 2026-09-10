@@ -1,6 +1,7 @@
 import { FollowButton } from "@/components/follow/follow-button";
 import { MatchRow } from "@/components/matches/match-row";
 import { Crest } from "@/components/matches/crest";
+import { Headshot } from "@/components/matches/headshot";
 import { NewsCard } from "@/components/news/news-card";
 import { FormPills, Module } from "@/components/ui/blocks";
 import { MiniTable } from "@/components/ui/mini-table";
@@ -103,7 +104,8 @@ export function TeamView({ page, league }: { page: TeamPage; league: string }) {
                 <ul className="space-y-1">
                   {block.players.map((player) => (
                     <li key={player.id}>
-                      <Link href={playerHref(player.id, league, club.id)} className="font-cond flex gap-3 text-[14px]">
+                      <Link href={playerHref(player.id, league, club.id)} className="font-cond flex items-center gap-3 text-[14px]">
+                        <Headshot src={player.headshot} name={player.name} size={32} />
                         <span className="font-board w-6 text-[12px] text-[var(--muted)]">{player.jersey ?? ""}</span>
                         <span className="flex-1">{player.name}</span>
                         <span className="text-[12px] text-[var(--muted)]">{player.position}</span>

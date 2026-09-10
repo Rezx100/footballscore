@@ -57,6 +57,7 @@ export type LineupPlayer = {
   position?: string;
   starter: boolean;
   formationPlace?: number;
+  headshot?: string;
 };
 
 export type LineupSide = {
@@ -184,6 +185,7 @@ export type SquadPlayer = {
   position: string;
   positionGroup: string;
   age?: number;
+  headshot?: string;
 };
 
 export type InjuryRow = {

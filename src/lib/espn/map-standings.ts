@@ -1,4 +1,5 @@
 import { asArray, asNumber, asString, isRecord } from "@/lib/espn/json";
+import { teamLogoUrl } from "@/lib/espn/cdn";
 import type { StandingRow, StandingTable } from "@/lib/types";
 
 function standingStat(stats: unknown[], name: string): number {
@@ -16,7 +17,7 @@ function teamLogoFrom(entry: Record<string, unknown>, teamId: string): string | 
   if (team && asString(team.logo)) return asString(team.logo);
   const logo = team ? asArray(team.logos).find(isRecord) : undefined;
   if (logo && asString(logo.href)) return asString(logo.href);
-  return `https://a.espncdn.com/i/teamlogos/soccer/500/${teamId}.png`;
+  return teamLogoUrl(teamId);
 }
 
 export function mapStandingEntries(entries: unknown[], tableName: string): StandingTable | null {
