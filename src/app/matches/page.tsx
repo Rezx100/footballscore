@@ -1,7 +1,7 @@
 import { AppShell } from "@/components/app-shell";
 import { MatchesScreen } from "@/components/matches/matches-screen";
-import { getMatchesForDay } from "@/lib/espn/matches";
-import { parseMatchesQuery } from "@/lib/matches-query";
+import { getMatchesForDay, getMatchesForIso } from "@/lib/espn/matches";
+import { dayKeyForIso, parseMatchesQuery } from "@/lib/matches-query";
 import { serverFollow, serverPrefs } from "@/lib/server-state";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +21,16 @@ export default async function MatchesPage({
   if (hideRaw === "0") query.hide = false;
   else if (hideRaw === "1") query.hide = true;
   else if (prefs.hideFinished) query.hide = true;
-  const { groups, error, lastNight, nextUp } = await getMatchesForDay(query.day, prefs);
+  if (query.iso) {
+    const mapped = dayKeyForIso(query.iso, prefs.tz);
+    if (mapped) {
+      query.day = mapped;
+      query.iso = undefined;
+    }
+  }
+  const { groups, error, lastNight, nextUp } = query.iso
+    ? await getMatchesForIso(query.iso, prefs)
+    : await getMatchesForDay(query.day, prefs);
 
   return (
     <AppShell>

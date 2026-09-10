@@ -1,6 +1,7 @@
+import { AppShell } from "@/components/app-shell";
+import { AppHeader } from "@/components/scory/chrome";
 import { EmptyState } from "@/components/ui/blocks";
 import { MatchView, parsePanel } from "@/components/match/match-view";
-import { PageShell, SiteLockup } from "@/components/shell/page-shell";
 import { getMatchDetail } from "@/lib/espn/match-page";
 import { serverPrefs } from "@/lib/server-state";
 
@@ -23,34 +24,36 @@ export default async function MatchPage({
 
   if (!league) {
     return (
-      <PageShell masthead={<header className="px-4 pt-4"><SiteLockup /></header>}>
+      <AppShell>
+        <AppHeader />
         <EmptyState
           title="Competition missing"
           body="Open this match from Scores so we know which league ESPN should use."
           actionHref="/matches"
           actionLabel="Back to scores"
         />
-      </PageShell>
+      </AppShell>
     );
   }
 
   const detail = await getMatchDetail(league, id, prefs);
   if (!detail) {
     return (
-      <PageShell masthead={<header className="px-4 pt-4"><SiteLockup /></header>}>
+      <AppShell>
+        <AppHeader />
         <EmptyState
           title="Match not in the feed"
           body="ESPN did not return this fixture. It may have been removed or the id is stale."
           actionHref="/matches"
           actionLabel="Back to scores"
         />
-      </PageShell>
+      </AppShell>
     );
   }
 
   return (
-    <PageShell wide masthead={null}>
+    <AppShell>
       <MatchView detail={detail} panel={panel} side={side} />
-    </PageShell>
+    </AppShell>
   );
 }

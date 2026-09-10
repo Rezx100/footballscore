@@ -18,7 +18,7 @@ export default function Error({
       <p className="font-cond text-[20px] leading-none">Couldn’t load this page.</p>
       <p className="mt-3 text-[14px] text-[var(--muted)]">Try again. If it keeps failing, open Matches.</p>
       <div className="mt-5 flex gap-4">
-        <button type="button" onClick={reset} className="font-board text-[12px] tracking-[0.04em] text-[var(--live)]">
+        <button type="button" onClick={reset} className="text-[12px] tracking-[0.04em] text-[var(--scory-text-brand)]">
           Retry
         </button>
         <a href="/matches" className="font-board text-[12px] tracking-[0.04em] text-[var(--ink)]">

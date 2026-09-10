@@ -1,13 +1,18 @@
-import Link from "next/link";
+import { AppShell } from "@/components/app-shell";
+import { AppHeader } from "@/components/scory/chrome";
 import { NewsCard } from "@/components/news/news-card";
-import { EmptyState, SegmentTabs } from "@/components/ui/blocks";
-import { PageShell, SiteLockup } from "@/components/shell/page-shell";
+import { EmptyState, UnderlineTabs } from "@/components/scory/primitives";
 import { getNewsIndex } from "@/lib/espn/news-page";
+import { filterNews, type NewsBucket } from "@/lib/news-buckets";
 import { serverFollow } from "@/lib/server-state";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300;
 export const maxDuration = 20;
+
+function parseNewsTab(value: string | undefined): NewsBucket {
+  return value === "transfers" || value === "injuries" || value === "opinion" ? value : "latest";
+}
 
 export default async function NewsPage({
   searchParams,
@@ -15,44 +20,47 @@ export default async function NewsPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const query = await searchParams;
-  const tab = (Array.isArray(query.tab) ? query.tab[0] : query.tab) === "world" ? "world" : "foryou";
+  const tab = parseNewsTab(Array.isArray(query.tab) ? query.tab[0] : query.tab);
   const follow = await serverFollow();
   const { forYou, world } = await getNewsIndex(follow);
-  const items = tab === "world" ? world : forYou.length ? forYou : world;
+  const pool = forYou.length ? forYou : world;
+  const items = filterNews(pool, tab);
 
   return (
-    <PageShell
-      masthead={
-        <header className="masthead px-4 pt-4 pb-2">
-          <SiteLockup />
-          <h1 className="font-cond mt-5 text-[20px]">News</h1>
-          <div className="-mx-4 mt-3">
-            <SegmentTabs
-              value={tab}
-              items={[
-                { value: "foryou", label: "For you", href: "/news" },
-                { value: "world", label: "World", href: "/news?tab=world" },
-              ]}
-            />
-          </div>
-        </header>
-      }
-    >
+    <AppShell>
+      <AppHeader />
+      <div className="px-4 pt-3">
+        <h1 className="text-[18px] font-semibold leading-6">News</h1>
+        <div className="mt-3">
+          <UnderlineTabs
+            value={tab}
+            items={[
+              { value: "latest", label: "Latest", href: "/news" },
+              { value: "transfers", label: "Transfers", href: "/news?tab=transfers" },
+              { value: "injuries", label: "Injuries", href: "/news?tab=injuries" },
+              { value: "opinion", label: "Opinion", href: "/news?tab=opinion" },
+            ]}
+          />
+        </div>
+      </div>
       {items.length ? (
-        <div className="space-y-2 px-4 pb-10">
-          {tab === "foryou" && !forYou.length ? (
-            <p className="pb-2 text-[13px] text-[var(--muted)]">
-              Follow leagues or clubs for a personal feed. Showing world headlines for now.{" "}
-              <Link href="/following" className="text-[var(--live)]">Following</Link>
-            </p>
-          ) : null}
+        <div className="space-y-2 px-4 pb-10 pt-4">
           {items.map((item) => (
             <NewsCard key={item.id} item={item} />
           ))}
         </div>
       ) : (
-        <EmptyState title="No headlines" body="ESPN did not return news for the first-class leagues right now." actionHref="/matches" actionLabel="Back to scores" />
+        <EmptyState
+          title="No headlines"
+          body={
+            tab === "latest"
+              ? "ESPN did not return news for the first-class leagues right now."
+              : `No ESPN headlines matched ${tab} right now.`
+          }
+          actionHref="/news"
+          actionLabel={tab === "latest" ? "Back to scores" : "See latest"}
+        />
       )}
-    </PageShell>
+    </AppShell>
   );
 }

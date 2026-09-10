@@ -1,5 +1,6 @@
+import { AppShell } from "@/components/app-shell";
+import { AppHeader } from "@/components/scory/chrome";
 import { MoreView } from "@/components/more/more-view";
-import { PageShell } from "@/components/shell/page-shell";
 import { DEFAULT_MARK, parseMark } from "@/lib/brand";
 import { serverPrefs } from "@/lib/server-state";
 
@@ -14,8 +15,9 @@ export default async function MorePage({
   const mark = parseMark(Array.isArray(query.mark) ? query.mark[0] : query.mark) ?? DEFAULT_MARK;
   const prefs = await serverPrefs();
   return (
-    <PageShell>
+    <AppShell>
+      <AppHeader />
       <MoreView prefs={prefs} mark={mark} />
-    </PageShell>
+    </AppShell>
   );
 }

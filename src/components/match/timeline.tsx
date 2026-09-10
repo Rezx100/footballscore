@@ -1,7 +1,7 @@
 import type { TimelineItem } from "@/lib/types";
 
 function cardClass(kind: TimelineItem["kind"], key: boolean): string {
-  if (kind === "goal") return "border-[color-mix(in_srgb,var(--copper)_40%,var(--line))] bg-[color-mix(in_srgb,var(--copper)_10%,var(--elev))]";
+  if (kind === "goal") return "border-[color-mix(in_srgb,var(--scory-bg-brand)_40%,var(--line))] bg-[color-mix(in_srgb,var(--scory-bg-brand)_18%,var(--elev))]";
   if (kind === "card") return "border-[color-mix(in_srgb,var(--caution,#c4a574)_40%,var(--line))] bg-[var(--elev)]";
   if (kind === "sub") return "border-[var(--line)] bg-[var(--elev)]";
   if (key) return "border-[var(--line)] bg-[var(--elev)]";

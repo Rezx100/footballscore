@@ -6,7 +6,6 @@ import { MARKS, type MarkId } from "@/lib/brand";
 import { matchesHref } from "@/lib/matches-query";
 import Link from "next/link";
 import { useState } from "react";
-import { SiteLockup } from "@/components/shell/page-shell";
 
 const ZONES = [
   "UTC",
@@ -32,9 +31,8 @@ export function MoreView({ prefs, mark }: { prefs: Prefs; mark: MarkId }) {
 
   return (
     <>
-      <header className="masthead px-4 pt-4 pb-4">
-        <SiteLockup />
-        <h1 className="font-cond mt-5 text-[20px]">More</h1>
+      <header className="px-4 pt-3 pb-4">
+        <h1 className="text-[18px] font-semibold leading-6">More</h1>
       </header>
       <form className="space-y-5 px-4 pb-10" onSubmit={(event) => event.preventDefault()}>
         <label className="block">
@@ -78,7 +76,8 @@ export function MoreView({ prefs, mark }: { prefs: Prefs; mark: MarkId }) {
             value={state.startTab}
             onChange={(event) => save({ ...state, startTab: event.target.value as Prefs["startTab"] })}
           >
-            <option value="matches">Scores</option>
+            <option value="home">Home</option>
+            <option value="matches">Matches</option>
             <option value="news">News</option>
             <option value="leagues">Leagues</option>
             <option value="following">Following</option>

@@ -9,8 +9,7 @@ import { MiniTable } from "@/components/ui/mini-table";
 import { EmptyState, Module, SegmentTabs } from "@/components/ui/blocks";
 import type { LeaguePage } from "@/lib/espn/league-page";
 import { leagueHref, teamHref } from "@/lib/hrefs";
-import type { MatchesQuery } from "@/lib/matches-query";
-import { DEFAULT_MARK } from "@/lib/brand";
+import { DEFAULT_MATCHES_QUERY } from "@/lib/matches-query";
 
 const TABS = ["now", "table", "fixtures", "clubs", "news"] as const;
 export type LeagueTab = (typeof TABS)[number];
@@ -18,16 +17,6 @@ export type LeagueTab = (typeof TABS)[number];
 export function parseLeagueTab(value: string | undefined): LeagueTab {
   return TABS.includes(value as LeagueTab) ? (value as LeagueTab) : "now";
 }
-
-const dummyQuery: MatchesQuery = {
-  day: "today",
-  hide: false,
-  q: "",
-  tab: "matches",
-  match: null,
-  search: false,
-  mark: DEFAULT_MARK,
-};
 
 export function LeagueView({
   page,
@@ -57,23 +46,20 @@ export function LeagueView({
   return (
     <>
       <header className="masthead">
-        <div className="relative overflow-hidden">
-          <span className="league-silo__aura" aria-hidden="true" />
-          <div className="relative flex items-center gap-2 px-2 pt-3 pb-3">
-            <Link
-              href="/leagues"
-              aria-label="Back to leagues"
-              className="grid h-11 w-11 shrink-0 place-items-center text-[var(--ink)]"
-            >
-              <BackChevronIcon />
-            </Link>
-            <LeagueMark slug={meta.slug} name={meta.name} logo={meta.logo} size={48} />
-            <div className="min-w-0 flex-1">
-              <h1 className="font-cond truncate text-[20px] leading-none">{meta.name}</h1>
-              <p className="font-board mt-1 text-[11px] tracking-[0.06em] text-[var(--muted)]">{meta.country}</p>
-            </div>
-            <FollowButton league={meta.slug} label="Follow" />
+        <div className="flex items-center gap-2 px-2 pt-3 pb-3">
+          <Link
+            href="/leagues"
+            aria-label="Back to leagues"
+            className="grid h-11 w-11 shrink-0 place-items-center text-[var(--ink)]"
+          >
+            <BackChevronIcon />
+          </Link>
+          <LeagueMark slug={meta.slug} name={meta.name} logo={meta.logo} size={40} />
+          <div className="min-w-0 flex-1">
+            <h1 className="truncate text-[18px] font-semibold leading-6">{meta.name}</h1>
+            <p className="mt-1 text-[11px] tracking-[0.06em] text-[var(--muted)]">{meta.country}</p>
           </div>
+          <FollowButton league={meta.slug} label="Follow" />
         </div>
         <SegmentTabs value={tab} items={items} />
       </header>
@@ -84,7 +70,7 @@ export function LeagueView({
             <Module title="Live">
               <div className="grid gap-2">
                 {page.live.map((match) => (
-                  <MatchRow key={match.id} match={match} selected={false} query={dummyQuery} />
+                  <MatchRow key={match.id} match={match} selected={false} query={DEFAULT_MATCHES_QUERY} />
                 ))}
               </div>
             </Module>
@@ -93,7 +79,7 @@ export function LeagueView({
             {page.today.length ? (
               <div className="grid gap-2 sm:grid-cols-2">
                 {page.today.map((match) => (
-                  <MatchRow key={match.id} match={match} selected={false} query={dummyQuery} />
+                  <MatchRow key={match.id} match={match} selected={false} query={DEFAULT_MATCHES_QUERY} />
                 ))}
               </div>
             ) : (
@@ -136,7 +122,7 @@ export function LeagueView({
               const iso = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
               const href = `${leagueHref(meta.slug, "fixtures")}&date=${iso}${teamFilter ? `&team=${teamFilter}` : ""}`;
               return (
-                <Link key={date} href={href} className="font-board shrink-0 rounded-full bg-[var(--elev)] px-3 py-1.5 text-[10px] tracking-[0.06em] text-[var(--muted)]">
+                <Link key={date} href={href} className="day-chip shrink-0 bg-[var(--scory-bg-chip)]">
                   {iso.slice(5)}
                 </Link>
               );
@@ -165,7 +151,7 @@ export function LeagueView({
             {page.fixtures.length ? (
               <div className="grid gap-2 sm:grid-cols-2">
                 {page.fixtures.map((match) => (
-                  <MatchRow key={match.id} match={match} selected={false} query={dummyQuery} />
+                  <MatchRow key={match.id} match={match} selected={false} query={DEFAULT_MATCHES_QUERY} />
                 ))}
               </div>
             ) : (

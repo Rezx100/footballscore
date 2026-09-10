@@ -222,3 +222,176 @@ export function FollowingTabGlyph() {
     </Icon>
   );
 }
+
+export function PlusGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M10 4.16667V15.8333M4.16667 10H15.8333"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
+export function ClockGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M10 16.6667C13.6819 16.6667 16.6667 13.6819 16.6667 10C16.6667 6.3181 13.6819 3.33333 10 3.33333C6.3181 3.33333 3.33333 6.3181 3.33333 10C3.33333 13.6819 6.3181 16.6667 10 16.6667Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M10 6.66667V10L12.5 12.0833"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Icon>
+  );
+}
+
+export function BackGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M12.5 4.16667L6.66667 10L12.5 15.8333"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Icon>
+  );
+}
+
+export function ShareGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M7.5 11.25L12.5 8.75M7.5 8.75L12.5 11.25"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+      <path
+        d="M5.41667 12.0833C6.79738 12.0833 7.91667 10.964 7.91667 9.58333C7.91667 8.20262 6.79738 7.08333 5.41667 7.08333C4.03596 7.08333 2.91667 8.20262 2.91667 9.58333C2.91667 10.964 4.03596 12.0833 5.41667 12.0833Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M14.5833 8.33333C15.964 8.33333 17.0833 7.21404 17.0833 5.83333C17.0833 4.45262 15.964 3.33333 14.5833 3.33333C13.2026 3.33333 12.0833 4.45262 12.0833 5.83333C12.0833 7.21404 13.2026 8.33333 14.5833 8.33333Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M14.5833 16.6667C15.964 16.6667 17.0833 15.5474 17.0833 14.1667C17.0833 12.786 15.964 11.6667 14.5833 11.6667C13.2026 11.6667 12.0833 12.786 12.0833 14.1667C12.0833 15.5474 13.2026 16.6667 14.5833 16.6667Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+    </Icon>
+  );
+}
+
+export function CloseGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M5 5L15 15M15 5L5 15"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
+export function StarGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M10 3.33333L11.8333 7.41667L16.25 7.91667L13 10.9167L13.9167 15.3333L10 13.0833L6.08333 15.3333L7 10.9167L3.75 7.91667L8.16667 7.41667L10 3.33333Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinejoin="round"
+      />
+    </Icon>
+  );
+}
+
+export function CheckGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M4.16667 10.4167L7.91667 14.1667L15.8333 5.83333"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Icon>
+  );
+}
+
+export function UserGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M10 10C11.8409 10 13.3333 8.50762 13.3333 6.66667C13.3333 4.82572 11.8409 3.33333 10 3.33333C8.15905 3.33333 6.66667 4.82572 6.66667 6.66667C6.66667 8.50762 8.15905 10 10 10Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M4.16667 16.6667C4.16667 14.0893 6.75584 12.0833 10 12.0833C13.2442 12.0833 15.8333 14.0893 15.8333 16.6667"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
+export function MoreGlyph({ size = 20 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M5 10H5.00833M10 10H10.0083M15 10H15.0083"
+        stroke="currentColor"
+        strokeWidth="2.25"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
+export function ChevronRightGlyph({ size = 16 }: { size?: number }) {
+  return (
+    <Icon size={size} viewBox="0 0 16 16">
+      <path
+        d="M6 4L10 8L6 12"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Icon>
+  );
+}
+
+export function HeartGlyph({ size = 20, filled = false }: { size?: number; filled?: boolean }) {
+  return (
+    <Icon size={size} viewBox="0 0 20 20">
+      <path
+        d="M10 16.6667C10 16.6667 4.16667 12.8333 4.16667 8.33333C4.18473 7.75925 4.35532 7.19995 4.66347 6.71534C4.97164 6.23074 5.40579 5.83906 5.91612 5.58222C6.42644 5.3254 6.99527 5.21309 7.56783 5.25732C8.14038 5.30155 8.69025 5.50066 9.16667 5.83333C9.64308 5.50066 10.193 5.30155 10.7655 5.25732C11.3381 5.21309 11.9069 5.3254 12.4172 5.58222C12.9275 5.83906 13.3617 6.23074 13.6699 6.71534C13.978 7.19995 14.1486 7.75925 14.1667 8.33333C14.1667 12.8333 8.33333 16.6667 8.33333 16.6667H10Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        fill={filled ? "currentColor" : "none"}
+        strokeLinejoin="round"
+      />
+    </Icon>
+  );
+}

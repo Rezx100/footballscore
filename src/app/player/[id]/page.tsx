@@ -1,6 +1,7 @@
-import { EmptyState } from "@/components/ui/blocks";
+import { AppShell } from "@/components/app-shell";
+import { AppHeader } from "@/components/scory/chrome";
+import { EmptyState, InfoRow } from "@/components/scory/primitives";
 import { Crest } from "@/components/matches/crest";
-import { PageShell, SiteLockup } from "@/components/shell/page-shell";
 import { FollowButton } from "@/components/follow/follow-button";
 import { getPlayerPage } from "@/lib/espn/player-page";
 import { teamHref } from "@/lib/hrefs";
@@ -24,43 +25,40 @@ export default async function PlayerPage({
 
   if (!player) {
     return (
-      <PageShell masthead={<header className="px-4 pt-4"><SiteLockup /></header>}>
+      <AppShell>
+        <AppHeader />
         <EmptyState
           title="Player not in the feed"
           body="ESPN did not return a coherent profile for this athlete. Names stay on the lineup."
           actionHref="/matches"
           actionLabel="Back to scores"
         />
-      </PageShell>
+      </AppShell>
     );
   }
 
   return (
-    <PageShell
-      masthead={
-        <header className="px-4 pt-4 pb-2">
-          <SiteLockup />
-        </header>
-      }
-    >
+    <AppShell>
+      <AppHeader />
       <div className="px-4 pb-10 pt-4">
-        <p className="font-board text-[11px] tracking-[0.08em] text-[var(--muted)]">{player.position}</p>
-        <h1 className="font-cond mt-1 text-[24px] leading-none">{player.name}</h1>
-        <p className="font-board mt-2 text-[13px] text-[var(--muted)]">
-          {[player.jersey ? `#${player.jersey}` : null, player.age ? `${player.age}` : null, player.citizenship, player.height]
-            .filter(Boolean)
-            .join(" · ")}
-        </p>
+        <p className="text-[11px] tracking-[0.08em] text-[var(--muted)]">{player.position}</p>
+        <h1 className="mt-1 text-[24px] font-semibold leading-none">{player.name}</h1>
+        <div className="mt-4">
+          {player.jersey ? <InfoRow label="Number" value={`#${player.jersey}`} /> : null}
+          {player.age ? <InfoRow label="Age" value={String(player.age)} /> : null}
+          {player.citizenship ? <InfoRow label="Country" value={player.citizenship} /> : null}
+          {player.height ? <InfoRow label="Height" value={player.height} /> : null}
+        </div>
         {player.team && league ? (
           <div className="mt-5 flex items-center justify-between">
             <Link href={teamHref(league, player.team.id)} className="flex items-center gap-2">
-              <Crest team={player.team} size={28} />
-              <span className="font-cond text-[15px]">{player.team.name}</span>
+              <Crest team={player.team} size={40} />
+              <span className="text-[15px] font-medium">{player.team.name}</span>
             </Link>
             <FollowButton league={league} teamId={player.team.id} />
           </div>
         ) : null}
       </div>
-    </PageShell>
+    </AppShell>
   );
 }
